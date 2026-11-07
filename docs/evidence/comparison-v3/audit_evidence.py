@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 root=Path('docs/evidence/comparison-v3');cases={c['id']:c for c in json.loads(Path('evals/dataset.json').read_text())};events=[json.loads(x) for x in (root/'gpt-6-luna/events.jsonl').read_text().splitlines()];reserved={e['request_id']:e for e in events if e['state']=='reserved'};failed={e['request_id'] for e in events if e['state']=='failed'};rows=[]
 def excerpts(v,path=''):
  if isinstance(v,dict):

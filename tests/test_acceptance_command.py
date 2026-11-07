@@ -77,7 +77,7 @@ def test_execute_order_artifacts_resume(command):
         assert item['decision']['escalation_reasons'] == []
         assert item['decision']['standard_destination'] == item['decision']['final_destination']
         assert item['provenance']['policy_version'] == '1.1'
-        assert item['provenance']['prompt_version'] == 'triage_v3'
+        assert item['provenance']['prompt_version'] == 'triage_v4'
         assert item['processing']['attempts'][0]['usage']['total_tokens'] == 30
     assert len([e for e in events() if e['state'] == 'completed']) == 5
     run()
@@ -222,7 +222,7 @@ def test_command_assessment_billing_and_outage_regression(command):
         assert record['analysis'] == payload
         assert record['summary'] == 'One. Two.'
         assert record['provenance']['model'] == 'gpt-6.1-terra'
-        assert record['provenance']['prompt_version'] == 'triage_v3'
+        assert record['provenance']['prompt_version'] == 'triage_v4'
         assert record['provenance']['schema_version'] == '1.0'
         assert record['provenance']['policy_version'] == '1.1'
         assert record['provenance']['completed_at']
@@ -263,7 +263,7 @@ def test_command_full_export_matches_canonical_builder(command):
             request={'id': 'request', 'received_at': 'received',
                      'source': case['source'], 'message': case['message']},
             analysis=validate_analysis(payload, case['message']),
-            output=SimpleNamespace(model='gpt-6.1-terra', prompt_version='triage_v3',
+            output=SimpleNamespace(model='gpt-6.1-terra', prompt_version='triage_v4',
                                    schema_version='1.0',
                                    prompt_sha256=artifact_identity()['prompt'],
                                    schema_sha256=artifact_identity()['schema']),

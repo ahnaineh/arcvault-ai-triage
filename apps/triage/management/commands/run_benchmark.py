@@ -21,9 +21,9 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('--run-dir', required=True)
         parser.add_argument('--config', required=True)
-        parser.add_argument('--phase', required=True, choices=['baseline', 'development', 'validation', 'test', 'assessment'])
+        parser.add_argument('--phase', required=True, choices=['baseline', 'development', 'validation', 'test', 'assessment', 'comparison'])
         parser.add_argument('--prompt', help='Explicit repository versioned prompt path (legacy compatibility)')
-        parser.add_argument('--prompt-version', choices=['triage_v1', 'triage_v2', 'triage_v3'])
+        parser.add_argument('--prompt-version', choices=['triage_v1', 'triage_v2', 'triage_v3', 'triage_v4'])
         parser.add_argument('--freeze', action='store_true')
         parser.add_argument('--execute', action='store_true')
 
@@ -41,7 +41,7 @@ class Command(BaseCommand):
             raise CommandError('Explicit Terra benchmark configuration with project ceiling required')
         phase = options['phase']
         split = 'development' if phase == 'baseline' else phase
-        cases = [c for c in load() if c['split'] == split]
+        cases = [c for c in load() if phase == 'comparison' or c['split'] == split]
         prerequisite = {'development': 'baseline', 'validation': 'development', 'test': 'validation', 'assessment': 'test'}.get(phase)
         if options['execute'] and prerequisite and not (directory / f'{prerequisite}.exports.json').exists():
             raise CommandError('Complete preceding phase first')
@@ -54,6 +54,7 @@ class Command(BaseCommand):
         identity = {'prompt': digest(prompt), 'schema': digest(Path('contracts/analysis.schema.json').read_text()),
                     'dataset': digest(load()), 'model': config['model'],
                     'code_files': {str(p): digest(p.read_text()) for root in ('apps/triage', 'evals') for p in sorted(Path(root).rglob('*.py'))},
+                    'set_status': 'reused comparison set; not a fresh holdout' if phase == 'comparison' else 'development/validation/frozen-test protocol',
                     'code': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()}
         manifest = directory / f'{phase}.manifest.json'
         if manifest.exists() and not options['freeze'] and json.loads(manifest.read_text()) != identity:
@@ -78,7 +79,7 @@ class Command(BaseCommand):
             provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
             atomic_export(manifest, identity)
         # All phases share one exclusive, immutable accounting journal.
-        runner = Runner(directory, config)
+        runner = Runner(directory, config, terminal_provider_failures=phase == 'comparison')
         records = runner.run([{'sample_id': phase + ':' + c['id'], 'source': c['source'],
                                'message': c['message']} for c in cases], provider, execute=options['execute'])
         if options['execute']:

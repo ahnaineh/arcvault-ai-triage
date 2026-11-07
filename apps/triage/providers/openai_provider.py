@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[3]
 def selected_prompt_version(version=None):
     from django.conf import settings
     selected = version if version is not None else settings.OPENAI_PROMPT_VERSION
-    if selected not in ('triage_v1', 'triage_v2', 'triage_v3'):
+    if selected not in ('triage_v1', 'triage_v2', 'triage_v3', 'triage_v4'):
         raise ProviderError('provider_config')
     return selected
 

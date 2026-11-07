@@ -1,9 +1,13 @@
-import json,math,shutil
+import json
+import math
+import shutil
 from decimal import Decimal
 from pathlib import Path
+
 from apps.triage.acceptance import accounted
 from apps.triage.schemas import validate_analysis
 from evals.score import matches
+
 src=Path('.acceptance-runtime/comparison-v3'); dst=Path('docs/evidence/comparison-v3')
 for p in src.glob('*.json'):shutil.copyfile(p,dst/p.name)
 reports={}; scores={}
@@ -24,7 +28,7 @@ for model,prices in [('gpt-6-luna',('.1','.5')),('gpt-6.1-terra',('1','5'))]:
    analysis=json.loads(raw[rid]['output_text'][0])
    reports[model]['raw_structural_schema_pass'] += int(matches(analysis,schema))
    validate_analysis(analysis,cases[res['sample_id']]['message'])
-  except Exception as exc:
+  except (ValueError, TypeError, KeyError) as exc:
    reports[model]['rejection_details'].append({'id':res['sample_id'],'reason':str(exc).split(' [type=')[0]})
   reports[model]['per_case'].append({'id':res['sample_id'],'usage':raw.get(rid,{}).get('usage'),'status':raw.get(rid,{}).get('status'),'error':completed.get(rid,{}).get('error'),'latency_ms':completed.get(rid,{}).get('processing',{}).get('attempts',[{}])[0].get('latency_ms')})
 a={r['id']:r for r in scores['gpt-6-luna']['rows']};b={r['id']:r for r in scores['gpt-6.1-terra']['rows']}
