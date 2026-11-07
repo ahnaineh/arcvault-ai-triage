@@ -26,3 +26,28 @@ Pending: durable attempt ledger before export, explicit adapter output cap,
 inspect sample 1 failure, five complete persisted outputs and manual review,
 real Redis/Celery/Postgres acceptance, benchmark and clean-start verification.
 No application code changed; no test success is claimed for this evidence-only run.
+
+## Recovery inspection — 2026-11-07
+
+Prepared recovery checkout fetched PR8 and verified full head
+`6dc27e8626f8fda909eae69acac59545dfc7806c`. No inference or retries were
+performed. `/tmp/arcvault-live.py` survives: it exports all samples before writing
+`docs/evidence/live-sample-attempts.json`, confirming the failure ordering above.
+No credential file was opened. `/tmp/arcvault-samples-check.sqlite3` contains no
+triage tables. Read-only inspection of `/tmp/arcaccept.sqlite` found four results,
+all with provenance model `mock`; these are browser-test artifacts, not live
+recovery. None of these files was removed or modified.
+
+Recovered complete live sample records: **0**. Retained schema probe: **1**.
+Reported sample outcomes remain one failed and four completed, without retained
+complete records. The first sample's exception is unavailable; no prompt defect
+or deterministic processing defect has been established. The known probe cost
+is $0.0006268; five-call usage and aggregate spend remain unresolved. Existing
+evidence proves no sample output-token bound, so it does not support the requested
+conservative cost upper bound. Failure of task-cap enforcement is established;
+exceeding the $83 global ceiling is not established.
+
+**Paid execution remains blocked.** Durable runner implementation, offline fault
+coverage, full locked checks, provider usage reconciliation where available, and
+five real persisted accepted outputs remain outstanding. This inspection is not
+unpaid readiness or completed acceptance. No additional cost claim is made.

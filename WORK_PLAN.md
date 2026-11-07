@@ -159,3 +159,11 @@ Live acceptance attempt 2026-11-07: incomplete; see docs/evidence/live-acceptanc
 One retained real schema probe succeeded; five pipeline calls yielded one failure
 and four completions, but ephemeral records/usage were lost before guarded export.
 Actual sample export, queue/Postgres, benchmark and clean-start gates remain open.
+
+### 2026-11-07 recovery inspection
+
+PR8 expected head verified. See `docs/evidence/live-acceptance.md` recovery
+inspection. Zero complete live sample records recovered; surviving browser DB
+records are explicitly mocked. Known subtotal $0.0006268, total unresolved.
+No paid requests performed. Durable runner and fault tests are still pending;
+next paid execution is blocked pending reliable persistence and budget bounds.
