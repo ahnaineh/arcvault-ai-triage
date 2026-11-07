@@ -92,8 +92,12 @@ class OpenAIProvider:
             body = exc.body if isinstance(exc.body, dict) else {}
             usage = safe_usage(body.get('usage'))
             if self.raw_sink is not None:
-                self.raw_sink({'status_code': exc.status_code, 'usage': usage,
-                               'state': 'http_failure'})
+                try:
+                    self.raw_sink({'status_code': exc.status_code, 'usage': usage,
+                                   'state': 'http_failure'})
+                except OSError as write_error:
+                    write_error.usage = usage
+                    raise write_error from None
             code = ('provider_auth' if exc.status_code in (401, 403) else
                     'provider_transient' if exc.status_code >= 500 or exc.status_code in (408, 429)
                     else 'provider_config')
@@ -142,6 +146,10 @@ class BoundedOpenAIAdapter:
             client=client, model=config['model'], timeout=config['timeout'],
             max_output_tokens=config['output_token_cap'])
 
+    def inference_identity(self):
+        return {'prompt': hashlib.sha256(self.provider.prompt.encode()).hexdigest(),
+                'schema': hashlib.sha256(self.provider.schema_text.encode()).hexdigest()}
+
     @staticmethod
     def maximum_input_bound(*, model, bound, **kwargs):
         return model == 'gpt-6.1-terra' and bound >= 1050000
@@ -149,7 +157,7 @@ class BoundedOpenAIAdapter:
     def preflight(self, messages, config):
         if config != self.config:
             raise ValueError('Adapter configuration mismatch')
-        if self.verify_input_bound == self.maximum_input_bound:
+        if self.provider.model == 'gpt-6.1-terra':
             from decimal import Decimal
 
             from apps.triage.acceptance import money

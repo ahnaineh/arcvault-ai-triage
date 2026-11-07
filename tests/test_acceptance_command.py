@@ -268,3 +268,45 @@ def test_command_full_export_matches_canonical_builder(command):
                        'usage': {'input_tokens': 10, 'output_tokens': 20,
                                  'total_tokens': 30}}])
         assert record == expected
+
+
+@pytest.mark.parametrize('artifact', ['prompt', 'schema_text'])
+@pytest.mark.parametrize('partial', [False, True])
+def test_artifact_change_blocks_resume(command, monkeypatch, artifact, partial):
+    from apps.triage.providers.openai_provider import OpenAIProvider
+    run, client, _, _, _ = command
+    client.responses.create.side_effect = ([valid_response(), RuntimeError('interrupted')]
+                                         if partial else [valid_response()] * 5)
+    if partial:
+        with pytest.raises(RuntimeError):
+            run()
+    else:
+        run()
+    count = client.responses.create.call_count
+    original = OpenAIProvider.__init__
+    def init(self, **kwargs):
+        original(self, **kwargs)
+        setattr(self, artifact, getattr(self, artifact) + '\n')
+    monkeypatch.setattr(OpenAIProvider, '__init__', init)
+    with pytest.raises(ValueError, match='Prompt/schema mismatch'):
+        run()
+    assert client.responses.create.call_count == count
+
+
+def test_http_write_failure_retains_usage(command, monkeypatch):
+    run, client, _, _, events = command
+    client.responses.create.side_effect = openai.InternalServerError(
+        'secret', response=httpx.Response(500, request=httpx.Request('POST', 'https://example.test')),
+        body={'usage': {'input_tokens': 12}, 'secret': 'secret'})
+    original = Runner.append
+    def append(self, event):
+        if event['state'] == 'raw_response':
+            raise OSError('disk error')
+        original(self, event)
+    monkeypatch.setattr(Runner, 'append', append)
+    with pytest.raises(OSError):
+        run()
+    records = events()
+    assert records[-1]['usage'] == {'input_tokens': 12}
+    assert records[0]['reservation']
+    assert 'secret' not in json.dumps(records)

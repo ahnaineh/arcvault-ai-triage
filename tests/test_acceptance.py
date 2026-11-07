@@ -24,6 +24,7 @@ def setup(tmp_path, monkeypatch):
                          ['active_service_outage', 'insufficient_information', 'conflicting_intents']},
                 'billing_comparison': None, 'summary_sentences': ['One.', 'Two.']}
     provider = Mock(enforces_bounds=True)
+    provider.inference_identity.return_value = None
     provider.side_effect = lambda message, cfg: ProviderResult(validate_analysis(data, message), message,
         'mock', 'v1', '1', 'hash', 'hash', 0, None)
     return Runner(path, config), cases, provider

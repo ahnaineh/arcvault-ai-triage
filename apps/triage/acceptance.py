@@ -70,12 +70,15 @@ class Runner:
         events = [json.loads(line) for line in self.path.read_text().splitlines()] if self.path.exists() else []
         if any(e.get('config_hash', config_hash) != config_hash for e in events):
             raise ValueError('Immutable runner configuration mismatch')
+        inference = provider.inference_identity() if hasattr(provider, 'inference_identity') else None
+        if execute and any(e.get('inference') != inference for e in events if e['state'] == 'reserved'):
+            raise ValueError('Prompt/schema mismatch; use a new run directory after reconciliation')
         started = {e['request_id']: e for e in events if e['state'] == 'reserved'}
         finished = {e['request_id']: e for e in events if e['state'] == 'completed'}
         if started.keys() - finished.keys():
             raise ValueError('Unresolved attempt: reservation retained; reconcile before spending')
         complete = {e['identity']: e['result'] for e in finished.values() if e['state'] == 'completed'}
-        identities = [digest([c, config_hash]) for c in cases]
+        identities = [digest([c, config_hash, inference]) for c in cases]
         if not execute:
             return {'dry_run': True, 'pending': sum(i not in complete for i in identities)}
         cfg = self.config
@@ -104,7 +107,7 @@ class Runner:
             request_id = str(uuid.uuid4())
             received_at = datetime.now(UTC).isoformat()
             self.append({'state': 'reserved', 'request_id': request_id, 'identity': identity,
-                             'sample_id': case['sample_id'], 'config_hash': config_hash,
+                             'sample_id': case['sample_id'], 'config_hash': config_hash, 'inference': inference,
                              'model': cfg['model'], 'cap': cfg['output_token_cap'],
                              'input_fingerprint': digest(case['message']), 'reservation': str(reserve)})
             try:
