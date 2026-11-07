@@ -50,3 +50,21 @@ def test_session_webhook_and_pages(django_user_model):
     assert client.post('/logout/', HTTP_X_CSRFTOKEN=token).status_code == 302
     assert client.get(detail).status_code == 302
     assert client.get(response['Location'] + 'export/').status_code == 401
+
+
+@pytest.mark.django_db(transaction=True)
+@override_settings(INTAKE_BEARER_TOKEN='synthetic-token')
+def test_accepted_response_lost_retry_keeps_single_request():
+    client = Client()
+    payload = {'source': 'Email', 'message': 'usage?', 'idempotency_key': 'lost-response'}
+    auth = {'HTTP_AUTHORIZATION': 'Bearer synthetic-token'}
+    with patch('apps.intake.service.dispatch') as dispatch:
+        accepted = client.post('/api/v1/requests/', payload, content_type='application/json', **auth)
+        assert accepted.status_code == 202
+        # Simulate transport loss after acceptance: discard the response and retry.
+        retry = client.post('/api/v1/requests/', payload, content_type='application/json', **auth)
+        assert retry.status_code == 200
+        assert retry.json()['id'] == accepted.json()['id']
+        assert Request.objects.count() == 1
+        assert Request.objects.get().idempotency_key == payload['idempotency_key']
+        assert dispatch.call_count == 1
