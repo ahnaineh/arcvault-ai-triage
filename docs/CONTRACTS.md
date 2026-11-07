@@ -1,7 +1,6 @@
 # ArcVault v1 contracts
 
-Status: implemented contract; acceptance boundaries are tracked in WORK_PLAN.md.
-These contracts implement the decisions in `ASSESSMENT_PLAN.md` and resolve ambiguities before parallel implementation.
+Technical reference for the intake API, model response, routing policy, and saved records. For the system overview, read the [architecture](submission/ARCHITECTURE.md).
 
 ## 1. HTTP intake and tester UI
 
@@ -46,7 +45,7 @@ The tester generates a new idempotency key for each intentional submission and r
 `contracts/analysis.schema.json` defines the model-owned output. One model call returns all fields. All object properties are required, additional properties are forbidden, and missing facts use null or empty arrays as specified. Application validation adds the semantic checks below; schema validity alone is insufficient.
 
 - `category`: one of the five assessment categories.
-- `priority`: Low, Medium, High under the plan's impact/urgency rubric.
+- `priority`: Low, Medium, High under the [prompt's impact rules](../prompts/triage_v4.txt).
 - `confidence`: model-reported classification confidence, 0–1; not calibrated certainty.
 - `core_issue`: one sentence grounded in the request.
 - `entities`: identifiers or relevant named entities, each with type, value, and an exact supporting excerpt. Do not fetch URLs.
@@ -85,7 +84,7 @@ The policy boundary accepts validated analysis and normalized billing comparabil
 
 ## 4. Persistence and export
 
-Processing states: pending → processing → completed / retrying / failed; retrying → processing; explicit eligible retry allows failed → pending. Claim attempts atomically and commit before calling the provider. Save accepted analysis, derived result, and completion atomically. Never hold a transaction during inference. Track every attempt; cap transient automatic retries at two after the initial call. SDK retries are disabled so one layer owns the budget.
+Processing states: pending → processing → completed / retrying / failed; retrying → processing. Failed requests require operator intervention; there is no user-facing retry action. Claim attempts atomically and commit before calling the provider. Save accepted analysis, derived result, and completion atomically. Never hold a transaction during inference. Track every attempt; cap transient automatic retries at two after the initial call. SDK retries are disabled so one layer owns the budget.
 
 Export record sections:
 
@@ -96,16 +95,14 @@ Export record sections:
 - `summary`: joined summary sentences for the receiving team.
 - `provenance`: model identifier, prompt/schema/policy versions, completion timestamp, accepted attempt ID.
 - `processing`: attempts, latency, usage, estimated cost and unknown-cost status. Include retry usage; missing usage is not zero.
-- `review`: null initially; if correction is implemented, preserve reviewer, timestamp, reason, corrections and effective decision separately. Never overwrite historical model predictions or benchmark results.
+- `review`: null. Human correction actions are not implemented.
 
 `GET /api/v1/requests/{id}/export/` returns the completed record; return 409 when incomplete. A management command exports the five designated sample requests in source order and fails if any are incomplete. The final evidence must match the demonstrated configuration.
 
-## 5. Evaluation and acceptance
+## 5. Evaluation and verification
 
-50 reviewed synthetic messages: 5 mandatory assessment examples, 25 development, 10 validation, 10 locked test. Related scenario families stay within one split. Policy fixtures and fault tests do not count toward the 50.
+The evaluation uses 50 synthetic messages: 5 assessment, 25 development, 10 validation, and 10 test. Later comparisons reuse the test cases. See [results and limitations](submission/BENCHMARKS.md).
 
-Every benchmark case records ID, split, scenario family, source/message, acceptable categories/priorities, expected entities, required/forbidden summary facts, expected signals, destinations and escalation reasons, plus label rationale and review status. Ambiguous cases may permit multiple labels while requiring review.
+Each case records the message, split, expected labels and entities, summary facts, signals, and policy decision. The scorer measures each output dimension separately. Summary acceptance requires a recorded review; schema validity alone does not establish faithfulness.
 
-Score one live model response separately for classification, extraction, semantic signals, summary faithfulness, and schema validity. Test Python policy using controlled analyses. Test the full pipeline using the actual model outputs; never substitute expected fields before end-to-end scoring. Report denominators, errors, automation coverage, cost, and latency. Initial model selection and package compatibility are implementation-time decisions, not yet verified facts.
-
-Acceptance includes: five actual outputs; individual 403 bug; multi-user outage; $260 invoice comparison; exact confidence/billing boundaries; multiple reasons; unknown comparisons; malicious embedded instructions; invalid output/refusal; transient failure and exhausted retries; concurrent duplicate intake/task delivery; broker publication failure; authenticated access and CSRF; export matching persisted results. Clearly label simulated faults and fixtures. No claim of automatic worker-crash recovery without its implementation and corresponding fault test.
+Policy fixtures test confidence and billing boundaries, multiple escalation reasons, and unknown comparisons. Application tests cover authentication, CSRF, duplicate submissions, invalid provider output, bounded retries, and persisted exports. [Infrastructure evidence](evidence/infrastructure-acceptance.md) identifies which paths ran through real services and which failures were simulated. Worker-crash recovery is not implemented.
