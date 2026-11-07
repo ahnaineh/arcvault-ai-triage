@@ -1,6 +1,6 @@
 # ArcVault v1 contracts
 
-Status: implementation specification. No endpoint or model integration is implemented yet.
+Status: implemented contract; acceptance boundaries are tracked in WORK_PLAN.md.
 These contracts implement the decisions in `ASSESSMENT_PLAN.md` and resolve ambiguities before parallel implementation.
 
 ## 1. HTTP intake and tester UI

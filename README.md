@@ -2,7 +2,7 @@
 
 An assessment project for classifying, enriching and routing synthetic B2B customer requests with an LLM and explicit application policies.
 
-**Status: planning baseline published; runtime and executable contracts are next. The application is not implemented yet.** Follow [WORK_PLAN.md](WORK_PLAN.md) for verified progress, remaining tasks and completion gates.
+**Status: application implemented; submission assembly in progress.** Start with the [submission index](docs/submission/README.md) for final outputs, architecture, demo instructions and limitations.
 
 ## Planned workflow
 
@@ -29,7 +29,7 @@ Customer examples are synthetic. Credentials, local environment files and the or
 ## Runtime foundation
 
 Python 3.14.4 and Django 6.1.3; exact transitive dependencies are in uv.lock.
-This PR supplies infrastructure only; intake and model processing remain pending.
+The application includes intake, processing, review UI and export.
 
 Local checks (executed):
 ```sh
