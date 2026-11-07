@@ -13,6 +13,47 @@ from apps.triage.schemas import Analysis, validate_analysis
 
 ROOT = Path(__file__).resolve().parents[3]
 
+def artifact_identity(prompt=None, schema=None):
+    if prompt is None:
+        prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+    if schema is None:
+        schema = (ROOT / 'contracts/analysis.schema.json').read_text()
+    return {'prompt': hashlib.sha256(prompt.encode()).hexdigest(),
+            'schema': hashlib.sha256(schema.encode()).hexdigest()}
+
+
+class ArtifactIdentity:
+    def inference_identity(self):
+        return artifact_identity()
+
+
+MAX_MODEL_BYTES = 1048576
+
+
+def safe_usage(value):
+    """Persist only bounded accounting counters."""
+    if hasattr(value, 'model_dump'):
+        value = value.model_dump(mode='json')
+    if not isinstance(value, dict):
+        return None
+    return {key: value[key] for key in ('input_tokens', 'output_tokens', 'total_tokens')
+            if type(value.get(key)) is int and 0 <= value[key] <= 10**12}
+
+
+def response_evidence(response):
+    parts = [part.text for item in response.output if item.type == 'message'
+             for part in item.content if part.type == 'output_text']
+    size = sum(len(text.encode()) for text in parts)
+    oversized = size > MAX_MODEL_BYTES or len(parts) > 16
+    return {'id': str(response.id)[:256], 'model': str(response.model)[:256],
+            'status': str(response.status)[:64], 'usage': safe_usage(response.usage),
+            'output_text': [] if oversized else parts,
+            'output_bytes': size, 'truncated': oversized,
+            'metadata_truncated': any(len(str(value)) > limit for value, limit in
+                                      ((response.id, 256), (response.model, 256),
+                                       (response.status, 64)))}
+
+
 class ProviderError(Exception):
     """Safe public failure. Never contains provider text or customer content."""
     def __init__(self, code, *, latency_ms=0, usage=None):
@@ -42,6 +83,7 @@ class OpenAIProvider:
             raise ProviderError('provider_config')
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
+        self.raw_sink = None
         self.model = model
         self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
@@ -58,15 +100,33 @@ class OpenAIProvider:
                 **({'reasoning': {'effort': 'none'}} if self.model == 'gpt-6.1-terra' else {}),
                 text={'format': {'type': 'json_schema', 'name': 'arcvault_analysis',
                                  'strict': True, 'schema': json.loads(self.schema_text)}})
-        except (openai.AuthenticationError, openai.PermissionDeniedError):
-            raise fail('provider_auth') from None
-        except (openai.APIConnectionError, openai.RateLimitError):
+        except openai.APIConnectionError:
             raise fail('provider_transient') from None
         except openai.APIStatusError as exc:
-            raise fail('provider_transient' if exc.status_code >= 500 or exc.status_code == 408 else 'provider_config') from None
+            body = exc.body if isinstance(exc.body, dict) else {}
+            usage = safe_usage(body.get('usage'))
+            if self.raw_sink is not None:
+                try:
+                    self.raw_sink({'status_code': exc.status_code, 'usage': usage,
+                                   'state': 'http_failure'})
+                except OSError as write_error:
+                    write_error.usage = usage
+                    raise write_error from None
+            code = ('provider_auth' if exc.status_code in (401, 403) else
+                    'provider_transient' if exc.status_code >= 500 or exc.status_code in (408, 429)
+                    else 'provider_config')
+            raise fail(code) from None
         try:
-            if response.usage is not None:
-                usage = response.usage.model_dump(mode='json')
+            usage = safe_usage(response.usage)
+            evidence = response_evidence(response)
+            if self.raw_sink is not None:
+                try:
+                    self.raw_sink(evidence)
+                except OSError as exc:
+                    exc.usage = usage
+                    raise
+            if evidence['truncated']:
+                raise fail('provider_oversized')
             if any(part.type == 'refusal' for item in response.output
                    if item.type == 'message' for part in item.content):
                 raise fail('provider_refusal')
@@ -77,7 +137,7 @@ class OpenAIProvider:
             if len(parts) != 1:
                 raise fail('provider_invalid')
             analysis = validate_analysis(json.loads(parts[0]), message)
-            return ProviderResult(analysis, response.model, self.model, 'triage_v1', '1.0',
+            return ProviderResult(analysis, str(response.model)[:256], self.model, 'triage_v1', '1.0',
                 hashlib.sha256(self.prompt.encode()).hexdigest(),
                 hashlib.sha256(self.schema_text.encode()).hexdigest(),
                 (time.monotonic()-started)*1000, usage)
@@ -100,6 +160,9 @@ class BoundedOpenAIAdapter:
             client=client, model=config['model'], timeout=config['timeout'],
             max_output_tokens=config['output_token_cap'])
 
+    def inference_identity(self):
+        return artifact_identity(self.provider.prompt, self.provider.schema_text)
+
     @staticmethod
     def maximum_input_bound(*, model, bound, **kwargs):
         return model == 'gpt-6.1-terra' and bound >= 1050000
@@ -107,7 +170,7 @@ class BoundedOpenAIAdapter:
     def preflight(self, messages, config):
         if config != self.config:
             raise ValueError('Adapter configuration mismatch')
-        if self.verify_input_bound == self.maximum_input_bound:
+        if self.provider.model == 'gpt-6.1-terra':
             from decimal import Decimal
 
             from apps.triage.acceptance import money

@@ -17,13 +17,14 @@ def setup(tmp_path, monkeypatch):
     config = {'model': 'mock', 'official_price_source': 'offline fixture', 'input_token_bound': 100,
                   'output_token_cap': 100, 'input_price_per_million': '1', 'output_price_per_million': '2',
                   'budget': '1', 'reconciled_history': {'evidence': 'fixture only', 'known_cost': '0', 'unknown_reservation': '0'}}
-    cases = [{'sample_id': i, 'message': str(i)} for i in range(5)]
+    cases = [{'sample_id': i, 'source': 'Email', 'message': str(i)} for i in range(5)]
     data = {'category': 'Technical Question', 'priority': 'Low', 'confidence': .9, 'core_issue': 'Question',
                 'entities': [], 'urgency': {'level': 'Unknown', 'evidence': []},
                 'signals': {k: {'value': False, 'evidence': []} for k in
                          ['active_service_outage', 'insufficient_information', 'conflicting_intents']},
                 'billing_comparison': None, 'summary_sentences': ['One.', 'Two.']}
     provider = Mock(enforces_bounds=True)
+    provider.inference_identity.return_value = None
     provider.side_effect = lambda message, cfg: ProviderResult(validate_analysis(data, message), message,
         'mock', 'v1', '1', 'hash', 'hash', 0, None)
     return Runner(path, config), cases, provider
@@ -32,7 +33,7 @@ def setup(tmp_path, monkeypatch):
 def test_success_order_and_resume(setup):
     runner, cases, provider = setup
     records = runner.run(cases, provider, execute=True)
-    assert [r['model'] for r in records] == [str(i) for i in range(5)]
+    assert [r['provenance']['model'] for r in records] == [str(i) for i in range(5)]
     runner.run(cases, provider, execute=True)
     assert provider.call_count == 5
     assert all('reservation' in e for e in map(json.loads, runner.path.read_text().splitlines()) if e['state'] == 'reserved')

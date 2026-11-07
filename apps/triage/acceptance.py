@@ -5,11 +5,11 @@ import json
 import os
 import tempfile
 import uuid
-from dataclasses import asdict
+from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
 
-from apps.triage.schemas import validate_analysis
+from apps.triage.export import build_record
 
 
 def digest(value):
@@ -70,12 +70,15 @@ class Runner:
         events = [json.loads(line) for line in self.path.read_text().splitlines()] if self.path.exists() else []
         if any(e.get('config_hash', config_hash) != config_hash for e in events):
             raise ValueError('Immutable runner configuration mismatch')
+        inference = provider.inference_identity() if hasattr(provider, 'inference_identity') else None
+        if execute and any(e.get('inference') != inference for e in events if e['state'] == 'reserved'):
+            raise ValueError('Prompt/schema mismatch; use a new run directory after reconciliation')
         started = {e['request_id']: e for e in events if e['state'] == 'reserved'}
         finished = {e['request_id']: e for e in events if e['state'] == 'completed'}
         if started.keys() - finished.keys():
             raise ValueError('Unresolved attempt: reservation retained; reconcile before spending')
         complete = {e['identity']: e['result'] for e in finished.values() if e['state'] == 'completed'}
-        identities = [digest([c, config_hash]) for c in cases]
+        identities = [digest([c, config_hash, inference]) for c in cases]
         if not execute:
             return {'dry_run': True, 'pending': sum(i not in complete for i in identities)}
         cfg = self.config
@@ -102,17 +105,22 @@ class Runner:
             if identity in complete:
                 continue
             request_id = str(uuid.uuid4())
+            received_at = datetime.now(UTC).isoformat()
             self.append({'state': 'reserved', 'request_id': request_id, 'identity': identity,
-                             'sample_id': case['sample_id'], 'config_hash': config_hash,
+                             'sample_id': case['sample_id'], 'config_hash': config_hash, 'inference': inference,
                              'model': cfg['model'], 'cap': cfg['output_token_cap'],
                              'input_fingerprint': digest(case['message']), 'reservation': str(reserve)})
             try:
                 result = provider(case['message'], cfg)
                 self.append({'state': 'provider_returned', 'request_id': request_id,
                              'usage': result.usage, 'model': result.model})
-                validate_analysis(result.analysis.model_dump(), case['message'])
-                payload = asdict(result)
-                payload['analysis'] = result.analysis.model_dump()
+                completed_at = datetime.now(UTC).isoformat()
+                payload = build_record(
+                    request={'id': request_id, 'source': case['source'],
+                             'message': case['message'], 'received_at': received_at},
+                    analysis=result.analysis, output=result, completed_at=completed_at,
+                    attempt_id=request_id, attempts=[{'id': request_id, 'error': None,
+                        'latency_ms': result.latency_ms, 'usage': result.usage}])
                 self.append({'state': 'completed', 'request_id': request_id, 'identity': identity, 'result': payload})
                 complete[identity] = payload
             except Exception as exc:
