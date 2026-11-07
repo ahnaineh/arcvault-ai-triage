@@ -1,5 +1,6 @@
 """Pure policy: decide(validated_analysis); Decimal arithmetic never uses FX."""
 from decimal import Decimal, localcontext
+
 from .schemas import Analysis, Comparison
 
 QUEUES = {'Bug Report':'Engineering','Feature Request':'Product','Billing Issue':'Billing','Technical Question':'Technical Support','Incident/Outage':'Engineering'}
@@ -43,7 +44,7 @@ def decide_projection(*, category, confidence, active_service_outage, insufficie
     names = ['low_confidence','active_outage','inconsistent_analysis','outage_scope_unresolved','billing_comparison_unresolved','billing_overcharge','insufficient_information','conflicting_intents']
     reasons = [name for name, condition in zip(names, conditions) if condition]
     queue = QUEUES[category]
-    return dict(standard_destination=queue, final_destination='Human Review' if reasons else queue, human_escalation=bool(reasons), escalation_reasons=reasons)
+    return {'standard_destination': queue, 'final_destination': 'Human Review' if reasons else queue, 'human_escalation': bool(reasons), 'escalation_reasons': reasons}
 
 def decide(analysis: Analysis):
     """Derive export-ready decision from context-validated analysis, without model calls."""

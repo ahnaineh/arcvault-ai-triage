@@ -1,10 +1,12 @@
 import json
-from pathlib import Path
 from decimal import Decimal
+from pathlib import Path
+
 import pytest
 from pydantic import ValidationError
-from apps.triage.schemas import validate_analysis, Comparison
-from apps.triage.policy import decide_projection, normalize_billing, decide
+
+from apps.triage.policy import decide, decide_projection, normalize_billing
+from apps.triage.schemas import Comparison, validate_analysis
 
 CASES = json.loads(Path('tests/fixtures/policy_cases.json').read_text())['cases']
 @pytest.mark.parametrize('case', CASES, ids=lambda c:c['id'])
@@ -12,10 +14,10 @@ def test_controlled(case):
     assert decide_projection(**case['input']) == case['expected']
 
 def payload():
-    return dict(category='Billing Issue', priority='Low', confidence=.9, core_issue='Invoice dispute.', entities=[], urgency={'level':'Unknown','evidence':[]}, signals={k:{'value':False,'evidence':[]} for k in ['active_service_outage','insufficient_information','conflicting_intents']}, billing_comparison=None, summary_sentences=['Customer reports an invoice dispute.', 'Review requested.'])
+    return {'category': 'Billing Issue', 'priority': 'Low', 'confidence': .9, 'core_issue': 'Invoice dispute.', 'entities': [], 'urgency': {'level':'Unknown','evidence':[]}, 'signals': {k:{'value':False,'evidence':[]} for k in ['active_service_outage','insufficient_information','conflicting_intents']}, 'billing_comparison': None, 'summary_sentences': ['Customer reports an invoice dispute.', 'Review requested.']}
 
 def money(amount, currency='$', period='monthly', components='subscription'):
-    return dict(amount=amount,currency=currency,period=period,components=components,evidence=['invoice ' + (amount or '')])
+    return {'amount': amount,'currency': currency,'period': period,'components': components,'evidence': ['invoice ' + (amount or '')]}
 
 @pytest.mark.parametrize('field,value', [('confidence',float('nan')),('confidence',float('inf')),('confidence',True),('confidence','0.9'),('priority','Urgent'),('core_issue',' '),('summary_sentences',['Only one.']),('extra','queue')])
 def test_invalid_shape(field,value):
