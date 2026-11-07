@@ -225,6 +225,13 @@ resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django c
 migration drift check, dry-run pending=5 and whitespace check clean. See
  docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
 historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.
+# PR1 offline completion
+
+Completed the 50-case label-quality audit (`evals/review.jsonl`), canonical PR9
+export adapter and current-main integration. Full offline suite: 105 passed;
+dataset validation and Ruff passed. Exact commands, review comments, semantic
+overlap and live-benchmark limitations: `docs/evidence/pr1-completion.md`.
+
 
 PR8 integration: independent review reported no blockers at exact head
 9b19a6a606cf67f77f82caa9efb30bc3ccabed14; reported offline proof: 93 tests,
@@ -265,3 +272,22 @@ after mocked execution, changed prompt/schema each five pending, no extra SDK cl
 Focused command tests 24 passed; combined SQLite suite 129 passed (six staticfiles
 warnings), Ruff/Django/migration checks and all three JS harnesses passed.
 No paid calls, credentials, PostgreSQL, queue or live acceptance verified. Plan states retained.
+
+PR1 integration: current main including PR10/PR9 merged semantically; prior plan
+states and reviewed evaluation changes retained. Malformed entity finding
+https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501441540
+fixed by constructing metric tuples only after schema validation. Regression covers
+list/dict type/value and a subsequent good prediction; invalid records fail and
+report continues. Focused eval/export adapter 13 passed; 50-case validation and Ruff
+passed. Initial test commands named nonexistent adapter files; corrected above.
+No repeated label audit or live calls. Parent-supplied independent 50-label/seven-thread
+review retained as supplied evidence. Latest comments add substantive findings
+r4501893516 (development-17 unresolved billing reason) and r4501893519 (processing
+measurements adapter); PR1 intentionally remains open pending their assessment.
+
+
+PR1 final feedback (offline foundation, 2026-11-07)
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893516: valid; development-17 now includes billing_comparison_unresolved before conflicting_intents. test_duplicate_payment_reason_matches_policy verifies current application policy order.
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893519: valid; adapter maps estimated_cost only when unknown_cost is false, sums all recorded attempt latencies, and preserves null for missing latency or unknown cost. test_processing_measurements covers retries, known cost, unknown cost and incomplete/empty attempts.
+- Main a79bc2a48d24c6c29d73473db291637585a4d540 already included in PR head; no compatibility merge required. Existing tracker retained.
+- 15 focused evaluation/adapter tests passed; 50-case dataset validation passed; Ruff passed. No application/provider/runner edits, live calls or benchmark execution.
