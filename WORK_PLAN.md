@@ -6,13 +6,13 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-Current integration: PR14 contains the final compact V4 prompt and one final Terra run; PR15 test consolidation merged into PR14's branch. Source-of-truth evidence: docs/evidence/final-v4/README.md. Prompt tuning is closed by user request.
+Current integration: PR14 merged at a9c0d640987e13813b93dc612543756f3aee4a48, including PR15 test consolidation. Source-of-truth evidence: docs/evidence/final-v4/README.md. Prompt tuning is closed by user request.
 
 - Phase: M5 submission assembly; application/runtime/evaluation implemented, final end-to-end demonstration and clean-start verification remain.
 - Deadline: November 8, 2026.
 - Budget: $83; conservative accounted total $39.99125174 includes retained uncertain/failed reservations. Actual billed cost unknown.
 - Required five: final live JSON saved; category/priority/routing5/5, exact entity sets1/5; no perfect-quality claim.
-- Remaining: merge PR14 after current review, clean-image/startup and combined real-model queue demo, concise architecture/prompt/AI-use write-up, recording or declared live interview demo, final artifact/access/tag checks.
+- Remaining: clean-image build, combined real-model queue demo (requires renewed inference authorization), recording or declared live interview demo, final artifact/access/tag checks. Architecture, prompt rationale, AI lessons and draft handoff are packaged in docs/submission/.
 - Optional human correction/filter polish deferred. Sending the recruiter email requires explicit authorization.
 - Earlier chronological checkpoints below are historical; this checkpoint supersedes stale pending claims.
 
@@ -86,8 +86,8 @@ Gate: reproducible results show measured behavior rather than asserted accuracy;
 ## M5 — First complete submission checkpoint
 
 - [ ] Finish tested clean-checkout setup and reviewer commands in README.
-- [ ] Write prompt rationale and separate one-to-two-page architecture document.
-- [ ] Record real AI-assisted development decisions, mistakes caught and corrections; no manufactured anecdotes.
+- [x] Write prompt rationale and separate one-to-two-page architecture document: docs/submission/.
+- [x] Record real AI-assisted development decisions, mistakes caught and corrections: docs/submission/README.md.
 - [ ] Record a 4–6 minute demonstration covering all five inputs, actual escalation, export, and verified recovery if useful.
 - [ ] Check JSON outputs, documentation and recording against one consistent code/prompt/model version.
 - [ ] Save/tag a submission-ready checkpoint and push it.
@@ -486,3 +486,13 @@ User authorized compact V4 default and exactly one final50-case Terra comparison
 PR15 merged into PR14 base after source review and no-finding bot review. Consolidated literal export/resume checks and parametrized HTTP/success disk failures; distinct safety seams preserved. See docs/evidence/test-suite-review.md. Combined final177tests and Ruff pass. Corrected prior stale top-level checkpoint; older numbered milestones retain limitations for human summary review, semantic split independence and combined full-stack/live-provider demonstration.
 
 PR14 comments: discussion_r4502097330 comparison dry-run accounting fixed previously; discussion_r4502138128 cross-phase prompt selection now lives outside immutable accounting config, with V1-to-V2 regression. No model calls for either harness fix.
+
+## Submission packaging verification — 2026-11-07
+
+- [x] docs/submission contains architecture, actual prompt rationale, AI lessons, final-five index, demo commands, recording script and email draft.
+- [x] Current main verified at a9c0d640987e13813b93dc612543756f3aee4a48. PR14 inline findings inspected: comparison dry-run accounting and cross-phase immutable ledger; final evidence records their fixes.
+- [x] Django check passed using existing locked environment; Compose config passed after copying .env.example to ignored .env. Final JSON parses as five records; git diff --check passed. No full test rerun for prose changes.
+- [x] Isolated cached-image startup: ARCVAULT_INFRA_OPT_IN=yes bash tests/infrastructure/run.sh passed, including HTTP concurrency, duplicate deliveries, export parity, transient/permanent errors and republication. Synthetic provider only; owned resources cleaned by script.
+- [!] Clean image build deferred: root 98% used, approximately 2 GB free; Docker /var/lib/docker has 2.314 GB images and 1.455 GB volumes with existing ArcVault/RPiDoor services. No deletion, prune or downloads.
+- [ ] Essential handoff: review/merge packaging PR, verify private reviewer access, choose and complete recording or declared live interview demonstration, final version/tag check. New model inference requires renewed authorization.
+- [ ] Optional: audited human correction and queue filters; not submission gates.
