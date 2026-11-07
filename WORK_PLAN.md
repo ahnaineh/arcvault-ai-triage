@@ -291,3 +291,14 @@ PR1 final feedback (offline foundation, 2026-11-07)
 - https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893519: valid; adapter maps estimated_cost only when unknown_cost is false, sums all recorded attempt latencies, and preserves null for missing latency or unknown cost. test_processing_measurements covers retries, known cost, unknown cost and incomplete/empty attempts.
 - Main a79bc2a48d24c6c29d73473db291637585a4d540 already included in PR head; no compatibility merge required. Existing tracker retained.
 - 15 focused evaluation/adapter tests passed; 50-case dataset validation passed; Ruff passed. No application/provider/runner edits, live calls or benchmark execution.
+
+## Real infrastructure acceptance (2026-11-07)
+
+Verified latest main 7149968 including PR10 using existing images, isolated PostgreSQL
+18.3/Redis 8.6.1/Celery worker and authenticated real HTTP. Synthetic inference only.
+Concurrent intake, duplicate delivery, DB/export parity, bounded transient retries,
+permanent failure, publication failure/operator republish and early-countdown
+replacement verified. Fixed early delivery dropping replacement publication; source
+review required. Full offline suite 144 passed. Reproducible opt-in harness and precise
+limits: docs/evidence/infrastructure-acceptance.md. Clean image build, production
+startup and live provider acceptance remain pending; M1/M2 full gates stay open.
