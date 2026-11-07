@@ -106,3 +106,18 @@ The evaluation uses 50 synthetic messages: 5 assessment, 25 development, 10 vali
 Each case records the message, split, expected labels and entities, summary facts, signals, and policy decision. The scorer measures each output dimension separately. Summary acceptance requires a recorded review; schema validity alone does not establish faithfulness.
 
 Policy fixtures test confidence and billing boundaries, multiple escalation reasons, and unknown comparisons. Application tests cover authentication, CSRF, duplicate submissions, invalid provider output, bounded retries, and persisted exports. [Infrastructure evidence](evidence/infrastructure-acceptance.md) identifies which paths ran through real services and which failures were simulated. Worker-crash recovery is not implemented.
+
+## Export consumer conventions
+
+`analysis.urgency` means **expressed urgency**. `Unknown` means no explicit
+urgency was expressed; use priority and outage signals for operational impact.
+The UI labels it Expressed urgency. No JSON keys, prompts, or model-visible
+schema descriptions changed; historical inference did not use a new schema.
+
+Entities preserve source-supported observations rather than canonical identities.
+An account URL may remain `url`; do not fabricate an `account_id` from it.
+`product_or_integration` can contain named products (Okta) or generic integration
+capabilities (SSO), when supported. Consumers requiring named vendors must inspect
+the value. Preserve historical supported entities; exact-set scoring remains
+unchanged and is stricter than extraction usefulness. Current policy deduplicates
+comparison assumptions; historical exports retain original provenance.
