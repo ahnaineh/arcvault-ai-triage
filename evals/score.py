@@ -48,15 +48,23 @@ def score(cases, predictions):
     rows=[]
     for c in cases:
         p=by_id.get(c['id'], {}); a=p.get('analysis') or {}; d=p.get('decision') or {}
-        summary=' '.join(a.get('summary_sentences', []))
+        a = a if isinstance(a, dict) else {}
+        d = d if isinstance(d, dict) else {}
         valid=matches(a,schema)
-        row=dict(id=c['id'], category=a.get('category') in c['acceptable_categories'], priority=a.get('priority') in c['acceptable_priorities'], entities=all(any(e.get('type')==r['type'] and e.get('value')==r['value'] for e in a.get('entities',[])) for r in c['required_entities']), signals=all(a.get('signals',{}).get(k,{}).get('value','missing')==v for k,v in c['expected_signals'].items()), schema=valid, summary_constraints=all(f.casefold() in summary.casefold() for f in c['summary_required_facts']) and not any(f.casefold() in summary.casefold() for f in c['summary_forbidden_facts']), routing=d==c['expected_policy'], manual_summary_review='pending')
+        expected_entities={(e['type'],e['value'],e['evidence']) for e in c['required_entities']}
+        actual_entities={(e.get('type'),e.get('value'),e.get('evidence')) for e in a.get('entities',[]) if isinstance(e,dict)} if isinstance(a.get('entities',[]),list) else set()
+        review=p.get('summary_review', {})
+        reviewed=bool(review.get('reviewer')) and review.get('all_required_facts') is True and review.get('no_unsupported_claims') is True
+        row=dict(id=c['id'], category=a.get('category') in c['acceptable_categories'], priority=a.get('priority') in c['acceptable_priorities'], entities=valid and actual_entities==expected_entities, signals=valid and all(a.get('signals',{}).get(k,{}).get('value','missing')==v for k,v in c['expected_signals'].items()), schema=valid, summary_constraints=valid and reviewed, routing=valid and d==c['expected_policy'], manual_summary_review='accepted' if reviewed else 'review_needed', missing=not bool(p), invalid_analysis=bool(p) and not valid)
+
         automatic=bool(p) and valid and d.get('human_escalation') is False
         expected=c['expected_policy']['human_escalation']
         row.update(automatic=automatic, missed_escalations=automatic and expected, unnecessary_escalations=d.get('human_escalation') is True and not expected, incorrect_automatic_routing=automatic and d.get('final_destination')!=c['expected_policy']['final_destination'])
         for k in totals: totals[k]+=int(row[k])
         rows.append(row)
-    return dict(cases=len(cases),predictions=len(predictions),metrics={k:dict(count=v,denominator=len(cases)) for k,v in totals.items()},coverage=dict(count=len(predictions),denominator=len(cases)),cost_inputs=[p.get('cost_usd') for p in predictions],latency_inputs_ms=[p.get('latency_ms') for p in predictions],rows=rows)
+    totals.update(missing=sum(r['missing'] for r in rows), invalid_analysis=sum(r['invalid_analysis'] for r in rows), operational_failures=sum(bool(p.get('error')) for p in predictions), completed=sum(r['schema'] for r in rows), end_to_end_success=sum(all(r[k] for k in ['schema','category','priority','entities','signals','summary_constraints','routing']) for r in rows))
+    conditional = dict(missed_escalations=dict(count=totals['missed_escalations'], denominator=sum(r['automatic'] and c['expected_policy']['human_escalation'] for r,c in zip(rows,cases))), unnecessary_escalations=dict(count=totals['unnecessary_escalations'],denominator=sum(r['schema'] and by_id.get(c['id'],{}).get('decision',{}).get('human_escalation') is True for r,c in zip(rows,cases))), incorrect_automatic_routing=dict(count=totals['incorrect_automatic_routing'],denominator=totals['automatic']))
+    return dict(conditional_routing=conditional,cases=len(cases),predictions=len(predictions),metrics={k:dict(count=v,denominator=len(cases)) for k,v in totals.items()},coverage=dict(count=len(predictions),denominator=len(cases)),cost_inputs=[p.get('cost_usd') for p in predictions],latency_inputs_ms=[p.get('latency_ms') for p in predictions],rows=rows)
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

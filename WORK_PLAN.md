@@ -6,10 +6,10 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-- Phase: planning baseline published; M1 is next. No application implementation yet.
+- Phase: M4 offline evaluation revision implemented; independent annotation review pending. No application implementation yet.
 - Working deadline: November 8, 2026, as stated by the candidate.
 - API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
-- Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 reviewed synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
+- Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 candidate synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
 - Repository: [ahnaineh/arcvault-ai-triage](https://github.com/ahnaineh/arcvault-ai-triage), private, default branch `main`.
 - Blockers: none known. Exact Python/package/model compatibility remains to be verified.
 
@@ -70,8 +70,8 @@ Gate: core behavior and implemented recovery paths are verified in the real stac
 
 - [x] Define draft benchmark record format and offline metrics; policy fixtures excluded. See `docs/evidence/evaluation.md`.
 - [ ] Generate and review an initial small batch against the written rubric; resolve label ambiguities.
-- [-] Draft 50 cases generated; independent review and semantic split audit pending (narrow templates): 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
-- [x] Validate offline scorer with known good/bad predictions: 4 unittest tests passed; see `docs/evidence/evaluation.md`.
+- [-] Rebuilt 50 cases; independent review of changed labels, entities, facts and semantic split audit pending: 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
+- [-] Offline scorer revised: 7 tests pass; independent semantic annotation review and broader robustness verification remain pending. See `docs/evidence/evaluation.md`.
 - [ ] Run a baseline; score category/priority, entities, semantic signals, summaries and output validity separately.
 - [ ] Record end-to-end destinations, missed/unnecessary escalations, incorrect automatic routing and automation coverage.
 - [ ] Iterate versioned prompts on development cases; select candidates using validation. Record experiments, usage, latency and observed regressions.
