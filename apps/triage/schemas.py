@@ -1,7 +1,16 @@
 """Strict analysis contract. Integration must call validate_analysis(payload, message)."""
 import re
 from typing import Annotated, Literal
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationInfo, PrivateAttr, model_validator
+
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    PrivateAttr,
+    StringConstraints,
+    ValidationInfo,
+    model_validator,
+)
 
 Text = Annotated[str, StringConstraints(min_length=1, pattern=r'\S')]
 Category = Literal['Bug Report', 'Feature Request', 'Billing Issue', 'Technical Question', 'Incident/Outage']
@@ -53,7 +62,7 @@ class Analysis(Strict):
     def evidence(self, info: ValidationInfo):
         message = (info.context or {}).get('message')
         if not isinstance(message, str):
-            raise ValueError('raw message context is required')
+            raise ValueError('raw message context is required')  # noqa: TRY004 - Pydantic requires ValueError for validation.
         def walk(value):
             if isinstance(value, dict):
                 for key, item in value.items():
