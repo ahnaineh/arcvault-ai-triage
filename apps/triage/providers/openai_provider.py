@@ -84,6 +84,7 @@ class OpenAIProvider:
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
         self.raw_sink = None
+        self.prompt_version = 'triage_v1'
         self.model = model
         self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
@@ -137,7 +138,7 @@ class OpenAIProvider:
             if len(parts) != 1:
                 raise fail('provider_invalid')
             analysis = validate_analysis(json.loads(parts[0]), message)
-            return ProviderResult(analysis, str(response.model)[:256], self.model, 'triage_v1', '1.0',
+            return ProviderResult(analysis, str(response.model)[:256], self.model, self.prompt_version, '1.0',
                 hashlib.sha256(self.prompt.encode()).hexdigest(),
                 hashlib.sha256(self.schema_text.encode()).hexdigest(),
                 (time.monotonic()-started)*1000, usage)

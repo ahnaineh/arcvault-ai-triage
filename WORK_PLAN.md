@@ -364,3 +364,21 @@ the existing adapter verifier. Final test labels were not opened for tuning.
 Secure credential request returned timed_out; no credential was read or copied.
 Offline focused acceptance suite: 24 passed with explicit SQLite and synthetic
 DJANGO_SECRET_KEY. Ruff and diff whitespace checked after binding sink identifiers.
+
+## PR14 benchmark execution — 2026-11-07
+
+Completed usage reconciliation and serial per-call budget checks in the existing
+Runner. Missing/invalid usage and uncertain completion retain maximum reservations;
+reconciliation events are append-only and idempotent. Original five raw journals
+remain untouched; reconciliation.json binds the source hash and accounts .069047
+as a conservative estimate, never actual billing. Both uncertain reservations remain.
+
+Implemented run_benchmark over the same Runner, canonical export adapter and scorer:
+ordered baseline/development/validation/test/assessment, shared accounting lock,
+immutable phase identities, explicit freeze, resumable completed cases. Baseline
+25 and single revised-prompt development 25 completed; validation 10 completed.
+V2 priority/entity clarification used development failures only; no policy changes.
+Validation category/routing 9/10; priority/entities/signals/schema 10/10. Final test
+still unopened at this checkpoint. Earlier v2 exports carry legacy v1 display labels;
+reservation inference hashes and manifests identify actual prompt. Corrected selected
+prompt labels and exported hashes before final freeze; originals remain unchanged.

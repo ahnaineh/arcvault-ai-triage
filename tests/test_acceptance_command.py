@@ -331,3 +331,31 @@ def test_execute_then_dry_identity(command, monkeypatch, changed):
     assert result == {'dry_run': True, 'pending': 5 if changed else 0}
     factory.assert_called_once()
     assert client.responses.create.call_count == 5
+
+
+def test_serial_usage_release_and_budget_exhaustion(command):
+    run, client, _, path, events = command
+    config = json.loads(path.read_text())
+    # One full reservation fits; five simultaneous maxima do not.
+    config['budget'] = '18'
+    path.write_text(json.dumps(config))
+    client.responses.create.side_effect = [valid_response(i) for i in range(5)]
+    run()
+    assert client.responses.create.call_count == 5
+    assert len([e for e in events() if e['state'] == 'reconciled']) == 5
+    run()
+    assert len([e for e in events() if e['state'] == 'reconciled']) == 5
+
+
+def test_missing_usage_exhausts_serial_budget(command):
+    run, client, _, path, events = command
+    config = json.loads(path.read_text())
+    config['budget'] = '18'
+    path.write_text(json.dumps(config))
+    response = valid_response()
+    response.usage = None
+    client.responses.create.return_value = response
+    with pytest.raises(ValueError, match='Budget'):
+        run()
+    assert client.responses.create.call_count == 1
+    assert not any(e['state'] == 'reconciled' for e in events())
