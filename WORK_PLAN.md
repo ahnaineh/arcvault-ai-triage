@@ -154,3 +154,74 @@ PR6 bounded UI checkpoint follow-up: fake-timer lifecycle/60-poll expiry/Resume 
 Reviewed head: df5fa91a28fbca43601cfca1712aceeda93846dc. Parent-supplied independent review: no blockers; original Downloads DOCX five strings matched; shared acceptance service/stable principal keys; SQLite five first dispatches, zero repeat dispatches, conflict without extra dispatch; ordered export completion/result/source/message guards; 74 locked tests and Ruff/Django/no migration drift passed. This proof is supplied review evidence, not independently repeated DOCX or historical spend verification.
 
 Fresh implementation verification: 78 locked tests pass, Ruff passes, Django check passes, no migration drift. Added actual task pipeline with mocked provider and full persisted record export equality in sample order; missing accepted result and mismatched source/message fail with zero JSON written, including after earlier valid samples. README exports to temporary file and renames only on success. No OpenAI calls. Live provider, real queue and PostgreSQL acceptance remain pending; historical spend is not independently verified.
+
+Live acceptance attempt 2026-11-07: incomplete; see docs/evidence/live-acceptance.md.
+One retained real schema probe succeeded; five pipeline calls yielded one failure
+and four completions, but ephemeral records/usage were lost before guarded export.
+Actual sample export, queue/Postgres, benchmark and clean-start gates remain open.
+
+### 2026-11-07 recovery inspection
+
+PR8 expected head verified. See `docs/evidence/live-acceptance.md` recovery
+inspection. Zero complete live sample records recovered; surviving browser DB
+records are explicitly mocked. Known subtotal $0.0006268, total unresolved.
+No paid requests performed. Durable runner and fault tests are still pending;
+next paid execution is blocked pending reliable persistence and budget bounds.
+
+## Durable acceptance runner
+Implemented `apps.triage.acceptance`: explicit persistent directory, fsynced append-only
+reservation/result journal, exclusive writer lock, conservative Decimal reservations,
+resume and atomic ordered five-result export. CLI defaults to offline dry run.
+Injected execution requires a bound-enforcing adapter and documented reconciled
+history/prices. Existing uncapped OpenAI adapter intentionally cannot be used directly.
+All reservations remain charged even when usage exists (conservative accounting).
+Historical known subtotal $0.0006268 and five unknown calls remain unresolved;
+no live acceptance or paid inference was performed. Automated fault checks added.
+
+Validation: locked dependencies installed; 84 pytest tests passed (6 staticfiles warnings), Ruff clean, Django check clean, CLI dry-run pending=5.
+
+## PR8 bounded adapter checkpoint
+Implemented SDK output cap, configuration-bound adapter with fail-closed input-proof hook,
+preflight before reservations/invocation, and durable provider usage before secondary
+validation. Existing exclusive runner lock and retained reservations remain in force.
+Offline validation: explicit /tmp uv cache/environment, locked pytest 86 passed (6
+warnings), Ruff clean, Django check clean, dry-run five pending. Initial pytest lacked
+DJANGO_SECRET_KEY; rerun used a synthetic offline key and /tmp SQLite database.
+Remaining: implement and substantiate actual input token proof (hook is not a proof),
+expand requested durable fault coverage, and reconcile historical five-call costs.
+No live calls or credential reads. This checkpoint is partial, not acceptance complete.
+
+### Application model selection (2026-11-07)
+
+User-selected default: `gpt-6.1-terra`, replacing the prior planned GPT-4.1 mini default. Historical actual mini run records remain unchanged.
+
+Official evidence: https://developers.openai.com/api/docs/models/gpt-6.1-terra lists Responses and Structured Outputs support, 1,050,000 context, 922,000 maximum input and 128,000 maximum output tokens. Reasoning supports none/low/medium(default)/high/xhigh/max. Adapter explicitly selects none with the existing 4096 output cap, and sends no sampling parameters.
+
+https://developers.openai.com/api/docs/guides/structured-outputs documents strict JSON schema support and schema restrictions. Exact application schema server acceptance and account access remain UNVERIFIED; no model listing, secrets, or inference calls were used here.
+
+https://developers.openai.com/api/docs/pricing lists Standard short context (<=272K input) rates per million: input $1, output $5, cached input $0.05, cache writes $1.25 (30m)/$2.50 (12h). Long context input $2/output $7.50. Regional processing +10%, Fast 2x. Future budget runner configuration must use these model-specific rates with conservative allowance for cache writes/tier, output <=128K, and verified input bounds. The runner has explicit prices rather than a model catalog; old mini rates must not be reused. Historical accounting and exact input-bound proof remain mandatory gates before execution.
+
+PR8 final implementation: default bounded adapter reserves full Terra 1,050,000
+context tokens (deliberately counts shared output space twice), requiring at least
+$2/M input and $7.50/M output. At cap 4096, reservation is $2.13072/request,
+$10.65360/five: exceeds $3 and must reject; fits $83 before historical reserves.
+Official model page verified 2026-11-07: short $1/$5, >272K full-request
+2x input/1.5x output; no cached discount assumed. Standard service only.
+https://developers.openai.com/api/docs/models/gpt-6.1-terra
+Historical mini theoretical five-call ceiling is
+5*(1047576*.4+32768*1.6)/1000000 + .0006268 = $2.3579228.
+This is a conditional maximum, not measured spend; model/count provenance still
+requires independent evidence audit before reconciliation. Historical records unchanged.
+https://developers.openai.com/api/docs/models/gpt-4.1-mini
+No live/account/schema acceptance established. Full locked pytest: 72 passed,
+15 PostgreSQL connection setup errors. Ruff and Django check passed; dry run
+reported five pending. Remaining acceptance audit/tests and PR body unfinished.
+
+## PR8 integration repair
+Integrated reviewed 797d267 into actual PR8 ancestry in prepared checkout; other
+worktrees and stray remote branch preserved. Added six regression cases for premium
+fallback floor, finite prices, model/context bounds, reservation ordering and immutable
+resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django check,
+migration drift check, dry-run pending=5 and whitespace check clean. See
+ docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
+historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.

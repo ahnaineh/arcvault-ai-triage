@@ -52,3 +52,18 @@ def test_success_usage():
     assert result.usage['total_tokens']==30
     assert result.analysis.category=='Technical Question'
     assert len(result.prompt_sha256)==64
+
+
+def test_terra_wire():
+    client = Mock()
+    client.with_options.return_value = client
+    client.responses.create.return_value = envelope()
+    with pytest.raises(ProviderError):
+        OpenAIProvider(client=client, model='gpt-6.1-terra').analyze('hello')
+    args = client.responses.create.call_args.kwargs
+    assert args['model'] == 'gpt-6.1-terra'
+    assert args['reasoning'] == {'effort': 'none'}
+    assert args['max_output_tokens'] == 4096
+    assert args['text']['format']['strict'] is True
+    with pytest.raises(ProviderError, match='provider_config'):
+        OpenAIProvider(client=client, model='gpt-6.1-terra', max_output_tokens=128001)
