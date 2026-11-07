@@ -507,7 +507,7 @@
     "forbidden_facts": [
       "Unsupported diagnosis, promises, remediation or verified attribution"
     ],
-    "reason": "Remove \"This may cause unintended data loss\": plausible consequence, but not explicitly asserted by the source.",
+    "reason": "Human judgment requested: \"This may cause unintended data loss\" is a plausible inference, not a demonstrated hallucination; assess strict source-only summary requirements.",
     "human_accept": null,
     "human_correction": "",
     "human_reviewer": ""

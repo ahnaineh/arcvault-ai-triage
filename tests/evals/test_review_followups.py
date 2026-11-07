@@ -19,3 +19,16 @@ def test_fresh_inputs_are_disjoint_and_frozen():
     assert len({r['message'] for r in new}) == len(new)
     assert not {r['message'].casefold() for r in new} & {r['message'].casefold() for r in old}
     assert all(r['split'] == 'fresh_holdout' and r['summary_required_facts'] and r['expected_final_destination'] for r in new)
+
+
+def test_regeneration_preserves_human_decisions(tmp_path, monkeypatch):
+    import pytest
+
+    from evals import review_followups
+    monkeypatch.setattr(review_followups, 'OUT', tmp_path)
+    path = tmp_path / 'summary-review-sheet.json'
+    original = '[{"id":"assessment-01","human_accept":false,"human_reviewer":"person"}]'
+    path.write_text(original)
+    with pytest.raises(ValueError, match='Human responses present'):
+        review_followups.build()
+    assert path.read_text() == original
