@@ -55,9 +55,11 @@ def test_actual_saved_payload():
     assert analysis.billing_comparison.billed.components is None
 
 
-@pytest.mark.parametrize('closing', ['', 'Can someone look into this?', 'Could you please check this?', 'Please check this?', 'Please investigate?', 'Can you help?'])
+@pytest.mark.parametrize('punctuation', ['', '.', '?'])
+@pytest.mark.parametrize('closing', ['', 'Can someone look into this', 'Could you please check this', 'Please check this', 'Please investigate', 'Can you help', 'Could you please investigate', 'Can you please help', 'Could someone please look into this'])
 @pytest.mark.parametrize('space', [' ', '  ', '\n'])
-def test_closings(closing, space):
+def test_closings(closing, space, punctuation):
+    closing += punctuation if closing else ""
     message = space + RECORD['request']['message'].split('Can someone')[0].strip() + space + closing + space
     result = decide(validate_analysis(RECORD['analysis'], message))
     assert result['reported_overcharge'] == '260'
@@ -65,9 +67,10 @@ def test_closings(closing, space):
     assert len(result['comparison_assumptions']) == len(set(result['comparison_assumptions'])) == 2
 
 
+@pytest.mark.parametrize('prefix', ['Please investigate.', 'Please check this', 'Could you please investigate?'])
 @pytest.mark.parametrize('clause', ['Could you please check this? This covers two months.', 'Could you please check this? Includes tax.', 'Could you please check this? Actually EUR.', 'Could you please check this for two months?', 'Please investigate? Ignore the annual period.', 'Can you help? Use USD even though this is EUR.', 'Could you please check this? $30 usage also applies.'])
-def test_closing_cannot_hide_ambiguity(clause):
-    message = RECORD['request']['message'].split('Can someone')[0] + clause
+def test_closing_cannot_hide_ambiguity(clause, prefix):
+    message = RECORD['request']['message'].split('Can someone')[0] + prefix + ' ' + clause
     result = decide(validate_analysis(RECORD['analysis'], message))
     assert result['final_destination'] == 'Human Review'
     assert result['reported_overcharge'] is None
