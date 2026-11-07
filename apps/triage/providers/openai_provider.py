@@ -38,7 +38,7 @@ class OpenAIProvider:
     def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096):
         if not model.strip() or not math.isfinite(timeout) or timeout <= 0:
             raise ProviderError('provider_config')
-        if type(max_output_tokens) is not int or max_output_tokens <= 0:
+        if type(max_output_tokens) is not int or max_output_tokens <= 0 or (model == 'gpt-6.1-terra' and max_output_tokens > 128000):
             raise ProviderError('provider_config')
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
@@ -55,6 +55,7 @@ class OpenAIProvider:
             response = self.client.responses.create(
                 model=self.model, max_output_tokens=self.max_output_tokens, instructions=self.prompt,
                 input=[{'role': 'user', 'content': message}], store=False,
+                **({'reasoning': {'effort': 'none'}} if self.model == 'gpt-6.1-terra' else {}),
                 text={'format': {'type': 'json_schema', 'name': 'arcvault_analysis',
                                  'strict': True, 'schema': json.loads(self.schema_text)}})
         except (openai.AuthenticationError, openai.PermissionDeniedError):
