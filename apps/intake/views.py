@@ -73,7 +73,7 @@ def protected(request, request_id=None, export=False):
     if row is None:
         return error('not_found', 404)
     if export:
-        return JsonResponse(record(row)) if row.status == 'completed' else error('incomplete', 409)
+        return JsonResponse(record(row), json_dumps_params={'indent': 2}) if row.status == 'completed' else error('incomplete', 409)
     return JsonResponse({'id': str(row.pk), 'status': row.status,
         'received_at': row.received_at.isoformat(), 'updated_at': row.updated_at.isoformat(),
         'attempt_count': row.attempts.count(),

@@ -1,0 +1,21 @@
+{"state": "allowance", "amount_usd": "0.00", "prior_accounted_usd": "52.69598874", "actual_cost": null, "note": "Reuses the existing retained $1 provisional speech allowance; actual billing remains unknown."}
+{"state": "started", "id": "01-intro", "input_sha256": "323ed8e224f45cdcb48835979e74434d90b89a58336f6b35090a9dfe9048d909"}
+{"state": "completed", "id": "01-intro", "request_id": "req_8bf746fbcd0c4f58aec4b4ed37dc434b", "duration_seconds": 8.35, "sha256": "600acf0e34385b7c64ec2cbbf818fe276abf3fca76d2e07243e28710355d1b8f", "actual_cost": null}
+{"state": "started", "id": "02-intake", "input_sha256": "797fe92e2c88287bd3f4e674b98525c772c956dac4574b812245922fcfac44c5"}
+{"state": "completed", "id": "02-intake", "request_id": "req_b70793340277470a8bc8fc7c37c5c55d", "duration_seconds": 11.65, "sha256": "e5c4cc963cc35e13177d76b2f061f1d21bba87b952222806ffb19d74349e5d71", "actual_cost": null}
+{"state": "started", "id": "03-login", "input_sha256": "500bc4d13213ea92c436d40a1c71ef7b0f2943fad1f3619a51abe331c6c00bb2"}
+{"state": "completed", "id": "03-login", "request_id": "req_720d160b00c54200b1bac43f97190293", "duration_seconds": 14.1, "sha256": "52ee1c5dd23bc9b243c11fca409c2ab5f27c63be44be6192f1aea0ee245dabc1", "actual_cost": null}
+{"state": "started", "id": "04-feature", "input_sha256": "b3cd48d11ea4af0a9797f5ab5b1973cf3377fb2e18fc7dce0f5acaa7074eed30"}
+{"state": "completed", "id": "04-feature", "request_id": "req_897a1ed34f1642bda97b2b0707ae5a68", "duration_seconds": 9.8, "sha256": "c384f241cb36adab0a92ae6664f05ac31cd4a8950d665c5b9b964ef1aa7d9aba", "actual_cost": null}
+{"state": "started", "id": "05-invoice", "input_sha256": "25d07bf233b5194630f9efdfff16b78d5e512e656abba4f14360562af52e1585"}
+{"state": "completed", "id": "05-invoice", "request_id": "req_9053cac481c14a0a99db5bd5fe389da2", "duration_seconds": 17.0, "sha256": "c663da16d9bcfa1ee7c7482eba3f94610098ea207eeada7b9bb41d72c4037c7e", "actual_cost": null}
+{"state": "started", "id": "06-okta", "input_sha256": "da504754f987d89d14a2ff8d267c09ff7c38a67b0cbcdee282f08b8419054767"}
+{"state": "completed", "id": "06-okta", "request_id": "req_667484993696454585192f39925dfcfe", "duration_seconds": 5.3, "sha256": "b58e80c007dc2c181267f2c02c4f635a0ae4ecf5d480a9683fafd4e3fe1c039a", "actual_cost": null}
+{"state": "started", "id": "07-outage", "input_sha256": "b33db9d5e018b7fa168a151e69d2629cd9d2f75135845959818f2e08bb061e29"}
+{"state": "completed", "id": "07-outage", "request_id": "req_bd9124313a984c048389819ce236b1be", "duration_seconds": 14.05, "sha256": "b18033dd32f95f5e58af2d7e55663dcb2804a48a03dccf43d871261b2888bb39", "actual_cost": null}
+{"state": "started", "id": "08-policy", "input_sha256": "cb4c510d1e0484dd827b3700662bff0e1048769de868ee3795acb0a2369b383f"}
+{"state": "completed", "id": "08-policy", "request_id": "req_11887279dd6045a8b5312bde1fb967e2", "duration_seconds": 11.2, "sha256": "a40a702832f47561e2a2891224fbeaba75cd627f49e85a3b3d7524fe54ee60c7", "actual_cost": null}
+{"state": "started", "id": "09-export", "input_sha256": "d8ef861843f6171daf84d1ee4d36f0819b5cb19b7db5b76505a860a92b232c4b"}
+{"state": "completed", "id": "09-export", "request_id": "req_aad0aef3eaeb4babb4edf6600a0e810a", "duration_seconds": 10.55, "sha256": "0df28cbecb05233e26d684afc47c1fb7550ae07121082b15466e205d18cf8e36", "actual_cost": null}
+{"state": "started", "id": "10-close", "input_sha256": "7b7e3a58be4706ac6f87333507d2ce03a8914da9d1949a9b2c39578f1883a876"}
+{"state": "completed", "id": "10-close", "request_id": "req_a9cc0548badb4a548eea4463a939325f", "duration_seconds": 10.15, "sha256": "874ac53f0fd3be826990de012d1d11d5b1b8e8c095307a0e7a714850a67262af", "actual_cost": null}

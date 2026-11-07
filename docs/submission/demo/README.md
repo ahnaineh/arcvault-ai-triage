@@ -1,6 +1,6 @@
 # ArcVault demo
 
-[Watch the narrated demo](arcvault-demo.mp4) · [The five shown results](narrated-five-outputs.json)
+[Watch the 2:15 AI-narrated demo](arcvault-demo.mp4) · [The five shown results](narrated-five-outputs.json)
 
 We submit one fresh login request through the real webhook, PostgreSQL, Redis/Celery and Terra V4. We then review the other four results saved during our earlier live run. The narration identifies these saved results. Nothing is mocked.
 
@@ -8,7 +8,7 @@ The revised UI shows category, priority, confidence percentage, core issue, urge
 
 ## Recording
 
-The video has an AI-generated Cedar voice from OpenAI, disclosed in the introduction. There are no subtitles. We recorded each scene in the real application, joined the scenes and synchronized the narration at a measured pace. The account-evidence scene was recaptured without inference to improve timing. Source outputs were not edited.
+The video uses an AI-generated Cedar voice from OpenAI, with natural narration and no subtitles. This edit reuses the recorded live submission and four saved outputs; it makes no additional triage calls. The policy and export scenes were recorded again using the documented admin / admin demo login. Cuts and held frames give time to read the results. Source outputs are unchanged.
 
 [Script](script.json) · [Scene timings](timeline.json) · [Runtime file hashes](runtime-hashes.json) · [Manifest](manifest.json)
 

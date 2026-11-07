@@ -523,3 +523,7 @@ Recording and five serial real webhook submissions remain for parent operator.
 - Replaced the captioned video with a first-person AI voice-over and the redesigned UI. One fresh live login submission plus four explicitly saved live results; no repeated five-case benchmark.
 - All required metrics are visible, including confidence percentage, core issue, urgency and explicit Human Review status. Narration is synchronized to real UI actions.
 - Full video/audio decode, speech transcription, frame inspection, runtime hashes and export checks passed. Source evidence and previous outputs are preserved. Current total accounting including speech allowance: $52.69598874/$83; actual billing unknown.
+
+## Final video and reviewer login — 2026-11-07
+
+Completed natural narration recut (2:15, no subtitles), readable JSON export, documented admin / admin local login and concise current setup docs. Full suite: 181 passed; Ruff passed; final UI/check/migration checks passed. Video decode and transcript checked. No new triage inference. See `docs/evidence/final-demo-checks.md`. Final user playback and repository visibility at submission remain user handoff steps.

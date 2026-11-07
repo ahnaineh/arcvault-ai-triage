@@ -19,10 +19,12 @@ From repository root, copy `.env.example` to `.env` only if absent, replace the 
 ```sh
 docker compose -p arcvault-submission config --quiet
 docker compose -p arcvault-submission up --build -d
-docker compose -p arcvault-submission exec web python manage.py createsuperuser
+docker compose -p arcvault-submission exec web python manage.py create_demo_user
 curl --fail http://localhost:8000/health/
 docker compose -p arcvault-submission exec worker celery -A config.celery:app inspect ping
 ```
+
+Local demo login: **admin / admin**. The setup command requires `DJANGO_DEBUG=true` and creates a regular application user.
 
 Port 8000 must be free. Visit `/login/`, `/tester/` and `/`. Loading samples makes model calls. For a live demo use `docker compose -p arcvault-submission exec web python manage.py load_samples --principal assessment`; after all five complete, export with `docker compose -p arcvault-submission exec -T web python manage.py export_samples --principal assessment > /tmp/assessment-outputs.json.tmp` and move the temporary file only on success. Existing sample keys replay without republishing. Stop only this project with `docker compose -p arcvault-submission down` (no volume deletion).
 
