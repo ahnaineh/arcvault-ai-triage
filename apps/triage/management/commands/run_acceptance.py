@@ -38,17 +38,7 @@ class Command(BaseCommand):
             provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
             provider.preflight([case['message'] for case in samples()], config)
 
-            def persist(response):
-                # Whitelist model content and accounting, never HTTP headers or request credentials.
-                payload = {'id': str(response.id)[:256], 'model': str(response.model)[:256],
-                           'status': str(response.status)[:64],
-                           'usage': response.usage.model_dump(mode='json') if response.usage else None,
-                           'output': response.model_dump(mode='json').get('output', [])}
-                encoded = json.dumps(payload)
-                limit = config['output_token_cap'] * 64 + 65536
-                if len(encoded.encode()) > limit:
-                    payload['output'] = encoded[:limit]
-                    payload['truncated'] = True
+            def persist(payload):
                 runner.append({'state': 'raw_response', 'payload': payload})
 
             provider.provider.raw_sink = persist

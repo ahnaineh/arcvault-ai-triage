@@ -80,9 +80,9 @@ Live provider and queued acceptance remain pending; see docs/evidence/m2-live.md
 Persistent acceptance command (dry-run by default):
 
 ```sh
-uv run manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config /path/to/reconciled-config.json
+uv run --locked manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config config/acceptance/terra.json
 # OPENAI_API_KEY must already be supplied securely in the environment.
-uv run manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config /path/to/reconciled-config.json --execute
+uv run --locked manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config config/acceptance/terra.json --execute
 ```
 
 Configuration must bind Terra, official_price_source, input/output prices per million,
@@ -93,3 +93,17 @@ History must come from explicit account reconciliation. No historical usage is i
 Prepared conservative configuration: `config/acceptance/terra.json` (project/task
 budget $83). Use that path in the commands above. Historical model is an explicit
 recorded-report assumption; reservation is not a claim of actual cost.
+
+For reproducible offline verification, set these before the command above:
+
+    export UV_CACHE_DIR=/tmp/arcvault-uv
+    export UV_PROJECT_ENVIRONMENT=/tmp/arcvault-pr9-finish-venv
+    export DATABASE_URL=sqlite:////tmp/arcvault-pr9.sqlite3
+    export DJANGO_SECRET_KEY=test
+
+Evidence allows response ID/model/status (256/256/64 characters, with truncation
+flag), numeric usage totals, and output text. JSON above 1 MiB or 16 parts fails
+explicitly; byte count, usage and reservation remain. Refusal text, SDK extras,
+headers and exception dumps are excluded. Missing usage means unknown cost.
+Disk failure may prevent evidence writes; the durable original reservation blocks
+further spending. Atomic export failure preserves completed journal records.

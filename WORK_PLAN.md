@@ -233,3 +233,7 @@ Review limits: invalid raw responses were lost before validation; CLI lacked liv
 Follow-on command implementation in progress; command wiring tests remain required.
 No paid calls or credential reads performed. Historical account reconciliation,
 live schema acceptance and PostgreSQL/Redis/Celery gates remain outstanding.
+
+PR9 finish: command SDK tests, failure accounting and metadata limits implemented.
+Offline proof: docs/evidence/pr9-finish.md. Account/schema/queue acceptance pending.
+Historical planning reservation remains conditional, not actual cost.
