@@ -58,3 +58,15 @@ and `tests/test_acceptance.py`. Results survive export failure; uncertain attemp
 block resumption. Live execution remains blocked pending historical reconciliation
 and a defensibly bounded injected adapter. CLI provides dry-run only; no live
 acceptance completion is claimed.
+
+### Bounded adapter partial checkpoint
+SDK request now carries max_output_tokens (default 4096); SDK retries remain zero
+and timeout explicit. Adapter binds exact config and requires an input-bound proof
+callback covering instructions/schema/message framing. No such proven tokenizer
+implementation is supplied yet: paid use remains blocked. Provider usage is journaled
+before subsequent result validation; errors retain provider exception usage and the
+original reservation. Offline checks: 86 passed, Ruff clean, Django clean, dry-run
+pending=5, using /tmp environment/cache. No live inference or credential reads.
+Surviving evidence still does not establish historical input bound and original
+output maximum: subtotal $0.0006268 plus five unknown, total actual spend unknown.
+No historical zero or speculative reservation claimed.

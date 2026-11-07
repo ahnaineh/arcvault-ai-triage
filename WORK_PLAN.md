@@ -179,3 +179,14 @@ Historical known subtotal $0.0006268 and five unknown calls remain unresolved;
 no live acceptance or paid inference was performed. Automated fault checks added.
 
 Validation: locked dependencies installed; 84 pytest tests passed (6 staticfiles warnings), Ruff clean, Django check clean, CLI dry-run pending=5.
+
+## PR8 bounded adapter checkpoint
+Implemented SDK output cap, configuration-bound adapter with fail-closed input-proof hook,
+preflight before reservations/invocation, and durable provider usage before secondary
+validation. Existing exclusive runner lock and retained reservations remain in force.
+Offline validation: explicit /tmp uv cache/environment, locked pytest 86 passed (6
+warnings), Ruff clean, Django check clean, dry-run five pending. Initial pytest lacked
+DJANGO_SECRET_KEY; rerun used a synthetic offline key and /tmp SQLite database.
+Remaining: implement and substantiate actual input token proof (hook is not a proof),
+expand requested durable fault coverage, and reconcile historical five-call costs.
+No live calls or credential reads. This checkpoint is partial, not acceptance complete.

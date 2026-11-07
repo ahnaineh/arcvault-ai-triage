@@ -94,6 +94,8 @@ class Runner:
         budget = money(cfg['budget'])
         if spent + reserve * sum(i not in complete for i in identities) > budget:
             raise ValueError('Budget preflight rejected')
+        if hasattr(provider, 'preflight'):
+            provider.preflight([c['message'] for c in cases], cfg)
         for case, identity in zip(cases, identities, strict=True):
             if identity in complete:
                 continue
@@ -104,13 +106,16 @@ class Runner:
                              'input_fingerprint': digest(case['message']), 'reservation': str(reserve)})
             try:
                 result = provider(case['message'], cfg)
+                self.append({'state': 'provider_returned', 'request_id': request_id,
+                             'usage': result.usage, 'model': result.model})
                 validate_analysis(result.analysis.model_dump(), case['message'])
                 payload = asdict(result)
                 payload['analysis'] = result.analysis.model_dump()
                 self.append({'state': 'completed', 'request_id': request_id, 'identity': identity, 'result': payload})
                 complete[identity] = payload
-            except Exception:
-                self.append({'state': 'failed', 'request_id': request_id, 'identity': identity, 'error': 'provider_or_validation_failure'})
+            except Exception as exc:
+                self.append({'state': 'failed', 'request_id': request_id, 'identity': identity, 'error': 'provider_or_validation_failure',
+                             'usage': getattr(exc, 'usage', None)})
                 raise
         records = [complete[i] for i in identities]
         atomic_export(self.directory / 'assessment_outputs.json', records)

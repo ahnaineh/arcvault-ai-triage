@@ -35,9 +35,12 @@ class ProviderResult:
     usage: dict | None
 
 class OpenAIProvider:
-    def __init__(self, *, client, model: str, timeout: float = 30):
+    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096):
         if not model.strip() or not math.isfinite(timeout) or timeout <= 0:
             raise ProviderError('provider_config')
+        if type(max_output_tokens) is not int or max_output_tokens <= 0:
+            raise ProviderError('provider_config')
+        self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
         self.model = model
         self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
@@ -50,7 +53,7 @@ class OpenAIProvider:
             return ProviderError(code, latency_ms=(time.monotonic()-started)*1000, usage=usage)
         try:
             response = self.client.responses.create(
-                model=self.model, instructions=self.prompt,
+                model=self.model, max_output_tokens=self.max_output_tokens, instructions=self.prompt,
                 input=[{'role': 'user', 'content': message}], store=False,
                 text={'format': {'type': 'json_schema', 'name': 'arcvault_analysis',
                                  'strict': True, 'schema': json.loads(self.schema_text)}})
@@ -79,3 +82,33 @@ class OpenAIProvider:
                 (time.monotonic()-started)*1000, usage)
         except (ValueError, TypeError, AttributeError, ValidationError):
             raise fail('provider_invalid') from None
+
+
+class BoundedOpenAIAdapter:
+    """Bind a runner to exact configuration and an externally proven input bound.
+
+    The verifier must cover Responses message framing, instructions and JSON schema,
+    not just customer text. No default heuristic is accepted as a proof.
+    """
+    enforces_bounds = True
+
+    def __init__(self, *, client, config, verify_input_bound):
+        self.config = json.loads(json.dumps(config))
+        self.verify_input_bound = verify_input_bound
+        self.provider = OpenAIProvider(
+            client=client, model=config['model'], timeout=config['timeout'],
+            max_output_tokens=config['output_token_cap'])
+
+    def preflight(self, messages, config):
+        if config != self.config:
+            raise ValueError('Adapter configuration mismatch')
+        for message in messages:
+            if self.verify_input_bound(
+                model=self.provider.model, instructions=self.provider.prompt,
+                schema=json.loads(self.provider.schema_text), message=message,
+                bound=config['input_token_bound']) is not True:
+                raise ValueError('Input reservation cannot be verified')
+
+    def __call__(self, message, config):
+        self.preflight([message], config)
+        return self.provider.analyze(message)
