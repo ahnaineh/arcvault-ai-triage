@@ -6,6 +6,9 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
+Backend checkpoint: core persistence/API/tasks implemented; 64 SQLite/offline tests pass. See docs/evidence/m2-backend.md. M2 remains active pending frontend, samples and real queued/provider acceptance.
+
+
 - Phase: M1 partially implemented: validation and policy verified locally; runtime integration and live provider acceptance pending.
 - Working deadline: November 8, 2026, as stated by the candidate.
 - API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
@@ -45,10 +48,10 @@ Gate: locked environment starts, policy/validation tests pass, exact model schem
 
 ## M2 — Working vertical slice
 
-- [ ] Persist incoming requests, attempts, accepted analyses and derived decisions with migrations.
-- [ ] Implement canonical webhook, principal-scoped idempotency, session/CSRF and bearer-token authentication.
-- [ ] Publish after commit, atomically claim tasks, call the model outside transactions, and persist result/completion atomically.
-- [ ] Implement status and export endpoints and safe error envelopes.
+- [x] Persist incoming requests, attempts, accepted analyses and derived decisions with migrations. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
+- [x] Implement canonical webhook, principal-scoped idempotency, session/CSRF and bearer-token authentication. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
+- [x] Publish after commit, atomically claim tasks, call the model outside transactions, and persist result/completion atomically. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
+- [x] Implement status and export endpoints and safe error envelopes. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
 - [ ] Build visual tester that posts to the webhook and displays asynchronous progress/results.
 - [ ] Preserve the five assessment inputs verbatim; sample loader uses the same intake service.
 - [ ] Process all five inputs through the real container stack and model; save complete output records.
@@ -121,3 +124,8 @@ Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Ind
 - [x] Offline SDK-envelope/provider and policy verification: 63 tests passed; see docs/evidence/provider.md.
 - [ ] Live exact-schema gate and initial model/pricing selection remain pending, not replaced by mocks.
 - Explicit user approval now permits disclosed synthetic assessment/benchmark payloads within cumulative $83; provider task capped at $3 and five supplied messages. No live calls made in this checkpoint.
+
+## Integration checkpoint
+Runtime/policy/provider/backend checkpoint implemented; M2 remains incomplete. Sample commands, UI, and five live outputs remain pending. Independent review of PR4 366dfab and PR5 c14c69f reported 69 passing tests, Django check, and two offline SDK-validated adapter/process probes. Preserved the parameterized probe in tests/test_provider_pipeline.py.
+
+Before reliability claims: verify live strict schema/model/pricing, successful session-CSRF flow, PostgreSQL concurrent duplicates/task deliveries, actual Redis publication/retries. Early retry delivery returns without republishing (tasks.py lines 27-28), relying on broker countdown; test that behavior in Redis. No retry design changes in this integration.

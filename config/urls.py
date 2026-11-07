@@ -19,3 +19,11 @@ def health(request):
 
 
 urlpatterns = [path("admin/", admin.site.urls), path("health/", health)]
+
+from apps.intake.views import endpoint
+
+urlpatterns += [
+    path('api/v1/requests/', endpoint),
+    path('api/v1/requests/<uuid:request_id>/', endpoint),
+    path('api/v1/requests/<uuid:request_id>/export/', endpoint, {'export': True}),
+]
