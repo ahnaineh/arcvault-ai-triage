@@ -185,7 +185,13 @@
     "acceptable_priorities": [
       "High"
     ],
-    "required_entities": [],
+    "required_entities": [
+      {
+        "type": "time_expression",
+        "value": "2pm EST",
+        "evidence": "2pm EST"
+      }
+    ],
     "expected_signals": {
       "active_service_outage": true,
       "insufficient_information": false,

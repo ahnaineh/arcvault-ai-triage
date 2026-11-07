@@ -49,3 +49,24 @@ python3 -m evals.score validate
 
 Use `python3 -m evals.score score predictions.json --split development`.
 No measured model quality, cost, latency or production behavior is claimed.
+
+## Bounded follow-up
+
+Verified starting PR head 1ede301cc84a7d6719605fc62b3caf7dfa1dce65.
+Focused verification: 10 unittest tests pass; dataset validation passes.
+No live benchmark was run. Annotation review remains pending; this is not a
+completed independent 50-case semantic audit or application export integration.
+Main integration and full application suite/Ruff remain outstanding.
+
+Review traceability (https://github.com/ahnaineh/arcvault-ai-triage/pull/1):
+- #discussion_r4501457049: missed-escalation denominator now includes every
+  expected escalation, including missing predictions; test_review_denominators.
+- #discussion_r4501457052: unnecessary-escalation numerator now requires valid
+  analysis, matching the denominator; test_review_denominators.
+- #discussion_r4501457055: assessment-05 requires onset 2pm EST;
+  test_assessment_onset.
+- #discussion_r4501441540: malformed analysis examples remain reportable;
+  test_malformed_fields. Malformed summary_review and decision values are guarded.
+
+The earlier paragraph defining the missed-escalation conditional denominator is
+superseded by the all-expected-escalations definition above.

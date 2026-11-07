@@ -32,3 +32,19 @@ class EvaluationTests(unittest.TestCase):
  def test_duplicate(self):
   p=self.prediction()
   with self.assertRaises(ValueError): score(load()[:1],[p,p])
+ def test_review_denominators(self):
+  cases=load()[:2]
+  cases[0]['expected_policy']['human_escalation']=True
+  cases[1]['expected_policy']['human_escalation']=True
+  p=self.prediction()
+  self.assertEqual(score(cases,[p])['conditional_routing']['missed_escalations'],dict(count=1,denominator=2))
+  cases[0]['expected_policy']['human_escalation']=False
+  p['analysis']={}
+  p['decision']['human_escalation']=True
+  self.assertEqual(score(cases,[p])['conditional_routing']['unnecessary_escalations'],dict(count=0,denominator=0))
+ def test_malformed_fields(self):
+  for field,value in [('summary_sentences',None),('summary_sentences',[1,2]),('entities',[None]),('signals',True)]:
+   p=self.prediction(); p['analysis'][field]=value
+   self.assertEqual(score(load()[:1],[p])['metrics']['invalid_analysis']['count'],1)
+ def test_assessment_onset(self):
+  self.assertIn(dict(type='time_expression',value='2pm EST',evidence='2pm EST'),load()[4]['required_entities'])
