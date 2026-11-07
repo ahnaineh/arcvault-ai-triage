@@ -1,15 +1,35 @@
 # ArcVault architecture
 
-Django accepts synthetic customer messages through one authenticated webhook. The browser tester uses that same endpoint and polls for completion. PostgreSQL holds original requests, attempts, accepted analyses and derived results. Principal-scoped idempotency prevents duplicate intake; publication happens after commit. Celery consumes Redis work, atomically claims an attempt, calls the provider outside transactions, and commits analysis, policy decision and completion together. JSON export reads the persisted result.
+## How it works
 
-One structured Responses API call to gpt-6.1-terra with compact triage_v4 produces classification, priority, reported confidence, entities, urgency, semantic signals and a two-to-three-sentence summary. Strict schema and contextual validation reject unsupported shapes and evidence that is not an exact substring. These checks do not prove semantic truth. Confidence is self-reported, not calibrated. Python owns queues, timestamps, money arithmetic and escalation; customer text cannot directly choose a destination.
+The webhook saves the request. Celery calls the model. Python routes the result. PostgreSQL stores the original message, each attempt and the final JSON record. Redis carries the queued work. The browser tester uses the same webhook and polls for completion.
 
-Bug reports and incidents map to Engineering, features to Product, billing to Billing and technical questions to Technical Support. Any escalation overrides the destination with Human Review while retaining the standard queue. Reasons include confidence below 0.70, active or unresolved outages, inconsistent analysis, insufficient information, conflicting intents and unresolved billing comparisons. Comparable positive USD overcharges strictly above $500 escalate. Decimal arithmetic avoids floating-point errors. The synthetic dollar/monthly invoice assumptions are exported explicitly; incompatible or unknown bases require review. Priority and escalation remain independent.
+An idempotency key prevents duplicate submissions for the same caller. Work is published after the database commit. The worker claims an attempt before calling the model, without keeping a database transaction open during inference. It then saves the analysis, routing decision and completion together. Exports read that saved result.
 
-The pipeline owns bounded transient retries; SDK retries are disabled. Invalid output, refusal and permanent errors remain explicit processing failures rather than invented low-confidence results. Publication errors remain visible for operator recovery. Attempt usage and unknown costs are retained. The separate durable benchmark runner reserves spend before calls and preserves uncertain reservations across phases. Accounted spend is not provider billing.
+## Model and policy
 
-Authenticated sessions require CSRF; external ingestion uses a bearer token. This assessment is a single organization application, not a tenant isolation demonstration. Customer/model text is escaped. Secrets belong in environment configuration, never exports.
+One gpt-6.1-terra call uses the compact triage_v4 prompt. It returns category, priority, confidence, entities, urgency, signals and a short summary. A strict schema checks the structure. Python checks that supporting excerpts occur in the message. Neither check proves the interpretation is correct. Confidence is the model's own estimate.
 
-Evidence has distinct boundaries: real HTTP/Postgres/Redis/Celery acceptance uses synthetic inference, while final provider benchmark records demonstrate real model behavior separately. No combined real-model queued demonstration or recording is claimed. The 50 reused cases are comparison evidence, not a fresh holdout. Declared scorer matches are category 47/50, priority 40/50, exact entities 44/50 and full routing 41/50. For the required five, category/priority/routing match 5/5, exact entity sets 1/5. These labels are not absolute truth; independent full summary adjudication remains pending.
+Python owns routing and money arithmetic. Bugs and incidents go to Engineering, features to Product, billing to Billing and technical questions to Technical Support. Keeping these rules outside the prompt makes them explicit and testable.
 
-At production scale I would add a transactional outbox, worker lease/crash recovery, monitoring with queue-age alerts, calibrated review thresholds, explicit tenant boundaries and provider-level budget reconciliation. Latency and cost need measured concurrency limits rather than additional model steps by default. Another week would prioritize summary adjudication and a verified operational demo, followed by audited human corrections and useful queue filters. Those optional features do not block the core submission package.
+Any escalation sends the result to Human Review while preserving its normal queue. Reasons include confidence below 0.70, active or unresolved outages, contradictory analysis, insufficient information, conflicting intents and billing amounts that cannot safely be compared. A comparable positive USD overcharge above $500 also triggers review. Python uses Decimal arithmetic. The invoice sample's $260 difference relies on disclosed dollar and monthly-charge assumptions. Priority alone does not trigger escalation.
+
+## Failures and state
+
+The pipeline retries transient provider failures at most twice after the first attempt. SDK retries are disabled so only one layer controls retries. Refusals, invalid outputs and permanent errors remain visible failures. They do not become invented low-confidence results. Failed queue publication stays visible for operator recovery.
+
+Attempts retain usage and unknown costs. The benchmark runner reserves money before calls and carries uncertain reservations across phases. This conservative accounting is separate from actual provider billing.
+
+Browser access requires a login and CSRF protection. External ingestion uses a bearer token. Secrets stay in environment configuration. This is a single-organization assessment app.
+
+## Evidence and limits
+
+Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A combined real-model queued demo, recording and clean image build remain unverified. Root storage is nearly full.
+
+On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [final evidence](../evidence/final-v4/README.md) for provenance and costs.
+
+## Production and another week
+
+For production, I would add reliable database-to-queue publication, worker crash recovery, queue-age alerts, tenant isolation and provider billing reconciliation. I would measure concurrency limits and review thresholds before adding model calls.
+
+Another week would first go to summary review and a verified operational demo. Audited human corrections and queue filters would follow; they are optional for this submission.
