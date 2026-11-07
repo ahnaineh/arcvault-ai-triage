@@ -76,3 +76,8 @@ Loading replays stable principal-scoped keys; it never republishes existing requ
 Export emits standard persisted records in assessment order only when all five
 are complete and match the supplied inputs. Check exit status before using the file.
 Live provider and queued acceptance remain pending; see docs/evidence/m2-live.md.
+
+Compose passes raw `POSTGRES_PASSWORD` separately to PostgreSQL and Django, so
+URL delimiters in passwords are preserved. Django also accepts `POSTGRES_USER`,
+`POSTGRES_DB`, `POSTGRES_HOST`, and `POSTGRES_PORT`. A nonempty `DATABASE_URL`
+overrides these settings for local development/tests; URL passwords must be encoded.

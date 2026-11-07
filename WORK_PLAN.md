@@ -225,3 +225,11 @@ resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django c
 migration drift check, dry-run pending=5 and whitespace check clean. See
  docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
 historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.
+
+### GitHub missed-comment remediation
+
+Read `/tmp/pr-audit/audit.md`, fetched all five original review bodies, and compared
+current source at main 2b42ec3039df34b2a6d95abddac7fe1d33d4043a. This focused branch
+owns Celery startup, billing precision/evidence, DB credentials, and tester timeout.
+Acceptance/provider and eval findings remain assigned to other scopes; no changes
+or comment replies/resolutions are made here. See docs/evidence/pr-comment-remediation.md.
