@@ -77,3 +77,23 @@ def test_preflight(setup, change):
     with pytest.raises(ValueError):
         runner.run(cases, provider, execute=True)
     provider.assert_not_called()
+
+
+def test_resume_rejects_changed_config(setup):
+    runner, cases, provider = setup
+    runner.run(cases, provider, execute=True)
+    runner.config['budget'] = '2'
+    with pytest.raises(ValueError, match='configuration mismatch'):
+        runner.run(cases, provider, execute=True)
+    assert provider.call_count == 5
+
+
+def test_reservation_exists_before_call(setup):
+    runner, cases, provider = setup
+    original = provider.side_effect
+    def invoke(message, config):
+        events = [json.loads(line) for line in runner.path.read_text().splitlines()]
+        assert events[-1]['state'] == 'reserved'
+        return original(message, config)
+    provider.side_effect = invoke
+    runner.run(cases, provider, execute=True)

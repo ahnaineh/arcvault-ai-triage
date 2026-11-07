@@ -109,11 +109,11 @@ class BoundedOpenAIAdapter:
             raise ValueError('Adapter configuration mismatch')
         if self.verify_input_bound == self.maximum_input_bound:
             from decimal import Decimal
- 
+
             from apps.triage.acceptance import money
-            if (money(config['input_price_per_million']) < 2 or
-                    money(config['output_price_per_million']) < Decimal('7.5')):
-                raise ValueError('Maximum context requires long-context prices')
+            if (money(config['input_price_per_million']) < Decimal(11) or
+                    money(config['output_price_per_million']) < Decimal('16.5')):
+                raise ValueError('Maximum context requires conservative premium prices')
         for message in messages:
             if self.verify_input_bound(
                 model=self.provider.model, instructions=self.provider.prompt,

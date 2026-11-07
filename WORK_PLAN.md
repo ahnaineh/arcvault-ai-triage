@@ -216,3 +216,12 @@ https://developers.openai.com/api/docs/models/gpt-4.1-mini
 No live/account/schema acceptance established. Full locked pytest: 72 passed,
 15 PostgreSQL connection setup errors. Ruff and Django check passed; dry run
 reported five pending. Remaining acceptance audit/tests and PR body unfinished.
+
+## PR8 integration repair
+Integrated reviewed 797d267 into actual PR8 ancestry in prepared checkout; other
+worktrees and stray remote branch preserved. Added six regression cases for premium
+fallback floor, finite prices, model/context bounds, reservation ordering and immutable
+resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django check,
+migration drift check, dry-run pending=5 and whitespace check clean. See
+ docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
+historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.

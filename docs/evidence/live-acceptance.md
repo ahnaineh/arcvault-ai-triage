@@ -70,3 +70,40 @@ pending=5, using /tmp environment/cache. No live inference or credential reads.
 Surviving evidence still does not establish historical input bound and original
 output maximum: subtotal $0.0006268 plus five unknown, total actual spend unknown.
 No historical zero or speculative reservation claimed.
+
+## PR8 repair verification — 2026-11-07
+Supersedes the partial offline checkpoints above. No inference or credentials used.
+Full locked offline suite: **93 passed**, six missing-staticfiles warnings, explicitly
+SQLite (`DATABASE_URL=sqlite:////tmp/arcvault-pr8-repair.sqlite`). No PostgreSQL,
+Redis/Celery, account access or live schema acceptance is claimed.
+Django check and migration drift check clean; dry-run pending=5; diff whitespace clean.
+UV_CACHE_DIR=/tmp/arcvault-uv and
+UV_PROJECT_ENVIRONMENT=/tmp/arcvault-pr8-repair-venv used for every uv invocation;
+DJANGO_SECRET_KEY=offline-test-key (nonsecret).
+
+Fallback price floor is now $11/M input and $16.50/M output: conservative
+long-context input $2 multiplied by maximum cache-write factor 2.5, Fast factor 2,
+and regional factor 1.1; output $7.50 * 2 * 1.1. Sources checked today:
+https://developers.openai.com/api/docs/pricing and
+https://developers.openai.com/api/docs/models/gpt-6.1-terra .
+No cache discount assumed. Full-context reservation at cap 4096 is $11.617584
+per call, $58.087920 for five. $3 rejects; $83 can accommodate this reservation
+subject to valid historical reconciliation. Configuration changes fail closed;
+completed exports resume without repeat calls; unknown reservations remain charged.
+
+Historical audit: retained script /tmp/arcvault-live.py loops Request.objects.all()
+once, dispatch suppressed, then exports before ledger capture. It does not filter
+principal or assert exactly five database rows, nor embed the selected model.
+The committed contemporaneous report says five calls on gpt-4.1-mini-2025-04-14;
+the retained probe independently proves that model only for the probe. Destroyed
+sample DB/config prevents independent count/model proof. Consequently no historical
+reconciliation configuration is manufactured. Actual five-call cost stays unknown;
+known subtotal remains $0.0006268, old calls are never relabeled Terra.
+Conditional standard-price ceiling, IF five mini calls, is
+5*(1047576*0.40 + 32768*1.60)/1000000 = $2.357296;
+plus known subtotal = $2.3579228. Context and output maxima and standard prices:
+https://developers.openai.com/api/docs/models/gpt-4.1-mini . This deliberately
+counts shared context/output twice. It is not a proven all-tier historical reserve:
+original service tier/config and independent model/count evidence are missing.
+Paid execution remains gated on that evidence or an explicitly authorized larger
+historical reservation. Five real persisted outputs/manual review remain unfulfilled.
