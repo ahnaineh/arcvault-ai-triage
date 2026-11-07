@@ -498,3 +498,12 @@ PR14 comments: discussion_r4502097330 comparison dry-run accounting fixed previo
 - [ ] Optional: audited human correction and queue filters; not submission gates.
 
 Submission prose review: shortened AI lessons, removed internal agent instructions from reviewer setup, and distinguished model-call costs from authorization language. Architecture and links checked directly; clean build and combined live-model queue recording remain unverified.
+
+## Isolated real-provider demo startup — 2026-11-07
+Actual Dockerfile/locked image build and Compose startup passed at b4368bbc.
+Owned project `arcvault-demo-20261107`, localhost:18407; fresh PostgreSQL,
+Redis AOF volume, migrations, health, worker ping and authenticated tester/CSRF
+verified. Terra / triage_v4; no inference or sample loading performed. Runtime
+commands, startup log, resource IDs and snapshots: `/tmp/arcvault-demo-20261107`.
+Credentials remain outside repository. Services intentionally left running.
+Recording and five serial real webhook submissions remain for parent operator.
