@@ -1,0 +1,9 @@
+# Provider and prompt contract
+
+`OpenAIProvider(client=client, model=identifier, timeout=30).analyze(message)` returns `ProviderResult`: context-validated Analysis, requested/returned model, prompt/schema versions and SHA256 hashes, monotonic latency in ms, and actual SDK usage dictionary (None means unknown, never zero). Inject an OpenAI SDK client; construction does not read credentials. The pipeline owns transactions, persistence, policy `decide(analysis)`, retry budget and pricing. Preserve usage from failed envelopes via ProviderError. No tools, browsing or repair call is used.
+
+ProviderError exposes sanitized code, retryable, latency_ms and usage. Codes: provider_transient (connection/timeout, rate limit, HTTP 408/5xx); provider_auth (401/403); provider_config (other HTTP errors or invalid model/timeout configuration); provider_refusal; provider_incomplete; provider_invalid (malformed JSON, absent/multiple text outputs, invalid structure or contextual evidence). Only transient is automatically retryable. SDK retries are disabled. Do not log exception causes or raw provider responses.
+
+triage_v1 separates trusted instructions from the raw user message and extracts all model-owned fields in one strict-schema request. Rubrics distinguish broad current outages from individual bugs, impact from expressed urgency, and ambiguous routing from mere topic count. Evidence remains exact; monetary basis stays unknown unless explicit. Confidence is not calibrated. Summary faithfulness still requires evaluation: exact excerpts and valid JSON do not establish semantic truth.
+
+Official specification consulted 2026-11-07: [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). It documents Responses text.format JSON schema and refusal handling. No model recommendation or live support claim is made before current model/pricing verification. Improvements require development-set evidence; locked tests must remain untouched.
