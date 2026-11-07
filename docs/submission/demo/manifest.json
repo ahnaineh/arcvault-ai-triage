@@ -1,0 +1,27 @@
+{
+  "application_commit": "b4368bbc3ab933d45137fa4195350623a57d4f18",
+  "model": "gpt-6.1-terra",
+  "prompt": "triage_v4",
+  "requests": 5,
+  "provider_attempts": 6,
+  "completed": 5,
+  "unknown_usage_attempts": 1,
+  "input_tokens": 4793,
+  "output_tokens": 1106,
+  "new_known_usage_estimate": "0.0709720",
+  "new_uncertain_reservation": "11.617584",
+  "total_accounted": "51.67980774",
+  "budget": "83",
+  "actual_billing": null,
+  "original_videos": [
+    {
+      "file": "page@7e8b9919213f917fc932a694380da85a.webm",
+      "sha256": "45226bb64d0a246fd9bc38a832119efbd51ecaa0afddd68706fe88132859b48a"
+    },
+    {
+      "file": "page@364e7dda71063d48ee631e8feb857ac7.webm",
+      "sha256": "bd03a976ea291f88623dddb4c084fbdf0df7488d340209491063c8885ca3ae6e"
+    }
+  ],
+  "published_video_sha256": "b5ad4d5f60f66ce43f94adfbf66f2847a03ad36c9dca9144ddb17cf0b44e5586"
+}

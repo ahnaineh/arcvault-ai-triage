@@ -6,15 +6,14 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-Current integration: PR14 merged at a9c0d640987e13813b93dc612543756f3aee4a48, including PR15 test consolidation. Source-of-truth evidence: docs/evidence/final-v4/README.md. Prompt tuning is closed by user request.
+Application checkpoint: b4368bbc3ab933d45137fa4195350623a57d4f18. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
 
-- Phase: M5 submission assembly; application/runtime/evaluation implemented, final end-to-end demonstration and clean-start verification remain.
-- Deadline: November 8, 2026.
-- Budget: $83; conservative accounted total $39.99125174 includes retained uncertain/failed reservations. Actual billed cost unknown.
-- Required five: final live JSON saved; category/priority/routing5/5, exact entity sets1/5; no perfect-quality claim.
-- Remaining: clean-image build, combined real-model queue demo (requires renewed inference authorization), recording or declared live interview demo, final artifact/access/tag checks. Architecture, prompt rationale, AI lessons and draft handoff are packaged in docs/submission/.
-- Optional human correction/filter polish deferred. Sending the recruiter email requires explicit authorization.
-- Earlier chronological checkpoints below are historical; this checkpoint supersedes stale pending claims.
+- Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and captioned recording. See [demo evidence](docs/submission/demo/README.md).
+- All five completed; one transient provider failure retried successfully. No duplicate request was submitted.
+- Budget: $83; conservative accounted total $51.67980774 includes retained uncertainties. Actual billed cost unknown.
+- Remaining handoff: user makes repository public and verifies signed-out access, then sends submission. No email sent.
+- Benchmark limitations remain: reused cases and pending independent summary review. Optional human correction/filter polish is deferred.
+- Earlier checkpoints below are historical; this checkpoint supersedes stale pending claims.
 
 ## Status and evidence rules
 
