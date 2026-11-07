@@ -43,3 +43,28 @@ Earlier development runs and raw evidence are available here:
 - [V3 model comparison](../evidence/comparison-v3/README.md)
 - [V4 results and provenance](../evidence/final-v4/README.md)
 - [V4 per-case scores](../evidence/final-v4/comparison.score.json)
+
+## Offline follow-up (issues 26 and 27)
+
+The [derived routing report](../evidence/review-followups/routing-report.json)
+compares saved V3 and V4 decisions case by case. Both have identical final
+destinations on all 50 cases: zero missed escalations among 23 expected-review
+cases, four unnecessary escalations among 27 expected-auto cases, and zero wrong
+destinations among 23 actual automatic decisions. Thus V4 did not improve final
+queue safety on this dataset. The 44/50 versus 41/50 full-routing scores also
+compare standard queues and reasons; they must not be described as three extra
+wrong final queues. Category and signal matches each regress from 49 to 47.
+
+The chosen objective is compact input usage while retaining observed final-queue
+safety, accepting worse aggregate category/signal/full-routing matching. This is
+a tradeoff, not evidence V4 is universally superior. Recorded configuration rates
+are USD 11/million input and USD 16.5/million output tokens. At those configured
+rates, 14,050 fewer input and 54 fewer output tokens imply a USD 0.155441
+usage estimate reduction; this is not a provider invoice or verified current price.
+
+[Assistant review and human sheet](../evidence/review-followups/summary-review-sheet.json)
+contains all 50 sources, saved summaries, required/forbidden facts, per-case
+assistant verdicts and blank human fields. This is assistant review, not independent
+human adjudication. Assessment-01 needs its account URL retained; development-20
+adds an inferred consequence. Historical scorer results and review gates remain
+unchanged. Reproduce the derived artifacts with `python3 -m evals.review_followups`.

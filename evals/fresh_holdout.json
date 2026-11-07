@@ -1,0 +1,138 @@
+[
+  {
+    "id": "fresh-holdout-01",
+    "split": "fresh_holdout",
+    "message": "How can I transfer ownership when a colleague leaves our company?",
+    "acceptable_categories": [
+      "General Inquiry"
+    ],
+    "expected_final_destination": "Customer Support",
+    "summary_required_facts": [
+      "How can I transfer ownership when a colleague leaves our company?"
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-02",
+    "split": "fresh_holdout",
+    "message": "Please offer keyboard shortcuts for rotating scanned pages.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "expected_final_destination": "Product",
+    "summary_required_facts": [
+      "Please offer keyboard shortcuts for rotating scanned pages."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-03",
+    "split": "fresh_holdout",
+    "message": "The PDF rotation control saves the page upside down on my tablet.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "expected_final_destination": "Engineering",
+    "summary_required_facts": [
+      "The PDF rotation control saves the page upside down on my tablet."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-04",
+    "split": "fresh_holdout",
+    "message": "Our CAD 432 invoice should be CAD 400 for June; please investigate.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "expected_final_destination": "Billing",
+    "summary_required_facts": [
+      "Our CAD 432 invoice should be CAD 400 for June; please investigate."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-05",
+    "split": "fresh_holdout",
+    "message": "The entire Lisbon office cannot access any archive right now.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "expected_final_destination": "Human Review",
+    "summary_required_facts": [
+      "The entire Lisbon office cannot access any archive right now."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-06",
+    "split": "fresh_holdout",
+    "message": "Nothing makes sense here.",
+    "acceptable_categories": [
+      "General Inquiry"
+    ],
+    "expected_final_destination": "Human Review",
+    "summary_required_facts": [
+      "Nothing makes sense here."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-07",
+    "split": "fresh_holdout",
+    "message": "Please refund the renewal and add a screen reader mode; both matter equally.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "expected_final_destination": "Human Review",
+    "summary_required_facts": [
+      "Please refund the renewal and add a screen reader mode; both matter equally."
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  },
+  {
+    "id": "fresh-holdout-08",
+    "split": "fresh_holdout",
+    "message": "The office outage ended yesterday. How do I obtain the incident timeline?",
+    "acceptable_categories": [
+      "General Inquiry"
+    ],
+    "expected_final_destination": "Customer Support",
+    "summary_required_facts": [
+      "The office outage ended yesterday. How do I obtain the incident timeline?"
+    ],
+    "summary_forbidden_facts": [
+      "Unsupported diagnosis, remediation, promises or verified attribution"
+    ],
+    "status": "frozen_unrun",
+    "label_status": "assistant_authored_requires_independent_validation"
+  }
+]

@@ -1,0 +1,1278 @@
+{
+  "provenance": {
+    "docs/evidence/comparison-v3/gpt-6.1-terra/predictions.json": "fbdd400db75fcf151e79ad09a90720029e9deaa7334d9c6b2c4d24ba228eb43e",
+    "docs/evidence/final-v4/comparison.predictions.json": "83bdcf2324652273588c8c9bae1b6d16258f9645559b15a6291d0f6fe70d3172",
+    "evals/dataset.json": "22c213e9f7d9719e9b47892126673699026f23ac3a5c77afc44d5060c13a2d95"
+  },
+  "cases": [
+    {
+      "id": "assessment-01",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "assessment-02",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "assessment-03",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "assessment-04",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "assessment-05",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-01",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-02",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-03",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-04",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-05",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "outage_scope_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "outage_scope_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "active_outage",
+          "inconsistent_analysis",
+          "outage_scope_unresolved",
+          "insufficient_information"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-06",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-07",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-08",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_overcharge"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-09",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-10",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-11",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-12",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-13",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-14",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-15",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-16",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "insufficient_information"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "insufficient_information"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "insufficient_information"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-17",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved",
+          "conflicting_intents"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved",
+          "conflicting_intents"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved",
+          "conflicting_intents"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-18",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-19",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-20",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-21",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-22",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-23",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-24",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "development-25",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-01",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-02",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-03",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-04",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-05",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "insufficient_information"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-06",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-07",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-08",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-09",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "outage_scope_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "outage_scope_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "outage_scope_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "validation-10",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "conflicting_intents"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-01",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-02",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "insufficient_information"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "active_outage",
+          "inconsistent_analysis",
+          "insufficient_information"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-03",
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-04",
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-05",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "v4": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-06",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-07",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-08",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-09",
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "insufficient_information"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "insufficient_information"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "insufficient_information"
+        ]
+      },
+      "same_final_destination": true
+    },
+    {
+      "id": "test-10",
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      },
+      "v3": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      },
+      "v4": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      },
+      "same_final_destination": true
+    }
+  ]
+}
