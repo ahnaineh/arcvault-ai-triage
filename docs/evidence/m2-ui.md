@@ -21,3 +21,17 @@ Results: 72 tests passed; Ruff clean; Django zero issues; no migration changes. 
 Screenshot attempt: existing google-chrome headless against actual Django-rendered fixture HTML exited 133 with crashpad `setsockopt: Operation not permitted (1)`. No screenshots produced; no visual/browser interaction acceptance claimed. No browser installation attempted. JS polling remains in need of browser interaction validation.
 
 Remaining: actual queued Redis/Celery/PostgreSQL integration, live model outputs, clean container build, benchmark, screenshots/recording. Backend exposes no manual retry endpoint, so UI explicitly reports that limitation and offers no fake retry action. Review is read-only. No pipeline/policy/provider changes.
+
+## PR 6 lifecycle correction and re-verification
+Reviewed actual branch pr-6 at c61e53913192c86eae039413f352361ff2dd498e (uv.lock, config and apps application packages present). The previous independent reviewer stayed on dd2c7e4 and skipped execution; that review does not verify this UI.
+
+Fixed permanent stopped flag after pagehide: pageshow restores intentional Resume, pagehide aborts fetch and cancels the polling wait, generation guards discard stale polling work, and a single-flight guard prevents duplicate submissions/pollers. Payload and idempotency key remain unchanged after uncertain delivery.
+
+Executed on the corrected branch:
+- UV_CACHE_DIR=/tmp/arcvault-uv UV_PROJECT_ENVIRONMENT=/tmp/arcvault-ui-venv uv sync --locked: passed.
+- node tests/js/tester.cjs: passed executable DOM/fetch harness; Back lifecycle recovery, uncertain delivery key retention, duplicate Resume suppression and known-request status-only resume.
+- DJANGO_SECRET_KEY=test DATABASE_URL=sqlite:///:memory: /tmp/arcvault-ui-venv/bin/pytest -q: 72 passed, five missing collected-static warnings. Independently reran real session/client CSRF POST 202, mocked provider processing, detail/export, missing CSRF and hostile-content escaping.
+- /tmp/arcvault-ui-venv/bin/ruff check .: passed.
+- Same environment python manage.py check: zero issues; makemigrations --check --dry-run: no changes.
+
+Browser probe: sandbox Chrome exited 133, crashpad setsockopt Operation not permitted (1). Escalated installed Chrome --headless --disable-gpu --dump-dom about:blank succeeded (GPU vaInitialize warning). Browser is therefore available outside sandbox, but interactive fixture-server acceptance has NOT been completed. No screenshots or browser POST/progress/error/Back/desktop/mobile acceptance claimed. This remains a required gate before merge. No live model calls. Existing live/provider/queue/PostgreSQL/container/benchmark gates remain pending.
