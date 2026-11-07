@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-07T13:27:29.932017+00:00",
+  "code_sha": "a79bc2a48d24c6c29d73473db291637585a4d540",
+  "sdk_calls_attempted": 1,
+  "sdk_retries": 0,
+  "completed": 0,
+  "actual_cost": null,
+  "new_unknown_reservation": "11.617584",
+  "historical_unknown_reservation": "6.223261440000001",
+  "five_call_preflight_total": "64.311181440000001",
+  "runtime_path": "/home/ahnaineh/.t3/worktrees/Aspire/t3-dad284f0/.runtime/acceptance-terra-20261107-a79bc2a4",
+  "reasoning": "none",
+  "output_cap": 4096
+}

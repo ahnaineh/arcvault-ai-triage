@@ -1,0 +1,17 @@
+{
+  "model": "gpt-6.1-terra",
+  "official_price_source": "https://developers.openai.com/api/docs/pricing",
+  "input_token_bound": 1050000,
+  "output_token_cap": 4096,
+  "input_price_per_million": "11",
+  "output_price_per_million": "16.5",
+  "timeout": 60,
+  "budget": "83",
+  "project_budget": "83",
+  "reconciled_history": {
+    "known_cost": "0",
+    "unknown_reservation": "6.223261440000001",
+    "evidence": "User reports dashboard 0 used, six requests, rounded 5.6K input; output absent. Zero not interpreted as cost.",
+    "provenance": "User report 2026-11-07 plus recorded mini model assumption; six full-context/output reservations at standard mini prices with conservative 2.2x premium margin. Actual cost unknown."
+  }
+}
