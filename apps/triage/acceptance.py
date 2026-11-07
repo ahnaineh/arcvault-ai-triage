@@ -5,11 +5,11 @@ import json
 import os
 import tempfile
 import uuid
-from dataclasses import asdict
+from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
 
-from apps.triage.schemas import validate_analysis
+from apps.triage.export import build_record
 
 
 def digest(value):
@@ -102,6 +102,7 @@ class Runner:
             if identity in complete:
                 continue
             request_id = str(uuid.uuid4())
+            received_at = datetime.now(UTC).isoformat()
             self.append({'state': 'reserved', 'request_id': request_id, 'identity': identity,
                              'sample_id': case['sample_id'], 'config_hash': config_hash,
                              'model': cfg['model'], 'cap': cfg['output_token_cap'],
@@ -110,9 +111,13 @@ class Runner:
                 result = provider(case['message'], cfg)
                 self.append({'state': 'provider_returned', 'request_id': request_id,
                              'usage': result.usage, 'model': result.model})
-                validate_analysis(result.analysis.model_dump(), case['message'])
-                payload = asdict(result)
-                payload['analysis'] = result.analysis.model_dump()
+                completed_at = datetime.now(UTC).isoformat()
+                payload = build_record(
+                    request={'id': request_id, 'source': case['source'],
+                             'message': case['message'], 'received_at': received_at},
+                    analysis=result.analysis, output=result, completed_at=completed_at,
+                    attempt_id=request_id, attempts=[{'id': request_id, 'error': None,
+                        'latency_ms': result.latency_ms, 'usage': result.usage}])
                 self.append({'state': 'completed', 'request_id': request_id, 'identity': identity, 'result': payload})
                 complete[identity] = payload
             except Exception as exc:

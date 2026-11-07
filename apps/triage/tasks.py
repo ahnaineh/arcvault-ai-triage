@@ -5,6 +5,7 @@ from django.conf import settings
 from django.db import transaction
 from django.utils import timezone
 
+from .export import build_record
 from .models import Attempt, Request, Result
 from .policy import decide
 from .schemas import validate_analysis
@@ -33,7 +34,7 @@ def process(request_id):
     try:
         output = get_provider().analyze(row.message)
         analysis = validate_analysis(output.analysis.model_dump(mode='json'), row.message)
-        decision = decide(analysis)
+        decide(analysis)
     except Exception as exc:  # noqa: BLE001 - sanitize all processing failures
         code = getattr(exc, 'code', '')
         safe = code if code in {'provider_transient', 'provider_auth', 'provider_config', 'provider_refusal', 'provider_incomplete', 'provider_invalid'} else 'processing_failed'
@@ -60,14 +61,10 @@ def process(request_id):
         attempt.usage = output.usage
         attempt.save()
         attempts = list(row.attempts.order_by('pk').values('id', 'error', 'latency_ms', 'usage'))
-        result = {'schema_version': '1.0', 'request': {'id': str(row.pk), 'source': row.source,
+        result = build_record(request={'id': str(row.pk), 'source': row.source,
             'message': row.message, 'received_at': row.received_at.isoformat()},
-            'analysis': analysis.model_dump(mode='json'), 'decision': decision,
-            'summary': ' '.join(analysis.summary_sentences), 'provenance': {
-                'model': output.model, 'prompt_version': output.prompt_version,
-                'schema_version': output.schema_version, 'policy_version': '1.0',
-                'completed_at': attempt.completed_at.isoformat(), 'accepted_attempt_id': attempt.pk},
-            'processing': {'attempts': attempts, 'estimated_cost': None, 'unknown_cost': True}, 'review': None}
+            analysis=analysis, output=output, completed_at=attempt.completed_at.isoformat(),
+            attempt_id=attempt.pk, attempts=attempts)
         Result.objects.create(request=row, attempt=attempt, record=result)
         row.status = 'completed'
         row.error = None

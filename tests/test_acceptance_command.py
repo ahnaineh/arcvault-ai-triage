@@ -63,6 +63,20 @@ def test_execute_order_artifacts_resume(command):
     run()
     output = json.loads(__import__('pathlib').Path('runtime/assessment_outputs.json').read_text())
     assert [item['analysis']['core_issue'] for item in output] == list(map(str, range(5)))
+    from apps.intake.sample_data import samples
+    for item, case in zip(output, samples(), strict=True):
+        assert item['request']['message'] == case['message']
+        assert item['request']['source'] == case['source']
+        assert item['request']['id']
+        assert item['request']['received_at']
+        assert item['summary'] == 'One. Two.'
+        assert item['analysis']['entities'] == []
+        assert item['decision']['human_escalation'] is False
+        assert item['decision']['escalation_reasons'] == []
+        assert item['decision']['standard_destination'] == item['decision']['final_destination']
+        assert item['provenance']['policy_version'] == '1.0'
+        assert item['provenance']['prompt_version'] == 'triage_v1'
+        assert item['processing']['attempts'][0]['usage']['total_tokens'] == 30
     assert len([e for e in events() if e['state'] == 'completed']) == 5
     run()
     assert client.responses.create.call_count == 5

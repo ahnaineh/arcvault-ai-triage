@@ -237,3 +237,6 @@ live schema acceptance and PostgreSQL/Redis/Celery gates remain outstanding.
 PR9 finish: command SDK tests, failure accounting and metadata limits implemented.
 Offline proof: docs/evidence/pr9-finish.md. Account/schema/queue acceptance pending.
 Historical planning reservation remains conditional, not actual cost.
+
+PR9 export repair: shared application record builder wired into durable acceptance
+journal. Offline suite: 107 passed. Live provider and DB acceptance remain pending.
