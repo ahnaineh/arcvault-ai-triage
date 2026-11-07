@@ -1,0 +1,1947 @@
+[
+  {
+    "id": "assessment-01",
+    "split": "assessment",
+    "scenario_family": "assessment-0",
+    "source": "Email",
+    "message": "Hi, I tried logging in this morning and keep getting a 403 error. My account is arcvault.io/user/jsmith. This started after your update last Tuesday.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Hi, I tried logging in this morning and keep getting a 403 error. My account is arcvault.io/user/jsmith. This started after your update last Tuesday."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "assessment-02",
+    "split": "assessment",
+    "scenario_family": "assessment-1",
+    "source": "Web Form",
+    "message": "We'd love to see a bulk export feature for our audit logs. We're a compliance-heavy org and this would save us hours every month.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "We'd love to see a bulk export feature for our audit logs. We're a compliance-heavy org and this would save us hours every month."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "assessment-03",
+    "split": "assessment",
+    "scenario_family": "assessment-2",
+    "source": "Support Portal",
+    "message": "Invoice #8821 shows a charge of $1,240 but our contract rate is $980/month. Can someone look into this?",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Invoice #8821 shows a charge of $1,240 but our contract rate is $980/month. Can someone look into this?"
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "assessment-04",
+    "split": "assessment",
+    "scenario_family": "assessment-3",
+    "source": "Email",
+    "message": "I'm not sure if this is the right place to ask, but is there a way to set up SSO with Okta? We're evaluating switching our auth provider.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "I'm not sure if this is the right place to ask, but is there a way to set up SSO with Okta? We're evaluating switching our auth provider."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "assessment-05",
+    "split": "assessment",
+    "scenario_family": "assessment-4",
+    "source": "Web Form",
+    "message": "Your dashboard stopped loading for us around 2pm EST. Checked our end — it's definitely on yours. Multiple users affected.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "Your dashboard stopped loading for us around 2pm EST. Checked our end — it's definitely on yours. Multiple users affected."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-06",
+    "split": "development",
+    "scenario_family": "development-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account DEVELOPMENT-1 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-1"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account DEVELOPMENT-1 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-07",
+    "split": "development",
+    "scenario_family": "development-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project DEVELOPMENT-2. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-2"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project DEVELOPMENT-2. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-08",
+    "split": "development",
+    "scenario_family": "development-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice DEVELOPMENT-3; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-3"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice DEVELOPMENT-3; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-09",
+    "split": "development",
+    "scenario_family": "development-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration DEVELOPMENT-4? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-4"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration DEVELOPMENT-4? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-10",
+    "split": "development",
+    "scenario_family": "development-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace DEVELOPMENT-5 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-5"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace DEVELOPMENT-5 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-11",
+    "split": "development",
+    "scenario_family": "development-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account DEVELOPMENT-6 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-6"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account DEVELOPMENT-6 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-12",
+    "split": "development",
+    "scenario_family": "development-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project DEVELOPMENT-7. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-7"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project DEVELOPMENT-7. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-13",
+    "split": "development",
+    "scenario_family": "development-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice DEVELOPMENT-8; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-8"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice DEVELOPMENT-8; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-14",
+    "split": "development",
+    "scenario_family": "development-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration DEVELOPMENT-9? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-9"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration DEVELOPMENT-9? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-15",
+    "split": "development",
+    "scenario_family": "development-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace DEVELOPMENT-10 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-10"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace DEVELOPMENT-10 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-16",
+    "split": "development",
+    "scenario_family": "development-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account DEVELOPMENT-11 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-11"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account DEVELOPMENT-11 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-17",
+    "split": "development",
+    "scenario_family": "development-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project DEVELOPMENT-12. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-12"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project DEVELOPMENT-12. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-18",
+    "split": "development",
+    "scenario_family": "development-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice DEVELOPMENT-13; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-13"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice DEVELOPMENT-13; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-19",
+    "split": "development",
+    "scenario_family": "development-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration DEVELOPMENT-14? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-14"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration DEVELOPMENT-14? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-20",
+    "split": "development",
+    "scenario_family": "development-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace DEVELOPMENT-15 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-15"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace DEVELOPMENT-15 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-21",
+    "split": "development",
+    "scenario_family": "development-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account DEVELOPMENT-16 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-16"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account DEVELOPMENT-16 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-22",
+    "split": "development",
+    "scenario_family": "development-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project DEVELOPMENT-17. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-17"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project DEVELOPMENT-17. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-23",
+    "split": "development",
+    "scenario_family": "development-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice DEVELOPMENT-18; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-18"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice DEVELOPMENT-18; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-24",
+    "split": "development",
+    "scenario_family": "development-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration DEVELOPMENT-19? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-19"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration DEVELOPMENT-19? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-25",
+    "split": "development",
+    "scenario_family": "development-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace DEVELOPMENT-20 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-20"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace DEVELOPMENT-20 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-26",
+    "split": "development",
+    "scenario_family": "development-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account DEVELOPMENT-21 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-21"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account DEVELOPMENT-21 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-27",
+    "split": "development",
+    "scenario_family": "development-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project DEVELOPMENT-22. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-22"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project DEVELOPMENT-22. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-28",
+    "split": "development",
+    "scenario_family": "development-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice DEVELOPMENT-23; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-23"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice DEVELOPMENT-23; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-29",
+    "split": "development",
+    "scenario_family": "development-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration DEVELOPMENT-24? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-24"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration DEVELOPMENT-24? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "development-30",
+    "split": "development",
+    "scenario_family": "development-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace DEVELOPMENT-25 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "DEVELOPMENT-25"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace DEVELOPMENT-25 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-31",
+    "split": "validation",
+    "scenario_family": "validation-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account VALIDATION-1 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-1"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account VALIDATION-1 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-32",
+    "split": "validation",
+    "scenario_family": "validation-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project VALIDATION-2. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-2"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project VALIDATION-2. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-33",
+    "split": "validation",
+    "scenario_family": "validation-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice VALIDATION-3; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-3"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice VALIDATION-3; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-34",
+    "split": "validation",
+    "scenario_family": "validation-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration VALIDATION-4? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-4"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration VALIDATION-4? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-35",
+    "split": "validation",
+    "scenario_family": "validation-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace VALIDATION-5 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-5"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace VALIDATION-5 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-36",
+    "split": "validation",
+    "scenario_family": "validation-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account VALIDATION-6 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-6"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account VALIDATION-6 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-37",
+    "split": "validation",
+    "scenario_family": "validation-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project VALIDATION-7. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-7"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project VALIDATION-7. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-38",
+    "split": "validation",
+    "scenario_family": "validation-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice VALIDATION-8; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-8"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice VALIDATION-8; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-39",
+    "split": "validation",
+    "scenario_family": "validation-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration VALIDATION-9? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-9"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration VALIDATION-9? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "validation-40",
+    "split": "validation",
+    "scenario_family": "validation-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace VALIDATION-10 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "VALIDATION-10"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace VALIDATION-10 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-41",
+    "split": "test",
+    "scenario_family": "test-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account TEST-1 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-1"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account TEST-1 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-42",
+    "split": "test",
+    "scenario_family": "test-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project TEST-2. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-2"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project TEST-2. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-43",
+    "split": "test",
+    "scenario_family": "test-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice TEST-3; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-3"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice TEST-3; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-44",
+    "split": "test",
+    "scenario_family": "test-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration TEST-4? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-4"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration TEST-4? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-45",
+    "split": "test",
+    "scenario_family": "test-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace TEST-5 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-5"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace TEST-5 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-46",
+    "split": "test",
+    "scenario_family": "test-saved-report-lock",
+    "source": "synthetic",
+    "message": "Account TEST-6 cannot open saved reports; error 409 blocks my work.",
+    "acceptable_categories": [
+      "Bug Report"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-6"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Account TEST-6 cannot open saved reports; error 409 blocks my work."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-47",
+    "split": "test",
+    "scenario_family": "test-calendar-planning",
+    "source": "synthetic",
+    "message": "Please add a calendar view for project TEST-7. This is a future suggestion.",
+    "acceptable_categories": [
+      "Feature Request"
+    ],
+    "acceptable_priorities": [
+      "Low"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-7"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please add a calendar view for project TEST-7. This is a future suggestion."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-48",
+    "split": "test",
+    "scenario_family": "test-renewal-explanation",
+    "source": "synthetic",
+    "message": "Please explain the renewal invoice TEST-8; I am not disputing its amount.",
+    "acceptable_categories": [
+      "Billing Issue"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-8"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "Please explain the renewal invoice TEST-8; I am not disputing its amount."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-49",
+    "split": "test",
+    "scenario_family": "test-webhook-setup",
+    "source": "synthetic",
+    "message": "How do I configure webhook integration TEST-9? No urgent deadline.",
+    "acceptable_categories": [
+      "Technical Question"
+    ],
+    "acceptable_priorities": [
+      "Medium"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-9"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": false,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "summary_required_facts": [
+      "How do I configure webhook integration TEST-9? No urgent deadline."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  },
+  {
+    "id": "test-50",
+    "split": "test",
+    "scenario_family": "test-workspace-unavailable",
+    "source": "synthetic",
+    "message": "All users in workspace TEST-10 cannot load any pages right now.",
+    "acceptable_categories": [
+      "Incident/Outage"
+    ],
+    "acceptable_priorities": [
+      "High"
+    ],
+    "required_entities": [
+      {
+        "type": "other",
+        "value": "TEST-10"
+      }
+    ],
+    "expected_signals": {
+      "active_service_outage": true,
+      "insufficient_information": false,
+      "conflicting_intents": false
+    },
+    "expected_policy": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "summary_required_facts": [
+      "All users in workspace TEST-10 cannot load any pages right now."
+    ],
+    "summary_forbidden_facts": [
+      "Guaranteed resolution tomorrow",
+      "Verified root cause"
+    ],
+    "rationale": "Apply documented category and impact rubric; preserve reported facts without diagnosis.",
+    "review_status": "awaiting_independent_review"
+  }
+]

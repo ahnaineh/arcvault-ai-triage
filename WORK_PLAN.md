@@ -68,10 +68,10 @@ Gate: core behavior and implemented recovery paths are verified in the real stac
 
 ## M4 — Evaluation and prompt optimization
 
-- [ ] Define benchmark record format and metrics before generation; keep policy fixtures outside the 50-message count.
+- [x] Define draft benchmark record format and offline metrics; policy fixtures excluded. See `docs/evidence/evaluation.md`.
 - [ ] Generate and review an initial small batch against the written rubric; resolve label ambiguities.
-- [ ] Complete 50 cases: 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
-- [ ] Validate scorer behavior with known good/bad predictions before live benchmarking.
+- [-] Draft 50 cases generated; independent review and semantic split audit pending (narrow templates): 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
+- [x] Validate offline scorer with known good/bad predictions: 4 unittest tests passed; see `docs/evidence/evaluation.md`.
 - [ ] Run a baseline; score category/priority, entities, semantic signals, summaries and output validity separately.
 - [ ] Record end-to-end destinations, missed/unnecessary escalations, incorrect automatic routing and automation coverage.
 - [ ] Iterate versioned prompts on development cases; select candidates using validation. Record experiments, usage, latency and observed regressions.
