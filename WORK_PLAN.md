@@ -142,3 +142,9 @@ PR #6 correction: actual c61e539 PR branch checked out before tests; lifecycle s
 PR6 browser checkpoint: real Chrome login/tester POST/pending-to-completed/detail/Back/mobile/network-failure Resume executed with mocked provider. Screenshots and exact remaining acceptance gaps: docs/evidence/pr6-browser/execution.md. Keep PR open pending full lifecycle/fault acceptance.
 
 PR6 bounded UI checkpoint follow-up: fake-timer lifecycle/60-poll expiry/Resume and response-loss idempotency regressions pass; actual Chrome accepted-then-aborted response retry yields two identical POSTs and one DB row. Actual Back reload works; persisted pageshow is simulated (no actual bfcache observed). Python 73 passed; Ruff passes. Live provider and real queue/runtime gates remain separate later milestones. See docs/evidence/pr6-browser/execution.md.
+
+## Sample command checkpoint — 2026-11-07
+
+- [x] Preserve original five inputs; idempotent intake-backed load_samples and guarded deterministic export_samples implemented and tested.
+- [x] Offline checks: 74 pytest tests, Ruff, Django check, migration drift check and two JS harnesses pass.
+- [!] Live schema and five-message queued acceptance pending secure credential (request timed out) and Docker socket access. No paid calls, task spend $0; no output artifact fabricated. Details: docs/evidence/m2-live.md.

@@ -63,3 +63,15 @@ Acceptance limitation: locked Ruff and 60 tests pass after integration with poli
 Fresh image build and isolated Compose startup remain pending on this disk-constrained
 host; existing-worker ping passes, but localhost:18373 health was not reproduced.
 See docs/evidence/m1-runtime.md for commands and evidence boundaries.
+
+Assessment sample commands (configured isolated database and Redis worker required):
+
+```sh
+python manage.py load_samples --principal assessment
+python manage.py export_samples --principal assessment > /tmp/assessment-outputs.json
+```
+
+Loading replays stable principal-scoped keys; it never republishes existing requests.
+Export emits standard persisted records in assessment order only when all five
+are complete and match the supplied inputs. Check exit status before using the file.
+Live provider and queued acceptance remain pending; see docs/evidence/m2-live.md.
