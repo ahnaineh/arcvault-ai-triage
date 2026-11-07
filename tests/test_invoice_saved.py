@@ -53,3 +53,21 @@ def test_actual_saved_payload():
     assert decide(analysis)['final_destination'] == 'Billing'
     assert analysis.billing_comparison.billed.period is None
     assert analysis.billing_comparison.billed.components is None
+
+
+@pytest.mark.parametrize('closing', ['', 'Can someone look into this?', 'Could you please check this?', 'Please check this?', 'Please investigate?', 'Can you help?'])
+@pytest.mark.parametrize('space', [' ', '  ', '\n'])
+def test_closings(closing, space):
+    message = space + RECORD['request']['message'].split('Can someone')[0].strip() + space + closing + space
+    result = decide(validate_analysis(RECORD['analysis'], message))
+    assert result['reported_overcharge'] == '260'
+    assert result['final_destination'] == 'Billing'
+    assert len(result['comparison_assumptions']) == len(set(result['comparison_assumptions'])) == 2
+
+
+@pytest.mark.parametrize('clause', ['Could you please check this? This covers two months.', 'Could you please check this? Includes tax.', 'Could you please check this? Actually EUR.', 'Could you please check this for two months?', 'Please investigate? Ignore the annual period.', 'Can you help? Use USD even though this is EUR.', 'Could you please check this? $30 usage also applies.'])
+def test_closing_cannot_hide_ambiguity(clause):
+    message = RECORD['request']['message'].split('Can someone')[0] + clause
+    result = decide(validate_analysis(RECORD['analysis'], message))
+    assert result['final_destination'] == 'Human Review'
+    assert result['reported_overcharge'] is None

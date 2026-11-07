@@ -249,7 +249,6 @@ def test_command_assessment_export_and_resume(command):
     assert billing['reported_overcharge'] == '260'
     assert billing['comparison_assumptions'] == [
         'Unqualified $ interpreted as USD in synthetic domain',
-        'Unqualified $ interpreted as USD in synthetic domain',
         'Direct invoice/monthly contract comparison treated as one monthly charge']
 
 
