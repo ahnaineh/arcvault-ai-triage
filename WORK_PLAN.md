@@ -154,3 +154,8 @@ PR6 bounded UI checkpoint follow-up: fake-timer lifecycle/60-poll expiry/Resume 
 Reviewed head: df5fa91a28fbca43601cfca1712aceeda93846dc. Parent-supplied independent review: no blockers; original Downloads DOCX five strings matched; shared acceptance service/stable principal keys; SQLite five first dispatches, zero repeat dispatches, conflict without extra dispatch; ordered export completion/result/source/message guards; 74 locked tests and Ruff/Django/no migration drift passed. This proof is supplied review evidence, not independently repeated DOCX or historical spend verification.
 
 Fresh implementation verification: 78 locked tests pass, Ruff passes, Django check passes, no migration drift. Added actual task pipeline with mocked provider and full persisted record export equality in sample order; missing accepted result and mismatched source/message fail with zero JSON written, including after earlier valid samples. README exports to temporary file and renames only on success. No OpenAI calls. Live provider, real queue and PostgreSQL acceptance remain pending; historical spend is not independently verified.
+
+Live acceptance attempt 2026-11-07: incomplete; see docs/evidence/live-acceptance.md.
+One retained real schema probe succeeded; five pipeline calls yielded one failure
+and four completions, but ephemeral records/usage were lost before guarded export.
+Actual sample export, queue/Postgres, benchmark and clean-start gates remain open.
