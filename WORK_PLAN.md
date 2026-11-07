@@ -442,3 +442,15 @@ Application default unchanged pending measured tradeoffs.
 - [x] 174 offline tests pass; Ruff/diff whitespace clean. Full evidence, source
   identities, raw usage/journals, costs, p50/p95, caveats and report builder:
   docs/evidence/comparison-v3/README.md and protocol.md.
+
+### Documentation and failure audit follow-up
+
+Verified prior75 and paired100 calls each have unique reservations/raw/terminal
+records; original source journal hash unchanged. Documented all15 Luna failures
+at field level:28 nonverbatim excerpts,16 outer-curly-quote additions and12 generated
+explanations;6 quote-only cases,9 other/mixed. API/JSON succeeded; exact-source
+application validation rejected model output. Distinguish that from semantic
+classification error and the independently fixed initial harness-stop behavior.
+Verified supplied five are byte-equal to dataset assessment-01..05, array rows1..5;
+50=assessment5+development25+validation10+test10. Mapping and reproduction audit
+are in docs/evidence/comparison-v3/failure-analysis-and-dataset.md.

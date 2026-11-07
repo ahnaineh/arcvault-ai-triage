@@ -100,3 +100,8 @@ identities, history carry-forward, terminal failure retention and application V3
 selection. Build reports from retained runtime with `uv run python -m
 docs.evidence.comparison-v3.build_report` from repository root. Read protocol.md
 before any paid reproduction; new roots must carry ALL current accounting.
+
+See [failure stage and supplied-example mapping](failure-analysis-and-dataset.md)
+for the audited source/field-level explanation of all15 Luna rejections and exact
+placement of the supplied five inside the50. `luna-evidence-failures.json` retains
+all28 offending excerpts (16 outer-quote-only excerpts and12 generated explanations).

@@ -1,0 +1,305 @@
+[
+  {
+    "case_id": "assessment-05",
+    "request_id": "3cee6554-570a-4cf2-aa78-fabbbd51a084",
+    "provider_response_id": "resp_085ac4e6cd2d2fe4016aef30be99f087d2ad0944316cb6ab27",
+    "provider_status": "completed",
+    "source_message": "Your dashboard stopped loading for us around 2pm EST. Checked our end — it's definitely on yours. Multiple users affected.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "“dashboard stopped loading”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "signals.active_service_outage.evidence[1]",
+        "returned_excerpt": "“Multiple users affected.”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "development-02",
+    "request_id": "e7115086-2e37-43d6-aaec-7924d623846a",
+    "provider_response_id": "resp_0940f4f8bafff366016aef311d285087d2ad26bda497e4e3ee",
+    "provider_status": "completed",
+    "source_message": "All employees could not open the dashboard; service is restored.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "No current impact or requested follow-up is stated.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "development-03",
+    "request_id": "cad05b97-b2f9-4cfe-acfb-cb88768fa475",
+    "provider_response_id": "resp_011336f6b1be896c016aef3125fb0487d2a0b0538b41a2bb85",
+    "provider_status": "completed",
+    "source_message": "Last year our dashboard stopped working; how do we download the incident report?",
+    "invalid_excerpts": [
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "The dashboard failure is described as occurring last year.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "development-05",
+    "request_id": "380b34c8-82ef-4bb1-8637-a92250af2b22",
+    "provider_response_id": "resp_0db0bda700cfe244016aef312dd41887d29f25923bc1ce9a72",
+    "provider_status": "completed",
+    "source_message": "The dashboard may be down, but I cannot tell whether this affects anyone else.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "“The dashboard may be down”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "signals.active_service_outage.evidence[1]",
+        "returned_excerpt": "“I cannot tell whether this affects anyone else”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "The customer is unsure whether the dashboard is down and cannot establish the scope of impact.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "development-10",
+    "request_id": "6c40a370-905b-44bf-9555-ea9dd75d468a",
+    "provider_response_id": "resp_07aea1dfbd4b3d75016aef314653dc87d2a6dc8ae0ff8a20b2",
+    "provider_status": "completed",
+    "source_message": "The monthly USD invoice is 1000; the monthly USD contract is 1000. Please investigate the discrepancy.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "The invoice and contract are both stated as 1000, but the customer does not specify what the discrepancy is.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "development-15",
+    "request_id": "0bc174ce-2e9a-4611-be6f-8a5ac78f2805",
+    "provider_response_id": "resp_00798dde00509cd1016aef3160bc6087d2bd4601c63dd2f9d7",
+    "provider_status": "completed",
+    "source_message": "Do not escalate this: all users are currently locked out.",
+    "invalid_excerpts": [
+      {
+        "path": "urgency.evidence[0]",
+        "returned_excerpt": "The customer says, “Do not escalate this,” but states no deadline or urgency level.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      },
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "“all users are currently locked out”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "development-18",
+    "request_id": "706abaa1-5907-4fdb-82d9-3d46f1485457",
+    "provider_response_id": "resp_0b7419c63691e238016aef317743dc87d2b071a4322767e6ad",
+    "provider_status": "completed",
+    "source_message": "Export is slow, but my only request is a saved export preset.",
+    "invalid_excerpts": [
+      {
+        "path": "urgency.evidence[0]",
+        "returned_excerpt": "No urgency is stated.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      },
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "The customer reports that export is slow, not unavailable.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      },
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "The requested capability is clear: a saved export preset.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      },
+      {
+        "path": "signals.conflicting_intents.evidence[0]",
+        "returned_excerpt": "The customer says the saved export preset is their only request.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "validation-02",
+    "request_id": "6117a3e1-6898-462f-9b14-c2a0b0a24ecc",
+    "provider_response_id": "resp_0044a836be528363016aef31940a9887d2a78e978d77cecc50",
+    "provider_status": "completed",
+    "source_message": "Invoice USD 1800 versus contract EUR 1000 for the same month.",
+    "invalid_excerpts": [
+      {
+        "path": "entities[0].evidence",
+        "returned_excerpt": "“for the same month”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "billing_comparison.billed.evidence[0]",
+        "returned_excerpt": "“Invoice USD 1800”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "billing_comparison.billed.evidence[1]",
+        "returned_excerpt": "“for the same month”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "billing_comparison.expected.evidence[0]",
+        "returned_excerpt": "“contract EUR 1000”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "billing_comparison.expected.evidence[1]",
+        "returned_excerpt": "“for the same month”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "validation-06",
+    "request_id": "6bea4c83-3b34-4665-8418-e323ffd9b5a1",
+    "provider_response_id": "resp_093cd556ec6a7bc0016aef31a74dc887d293c4a6b3846e2f3f",
+    "provider_status": "completed",
+    "source_message": "Shared links return a blank page for my account.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.active_service_outage.evidence[0]",
+        "returned_excerpt": "The issue is reported for \"my account,\" with no indication of a broader outage.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "validation-09",
+    "request_id": "93d8662e-2f66-4f30-bb38-58584f2c1747",
+    "provider_response_id": "resp_01cbbb5b2fc2664d016aef31b0270087d2a242ae572a86da87",
+    "provider_status": "completed",
+    "source_message": "Are public links broken for everyone? I cannot determine the scope.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "The customer asks whether links are broken but does not confirm a failure or describe its impact.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "validation-10",
+    "request_id": "f750006f-c9a5-48cb-aa3f-2d65529cd1f9",
+    "provider_response_id": "resp_00dfc4b13e5f5eb7016aef31b6930887d2a6bb7ff6a0266d72",
+    "provider_status": "completed",
+    "source_message": "Please fix broken public links and refund my subscription; neither request takes precedence.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.conflicting_intents.evidence[0]",
+        "returned_excerpt": "“fix broken public links and refund my subscription”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "signals.conflicting_intents.evidence[1]",
+        "returned_excerpt": "“neither request takes precedence”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "test-02",
+    "request_id": "2c47e56b-bca8-41fe-9f14-941801432fe0",
+    "provider_response_id": "resp_0abf672e9747dd1c016aef31c07d3887d299850a9276022f28",
+    "provider_status": "completed",
+    "source_message": "Every employee saw a maintenance screen earlier, but access is now restored.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "No current request or remaining issue is specified.",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": false
+      }
+    ]
+  },
+  {
+    "case_id": "test-08",
+    "request_id": "a361c70a-dc3f-4b2f-9a4e-99bc325aff4b",
+    "provider_response_id": "resp_073bdc7bdce9b0a4016aef31db926887d29f915c43fdb140a2",
+    "provider_status": "completed",
+    "source_message": "My receipt has an unexpected fee, but the receipt does not show the amount.",
+    "invalid_excerpts": [
+      {
+        "path": "billing_comparison.billed.evidence[0]",
+        "returned_excerpt": "“unexpected fee”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      },
+      {
+        "path": "billing_comparison.billed.evidence[1]",
+        "returned_excerpt": "“the receipt does not show the amount”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "test-09",
+    "request_id": "b94a6847-06d4-4c23-81f9-f2c74cbb4ae8",
+    "provider_response_id": "resp_0ea6a5029b7839c2016aef31dfe5d087d2a3b9db7e94619094",
+    "provider_status": "completed",
+    "source_message": "Something about my workspace is wrong, but I cannot describe what.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.insufficient_information.evidence[0]",
+        "returned_excerpt": "“Something about my workspace is wrong, but I cannot describe what.”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  },
+  {
+    "case_id": "test-10",
+    "request_id": "88e9893c-0f9c-46a0-b199-6cbc02d6640c",
+    "provider_response_id": "resp_09db00f82032780d016aef31e3813887d2a20354149621dee4",
+    "provider_status": "completed",
+    "source_message": "I need a refund and a new approval workflow; both requests matter equally.",
+    "invalid_excerpts": [
+      {
+        "path": "signals.conflicting_intents.evidence[0]",
+        "returned_excerpt": "“I need a refund and a new approval workflow; both requests matter equally.”",
+        "exact_substring": false,
+        "matches_after_removing_outer_curly_quotes": true
+      }
+    ]
+  }
+]
