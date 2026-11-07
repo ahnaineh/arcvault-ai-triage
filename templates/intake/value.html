@@ -1,0 +1,1 @@
+{% load presentation %}{% if mapping %}<dl>{% for key, item in mapping.items %}<dt>{{ key|readable }}</dt><dd>{% readable_value item %}</dd>{% endfor %}</dl>{% elif sequence %}<ul>{% for item in sequence %}<li>{% readable_value item %}</li>{% endfor %}</ul>{% else %}{{ scalar|default_if_none:'Not recorded' }}{% endif %}

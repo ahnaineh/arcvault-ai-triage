@@ -68,3 +68,20 @@ def test_accepted_response_lost_retry_keeps_single_request():
         assert Request.objects.count() == 1
         assert Request.objects.get().idempotency_key == payload['idempotency_key']
         assert dispatch.call_count == 1
+
+
+def test_presentation_values_are_readable_and_escaped():
+    from django.template import Context, Template
+
+    rendered = Template('{% load presentation %}{% readable_value value %}').render(
+        Context({'value': {'token_count': {'input': 12}, 'notes': ['<script>']}}))
+    assert 'Token count' in rendered and '12' in rendered
+    assert '&lt;script&gt;' in rendered and "{'input':" not in rendered
+    reason = Template('{% load presentation %}{{ reason|readable }}').render(
+        Context({'reason': 'billing_comparison_unresolved'}))
+    assert 'cannot be safely compared' in reason
+    from apps.triage.templatetags.presentation import percent, signal_label
+    assert [percent(v) for v in (0, 0.699999, 0.99, 1)] == ['0%', '69.9999%', '99%', '100%']
+
+    assert signal_label('insufficient_information') == 'Missing information'
+    assert signal_label('conflicting_intents') == 'Competing requests'
