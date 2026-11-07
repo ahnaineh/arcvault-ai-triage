@@ -28,3 +28,5 @@ Local demo login: **admin / admin**. The setup command requires `DJANGO_DEBUG=tr
 Port 8000 must be free. Visit `/login/`, `/tester/` and `/`. Loading samples makes model calls. For a live demo use `docker compose -p arcvault-submission exec web python manage.py load_samples --principal assessment`; after all five complete, export with `docker compose -p arcvault-submission exec -T web python manage.py export_samples --principal assessment > /tmp/assessment-outputs.json.tmp` and move the temporary file only on success. Existing sample keys replay without republishing. Stop only this project with `docker compose -p arcvault-submission down` (no volume deletion).
 
 A fresh application image build and the combined live-model queue demo passed. See [recording and verification](demo/README.md). Base-image layers were cached.
+
+See [requirement traceability and urgency interpretation](REQUIREMENTS.md) for the five records and validation limits.

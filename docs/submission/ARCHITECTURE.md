@@ -8,7 +8,7 @@ An idempotency key prevents duplicate submissions for the same caller. Work is p
 
 ## Model and policy
 
-One gpt-6.1-terra call uses the compact triage_v4 prompt. It returns category, priority, confidence, entities, urgency, signals and a short summary. A strict schema checks the structure. Python checks that supporting excerpts occur in the message. Neither check proves the interpretation is correct. Confidence is the model's own estimate.
+One gpt-6.1-terra call uses the compact triage_v4 prompt. It returns category, priority, confidence, entities, urgency, signals and a short summary. The urgency field records expressed urgency only; content-based operational urgency is conveyed by priority and the active-outage signal. See [the five-message interpretation](REQUIREMENTS.md). A strict schema checks the structure. Python checks that supporting excerpts occur in the message. Neither check proves the interpretation is correct. Confidence is the model's own estimate.
 
 Python owns routing and money arithmetic. Bugs and incidents go to Engineering, features to Product, billing to Billing and technical questions to Technical Support. Keeping these rules outside the prompt makes them explicit and testable.
 
@@ -24,7 +24,7 @@ Browser access requires a login and CSRF protection. External ingestion uses a b
 
 ## Evidence and limits
 
-Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A fresh application image build and a [recorded real-model queued demo](demo/README.md) also passed. The demo includes one transient failure and successful retry.
+Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A fresh application image build and a [recorded real-model queued demo](demo/README.md) also passed. The earlier queued run includes one transient failure and successful retry. The final 2:15 edit shows one fresh login submission and four saved results; it does not show that retry occurring.
 
 On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [benchmark tables](BENCHMARKS.md) for results and limitations.
 
