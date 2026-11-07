@@ -1,5 +1,7 @@
+import hashlib
 import json
 from io import StringIO
+from pathlib import Path
 from unittest.mock import Mock
 
 import httpx2 as httpx
@@ -9,16 +11,17 @@ from django.core.management import call_command
 from django.core.management.base import CommandError
 
 from apps.triage.acceptance import Runner
-from apps.triage.providers.openai_provider import ProviderError, artifact_identity
+from apps.triage.providers.openai_provider import ProviderError
 from tests.test_openai_provider import envelope
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture
 def command(tmp_path, monkeypatch):
     monkeypatch.setattr('apps.triage.acceptance.Path.resolve', lambda self: self)
     monkeypatch.chdir(tmp_path)
-    config = json.loads((__import__('pathlib').Path(__file__).resolve().parents[1] /
-                         'config/acceptance/terra.json').read_text())
+    config = json.loads((ROOT / 'config/acceptance/terra.json').read_text())
     # Relative directory preserves production's prohibition on /tmp runtime paths.
     path = tmp_path / 'config.json'
     path.write_text(json.dumps(config))
@@ -57,32 +60,6 @@ def test_dry_run_no_sdk(command):
     run(False)
     factory.assert_not_called()
     client.responses.create.assert_not_called()
-
-
-def test_execute_order_artifacts_resume(command):
-    run, client, _, _, events = command
-    client.responses.create.side_effect = [valid_response(i) for i in range(5)]
-    run()
-    output = json.loads(__import__('pathlib').Path('runtime/assessment_outputs.json').read_text())
-    assert [item['analysis']['core_issue'] for item in output] == list(map(str, range(5)))
-    from apps.intake.sample_data import samples
-    for item, case in zip(output, samples(), strict=True):
-        assert item['request']['message'] == case['message']
-        assert item['request']['source'] == case['source']
-        assert item['request']['id']
-        assert item['request']['received_at']
-        assert item['summary'] == 'One. Two.'
-        assert item['analysis']['entities'] == []
-        assert item['decision']['human_escalation'] is False
-        assert item['decision']['escalation_reasons'] == []
-        assert item['decision']['standard_destination'] == item['decision']['final_destination']
-        assert item['provenance']['policy_version'] == '1.1'
-        assert item['provenance']['prompt_version'] == 'triage_v3'
-        assert item['processing']['attempts'][0]['usage']['total_tokens'] == 30
-    assert len([e for e in events() if e['state'] == 'completed']) == 5
-    run()
-    assert client.responses.create.call_count == 5
-    client.with_options.assert_called_with(max_retries=0, timeout=60)
 
 
 @pytest.mark.parametrize('field,value', [('reconciled_history', {}), ('budget', '0'),
@@ -132,9 +109,15 @@ def test_failure_evidence_and_retained_reservation(command, kind):
     assert client.responses.create.call_count == 1
 
 
-def test_response_write_failure_retains_usage(command, monkeypatch):
+@pytest.mark.parametrize('http_failure', [False, True], ids=['success-response', 'http-error'])
+def test_response_write_failure_retains_usage(command, monkeypatch, http_failure):
     run, client, _, _, events = command
-    client.responses.create.return_value = valid_response()
+    if http_failure:
+        client.responses.create.side_effect = openai.InternalServerError(
+            'secret', response=httpx.Response(500, request=httpx.Request('POST', 'https://example.test')),
+            body={'usage': {'input_tokens': 12}, 'secret': 'secret'})
+    else:
+        client.responses.create.return_value = valid_response()
     original = Runner.append
     def append(self, event):
         if event['state'] == 'raw_response':
@@ -143,13 +126,18 @@ def test_response_write_failure_retains_usage(command, monkeypatch):
     monkeypatch.setattr(Runner, 'append', append)
     with pytest.raises(OSError):
         run()
-    assert events()[-1]['usage']['total_tokens'] == 30
+    records = events()
+    assert [event['state'] for event in records] == ['reserved', 'failed']
+    expected_usage = ({'input_tokens': 12} if http_failure else
+                      {'input_tokens': 10, 'output_tokens': 20, 'total_tokens': 30})
+    assert records[-1]['usage'] == expected_usage
+    assert records[0]['reservation']
+    assert 'secret' not in json.dumps(records)
 
 
 def test_export_error_no_partial_rewrite(command, monkeypatch):
     run, client, _, _, events = command
     client.responses.create.side_effect = [valid_response(i) for i in range(5)]
-    from pathlib import Path
     Path('runtime').mkdir()
     output = Path('runtime/assessment_outputs.json')
     output.write_text('previous export')
@@ -198,80 +186,71 @@ def assessment_payloads():
     return payloads
 
 
-def execute_assessment(command):
-    from pathlib import Path
-    run, client, _, _, _ = command
+def test_command_assessment_export_and_resume(command):
+    from apps.intake.sample_data import samples
+    run, client, _, _, events = command
+    payloads = assessment_payloads()
     responses = []
-    for payload in assessment_payloads():
+    for payload in payloads:
         response = valid_response()
         response.output[0].content[0].text = json.dumps(payload)
         responses.append(response)
     client.responses.create.side_effect = responses
     run()
-    return json.loads(Path('runtime/assessment_outputs.json').read_text())
-
-
-def test_command_assessment_billing_and_outage_regression(command):
-    from apps.intake.sample_data import samples
-    records = execute_assessment(command)
+    records = json.loads(Path('runtime/assessment_outputs.json').read_text())
     assert len(records) == 5
-    for record, case, payload in zip(records, samples(), assessment_payloads(), strict=True):
+    for record, case, payload in zip(records, samples(), payloads, strict=True):
+        assert set(record) == {'schema_version', 'request', 'analysis', 'decision',
+                               'summary', 'provenance', 'processing', 'review'}
+        assert record['schema_version'] == '1.0'
+        assert record['review'] is None
+        assert set(record['request']) == {'id', 'source', 'message', 'received_at'}
         assert record['request']['source'] == case['source']
         assert record['request']['message'] == case['message']
         assert record['request']['id'] and record['request']['received_at']
         assert record['analysis'] == payload
         assert record['summary'] == 'One. Two.'
-        assert record['provenance']['model'] == 'gpt-6.1-terra'
-        assert record['provenance']['prompt_version'] == 'triage_v3'
-        assert record['provenance']['schema_version'] == '1.0'
-        assert record['provenance']['policy_version'] == '1.1'
-        assert record['provenance']['completed_at']
-        assert record['provenance']['accepted_attempt_id']
+        provenance = record['provenance']
+        assert provenance['completed_at']
+        assert provenance['accepted_attempt_id'] == record['request']['id']
+        assert provenance == {
+            'model': 'gpt-6.1-terra', 'prompt_version': 'triage_v3',
+            'schema_version': '1.0', 'policy_version': '1.1',
+            'prompt_sha256': hashlib.sha256((ROOT / 'prompts/triage_v3.txt').read_bytes()).hexdigest(),
+            'schema_sha256': hashlib.sha256((ROOT / 'contracts/analysis.schema.json').read_bytes()).hexdigest(),
+            'completed_at': provenance['completed_at'],
+            'accepted_attempt_id': record['request']['id']}
+        attempt, = record['processing']['attempts']
+        assert attempt['latency_ms'] >= 0
+        assert record['processing'] == {
+            'attempts': [{'id': record['request']['id'], 'error': None,
+                          'latency_ms': attempt['latency_ms'],
+                          'usage': {'input_tokens': 10, 'output_tokens': 20, 'total_tokens': 30}}],
+            'estimated_cost': None, 'unknown_cost': True}
+    assert len([event for event in events() if event['state'] == 'completed']) == 5
+    run()
+    assert client.responses.create.call_count == 5
+    client.with_options.assert_called_with(max_retries=0, timeout=60)
+    assert [(record['decision']['standard_destination'], record['decision']['final_destination'],
+             record['decision']['human_escalation'], record['decision']['escalation_reasons'])
+            for record in records] == [
+        ('Engineering', 'Engineering', False, []),
+        ('Product', 'Product', False, []),
+        ('Billing', 'Billing', False, []),
+        ('Technical Support', 'Technical Support', False, []),
+        ('Engineering', 'Human Review', True, ['active_outage'])]
+    for index, record in enumerate(records):
+        assert set(record['decision']) == {'standard_destination', 'final_destination',
+            'human_escalation', 'escalation_reasons', 'reported_overcharge', 'comparison_assumptions'}
+        if index != 2:
+            assert record['decision']['reported_overcharge'] is None
+            assert record['decision']['comparison_assumptions'] == []
     billing = records[2]['decision']
     assert billing['reported_overcharge'] == '260'
-    assert billing['standard_destination'] == billing['final_destination'] == 'Billing'
-    assert billing['human_escalation'] is False
-    assert 'billing_overcharge' not in billing['escalation_reasons']
     assert billing['comparison_assumptions'] == [
         'Unqualified $ interpreted as USD in synthetic domain',
         'Unqualified $ interpreted as USD in synthetic domain',
         'Direct invoice/monthly contract comparison treated as one monthly charge']
-    outage = records[4]['decision']
-    assert outage['standard_destination'] == 'Engineering'
-    assert outage['final_destination'] == 'Human Review'
-    assert outage['human_escalation'] is True
-    assert outage['escalation_reasons'] == ['active_outage']
-
-
-def test_command_full_export_matches_canonical_builder(command):
-    from types import SimpleNamespace
-
-    from apps.intake.sample_data import samples
-    from apps.triage.export import build_record
-    from apps.triage.schemas import validate_analysis
-
-    records = execute_assessment(command)
-    for record, case, payload in zip(records, samples(), assessment_payloads(), strict=True):
-        # Normalize only generated identifiers, wall times and measured latency.
-        record['request']['id'] = 'request'
-        record['request']['received_at'] = 'received'
-        record['provenance']['completed_at'] = 'completed'
-        record['provenance']['accepted_attempt_id'] = 'attempt'
-        record['processing']['attempts'][0]['id'] = 'attempt'
-        record['processing']['attempts'][0]['latency_ms'] = 0
-        expected = build_record(
-            request={'id': 'request', 'received_at': 'received',
-                     'source': case['source'], 'message': case['message']},
-            analysis=validate_analysis(payload, case['message']),
-            output=SimpleNamespace(model='gpt-6.1-terra', prompt_version='triage_v3',
-                                   schema_version='1.0',
-                                   prompt_sha256=artifact_identity()['prompt'],
-                                   schema_sha256=artifact_identity()['schema']),
-            completed_at='completed', attempt_id='attempt',
-            attempts=[{'id': 'attempt', 'error': None, 'latency_ms': 0,
-                       'usage': {'input_tokens': 10, 'output_tokens': 20,
-                                 'total_tokens': 30}}])
-        assert record == expected
 
 
 @pytest.mark.parametrize('artifact', ['prompt', 'schema_text'])
@@ -295,25 +274,6 @@ def test_artifact_change_blocks_resume(command, monkeypatch, artifact, partial):
     with pytest.raises(ValueError, match='Prompt/schema mismatch'):
         run()
     assert client.responses.create.call_count == count
-
-
-def test_http_write_failure_retains_usage(command, monkeypatch):
-    run, client, _, _, events = command
-    client.responses.create.side_effect = openai.InternalServerError(
-        'secret', response=httpx.Response(500, request=httpx.Request('POST', 'https://example.test')),
-        body={'usage': {'input_tokens': 12}, 'secret': 'secret'})
-    original = Runner.append
-    def append(self, event):
-        if event['state'] == 'raw_response':
-            raise OSError('disk error')
-        original(self, event)
-    monkeypatch.setattr(Runner, 'append', append)
-    with pytest.raises(OSError):
-        run()
-    records = events()
-    assert records[-1]['usage'] == {'input_tokens': 12}
-    assert records[0]['reservation']
-    assert 'secret' not in json.dumps(records)
 
 
 @pytest.mark.parametrize('changed', [None, 'prompt', 'schema'])
