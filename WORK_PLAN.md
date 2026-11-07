@@ -138,3 +138,5 @@ Before reliability claims: verify live strict schema/model/pricing, successful s
 - [ ] Actual queued/live/clean-build/benchmark gates remain pending. Manual retry API is absent; no UI retry workflow invented. Human review remains read-only.
 
 PR #6 correction: actual c61e539 PR branch checked out before tests; lifecycle suspend/restore and single-flight protection added. Dependency-free executable JS regression passes; locked suite 72 passed and Ruff/Django/migration checks clean. See docs/evidence/m2-ui.md. Escalated Chrome startup works, but interactive browser fixture acceptance/screenshots remain pending; do not merge this checkpoint yet. All prior live/provider/queue/benchmark gates retained.
+
+PR6 browser checkpoint: real Chrome login/tester POST/pending-to-completed/detail/Back/mobile/network-failure Resume executed with mocked provider. Screenshots and exact remaining acceptance gaps: docs/evidence/pr6-browser/execution.md. Keep PR open pending full lifecycle/fault acceptance.

@@ -35,3 +35,5 @@ Executed on the corrected branch:
 - Same environment python manage.py check: zero issues; makemigrations --check --dry-run: no changes.
 
 Browser probe: sandbox Chrome exited 133, crashpad setsockopt Operation not permitted (1). Escalated installed Chrome --headless --disable-gpu --dump-dom about:blank succeeded (GPU vaInitialize warning). Browser is therefore available outside sandbox, but interactive fixture-server acceptance has NOT been completed. No screenshots or browser POST/progress/error/Back/desktop/mobile acceptance claimed. This remains a required gate before merge. No live model calls. Existing live/provider/queue/PostgreSQL/container/benchmark gates remain pending.
+
+Real Chrome follow-up: see [execution and limitations](pr6-browser/execution.md). Six actual browser screenshots now persisted. Partial browser acceptance completed; remaining lifecycle/fault assertions still gate merge.
