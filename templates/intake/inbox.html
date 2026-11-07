@@ -1,1 +1,20 @@
-{% extends 'base.html' %}{% block content %}<div class="heading"><h1>Request inbox</h1><a class="button" href="/tester/">Test a request</a></div><nav class="filters" aria-label="Queue"><a href="/">All requests</a><a href="/?queue=review">Human Review ({{ review_count }})</a></nav><p>Latest 100 requests. Human Review shows persisted escalations awaiting review; review actions are not yet available.</p><div class="table"><table><thead><tr><th>Request</th><th>State</th><th>Category / priority</th><th>Destination</th></tr></thead><tbody>{% for row in rows %}<tr><td><a href="{% url 'detail' row.pk %}">{{ row.accepted_result.record.analysis.core_issue|default:row.message|truncatechars:100 }}</a><small>{{ row.source }} · {{ row.received_at }}</small></td><td>{{ row.status }}{% if row.dispatch_error %}<small>Dispatch interrupted</small>{% endif %}</td><td>{{ row.accepted_result.record.analysis.category|default:'Awaiting analysis' }}<small>{{ row.accepted_result.record.analysis.priority }}</small></td><td>{{ row.accepted_result.record.decision.final_destination|default:'Not assigned' }}</td></tr>{% empty %}<tr><td colspan="4">No requests in this queue. <a href="/tester/">Test a request</a> to begin.</td></tr>{% endfor %}</tbody></table></div>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading"><div><h1>Request inbox</h1><p class="muted">Every request, with a clear next step.</p></div><a class="button" href="/tester/">Test a request <span aria-hidden="true">+</span></a></div>
+<nav class="tabs" aria-label="Queue">
+  <a href="/" {% if request.GET.queue != 'review' %}aria-current="page"{% endif %}>All requests</a>
+  <a href="/?queue=review" {% if request.GET.queue == 'review' %}aria-current="page"{% endif %}>Human Review <span class="count">{{ review_count }}</span></a>
+</nav>
+{% if request.GET.queue == 'review' %}<p class="queue-note">Flagged for a person to review. Review actions are not available in this demo.</p>{% endif %}
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Request</th><th scope="col">Status</th><th scope="col">Priority</th><th scope="col">Destination</th></tr></thead>
+<tbody>{% for row in rows %}
+<tr>
+  <td class="request-cell"><a href="{% url 'detail' row.pk %}">{{ row.accepted_result.record.analysis.core_issue|default:row.message|truncatechars:105 }}</a><small>{{ row.source }} <span aria-hidden="true">·</span> {{ row.received_at|date:'M j, H:i' }}</small></td>
+  <td><span class="badge status-{{ row.status }}">{{ row.status|capfirst }}</span>{% if row.dispatch_error %}<small class="error-text">Dispatch interrupted</small>{% endif %}</td>
+  <td>{% if row.accepted_result %}<span class="priority priority-{{ row.accepted_result.record.analysis.priority|lower }}">{{ row.accepted_result.record.analysis.priority }}</span>{% else %}<span class="muted">Pending</span>{% endif %}</td>
+  <td><span class="destination">{{ row.accepted_result.record.decision.final_destination|default:'Not assigned' }}</span><small>{{ row.accepted_result.record.analysis.category|default:'Awaiting analysis' }}</small></td>
+</tr>
+{% empty %}<tr><td class="empty" colspan="4"><h2>No requests in this queue</h2><p>Send a support message to see its analysis and destination.</p><a href="/tester/">Test a request</a></td></tr>{% endfor %}</tbody>
+</table></div><p class="footnote">Showing the latest 100 requests.</p>
+{% endblock %}

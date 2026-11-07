@@ -1,3 +1,22 @@
 {% load static %}<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}ArcVault{% endblock %}</title><link rel="stylesheet" href="{% static 'intake/ui.css' %}"></head>
-<body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="/">ArcVault</a><nav aria-label="Main">{% if user.is_authenticated %}<a href="/">Inbox</a><a href="/tester/">Test a request</a><form method="post" action="/logout/">{% csrf_token %}<button>Log out</button></form>{% endif %}</nav></header><main id="main">{% block content %}{% endblock %}</main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ArcVault{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'intake/ui.css' %}">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="app-header">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">a</span>ArcVault</a>
+  <nav aria-label="Main">
+    {% if user.is_authenticated %}
+    <a href="/" {% if request.path == '/' %}aria-current="page"{% endif %}>Inbox</a>
+    <a href="/tester/" {% if request.path == '/tester/' %}aria-current="page"{% endif %}>Test a request</a>
+    <form method="post" action="/logout/">{% csrf_token %}<button class="quiet">Log out</button></form>
+    {% endif %}
+  </nav>
+</header>
+<main id="main">{% block content %}{% endblock %}</main>
+</body>
+</html>

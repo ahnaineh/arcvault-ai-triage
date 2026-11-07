@@ -511,3 +511,9 @@ Recording and five serial real webhook submissions remain for parent operator.
 - Updated prepared checkout to main fec5475; preserved submission/demo evidence.
 - Routing-first detail, readable billing/evidence, expandable technical metadata and logs; shared compact workspace styling for login, tester and inbox.
 - Validation and outstanding browser acceptance: docs/evidence/ui-redesign.md.
+
+## UI and narrated-demo revision
+
+- UI review complete: routing-first detail, visible confidence percentage and all required output fields; readable billing, source evidence and expandable technical metadata.
+- Verified 178 tests, Ruff, three JS harnesses, real desktop/mobile and keyboard checks. Fixed single-worker idle-connection stalls with Gunicorn threads. Evidence: docs/evidence/ui-redesign.md.
+- Narration generated with OpenAI speech; new recording and final audio synchronization in progress. Earlier captioned video remains historical until replaced.

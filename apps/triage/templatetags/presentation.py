@@ -1,4 +1,6 @@
 """Readable labels for persisted analysis; no policy or inference changes."""
+from decimal import Decimal
+
 from django import template
 
 register = template.Library()
@@ -27,3 +29,23 @@ def readable_value(value):
     if isinstance(value, list):
         return {'sequence': value}
     return {'scalar': value}
+
+
+@register.filter
+def signal_label(value):
+    return {
+        'active_service_outage': 'Service outage',
+        'conflicting_intents': 'Competing requests',
+        'insufficient_information': 'Missing information',
+    }.get(str(value), str(value).replace('_', ' ').capitalize())
+
+
+@register.filter
+def percent(value):
+    number = format(Decimal(str(value)) * 100, 'f')
+    return (number.rstrip('0').rstrip('.') if '.' in number else number) + '%'
+
+
+@register.filter
+def amount(value):
+    return format(Decimal(str(value)), ',f') if value is not None else 'Unknown'

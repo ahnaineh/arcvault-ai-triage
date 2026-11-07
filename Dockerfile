@@ -7,4 +7,4 @@ RUN uv sync --locked --no-dev
 COPY . .
 RUN DJANGO_SECRET_KEY=build-only-placeholder python manage.py collectstatic --noinput && useradd --uid 10001 --create-home app && chown -R app:app /app
 USER app
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--access-logfile", "-"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--access-logfile", "-", "--threads", "4"]

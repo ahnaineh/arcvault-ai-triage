@@ -80,3 +80,5 @@ def test_presentation_values_are_readable_and_escaped():
     reason = Template('{% load presentation %}{{ reason|readable }}').render(
         Context({'reason': 'billing_comparison_unresolved'}))
     assert 'cannot be safely compared' in reason
+    from apps.triage.templatetags.presentation import percent
+    assert [percent(v) for v in (0, 0.699999, 0.99, 1)] == ['0%', '69.9999%', '99%', '100%']
