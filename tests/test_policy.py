@@ -90,3 +90,23 @@ def test_comma_currency_numeric_support():
     data['billing_comparison']={'billed':money('1760'), 'expected':money('500')}
     data['billing_comparison']['billed']['evidence']=['US$1,760']
     assert decide(validate_analysis(data,'US$1,760 invoice 500'))['reported_overcharge']=='1260'
+
+
+def test_unequal_decimal_scales():
+    data = payload()
+    data['billing_comparison'] = {'billed': money('100000000000000000000'), 'expected': money('0.000000000000000000001')}
+    analysis = validate_analysis(data, 'invoice 100000000000000000000 invoice 0.000000000000000000001')
+    assert decide(analysis)['reported_overcharge'] == '99999999999999999999.999999999999999999999'
+
+
+@pytest.mark.parametrize('amount,excerpt,valid', [('760', '$760.', True), ('500.00', '$500.00.', True), ('760', '$7600.', False), ('760', '$760.01', False), ('760', '.760', False), ('760', '$1760', False)])
+def test_money_sentence_punctuation(amount, excerpt, valid):
+    data = payload()
+    fact = money(amount)
+    fact['evidence'] = [excerpt]
+    data['billing_comparison'] = {'billed': fact, 'expected': fact}
+    if valid:
+        validate_analysis(data, excerpt)
+    else:
+        with pytest.raises(ValidationError):
+            validate_analysis(data, excerpt)

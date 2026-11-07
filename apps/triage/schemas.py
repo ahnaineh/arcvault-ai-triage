@@ -81,7 +81,7 @@ class Analysis(Strict):
                 if any(v is not None for v in (fact.amount, fact.currency, fact.period, fact.components)) and not fact.evidence:
                     raise ValueError('populated money requires evidence')
                 if fact.amount is not None:
-                    tokens = re.findall(r'(?<![\w.])[0-9]+(?:,[0-9]{3})*(?:\.[0-9]+)?(?![\w.])', ' '.join(fact.evidence))
+                    tokens = re.findall(r'(?<![\w.])[0-9]+(?:,[0-9]{3})*(?:\.[0-9]+)?(?!\w|\.[0-9])', ' '.join(fact.evidence))
                     if not any(Decimal(t.replace(',', '')) == Decimal(fact.amount) for t in tokens):
                         raise ValueError('amount lacks numeric evidence')
         outage = self.signals.active_service_outage

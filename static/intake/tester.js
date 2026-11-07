@@ -25,10 +25,12 @@
         if (document.hidden) { say('Polling paused. Resume when ready.'); resume.hidden = false; return; }
         controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 10000);
-        let response;
-        try { response = await fetch(statusUrl, {credentials:'same-origin', signal:controller.signal}); } finally { clearTimeout(timer); }
-        if (!response.ok) throw new Error('status unavailable');
-        const data = await response.json();
+        let data;
+        try {
+          const response = await fetch(statusUrl, {credentials:'same-origin', signal:controller.signal});
+          if (!response.ok) throw new Error('status unavailable');
+          data = await response.json();
+        } finally { clearTimeout(timer); }
         if (current !== generation) return;
         say(`State: ${data.status}. Attempts: ${data.attempt_count}.${data.dispatch_error ? ' Dispatch interrupted; operator intervention may be required.' : ''}${data.error ? ' Error: ' + data.error : ''}`);
         if (['completed','failed'].includes(data.status)) return;
