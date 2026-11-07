@@ -9,9 +9,11 @@ upgrade because they do not implement ownership fencing.
 
 The database is the durable work source. Every five seconds a scanner selects at
 most 100 due rows ordered by receipt. Each selected row is locked briefly and
-publication is attempted outside the transaction. Publication is deferred ten
-seconds in both database and broker. Lost/failed/uncertain publication is retried
-once that delay expires. Multiple scanners and duplicate broker deliveries are
+publication is attempted outside the transaction with a ten-second broker countdown.
+A separate ten-second database publication reservation throttles repeat scans;
+it never advances the provider retry timestamp or prevents a due worker claiming.
+Lost/failed/uncertain publication is retried once the reservation expires.
+Multiple scanners and duplicate broker deliveries are
 safe: workers lock the request and only pending/retrying due requests can claim.
 No transaction spans provider or broker network calls. Broker operations use the
 existing three-second connection/socket limits and no publication retries.
@@ -50,7 +52,6 @@ passed**. Ruff, Django system check, migration drift check and `git diff --check
 passed. Six SQLite warnings concern the existing absent collected-static folder.
 No paid inference ran.
 
- 
 PR34 correction checks: SQLite 295 passed, 1 skipped; isolated tmpfs PostgreSQL
 18.3 recovery/concurrency 13 passed; Ruff, Django check and migration drift pass.
 Existing-row upgrade from 0002 preserved message and initialized reservation null.

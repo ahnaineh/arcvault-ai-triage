@@ -44,18 +44,18 @@ Billing also goes to Human Review when amounts cannot safely be compared or a co
 
 ## Failures and access
 
-Transient provider failures receive at most two retries after the initial attempt. SDK retries are disabled so one layer controls retries. Refusals, invalid responses, and permanent failures remain visible errors. Failed queue publication remains visible for operator recovery.
+Each request permits at most three processing attempts, including transient failures and interrupted workers. SDK retries are disabled so one layer controls retries. Refusals, invalid responses, and permanent failures remain visible errors. The recovery service republishes due requests after failed or lost queue publication and reclaims expired worker leases.
 
 Browser access requires login and CSRF protection. External callers use a bearer token. The application serves one organization; tenant isolation is not implemented. Human Review is a read-only queue.
 
 ## Production and Phase 2
 
-For production, I would add reliable database-to-queue publication, worker-crash recovery, queue-age alerts, tenant isolation, and provider billing reconciliation. I would measure queue delay and model latency before increasing worker concurrency, and compare lower-cost models against the same quality checks.
+For production, I would validate recovery with real process-kill and broker-outage tests, then add queue-age alerts, tenant isolation, and provider billing reconciliation. I would measure queue delay and model latency before increasing worker concurrency, and compare lower-cost models against the same quality checks.
 
 With another week, I would first review summary quality and test crash recovery. Next I would add audited human corrections and queue filters. The current [evaluation](BENCHMARKS.md) uses reused synthetic cases; it does not establish production accuracy.
 
 
-## Final recovery semantics
+## Recovery semantics
 Publication uses a separate nullable dispatch_reserved_until reservation, locked
 per row and expiring after ten seconds. Scanner publication never advances
 next_attempt_at provider eligibility. Due workers claim immediately. Each scan
