@@ -22,3 +22,5 @@ htmlcov/
 staticfiles/
 media/
 .DS_Store
+
+.acceptance-runtime/

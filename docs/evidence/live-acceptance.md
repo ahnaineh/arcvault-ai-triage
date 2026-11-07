@@ -51,3 +51,10 @@ exceeding the $83 global ceiling is not established.
 coverage, full locked checks, provider usage reconciliation where available, and
 five real persisted accepted outputs remain outstanding. This inspection is not
 unpaid readiness or completed acceptance. No additional cost claim is made.
+
+## Offline implementation
+Durable runner and mocked fault tests now implemented in `apps/triage/acceptance.py`
+and `tests/test_acceptance.py`. Results survive export failure; uncertain attempts
+block resumption. Live execution remains blocked pending historical reconciliation
+and a defensibly bounded injected adapter. CLI provides dry-run only; no live
+acceptance completion is claimed.

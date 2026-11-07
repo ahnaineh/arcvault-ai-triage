@@ -167,3 +167,15 @@ inspection. Zero complete live sample records recovered; surviving browser DB
 records are explicitly mocked. Known subtotal $0.0006268, total unresolved.
 No paid requests performed. Durable runner and fault tests are still pending;
 next paid execution is blocked pending reliable persistence and budget bounds.
+
+## Durable acceptance runner
+Implemented `apps.triage.acceptance`: explicit persistent directory, fsynced append-only
+reservation/result journal, exclusive writer lock, conservative Decimal reservations,
+resume and atomic ordered five-result export. CLI defaults to offline dry run.
+Injected execution requires a bound-enforcing adapter and documented reconciled
+history/prices. Existing uncapped OpenAI adapter intentionally cannot be used directly.
+All reservations remain charged even when usage exists (conservative accounting).
+Historical known subtotal $0.0006268 and five unknown calls remain unresolved;
+no live acceptance or paid inference was performed. Automated fault checks added.
+
+Validation: locked dependencies installed; 84 pytest tests passed (6 staticfiles warnings), Ruff clean, Django check clean, CLI dry-run pending=5.
