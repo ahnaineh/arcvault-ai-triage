@@ -65,9 +65,9 @@ def accounted(events, config):
 
 
 class Runner:
-    def __init__(self, directory, config, *, terminal_provider_failures=False):
+    def __init__(self, directory, config, *, terminal_provider_failures=False, allow_ephemeral=False):
         self.directory = Path(directory).resolve()
-        if self.directory == Path('/tmp') or Path('/tmp') in self.directory.parents:
+        if not allow_ephemeral and (self.directory == Path('/tmp') or Path('/tmp') in self.directory.parents):
             raise ValueError('Select persistent project runtime storage')
         self.directory.mkdir(parents=True, exist_ok=True)
         self.terminal_provider_failures = terminal_provider_failures

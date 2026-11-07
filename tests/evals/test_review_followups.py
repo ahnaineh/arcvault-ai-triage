@@ -18,7 +18,7 @@ def test_fresh_inputs_are_disjoint_and_frozen():
     assert len({r['id'] for r in new}) == len(new) == 8
     assert len({r['message'] for r in new}) == len(new)
     assert not {r['message'].casefold() for r in new} & {r['message'].casefold() for r in old}
-    assert all(r['split'] == 'fresh_holdout' and r['summary_required_facts'] and r['expected_final_destination'] for r in new)
+    assert all(r['split'] == 'fresh_holdout' and r['summary_required_facts'] and r['expected_policy']['final_destination'] for r in new)
 
 
 def test_regeneration_preserves_human_decisions(tmp_path, monkeypatch):

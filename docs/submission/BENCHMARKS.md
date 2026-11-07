@@ -65,6 +65,8 @@ usage estimate reduction; this is not a provider invoice or verified current pri
 [Assistant review and human sheet](../evidence/review-followups/summary-review-sheet.json)
 contains all 50 sources, saved summaries, required/forbidden facts, per-case
 assistant verdicts and blank human fields. This is assistant review, not independent
-human adjudication. Assessment-01 needs its account URL retained; development-20
-adds an inferred consequence. Historical scorer results and review gates remain
+human adjudication. Benchmark assessment-01 differs from narrated submission-01: the benchmark source
+contains an account URL that its saved summary omits. Development-20 adds a
+plausible inferred consequence; whether that is acceptable needs human judgment
+and is not a proven error. Historical scorer results and review gates remain
 unchanged. Reproduce the derived artifacts with `python3 -m evals.review_followups`.
