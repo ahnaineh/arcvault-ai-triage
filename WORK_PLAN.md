@@ -284,3 +284,10 @@ No repeated label audit or live calls. Parent-supplied independent 50-label/seve
 review retained as supplied evidence. Latest comments add substantive findings
 r4501893516 (development-17 unresolved billing reason) and r4501893519 (processing
 measurements adapter); PR1 intentionally remains open pending their assessment.
+
+
+PR1 final feedback (offline foundation, 2026-11-07)
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893516: valid; development-17 now includes billing_comparison_unresolved before conflicting_intents. test_duplicate_payment_reason_matches_policy verifies current application policy order.
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893519: valid; adapter maps estimated_cost only when unknown_cost is false, sums all recorded attempt latencies, and preserves null for missing latency or unknown cost. test_processing_measurements covers retries, known cost, unknown cost and incomplete/empty attempts.
+- Main a79bc2a48d24c6c29d73473db291637585a4d540 already included in PR head; no compatibility merge required. Existing tracker retained.
+- 15 focused evaluation/adapter tests passed; 50-case dataset validation passed; Ruff passed. No application/provider/runner edits, live calls or benchmark execution.

@@ -60,3 +60,30 @@ def test_low_confidence_requires_review():
     result = score(load()[:1], [prediction])
     assert result['rows'][0]['routing']
     assert result['metrics']['unnecessary_escalations']['count'] == 0
+
+
+def test_processing_measurements():
+    case = load()[0]
+    record = {'request': case, 'processing': {'attempts': [
+        {'latency_ms': 40}, {'latency_ms': 100}],
+        'estimated_cost': 0.012, 'unknown_cost': False}}
+    prediction = adapt([record], [case])[0]
+    report = score([case], [prediction])
+    assert report['latency_inputs_ms'] == [140]
+    assert report['cost_inputs'] == [0.012]
+    record['processing']['attempts'][0]['latency_ms'] = None
+    record['processing']['unknown_cost'] = True
+    prediction = adapt([record], [case])[0]
+    assert prediction['latency_ms'] is None
+    assert prediction['cost_usd'] is None
+    record['processing']['attempts'] = []
+    assert adapt([record], [case])[0]['latency_ms'] is None
+
+
+def test_duplicate_payment_reason_matches_policy():
+    from apps.triage.policy import decide_projection
+    case = next(c for c in load() if c['id'] == 'development-17')
+    decision = decide_projection(category='Billing Issue', confidence=.95,
+        active_service_outage=False, insufficient_information=False,
+        conflicting_intents=True, billing_status='unresolved', reported_overcharge=None)
+    assert decision['escalation_reasons'] == case['expected_policy']['escalation_reasons']

@@ -21,6 +21,14 @@ def adapt(records, cases):
                       'provenance': record.get('provenance'),
                       'processing': record.get('processing'),
                       'application_review': record.get('review')}
+        processing = record.get('processing') or {}
+        attempts = processing.get('attempts') or []
+        latencies = [attempt.get('latency_ms') for attempt in attempts]
+        prediction['latency_ms'] = (sum(latencies) if latencies and
+            all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                for value in latencies) else None)
+        prediction['cost_usd'] = (processing.get('estimated_cost')
+            if processing.get('unknown_cost') is False else None)
         if record.get('error') or not isinstance(record.get('analysis'), dict):
             prediction['error'] = record.get('error') or 'missing_or_malformed_output'
         predictions.append(prediction)

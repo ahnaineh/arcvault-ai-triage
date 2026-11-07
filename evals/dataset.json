@@ -808,6 +808,7 @@
       "final_destination": "Human Review",
       "human_escalation": true,
       "escalation_reasons": [
+        "billing_comparison_unresolved",
         "conflicting_intents"
       ]
     },
