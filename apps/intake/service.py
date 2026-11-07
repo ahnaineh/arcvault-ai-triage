@@ -8,7 +8,7 @@ def dispatch(request_id, countdown=0):
     try:
         process.apply_async(args=[str(request_id)], countdown=countdown, retry=False)
     except Exception:  # noqa: BLE001 - persist broker failure
-        Request.objects.filter(pk=request_id).exclude(status='completed').update(dispatch_error='dispatch_failed')
+        Request.objects.filter(pk=request_id).filter(status__in=['pending', 'retrying']).update(dispatch_error='dispatch_failed')
     else:
         Request.objects.filter(pk=request_id).update(dispatch_error=None)
 

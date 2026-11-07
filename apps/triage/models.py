@@ -16,6 +16,9 @@ class Request(models.Model):
     dispatch_error = models.CharField(max_length=50, null=True)
     error = models.CharField(max_length=50, null=True)
 
+    lease_until = models.DateTimeField(null=True, db_index=True)
+    owner = models.UUIDField(null=True)
+
     class Meta:
         constraints = (models.UniqueConstraint(fields=['principal', 'idempotency_key'], name='principal_intake_key'),)
 
