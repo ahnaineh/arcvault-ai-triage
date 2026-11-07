@@ -240,3 +240,5 @@ Historical planning reservation remains conditional, not actual cost.
 
 PR9 export repair: shared application record builder wired into durable acceptance
 journal. Offline suite: 107 passed. Live provider and DB acceptance remain pending.
+
+PR9 substantive regression coverage: `test_command_assessment_billing_and_outage_regression` and `test_command_full_export_matches_canonical_builder` exercise five source-shaped SDK responses and canonical full-record parity. Existing resume coverage retained. Offline validation: 109 tests passed; Ruff passed. No application bug exposed; no live calls.

@@ -23,3 +23,5 @@ file journal only; no database acceptance is claimed. Completed journal records
 retain IDs and timestamps on resume; raw provider evidence remains separate.
 Offline locked verification: 107 pytest tests passed; Django check and migration
 dry-run passed; acceptance dry-run reports five pending. Live gate remains pending.
+
+PR9 substantive regression coverage: `test_command_assessment_billing_and_outage_regression` and `test_command_full_export_matches_canonical_builder` exercise five source-shaped SDK responses and canonical full-record parity. Existing resume coverage retained. Offline validation: 109 tests passed; Ruff passed. No application bug exposed; no live calls.

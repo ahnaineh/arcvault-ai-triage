@@ -170,3 +170,101 @@ def test_metadata_allowlist_and_bounds():
     assert len(evidence['id']) == len(evidence['model']) == 256
     assert safe_usage({'input_tokens': 1, 'output_tokens': 10**20,
                        'secret': 'private'}) == {'input_tokens': 1}
+
+
+def assessment_payloads():
+    from apps.intake.sample_data import samples
+    categories = ['Bug Report', 'Feature Request', 'Billing Issue',
+                  'Technical Question', 'Incident/Outage']
+    payloads = []
+    for case, category in zip(samples(), categories, strict=True):
+        data = json.loads(valid_response().output[0].content[0].text)
+        data['category'] = category
+        data['core_issue'] = case['message']
+        data['entities'] = [{'type': 'other', 'value': case['source'],
+                             'evidence': case['message']}]
+        if category == 'Billing Issue':
+            data['billing_comparison'] = {
+                'billed': {'amount': '1240', 'currency': '$', 'period': 'invoice',
+                           'components': 'subscription', 'evidence': ['$1,240']},
+                'expected': {'amount': '980', 'currency': '$', 'period': 'monthly',
+                             'components': 'subscription', 'evidence': ['$980/month']}}
+        if category == 'Incident/Outage':
+            data['signals']['active_service_outage'] = {
+                'value': True, 'evidence': ['Multiple users affected.']}
+        payloads.append(data)
+    return payloads
+
+
+def execute_assessment(command):
+    from pathlib import Path
+    run, client, _, _, _ = command
+    responses = []
+    for payload in assessment_payloads():
+        response = valid_response()
+        response.output[0].content[0].text = json.dumps(payload)
+        responses.append(response)
+    client.responses.create.side_effect = responses
+    run()
+    return json.loads(Path('runtime/assessment_outputs.json').read_text())
+
+
+def test_command_assessment_billing_and_outage_regression(command):
+    from apps.intake.sample_data import samples
+    records = execute_assessment(command)
+    assert len(records) == 5
+    for record, case, payload in zip(records, samples(), assessment_payloads(), strict=True):
+        assert record['request']['source'] == case['source']
+        assert record['request']['message'] == case['message']
+        assert record['request']['id'] and record['request']['received_at']
+        assert record['analysis'] == payload
+        assert record['summary'] == 'One. Two.'
+        assert record['provenance']['model'] == 'gpt-6.1-terra'
+        assert record['provenance']['prompt_version'] == 'triage_v1'
+        assert record['provenance']['schema_version'] == '1.0'
+        assert record['provenance']['policy_version'] == '1.0'
+        assert record['provenance']['completed_at']
+        assert record['provenance']['accepted_attempt_id']
+    billing = records[2]['decision']
+    assert billing['reported_overcharge'] == '260'
+    assert billing['standard_destination'] == billing['final_destination'] == 'Billing'
+    assert billing['human_escalation'] is False
+    assert 'billing_overcharge' not in billing['escalation_reasons']
+    assert billing['comparison_assumptions'] == [
+        'Unqualified $ interpreted as USD in synthetic domain',
+        'Unqualified $ interpreted as USD in synthetic domain',
+        'Direct invoice/monthly contract comparison treated as one monthly charge']
+    outage = records[4]['decision']
+    assert outage['standard_destination'] == 'Engineering'
+    assert outage['final_destination'] == 'Human Review'
+    assert outage['human_escalation'] is True
+    assert outage['escalation_reasons'] == ['active_outage']
+
+
+def test_command_full_export_matches_canonical_builder(command):
+    from types import SimpleNamespace
+
+    from apps.intake.sample_data import samples
+    from apps.triage.export import build_record
+    from apps.triage.schemas import validate_analysis
+
+    records = execute_assessment(command)
+    for record, case, payload in zip(records, samples(), assessment_payloads(), strict=True):
+        # Normalize only generated identifiers, wall times and measured latency.
+        record['request']['id'] = 'request'
+        record['request']['received_at'] = 'received'
+        record['provenance']['completed_at'] = 'completed'
+        record['provenance']['accepted_attempt_id'] = 'attempt'
+        record['processing']['attempts'][0]['id'] = 'attempt'
+        record['processing']['attempts'][0]['latency_ms'] = 0
+        expected = build_record(
+            request={'id': 'request', 'received_at': 'received',
+                     'source': case['source'], 'message': case['message']},
+            analysis=validate_analysis(payload, case['message']),
+            output=SimpleNamespace(model='gpt-6.1-terra', prompt_version='triage_v1',
+                                   schema_version='1.0'),
+            completed_at='completed', attempt_id='attempt',
+            attempts=[{'id': 'attempt', 'error': None, 'latency_ms': 0,
+                       'usage': {'input_tokens': 10, 'output_tokens': 20,
+                                 'total_tokens': 30}}])
+        assert record == expected
