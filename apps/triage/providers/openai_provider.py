@@ -8,6 +8,7 @@ from pathlib import Path
 
 import openai
 from pydantic import ValidationError
+
 from apps.triage.schemas import Analysis, validate_analysis
 
 ROOT = Path(__file__).resolve().parents[3]
