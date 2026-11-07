@@ -68,3 +68,15 @@ def test_accepted_response_lost_retry_keeps_single_request():
         assert Request.objects.count() == 1
         assert Request.objects.get().idempotency_key == payload['idempotency_key']
         assert dispatch.call_count == 1
+
+
+def test_presentation_values_are_readable_and_escaped():
+    from django.template import Context, Template
+
+    rendered = Template('{% load presentation %}{% readable_value value %}').render(
+        Context({'value': {'token_count': {'input': 12}, 'notes': ['<script>']}}))
+    assert 'Token count' in rendered and '12' in rendered
+    assert '&lt;script&gt;' in rendered and "{'input':" not in rendered
+    reason = Template('{% load presentation %}{{ reason|readable }}').render(
+        Context({'reason': 'billing_comparison_unresolved'}))
+    assert 'cannot be safely compared' in reason
