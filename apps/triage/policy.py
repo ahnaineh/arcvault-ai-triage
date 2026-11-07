@@ -19,7 +19,8 @@ def normalize_billing(comparison: Comparison | None, source: str | None = None):
     a, b = comparison.billed, comparison.expected
     assumptions = []
     def currency(token):
-        if token == '$': assumptions.append('Unqualified $ interpreted as USD in synthetic domain')
+        if token == '$' and 'Unqualified $ interpreted as USD in synthetic domain' not in assumptions:
+            assumptions.append('Unqualified $ interpreted as USD in synthetic domain')
         return 'USD' if token in ('USD', 'US$', '$') else token
     ca, cb = currency(a.currency), currency(b.currency)
     if ca != 'USD' or cb != 'USD' or a.amount is None or b.amount is None:
@@ -29,8 +30,8 @@ def normalize_billing(comparison: Comparison | None, source: str | None = None):
     direct = source and re.fullmatch(
         r'invoice\s+#[\w-]+\s+shows a charge of\s+(?:US\$|\$|USD\s*)[\d,.]+'
         r'\s+but\s+(?:our )?contract rate is\s+(?:US\$|\$|USD\s*)[\d,.]+/month'
-        r'\.?(?: Can someone look into this\?)?',
-        source, re.IGNORECASE)
+        r'\.?(?:\s+(?:(?:Can|Could) (?:someone|you) (?:please )?look into this|(?:Can|Could) you (?:please )?(?:check this|investigate|help)|Please (?:check this|investigate))[?.]?)?',
+        ' '.join(source.split()), re.IGNORECASE)
     if (direct and a.period in (None, 'invoice') and b.period == 'monthly'
             and a.components is None and b.components is None
             and all(excerpt in source for excerpt in a.evidence + b.evidence)):
