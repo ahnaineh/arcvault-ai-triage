@@ -35,26 +35,6 @@ login Medium as correct. The current reviewed dataset labels login High. Rescori
 the preserved original outputs against this exact dataset gives 2/5, not 3/5;
 see original-five-current-rubric.score.json. Labels and originals are unchanged.
 
-## Accounting
-
-reconciliation.json binds the old raw journal hash and its five usage settlements:
-4738 input / 1026 output, conservative estimate 0.069047. Historical 6.22326144 and
-uncertain APIConnectionError 11.617584 remain reserved in full. New 75 calls:
-81054 input / 12677 output, conservative estimate 1.1007645. Combined accounted
-amount is 19.01065694 against 83, including uncertainty. Actual billed cost is
-unknown. Recorded rates 11/M input and 16.5/M output are retained conservative
-rates, exceeding the current published Terra Standard 1/5 and Fast 2/10 rates
-(including 10 percent regional uplift), verified 2026-11-07 against
-https://developers.openai.com/api/docs/pricing. No cache discount was taken.
-
-Each new call reserved the unchanged full-context maximum 11.617584 before the
-network request. Only completed calls with complete valid bounded usage and the
-requested model release excess. Missing/invalid usage retains maxima; unresolved
-attempts block resume. Append-only reconciliation is idempotent and serialized by
-exclusive lock. Baseline, development, validation, test and assessment share one
-journal, accounting config and lock. The approved credential was read only inside
-consuming shell commands; no credential enters these artifacts.
-
 ## Identities and summary review
 
 freeze.json and test/assessment manifests identify frozen prompt/schema/dataset

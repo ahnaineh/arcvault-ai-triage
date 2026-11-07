@@ -6,11 +6,10 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-Application checkpoint: PR18 merged at 7121eff; UI revision 44adeecd748bd6c5a6be1654b8026dd144aa00a9. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
+Application checkpoint: final demo and reviewer login merged in PR20 at 05d57cf. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
 
 - Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and a narrated recording without subtitles. See [demo evidence](docs/submission/demo/README.md).
 - All five completed; one transient provider failure retried successfully. No duplicate request was submitted.
-- Budget: $83; conservative accounted total $52.69598874 includes retained uncertainties and a $1 provisional speech/verification allowance. Actual billed cost unknown.
 - Remaining handoff: user makes repository public and verifies signed-out access, then sends submission. No email sent.
 - Benchmark limitations remain: reused cases and pending independent summary review. Optional human correction/filter polish is deferred.
 - Earlier checkpoints below are historical; this checkpoint supersedes stale pending claims.
@@ -527,3 +526,7 @@ Recording and five serial real webhook submissions remain for parent operator.
 ## Final video and reviewer login — 2026-11-07
 
 Completed natural narration recut (2:15, no subtitles), readable JSON export, documented admin / admin local login and concise current setup docs. Full suite: 181 passed; Ruff passed; final UI/check/migration checks passed. Video decode and transcript checked. No new triage inference. See `docs/evidence/final-demo-checks.md`. Final user playback and repository visibility at submission remain user handoff steps.
+
+## Submission presentation cleanup — 2026-11-07
+
+Added source-checked benchmark tables and model-choice rationale. Removed the email draft from the repository and saved it locally. Removed cost estimates from submission-facing prose and recording metadata; original benchmark journals remain historical evidence. Local submission ZIP is generated from the published commit, excluding Git metadata and private runtime files.

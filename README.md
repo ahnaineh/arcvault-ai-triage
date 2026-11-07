@@ -43,7 +43,7 @@ Python 3.14.4, Django 6.1.3, PostgreSQL, Celery/Redis, server-rendered templates
 
 - [Architecture and tradeoffs](docs/submission/ARCHITECTURE.md)
 - [API and data contracts](docs/CONTRACTS.md)
-- [Final prompt and benchmark](docs/evidence/final-v4/README.md)
+- [Benchmark results and model choice](docs/submission/BENCHMARKS.md)
 - [Live demo evidence](docs/submission/demo/README.md)
 - [UI requirements and verification](docs/evidence/ui-redesign.md)
 - [Progress and historical evidence](WORK_PLAN.md)

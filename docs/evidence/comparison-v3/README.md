@@ -1,9 +1,7 @@
 # Luna high versus Terra none: V3 reused-set comparison
 
-Recommend retaining **gpt-6.1-terra** for this application. Luna high was cheaper
-at standard token prices, but slower and substantially less reliable under the
-application's exact-evidence contract. No model-default switch was made. The
-application now selects the revised, versioned V3 prompt by default; V1/V2 and all
+Recommend retaining **gpt-6.1-terra** for this application. Luna high was slower and substantially less reliable under the
+application's exact-evidence contract. No model-default switch was made. This comparison used V3; the final application uses V4. V1/V2 and all
 previous frozen outputs remain available. This is not a claim that V3 resolves all
 model errors or that its label accuracy exceeds V2.
 
@@ -26,7 +24,6 @@ model errors or that its label accuracy exceeds V2.
 | Input tokens | 61292 | 61292 |
 | Output tokens including reasoning | 21601 | 8502 |
 | Reasoning tokens | 11232 | 0 |
-| Standard-price token estimate | $0.0169297 | $0.103802 |
 
 Both received identical prompt/schema/messages and a25000 output cap; Luna used
 high reasoning and Terra its established none setting. This compares configurations,
@@ -69,15 +66,7 @@ summary_review was fabricated, and summary_constraints/end_to_end_success remain
 zero/review_needed. That zero is unreviewed-human status, not100 observed summary
 hallucinations. Review limitations from the previous benchmark remain applicable.
 
-## Budget and provenance
-
-Previous project-accounted19.01065694 carried forward. Comparison conservative
-accounting: Luna19.5070458 (includes fifteen retained full reservations of1.2925),
-Terra0.8144950; project accounted39.33219774 of83. Historical6.22326144 and uncertain
-11.617584 remain reserved in full. Estimated standard token prices are distinct
-from retained reservations and actual billing; actual billed cost is unknown.
-All reasoning output tokens are charged in estimates. No cache discounts taken.
-Current pricing and API proof sources are documented in protocol.md.
+## Provenance
 
 freeze.json binds V3/schema/dataset/model efforts and exact source hashes. A7d969b
 contains the execution harness; the documented preexisting-failure amendment

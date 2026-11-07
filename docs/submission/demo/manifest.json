@@ -8,10 +8,6 @@
   "unknown_usage_attempts": 1,
   "input_tokens": 4793,
   "output_tokens": 1106,
-  "new_known_usage_estimate": "0.0709720",
-  "new_uncertain_reservation": "11.617584",
-  "budget": "83",
-  "actual_billing": null,
   "original_videos": [
     {
       "file": "page@7e8b9919213f917fc932a694380da85a.webm",
@@ -24,8 +20,6 @@
   ],
   "original_published_video_sha256": "b5ad4d5f60f66ce43f94adfbf66f2847a03ad36c9dca9144ddb17cf0b44e5586",
   "original_video_commit": "fec54753d0696eaa4b510ea3f7ee736983d2ddbd",
-  "original_total_accounted": "51.67980774",
-  "total_accounted": "52.69598874",
   "published_video_sha256": "b75b879579201ebfc28857291e7292f17fd17029e1289603f4e507bc440f9ebd",
   "narrated_revision": {
     "ui_commit": "44adeecd748bd6c5a6be1654b8026dd144aa00a9",
@@ -36,10 +30,6 @@
     "tts_calls": 9,
     "transcription_checks": 1,
     "speech_rate_adjustment": 0.9,
-    "new_inference_estimate_usd": "0.016181",
-    "retained_speech_and_verification_allowance_usd": "1.00",
-    "total_accounted_including_allowance_usd": "52.69598874",
-    "actual_billing": null,
     "audio_sources": [
       {
         "file": "01-intro.wav",
@@ -85,8 +75,6 @@
     "speech_model": "gpt-4o-mini-tts-2025-12-15",
     "subtitles": false,
     "script_sha256": "3c02ad8ffe27200bd5e2b980ae2e724f2a5bbe7e5383926aa7bfa06f57892254",
-    "editing": "Reused authentic submission and saved-result captures; new policy/export captures; held frames for reading. Original outputs unchanged.",
-    "retained_speech_allowance_usd": "1.00",
-    "actual_billing": null
+    "editing": "Reused authentic submission and saved-result captures; new policy/export captures; held frames for reading. Original outputs unchanged."
   }
 }

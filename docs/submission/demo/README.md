@@ -18,6 +18,5 @@ Checks: desktop/mobile and keyboard interaction; all required fields; fresh requ
 
 All five original inputs completed in the earlier queued run. One transient failure retried successfully without a duplicate request. Its unknown usage reservation remains retained. [Original five outputs](live-assessment-outputs.json), [startup log](startup.log), and [original recording](https://github.com/ahnaineh/arcvault-ai-triage/blob/fec54753d0696eaa4b510ea3f7ee736983d2ddbd/docs/submission/demo/arcvault-demo.mp4) remain available.
 
-Conservative accounting is $52.69598874 of $83, including retained uncertainties and a $1 provisional allowance for speech generation and audio verification. This allowance is not a provider-enforced cap or a billing receipt. Actual billing remains unknown. No credentials, sessions or SQL backups are included.
 
 Speech API reference: [OpenAI text-to-speech documentation](https://developers.openai.com/api/docs/guides/text-to-speech).

@@ -1,7 +1,9 @@
-# Application model
+# Model choice
 
-The application uses `gpt-6.1-terra`, reasoning `none`, a 4,096-token output limit and prompt `triage_v4`. The user selected Terra; it was retained after a paired comparison with Luna. Classification, extraction, urgency and summary come from one structured model request per attempt. Python owns routing and arithmetic.
+ArcVault uses **gpt-6.1-terra**, reasoning `none`, prompt `triage_v4` and a 4,096-token output limit.
 
-Account access and strict-schema acceptance were demonstrated by real calls. The [final benchmark](evidence/final-v4/README.md), [paired comparison](evidence/comparison-v3/README.md) and [live queued demo](submission/demo/README.md) retain results and limitations. The comparison reused cases and does not establish unseen-case accuracy.
+Terra was retained after the paired V3 comparison: 50/50 application-valid outputs versus Luna's 35/50, stronger category/entity/routing matches, and lower measured median latency. Luna's 15 failures were nonverbatim source excerpts, despite valid JSON responses.
 
-API billing is separate from the conservative usage estimates and retained uncertainty reservations in the evidence. Check current provider pricing before another paid run. Historical prompts, reports and model records remain available for reproduction.
+The final compact V4 prompt reduces input tokens and keeps all 50 outputs valid. It trades some category and routing matches for a smaller prompt; it did not improve quality across the board.
+
+See [benchmark results](submission/BENCHMARKS.md) for the complete comparison, run history and limitations. Classification, extraction and summary use one structured request; Python handles routing and arithmetic.
