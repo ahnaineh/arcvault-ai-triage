@@ -1,42 +1,82 @@
 [
   {
-    "id": "01-intro",
-    "start": 0,
-    "duration": 17.84
+    "scene": "01-intro",
+    "start_seconds": 0,
+    "duration_seconds": 10.133333,
+    "source_sha256": "8a5135c961cab846433201bc3150c598538fca21f97f34821a972c4271b9bd4a",
+    "source_seconds_used": 10.127777777777776,
+    "audio_sha256": "600acf0e34385b7c64ec2cbbf818fe276abf3fca76d2e07243e28710355d1b8f"
   },
   {
-    "id": "02-intake",
-    "start": 17.84,
-    "duration": 18.48
+    "scene": "02-intake",
+    "start_seconds": 10.133,
+    "duration_seconds": 13.8,
+    "source_sha256": "695899b8e9283bb58c1138facfe3a64b63749b6550fbe774f8c9aaa791574b09",
+    "source_seconds_used": 13.794444444444444,
+    "audio_sha256": "e5c4cc963cc35e13177d76b2f061f1d21bba87b952222806ffb19d74349e5d71"
   },
   {
-    "id": "03-login",
-    "start": 36.32,
-    "duration": 19.12
+    "scene": "03-login",
+    "start_seconds": 23.933,
+    "duration_seconds": 16.516,
+    "source_sha256": "a1f2a28c1d5e03480b45e2f0a6bfe5e9bebc60194b29284ae920d43461cf5043",
+    "source_seconds_used": 16.516666666666666,
+    "audio_sha256": "52ee1c5dd23bc9b243c11fca409c2ab5f27c63be44be6192f1aea0ee245dabc1"
   },
   {
-    "id": "04-feature",
-    "start": 55.44,
-    "duration": 17.16
+    "scene": "04-feature",
+    "start_seconds": 40.449,
+    "duration_seconds": 11.739,
+    "source_sha256": "f82f4823f051f8ac86541e79a94097dfbde345148d3dadd9c69e44461256a077",
+    "source_seconds_used": 5.8,
+    "audio_sha256": "c384f241cb36adab0a92ae6664f05ac31cd4a8950d665c5b9b964ef1aa7d9aba"
   },
   {
-    "id": "05-invoice",
-    "start": 72.6,
-    "duration": 20.96
+    "scene": "05-invoice",
+    "start_seconds": 52.188,
+    "duration_seconds": 19.739,
+    "source_sha256": "c0765436053508f0131dc3b589ddd222c88be4f79f0e04759f5ebb8bd74f5394",
+    "source_seconds_used": 19.73888888888889,
+    "audio_sha256": "c663da16d9bcfa1ee7c7482eba3f94610098ea207eeada7b9bb41d72c4037c7e"
   },
   {
-    "id": "06-okta",
-    "start": 93.56,
-    "duration": 16.84
+    "scene": "06-okta",
+    "start_seconds": 71.927,
+    "duration_seconds": 9.0,
+    "source_sha256": "7b922918d3d04c01fdcc78e829543371bcc03c73ed28126434455d247e35cf1c",
+    "source_seconds_used": 9,
+    "audio_sha256": "b58e80c007dc2c181267f2c02c4f635a0ae4ecf5d480a9683fafd4e3fe1c039a"
   },
   {
-    "id": "07-outage",
-    "start": 110.4,
-    "duration": 20.76
+    "scene": "07-outage",
+    "start_seconds": 80.927,
+    "duration_seconds": 16.466667,
+    "source_sha256": "56a060084add64194f741626489ba37952831d557cd2b66e762e06438abe9a4d",
+    "source_seconds_used": 5.8,
+    "audio_sha256": "b18033dd32f95f5e58af2d7e55663dcb2804a48a03dccf43d871261b2888bb39"
   },
   {
-    "id": "08-close",
-    "start": 131.16,
-    "duration": 21.28
+    "scene": "08-policy",
+    "start_seconds": 97.394,
+    "duration_seconds": 13.3,
+    "source_sha256": "699f426af05c1ac4d968953f20ad9604d767bc28a34e324a84e68bf490f5de05",
+    "source_seconds_used": 13.294444444444443,
+    "audio_sha256": "a40a702832f47561e2a2891224fbeaba75cd627f49e85a3b3d7524fe54ee60c7"
+  },
+  {
+    "scene": "09-export",
+    "start_seconds": 110.694,
+    "duration_seconds": 12.572,
+    "source_sha256": "13b7ceca4fb6bd4c3848b4b378a7a7839eaa0362422aca824800ce77fdc42036",
+    "source_seconds_used": 12.572222222222223,
+    "audio_sha256": "0df28cbecb05233e26d684afc47c1fb7550ae07121082b15466e205d18cf8e36"
+  },
+  {
+    "scene": "10-close",
+    "start_seconds": 123.266,
+    "duration_seconds": 12.133333,
+    "source_sha256": "1791221a15b8e794ee10ef53d13fef4c136875ff7c7b08546edd84595a3386b1",
+    "source_seconds_used": 12.127777777777778,
+    "audio_sha256": "874ac53f0fd3be826990de012d1d11d5b1b8e8c095307a0e7a714850a67262af"
   }
 ]

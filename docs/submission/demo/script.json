@@ -1,34 +1,12 @@
 [
-  {
-    "id": "01-intro",
-    "text": "We built ArcVault to turn incoming support messages into clear next steps. This walkthrough uses an AI-generated voice. We\u2019ll send a request through our webhook, then review the five assessment scenarios using real model results."
-  },
-  {
-    "id": "02-intake",
-    "text": "We choose the source, paste the original message, and send it. We save the request first, then our worker asks Terra to classify it, extract useful details, and write a summary. We use Python rules to decide the final destination."
-  },
-  {
-    "id": "03-login",
-    "text": "Here, we use the model\u2019s bug classification and confidence score to route this request to Engineering. We show priority, urgency, and the human-review decision alongside it. We can open source excerpts to check the extracted account information."
-  },
-  {
-    "id": "04-feature",
-    "text": "Next, we open the saved audit export request. We classified this as a low-priority feature request and routed it to Product. We keep the processing history under Technical details, including a successful retry from our earlier live run."
-  },
-  {
-    "id": "05-invoice",
-    "text": "For the invoice, we extracted the billed amount and the expected contract rate. We use exact decimal arithmetic to calculate an apparent difference of two hundred and sixty dollars, and route it to Billing. We show the comparison assumptions here, because the message does not explicitly state every billing detail."
-  },
-  {
-    "id": "06-okta",
-    "text": "For the Okta question, we use the model\u2019s technical-question classification and medium priority to route it to Technical Support. We keep the summary brief, and we preserve the customer\u2019s exact wording as evidence for the extracted integration."
-  },
-  {
-    "id": "07-outage",
-    "text": "For the dashboard outage, we detect that multiple users are affected. Our policy sends it to Human Review, while retaining Engineering as the standard destination. We make the reason visible immediately. We can also inspect the supporting signals and export the complete saved result as JSON."
-  },
-  {
-    "id": "08-close",
-    "text": "Finally, we open the Human Review queue to see the flagged outage. We\u2019ve kept the everyday workflow simple, with evidence and technical details available when needed. Our submission includes the five live outputs, the exact prompt, and the benchmark results with their limitations."
-  }
+{"id":"01-intro","text":"This is ArcVault, a support-request triage workflow. It takes an incoming message, identifies the issue, and routes it to the right team."},
+{"id":"02-intake","text":"Let’s start with a customer who can’t log in. I’ll paste their message into the tester and submit it. This calls the webhook, saves the request, and queues it for analysis."},
+{"id":"03-login","text":"Here’s the result: a high-priority bug report, routed to Engineering. The page shows the model’s confidence, a short summary, and details such as the account URL and error code. Each extracted detail includes a source excerpt so it’s easy to check."},
+{"id":"04-feature","text":"Now let’s look at the other four assessment examples, which were processed earlier. The audit-log export request goes to Product. It’s a feature suggestion, with low priority."},
+{"id":"05-invoice","text":"The invoice request goes to Billing. The customer reports a charge of twelve hundred and forty dollars against a monthly rate of nine hundred and eighty. The apparent difference is two hundred and sixty dollars. That calculation happens in Python, and the assumptions are available here because the message doesn’t specify every billing detail."},
+{"id":"06-okta","text":"The Okta message is a technical question, so it goes to Technical Support."},
+{"id":"07-outage","text":"The dashboard outage needs a different response. Multiple users are affected, so the escalation rule sends it to Human Review. Engineering remains the standard destination, and the reason for escalation is shown immediately."},
+{"id":"08-policy","text":"The model handles classification, extraction, and summarization in one request. Routing and escalation follow explicit Python rules, including a fallback when confidence is below seventy percent."},
+{"id":"09-export","text":"Every completed request has a saved JSON record containing the analysis, routing decision, and processing details. It can be exported directly from this page."},
+{"id":"10-close","text":"Finally, the Human Review queue brings the flagged requests together. That’s the complete flow: from an unstructured customer message to a saved, actionable result."}
 ]

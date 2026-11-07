@@ -26,7 +26,7 @@
   "original_video_commit": "fec54753d0696eaa4b510ea3f7ee736983d2ddbd",
   "original_total_accounted": "51.67980774",
   "total_accounted": "52.69598874",
-  "published_video_sha256": "113f614f2696859e50f3dd17b1352b1cad2f8763c61922dbaa857a7e29706989",
+  "published_video_sha256": "b75b879579201ebfc28857291e7292f17fd17029e1289603f4e507bc440f9ebd",
   "narrated_revision": {
     "ui_commit": "44adeecd748bd6c5a6be1654b8026dd144aa00a9",
     "fresh_live_requests": 1,
@@ -74,5 +74,19 @@
         "sha256": "f07e4420f81bb16cea78dc6e183c6847b2d999cc7fde4509e9b08b3e1af757f0"
       }
     ]
+  },
+  "previous_narrated_video_sha256": "113f614f2696859e50f3dd17b1352b1cad2f8763c61922dbaa857a7e29706989",
+  "final_edit": {
+    "duration_seconds": 135.4,
+    "new_triage_calls": 0,
+    "tts_calls": 10,
+    "transcription_checks": 1,
+    "voice": "cedar",
+    "speech_model": "gpt-4o-mini-tts-2025-12-15",
+    "subtitles": false,
+    "script_sha256": "3c02ad8ffe27200bd5e2b980ae2e724f2a5bbe7e5383926aa7bfa06f57892254",
+    "editing": "Reused authentic submission and saved-result captures; new policy/export captures; held frames for reading. Original outputs unchanged.",
+    "retained_speech_allowance_usd": "1.00",
+    "actual_billing": null
   }
 }

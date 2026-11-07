@@ -1,10 +1,7 @@
+# Application model
 
-### Application model selection (2026-11-07)
+The application uses `gpt-6.1-terra`, reasoning `none`, a 4,096-token output limit and prompt `triage_v4`. The user selected Terra; it was retained after a paired comparison with Luna. Classification, extraction, urgency and summary come from one structured model request per attempt. Python owns routing and arithmetic.
 
-User-selected default: `gpt-6.1-terra`, replacing the prior planned GPT-4.1 mini default. Historical actual mini run records remain unchanged.
+Account access and strict-schema acceptance were demonstrated by real calls. The [final benchmark](evidence/final-v4/README.md), [paired comparison](evidence/comparison-v3/README.md) and [live queued demo](submission/demo/README.md) retain results and limitations. The comparison reused cases and does not establish unseen-case accuracy.
 
-Official evidence: https://developers.openai.com/api/docs/models/gpt-6.1-terra lists Responses and Structured Outputs support, 1,050,000 context, 922,000 maximum input and 128,000 maximum output tokens. Reasoning supports none/low/medium(default)/high/xhigh/max. Adapter explicitly selects none with the existing 4096 output cap, and sends no sampling parameters.
-
-https://developers.openai.com/api/docs/guides/structured-outputs documents strict JSON schema support and schema restrictions. Exact application schema server acceptance and account access remain UNVERIFIED; no model listing, secrets, or inference calls were used here.
-
-https://developers.openai.com/api/docs/pricing lists Standard short context (<=272K input) rates per million: input $1, output $5, cached input $0.05, cache writes $1.25 (30m)/$2.50 (12h). Long context input $2/output $7.50. Regional processing +10%, Fast 2x. Future budget runner configuration must use these model-specific rates with conservative allowance for cache writes/tier, output <=128K, and verified input bounds. The runner has explicit prices rather than a model catalog; old mini rates must not be reused. Historical accounting and exact input-bound proof remain mandatory gates before execution.
+API billing is separate from the conservative usage estimates and retained uncertainty reservations in the evidence. Check current provider pricing before another paid run. Historical prompts, reports and model records remain available for reproduction.
