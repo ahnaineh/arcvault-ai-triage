@@ -22,10 +22,10 @@ Manual review of all five original analyses and raw responses:
    faithfully represented; no urgency invented.
 3. Invoice: Billing Issue, Low, Billing after offline derivation; apparent 260
    under declared assumptions. Invoice entity and monthly rate faithful. Low
-   differs from plan's illustrative Medium priority; no explicit urgency supports
-   forcing Medium, so retained as an extraction judgment, not silently corrected.
+   is an ERROR against evals/dataset.json assessment-03's Medium rubric.
 4. Okta: Technical Question, Low, Technical Support. SSO/Okta entities and
-   two-sentence evaluation summary faithful.
+   two-sentence evaluation summary faithful. Low is an ERROR against
+   assessment-04's Medium rubric.
 5. Dashboard: Incident/Outage, High, Human Review (active_outage), standard
    Engineering. Multiple users and 2pm EST faithfully retained; provider fault
    attributed to customer, not independently verified.
@@ -47,3 +47,7 @@ Validation: full offline SQLite suite 155 passed (six existing missing-staticfil
 warnings); Ruff clean; Django system check clean; git diff --check clean.
 All uv calls used /tmp/arcvault-uv and /tmp/arcvault-invoice-live-fix-venv,
 explicit SQLite and offline-test-key. No Docker operations.
+
+Corrected rubric grade: priority 3/5; routing 5/5 for the policy-1.1 derived
+records. This is not a full quality pass. Original model priorities and raw outputs
+remain unchanged; no new model call.

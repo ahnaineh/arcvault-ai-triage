@@ -6,6 +6,13 @@ from .schemas import Analysis, Comparison
 
 QUEUES = {'Bug Report':'Engineering','Feature Request':'Product','Billing Issue':'Billing','Technical Question':'Technical Support','Incident/Outage':'Engineering'}
 
+def _subtract_exact(a, b):
+    with localcontext() as ctx:
+        operands = [Decimal(a), Decimal(b)]
+        ctx.prec = max(len(v.as_tuple().digits) + v.as_tuple().exponent for v in operands) + max(-v.as_tuple().exponent for v in operands) + 1
+        difference = Decimal(a) - Decimal(b)
+    return difference
+
 def normalize_billing(comparison: Comparison | None, source: str | None = None):
     """Return status, signed difference and explicit synthetic-domain assumptions."""
     if comparison is None: return 'not_applicable', None, []
@@ -30,9 +37,7 @@ def normalize_billing(comparison: Comparison | None, source: str | None = None):
         assumptions.append(
             'Apparent difference assumes one monthly charge and the same '
             'component for a direct invoice versus contract comparison')
-        with localcontext() as ctx:
-            ctx.prec = max(len(a.amount), len(b.amount)) + 4
-            return 'comparable_usd', Decimal(a.amount) - Decimal(b.amount), assumptions
+        return 'comparable_usd', _subtract_exact(a.amount, b.amount), assumptions
     # Unknown bases are unsafe; extraction must preserve invoice/monthly wording.
     periods = (a.period, b.period)
     if any(p not in {'invoice', 'monthly', 'annual', 'one_time'} for p in periods):
@@ -45,11 +50,7 @@ def normalize_billing(comparison: Comparison | None, source: str | None = None):
         return 'unresolved', None, assumptions
     if a.components is None or a.components != b.components:
         return 'unresolved', None, assumptions
-    with localcontext() as ctx:
-        operands = [Decimal(a.amount), Decimal(b.amount)]
-        ctx.prec = max(len(v.as_tuple().digits) + v.as_tuple().exponent for v in operands) + max(-v.as_tuple().exponent for v in operands) + 1
-        difference = Decimal(a.amount) - Decimal(b.amount)
-    return 'comparable_usd', difference, assumptions
+    return 'comparable_usd', _subtract_exact(a.amount, b.amount), assumptions
 
 def decide_projection(*, category, confidence, active_service_outage, insufficient_information, conflicting_intents, billing_status, reported_overcharge):
     """Controlled policy projection for fixtures; application callers use decide."""

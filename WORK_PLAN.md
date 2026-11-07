@@ -303,3 +303,19 @@ retained unchanged. Five schema/source reviews complete; invoice apparent 260 /
 Billing under declared monthly/component assumptions, outage Human Review.
 Invoice priority remains model Low versus illustrative plan Medium, documented.
 This is offline canonical record acceptance, not queue DB or new inference.
+
+## PR12 narrow implementation follow-up (2026-11-07)
+Original finding https://github.com/ahnaineh/arcvault-ai-triage/pull/12#discussion_r4501937202
+-> shared exponent-aware _subtract_exact in both billing branches; regression
+ tests/test_invoice_saved.py::test_direct_invoice now includes unequal scales,
+ yielding 99999999999999999999.999999999999999999999 exactly.
+User-verified offline-review grading blocker -> corrected invoice and Okta Low
+versus evals/dataset.json Medium to ERROR: priority 3/5, derived routing 5/5.
+No full quality pass claimed. Raw outputs/priorities unchanged. Offline
+scripts/reprocess_invoice_evidence.py refreshed only derived policy code hashes.
+Current comments, reviews, inline comments and threads inspected: sole bot finding
+is the URL above, no additional findings. Focused pytest tests/test_policy.py
+ tests/test_invoice_saved.py: 77 passed. Ruff on policy, regression and reprocessor:
+PASS; git diff --check PASS. UV_CACHE_DIR=/tmp/arcvault-uv and
+UV_PROJECT_ENVIRONMENT=/tmp/arcvault-infra-verify-venv; synthetic key and explicit
+SQLite /tmp/pr12-unit.sqlite. No inference, credential or infrastructure operations.
