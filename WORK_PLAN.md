@@ -6,7 +6,7 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-- Phase: planning baseline published; M1 is next. No application implementation yet.
+- Phase: M1 partially implemented: validation and policy verified locally; runtime integration and live provider acceptance pending.
 - Working deadline: November 8, 2026, as stated by the candidate.
 - API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
 - Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 reviewed synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
@@ -36,9 +36,9 @@ Gate: remote repository contains the intended planning artifacts and no credenti
 - [ ] Verify latest stable Django and compatible Python/package versions; pin dependencies and container images, commit `uv.lock`.
 - [ ] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
 - [ ] Create Django project, settings, `.env.example`, Dockerfile and Compose web/worker/PostgreSQL/Redis/migration services.
-- [ ] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes.
-- [ ] Implement billing normalization/arithmetic and pure routing/escalation policy.
-- [ ] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases.
+- [x] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes. Evidence: `docs/evidence/policy.md` (58 focused tests).
+- [x] Implement billing normalization/arithmetic and pure routing/escalation policy. Evidence: `docs/evidence/policy.md` (58 focused tests).
+- [x] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases. Evidence: `docs/evidence/policy.md` (58 focused tests).
 - [ ] Smoke-test the exact schema against the selected real model; record usage and any schema adjustments.
 
 Gate: locked environment starts, policy/validation tests pass, exact model schema works on a real response. No unsupported claims of full application functionality.
@@ -110,3 +110,7 @@ After executable contracts stabilize, independent work can cover application/UI,
 | 2026-11-07 | Locked webhook-first delivery, latest stable Django preference, 50-case split and $83 API ceiling | User decisions recorded in assessment plan |
 | 2026-11-07 | Created contracts, strict schema and 25 policy cases | JSON/structure checks passed; implementation and live evaluation pending |
 | 2026-11-07 | Created execution tracker and repository introduction; published private repository | Verified remote baseline `2eedbbe`, private visibility, and default branch `main`; staged whitespace check passed |
+
+## PR #2 independent integration review
+
+Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Independent reviewer reported no blockers and 58 passing tests using the command in docs/evidence/policy.md. Probes verified $1240 versus $980/month yields $260 Billing; exact 500 automatic/500.01 review; signed undercharge; confidence .699999 review/.70 automatic; monetary evidence normalization; rejection of unsupported evidence, Unknown basis, mutated and bypass models. Integration rerun: 58 passed in 0.08s. Documentation-only integration. Semantic attribution, live provider and runtime integration remain pending.
