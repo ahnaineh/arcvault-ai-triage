@@ -265,3 +265,5 @@ after mocked execution, changed prompt/schema each five pending, no extra SDK cl
 Focused command tests 24 passed; combined SQLite suite 129 passed (six staticfiles
 warnings), Ruff/Django/migration checks and all three JS harnesses passed.
 No paid calls, credentials, PostgreSQL, queue or live acceptance verified. Plan states retained.
+
+Terra live acceptance stopped after first SDK connection failure; zero retries/completed, cost unknown and reservation retained. See docs/evidence/terra-live-20261107. Five-output acceptance pending.
