@@ -1,20 +1,33 @@
-import os,sys,secrets,threading,time
+import os
+import secrets
+import sys
+import threading
+import time
+
 sys.path.insert(0,os.getcwd())
 os.environ.update(DJANGO_SETTINGS_MODULE='config.settings',DJANGO_SECRET_KEY=secrets.token_hex(32),DATABASE_URL='sqlite:////tmp/arcaccept.sqlite',DJANGO_DEBUG='true')
 import django
+
 django.setup()
 from django.conf import settings
+
 settings.STORAGES={'staticfiles':{'BACKEND':'django.contrib.staticfiles.storage.StaticFilesStorage'}}
 from django.core.management import call_command
+
 call_command('migrate',verbosity=0)
 from django.contrib.auth import get_user_model
+
 password=secrets.token_urlsafe(24)
 u,_=get_user_model().objects.get_or_create(username='synthetic-reviewer');u.set_password(password);u.save()
-from unittest.mock import patch
 from types import SimpleNamespace
-from tests.test_backend import analysis
-from apps.triage.tasks import process
+from unittest.mock import patch
+
 from django.db import connections
+
+from apps.triage.tasks import process
+from tests.test_backend import analysis
+
+
 def dispatch(pk,countdown=0):
  def work():
   time.sleep(2)
@@ -24,11 +37,14 @@ def dispatch(pk,countdown=0):
   connections.close_all()
  threading.Thread(target=work,daemon=True).start()
 import apps.intake.service
+
 apps.intake.service.dispatch=dispatch
 threading.Thread(target=lambda:call_command('runserver','127.0.0.1:18766',use_reloader=False,verbosity=0),daemon=True).start()
 time.sleep(1)
-from playwright.sync_api import sync_playwright
 from pathlib import Path
+
+from playwright.sync_api import sync_playwright
+
 out=Path('docs/evidence/pr6-browser');out.mkdir(exist_ok=True)
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/google-chrome',headless=True,args=['--no-sandbox'])
