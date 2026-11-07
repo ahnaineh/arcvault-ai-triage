@@ -53,3 +53,16 @@ Browser access requires login and CSRF protection. External callers use a bearer
 For production, I would add reliable database-to-queue publication, worker-crash recovery, queue-age alerts, tenant isolation, and provider billing reconciliation. I would measure queue delay and model latency before increasing worker concurrency, and compare lower-cost models against the same quality checks.
 
 With another week, I would first review summary quality and test crash recovery. Next I would add audited human corrections and queue filters. The current [evaluation](BENCHMARKS.md) uses reused synthetic cases; it does not establish production accuracy.
+
+
+## Final recovery semantics
+Publication uses a separate nullable dispatch_reserved_until reservation, locked
+per row and expiring after ten seconds. Scanner publication never advances
+next_attempt_at provider eligibility. Due workers claim immediately. Each scan
+selects at most 100 rows; publication occurs outside the transaction with a
+ten-second countdown. Reservation expiry recovers crashes before publication.
+Owner and lease fencing protects completed replacements from stale workers.
+Three attempts include interrupted calls. Migration 0003 preserves existing rows.
+Recovery requires a running scanner, database and broker. At-least-once provider
+execution may incur unsaved costs. Real process-kill, broker-outage and production
+acceptance remain unverified.

@@ -108,21 +108,14 @@ Each case records the message, split, expected labels and entities, summary fact
 Policy fixtures test confidence and billing boundaries, multiple escalation reasons, and unknown comparisons. Application tests cover authentication, CSRF, duplicate submissions, invalid provider output, bounded retries, and persisted exports. [Infrastructure evidence](evidence/infrastructure-acceptance.md) identifies which paths ran through real services and which failures were simulated. Worker-crash recovery is not implemented.
 
 
-## Finalized durable recovery
-
-The runtime scanner runs every five seconds, selecting at most 100 oldest eligible
-requests per pass. Under a row lock it reserves publication for ten seconds in
-dispatch_reserved_until, independently of provider retry eligibility in
-next_attempt_at. Publication uses countdown=10 outside the transaction. A scanner
-reservation never delays a due worker claim. A crash before publication permits
-another scan after reservation expiry; repeated scans and duplicate deliveries
-are safe under PostgreSQL row locks. Provider transient retries retain their
-ten-second eligibility delay. Expired 120-second worker leases are fenced by
-owner token and lease time, including after a replacement completes. Interrupted
-attempts consume the shared three-attempt budget.
-
-Migration 0003 adds a nullable reservation field; existing rows retain their
-eligibility timestamps and become dispatchable when those timestamps are due.
-This is at-least-once dispatch, not exactly-once provider execution: an interrupted
-provider call may incur cost without a saved result. Recovery requires a running
-scanner, database and broker. Real process-kill, broker-outage and pr
+## Final recovery semantics
+Publication uses a separate nullable dispatch_reserved_until reservation, locked
+per row and expiring after ten seconds. Scanner publication never advances
+next_attempt_at provider eligibility. Due workers claim immediately. Each scan
+selects at most 100 rows; publication occurs outside the transaction with a
+ten-second countdown. Reservation expiry recovers crashes before publication.
+Owner and lease fencing protects completed replacements from stale workers.
+Three attempts include interrupted calls. Migration 0003 preserves existing rows.
+Recovery requires a running scanner, database and broker. At-least-once provider
+execution may incur unsaved costs. Real process-kill, broker-outage and production
+acceptance remain unverified.

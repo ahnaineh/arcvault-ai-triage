@@ -49,3 +49,11 @@ Verified in this checkout: full SQLite offline suite **294 passed, 1 skipped**
 passed**. Ruff, Django system check, migration drift check and `git diff --check`
 passed. Six SQLite warnings concern the existing absent collected-static folder.
 No paid inference ran.
+
+ 
+PR34 correction checks: SQLite 295 passed, 1 skipped; isolated tmpfs PostgreSQL
+18.3 recovery/concurrency 13 passed; Ruff, Django check and migration drift pass.
+Existing-row upgrade from 0002 preserved message and initialized reservation null.
+Fake-clock 105-row backlog completes after repeated scans before workers.
+Old success/error cannot overwrite completed replacement. No process-kill test
+or paid inference performed. Test PostgreSQL container removed.
