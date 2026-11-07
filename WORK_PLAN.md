@@ -124,3 +124,8 @@ Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Ind
 - [x] Offline SDK-envelope/provider and policy verification: 63 tests passed; see docs/evidence/provider.md.
 - [ ] Live exact-schema gate and initial model/pricing selection remain pending, not replaced by mocks.
 - Explicit user approval now permits disclosed synthetic assessment/benchmark payloads within cumulative $83; provider task capped at $3 and five supplied messages. No live calls made in this checkpoint.
+
+## Integration checkpoint
+Runtime/policy/provider/backend checkpoint implemented; M2 remains incomplete. Sample commands, UI, and five live outputs remain pending. Independent review of PR4 366dfab and PR5 c14c69f reported 69 passing tests, Django check, and two offline SDK-validated adapter/process probes. Preserved the parameterized probe in tests/test_provider_pipeline.py.
+
+Before reliability claims: verify live strict schema/model/pricing, successful session-CSRF flow, PostgreSQL concurrent duplicates/task deliveries, actual Redis publication/retries. Early retry delivery returns without republishing (tasks.py lines 27-28), relying on broker countdown; test that behavior in Redis. No retry design changes in this integration.
