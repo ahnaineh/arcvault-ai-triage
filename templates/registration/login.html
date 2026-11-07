@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<section class="login"><h1>Log in to ArcVault</h1><p>Review incoming requests and their routing evidence.</p><form method="post">{% csrf_token %}{{ form.as_p }}<input type="hidden" name="next" value="{{ next }}"><button>Log in</button></form></section>{% endblock %}
