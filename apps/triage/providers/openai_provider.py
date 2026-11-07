@@ -80,7 +80,7 @@ class ProviderResult:
     usage: dict | None
 
 class OpenAIProvider:
-    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096, reasoning_effort: str | None = None):
+    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096, reasoning_effort: str | None = None, prompt_version: str = 'triage_v1'):
         if not model.strip() or not math.isfinite(timeout) or timeout <= 0:
             raise ProviderError('provider_config')
         if type(max_output_tokens) is not int or max_output_tokens <= 0 or (model == 'gpt-6.1-terra' and max_output_tokens > 128000):
@@ -91,9 +91,11 @@ class OpenAIProvider:
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
         self.raw_sink = None
-        self.prompt_version = 'triage_v1'
+        if prompt_version not in ('triage_v1', 'triage_v2', 'triage_v3'):
+            raise ProviderError('provider_config')
+        self.prompt_version = prompt_version
         self.model = model
-        self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+        self.prompt = (ROOT / 'prompts' / f'{prompt_version}.txt').read_text()
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
 
     def analyze(self, message: str) -> ProviderResult:

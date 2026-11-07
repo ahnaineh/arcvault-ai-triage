@@ -418,3 +418,27 @@ high vs Terra none on identical v3/schema/all50, explicitly reused comparison se
 Output cap25000 for both (includes reasoning tokens); no SDK retries. Existing
 Runner and accounting journal reused, with root lock and immutable model histories.
 Application default unchanged pending measured tradeoffs.
+
+## V3 paired comparison complete — 2026-11-07
+
+- [x] Official public API gpt-6-luna/high/Responses/strict output support and pricing
+  verified; no coding-catalog substitution. One V3 revision from rubric/development
+  review only; originals and frozen75-call evidence unchanged.
+- [x] Paired100 calls completed (same50/model): Luna high vs Terra none, cap25000,
+  zero retries/truncations. Explicit reused comparison set, not another holdout.
+- [x] Luna15 nonverbatim-evidence rejections retained unchanged; terminal failures
+  added to runner with explicit code-only amendment so cases are never resent.
+  All15 maxima remain reserved. First failure latency missing and disclosed.
+- [x] Terra category49/50, priority39/50, exact entities44/50, routing44/50,
+  application validity50/50. Luna35/50,32/50,29/50,30/50,35/50 respectively.
+  Raw structural schemas50/50 both; assistant summary review separated from pending
+  independent human review. Paired wins/regressions and all split metrics retained.
+- [x] Luna standard-price usage estimate.0169297 vs Terra.103802; actual billing
+  unknown. Project conservative accounted39.33219774 of83 includes prior reservations
+  and fifteen full Luna failed reservations. Reasoning11232 included in output21601.
+- [x] Recommend retain Terra default: Luna cheaper but slower with15 invalid analyses.
+  Application now selects V3 prompt via allowlisted OPENAI_PROMPT_VERSION, model
+  default remains Terra. Exact run/source/default-wiring distinction documented.
+- [x] 174 offline tests pass; Ruff/diff whitespace clean. Full evidence, source
+  identities, raw usage/journals, costs, p50/p95, caveats and report builder:
+  docs/evidence/comparison-v3/README.md and protocol.md.

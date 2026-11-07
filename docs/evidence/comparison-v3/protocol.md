@@ -47,3 +47,21 @@ event; it is missing, not imputed. Subsequent failure events retain measured lat
 Offline regressions verify Luna high/strict request, reasoning usage retention,
 full-context pricing floors, paired resume without duplicate calls, immutable
 freeze rejection, carried-forward history and terminal failure reservation retention.
+
+After execution started, application wiring was updated to select V3 by default
+via OPENAI_PROMPT_VERSION (allowlisted V1/V2/V3), retaining Terra as model default.
+The running comparison process had already loaded the frozen harness at a7d969b;
+explicit prompt overrides sent V3 to both models. Application wiring changes are
+separately tested and do not change any recorded request or justify reusing this
+set as an unseen holdout. To resume this exact frozen ledger, use checkouta7d969b
+or explicitly audit/record a harness-only amendment; inference changes are rejected.
+
+Reproduce offline with explicit SQLite DATABASE_URL, synthetic DJANGO_SECRET_KEY,
+UV_CACHE_DIR=/tmp/arcvault-uv and UV_PROJECT_ENVIRONMENT=/tmp/arcvault-benchmark-venv:
+`uv run pytest -q` (174 passed; six existing staticfiles warnings), Ruff clean.
+`uv run python manage.py compare_models --run-dir .acceptance-runtime/new --execute`
+is the comparison command, but starting another paid run requires carrying forward
+ALL costs/reservations in its history (hardcoded prior benchmark checkpoint alone
+would omit this comparison). No additional rerun is authorized by this example.
+Use the existing ledger for safe resume; never copy it to a new empty accounting
+root as a way to reset spend. Credential is supplied only by the consuming process.

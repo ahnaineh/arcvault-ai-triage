@@ -1,0 +1,19 @@
+{
+  "model": "gpt-6-luna",
+  "official_price_source": "https://developers.openai.com/api/docs/pricing",
+  "input_token_bound": 1050000,
+  "output_token_cap": 25000,
+  "input_price_per_million": "1.1",
+  "output_price_per_million": "5.5",
+  "timeout": 180,
+  "budget": "83",
+  "project_budget": "83",
+  "reconciled_history": {
+    "known_cost": "1.1698115",
+    "unknown_reservation": "17.84084544",
+    "evidence": "Prior original five plus 75-call benchmark: docs/evidence/benchmark-20261107/execution-summary.json; preceding comparison model journal accounted under shared lock. Both historical uncertain reservations retained.",
+    "provenance": "PR11 head 468527f0d9fdc0b54f0d5c527532e9b0e4668b58 events and provenance; user approved combined reservation."
+  },
+  "benchmark": true,
+  "reasoning_effort": "high"
+}

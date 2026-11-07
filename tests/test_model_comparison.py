@@ -85,3 +85,18 @@ def test_terminal_validation_failure_is_not_retried_and_retains_maximum(tmp_path
     assert provider.call_count == 1
     events = [json.loads(x) for x in runner.path.read_text().splitlines()]
     assert accounted(events, config)[0] == __import__('decimal').Decimal('11.617584')
+
+
+def test_application_uses_revised_prompt_and_preserves_terra_default(settings):
+    from unittest.mock import patch
+
+    from apps.triage.tasks import get_provider
+    settings.OPENAI_MODEL = 'gpt-6.1-terra'
+    settings.OPENAI_PROMPT_VERSION = 'triage_v3'
+    with patch('openai.OpenAI'):
+        provider = get_provider()
+    assert provider.model == 'gpt-6.1-terra'
+    assert provider.prompt_version == 'triage_v3'
+    assert provider.prompt == Path('prompts/triage_v3.txt').read_text()
+    with pytest.raises(Exception, match='provider_config'):
+        OpenAIProvider(client=Mock(), model='gpt-6.1-terra', prompt_version='../outside')

@@ -1,0 +1,194 @@
+{
+  "conditional_routing": {
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 1
+    },
+    "unnecessary_escalations": {
+      "count": 1,
+      "denominator": 1
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 3
+    }
+  },
+  "cases": 5,
+  "predictions": 5,
+  "metrics": {
+    "category": {
+      "count": 4,
+      "denominator": 5
+    },
+    "priority": {
+      "count": 3,
+      "denominator": 5
+    },
+    "entities": {
+      "count": 1,
+      "denominator": 5
+    },
+    "signals": {
+      "count": 4,
+      "denominator": 5
+    },
+    "schema": {
+      "count": 4,
+      "denominator": 5
+    },
+    "summary_constraints": {
+      "count": 0,
+      "denominator": 5
+    },
+    "routing": {
+      "count": 3,
+      "denominator": 5
+    },
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 5
+    },
+    "unnecessary_escalations": {
+      "count": 1,
+      "denominator": 5
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 5
+    },
+    "automatic": {
+      "count": 3,
+      "denominator": 5
+    },
+    "missing": {
+      "count": 0,
+      "denominator": 5
+    },
+    "invalid_analysis": {
+      "count": 1,
+      "denominator": 5
+    },
+    "operational_failures": {
+      "count": 1,
+      "denominator": 5
+    },
+    "completed": {
+      "count": 4,
+      "denominator": 5
+    },
+    "end_to_end_success": {
+      "count": 0,
+      "denominator": 5
+    }
+  },
+  "coverage": {
+    "count": 5,
+    "denominator": 5
+  },
+  "cost_inputs": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "latency_inputs_ms": [
+    5127.477130999978,
+    3307.385562999116,
+    4727.095861000635,
+    3758.8507890013716,
+    null
+  ],
+  "rows": [
+    {
+      "id": "assessment-01",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-02",
+      "category": true,
+      "priority": true,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-03",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": false,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": true,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-04",
+      "category": true,
+      "priority": false,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-05",
+      "category": false,
+      "priority": false,
+      "entities": false,
+      "signals": false,
+      "schema": false,
+      "summary_constraints": false,
+      "routing": false,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": true,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    }
+  ]
+}

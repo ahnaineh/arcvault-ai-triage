@@ -16,7 +16,8 @@ def get_provider():
     from openai import OpenAI
 
     from .providers.openai_provider import OpenAIProvider
-    return OpenAIProvider(client=OpenAI(), model=settings.OPENAI_MODEL, timeout=30)
+    return OpenAIProvider(client=OpenAI(), model=settings.OPENAI_MODEL, timeout=30,
+                          prompt_version=settings.OPENAI_PROMPT_VERSION)
 
 
 @shared_task
