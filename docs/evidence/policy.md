@@ -15,3 +15,7 @@ Canonical periods: invoice, monthly, annual, one_time. Canonical components: sub
 Accepted analyses are mutable working models, but any change invalidates policy acceptance. validate_analysis records an independent snapshot; decide rejects changed or bypass-constructed instances and revalidates structure. Export dictionaries and returned decisions are independent serialization values; editing them cannot edit accepted analysis or another decision. This is an application integrity contract, not protection against hostile Python code modifying private attributes.
 
 No live API calls, provider schema acceptance, runtime/container integration, or full application acceptance claimed. Single model call architecture unchanged.
+
+## Independent integration review
+
+Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Independent reviewer reported no blockers and 58 passing tests using the command above. Probes verified $1240 versus $980/month yields $260 Billing; exact 500 automatic/500.01 review; signed undercharge; confidence .699999 review/.70 automatic; monetary evidence normalization; rejection of unsupported evidence, Unknown basis, mutated and bypass models. Integration rerun: 58 passed in 0.08s. Documentation-only integration. Semantic attribution, live provider and runtime integration remain pending.
