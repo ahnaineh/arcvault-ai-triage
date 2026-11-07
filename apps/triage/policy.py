@@ -1,11 +1,12 @@
 """Pure policy: decide(validated_analysis); Decimal arithmetic never uses FX."""
+import re
 from decimal import Decimal, localcontext
 
 from .schemas import Analysis, Comparison
 
 QUEUES = {'Bug Report':'Engineering','Feature Request':'Product','Billing Issue':'Billing','Technical Question':'Technical Support','Incident/Outage':'Engineering'}
 
-def normalize_billing(comparison: Comparison | None):
+def normalize_billing(comparison: Comparison | None, source: str | None = None):
     """Return status, signed difference and explicit synthetic-domain assumptions."""
     if comparison is None: return 'not_applicable', None, []
     a, b = comparison.billed, comparison.expected
@@ -16,6 +17,22 @@ def normalize_billing(comparison: Comparison | None):
     ca, cb = currency(a.currency), currency(b.currency)
     if ca != 'USD' or cb != 'USD' or a.amount is None or b.amount is None:
         return 'unresolved', None, assumptions
+    # Apply only to a complete direct comparison statement. Extra period,
+    # component or currency clauses fail closed, even if omitted by extraction.
+    direct = source and re.fullmatch(
+        r'invoice\s+#[\w-]+\s+shows a charge of\s+(?:US\$|\$|USD\s*)[\d,.]+'
+        r'\s+but\s+(?:our )?contract rate is\s+(?:US\$|\$|USD\s*)[\d,.]+/month'
+        r'\.?(?: Can someone look into this\?)?',
+        source, re.IGNORECASE)
+    if (direct and a.period in (None, 'invoice') and b.period == 'monthly'
+            and a.components is None and b.components is None
+            and all(excerpt in source for excerpt in a.evidence + b.evidence)):
+        assumptions.append(
+            'Apparent difference assumes one monthly charge and the same '
+            'component for a direct invoice versus contract comparison')
+        with localcontext() as ctx:
+            ctx.prec = max(len(a.amount), len(b.amount)) + 4
+            return 'comparable_usd', Decimal(a.amount) - Decimal(b.amount), assumptions
     # Unknown bases are unsafe; extraction must preserve invoice/monthly wording.
     periods = (a.period, b.period)
     if any(p not in {'invoice', 'monthly', 'annual', 'one_time'} for p in periods):
@@ -49,6 +66,7 @@ def decide_projection(*, category, confidence, active_service_outage, insufficie
 
 def decide(analysis: Analysis):
     """Derive export-ready decision from context-validated analysis, without model calls."""
+    source = analysis._source
     data = analysis.model_dump()
     if analysis._accepted is None or data != analysis._accepted:
         raise ValueError('analysis must be accepted by validate_analysis and unchanged')
@@ -63,7 +81,7 @@ def decide(analysis: Analysis):
             for item in value:
                 yield from excerpts(item)
     analysis = Analysis.model_validate(data, context={'message': '\n'.join(excerpts(data))})
-    status, difference, assumptions = normalize_billing(analysis.billing_comparison)
+    status, difference, assumptions = normalize_billing(analysis.billing_comparison, source)
     signals = analysis.signals
     result = decide_projection(category=analysis.category, confidence=analysis.confidence,
         active_service_outage=signals.active_service_outage.value,

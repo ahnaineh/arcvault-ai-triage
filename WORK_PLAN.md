@@ -294,3 +294,12 @@ PR1 final feedback (offline foundation, 2026-11-07)
 
 ## Network acceptance follow-up
 Five Terra calls completed with raw usage and durable file evidence in docs/evidence/terra-network-20261107. Escalated HTTPS 401 established network access. Historical uncertain reservations retained; total 75.92876544 < 83. Invoice $260 requirement remains unmet (missing billed period); outage Human Review verified. No queue/Postgres acceptance.
+
+## PR12 offline invoice acceptance correction
+Persisted evidence: docs/evidence/terra-network-20261107/offline-policy-review.md
+and assessment_outputs.policy-1.1.json; reproducible with
+python -m scripts.reprocess_invoice_evidence. Original raw responses and records
+retained unchanged. Five schema/source reviews complete; invoice apparent 260 /
+Billing under declared monthly/component assumptions, outage Human Review.
+Invoice priority remains model Low versus illustrative plan Medium, documented.
+This is offline canonical record acceptance, not queue DB or new inference.
