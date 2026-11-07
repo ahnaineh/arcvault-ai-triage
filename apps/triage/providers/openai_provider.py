@@ -42,6 +42,7 @@ class OpenAIProvider:
             raise ProviderError('provider_config')
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
+        self.raw_sink = None
         self.model = model
         self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
@@ -65,6 +66,8 @@ class OpenAIProvider:
         except openai.APIStatusError as exc:
             raise fail('provider_transient' if exc.status_code >= 500 or exc.status_code == 408 else 'provider_config') from None
         try:
+            if self.raw_sink is not None:
+                self.raw_sink(response)
             if response.usage is not None:
                 usage = response.usage.model_dump(mode='json')
             if any(part.type == 'refusal' for item in response.output

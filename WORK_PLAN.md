@@ -225,3 +225,11 @@ resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django c
 migration drift check, dry-run pending=5 and whitespace check clean. See
  docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
 historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.
+
+PR8 integration: independent review reported no blockers at exact head
+9b19a6a606cf67f77f82caa9efb30bc3ccabed14; reported offline proof: 93 tests,
+Ruff, Django checks and migration checks on SQLite. Merged main: 2b42ec3.
+Review limits: invalid raw responses were lost before validation; CLI lacked live execution.
+Follow-on command implementation in progress; command wiring tests remain required.
+No paid calls or credential reads performed. Historical account reconciliation,
+live schema acceptance and PostgreSQL/Redis/Celery gates remain outstanding.

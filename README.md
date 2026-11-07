@@ -76,3 +76,20 @@ Loading replays stable principal-scoped keys; it never republishes existing requ
 Export emits standard persisted records in assessment order only when all five
 are complete and match the supplied inputs. Check exit status before using the file.
 Live provider and queued acceptance remain pending; see docs/evidence/m2-live.md.
+
+Persistent acceptance command (dry-run by default):
+
+```sh
+uv run manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config /path/to/reconciled-config.json
+# OPENAI_API_KEY must already be supplied securely in the environment.
+uv run manage.py run_acceptance --run-dir "$PWD/.runtime/acceptance" --config /path/to/reconciled-config.json --execute
+```
+
+Configuration must bind Terra, official_price_source, input/output prices per million,
+input_token_bound, output_token_cap, timeout, budget, project_budget, and
+reconciled_history with known_cost, unknown_reservation, evidence and provenance.
+History must come from explicit account reconciliation. No historical usage is inferred.
+
+Prepared conservative configuration: `config/acceptance/terra.json` (project/task
+budget $83). Use that path in the commands above. Historical model is an explicit
+recorded-report assumption; reservation is not a claim of actual cost.
