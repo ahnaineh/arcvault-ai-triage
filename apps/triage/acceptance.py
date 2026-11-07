@@ -100,7 +100,7 @@ class Runner:
         if any(e.get('config_hash', config_hash) != config_hash for e in events):
             raise ValueError('Immutable runner configuration mismatch')
         inference = provider.inference_identity() if hasattr(provider, 'inference_identity') else None
-        if execute and not self.config.get('benchmark') and any(e.get('inference') != inference for e in events if e['state'] == 'reserved'):
+        if not self.config.get('benchmark') and any(e.get('inference') != inference for e in events if e['state'] == 'reserved'):
             raise ValueError('Prompt/schema mismatch; use a new run directory after reconciliation')
         started = {e['request_id']: e for e in events if e['state'] == 'reserved'}
         finished = {e['request_id']: e for e in events if e['state'] == 'completed'}

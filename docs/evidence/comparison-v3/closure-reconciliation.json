@@ -1,0 +1,45 @@
+{
+  "models": {
+    "gpt-6-luna": {
+      "raw_to_terminal_to_export_to_prediction": "exact",
+      "calls": 50,
+      "accepted_raw_analyses_equal_exports": 35,
+      "retained_rejected_raw_outputs": 15,
+      "usage": {
+        "input_tokens": 61292,
+        "output_tokens": 21601,
+        "reasoning_tokens": 11232
+      },
+      "standard_price_estimate": "0.0169297",
+      "conservative_accounted": "19.5070458",
+      "failed_maxima_retained": "19.3875",
+      "maximum_prefix_accounted": "38.51770274"
+    },
+    "gpt-6.1-terra": {
+      "raw_to_terminal_to_export_to_prediction": "exact",
+      "calls": 50,
+      "accepted_raw_analyses_equal_exports": 50,
+      "retained_rejected_raw_outputs": 0,
+      "usage": {
+        "input_tokens": 61292,
+        "output_tokens": 8502,
+        "reasoning_tokens": 0
+      },
+      "standard_price_estimate": "0.103802",
+      "conservative_accounted": "0.8144950",
+      "failed_maxima_retained": "0",
+      "maximum_prefix_accounted": "51.27866524"
+    }
+  },
+  "historical_unknown_retained": "17.84084544",
+  "prior_known_estimates": "1.1698115",
+  "total_accounted": "39.33219774",
+  "ceiling": "83",
+  "actual_billed_cost": null,
+  "scorer_aggregates": "Reviewer independently verified exact equality; not recomputed by this audit",
+  "summary_review": {
+    "independent_human_review": "pending",
+    "assistant_observations": "prior narrative observations, not case-level authenticated adjudication",
+    "fabricated_review_labels": false
+  }
+}

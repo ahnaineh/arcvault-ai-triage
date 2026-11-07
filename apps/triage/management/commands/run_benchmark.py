@@ -7,7 +7,12 @@ from pathlib import Path
 from django.core.management.base import BaseCommand, CommandError
 
 from apps.triage.acceptance import Runner, atomic_export, digest
-from apps.triage.providers.openai_provider import ArtifactIdentity, BoundedOpenAIAdapter
+from apps.triage.providers.openai_provider import (
+    ArtifactIdentity,
+    BoundedOpenAIAdapter,
+    prompt_text,
+    selected_prompt_version,
+)
 from evals.export_adapter import adapt
 from evals.score import load, score
 
@@ -17,7 +22,8 @@ class Command(BaseCommand):
         parser.add_argument('--run-dir', required=True)
         parser.add_argument('--config', required=True)
         parser.add_argument('--phase', required=True, choices=['baseline', 'development', 'validation', 'test', 'assessment'])
-        parser.add_argument('--prompt', default='prompts/triage_v1.txt')
+        parser.add_argument('--prompt', help='Explicit repository versioned prompt path (legacy compatibility)')
+        parser.add_argument('--prompt-version', choices=['triage_v1', 'triage_v2', 'triage_v3'])
         parser.add_argument('--freeze', action='store_true')
         parser.add_argument('--execute', action='store_true')
 
@@ -39,7 +45,12 @@ class Command(BaseCommand):
         prerequisite = {'development': 'baseline', 'validation': 'development', 'test': 'validation', 'assessment': 'test'}.get(phase)
         if options['execute'] and prerequisite and not (directory / f'{prerequisite}.exports.json').exists():
             raise CommandError('Complete preceding phase first')
-        prompt = Path(options['prompt']).read_text()
+        version = selected_prompt_version(options['prompt_version'] or (
+            Path(options['prompt']).stem if options['prompt'] else config.get('prompt_version')))
+        if options['prompt'] and Path(options['prompt']).read_text() != prompt_text(version):
+            raise CommandError('Prompt path must contain the selected versioned artifact')
+        config['prompt_version'] = version
+        prompt = prompt_text(version)
         identity = {'prompt': digest(prompt), 'schema': digest(Path('contracts/analysis.schema.json').read_text()),
                     'dataset': digest(load()), 'model': config['model'],
                     'code_files': {str(p): digest(p.read_text()) for root in ('apps/triage', 'evals') for p in sorted(Path(root).rglob('*.py'))},
@@ -61,12 +72,10 @@ class Command(BaseCommand):
             atomic_export(freeze, identity)
             self.stdout.write('Frozen validated inference and current code identity')
             return
-        provider = ArtifactIdentity()
+        provider = ArtifactIdentity(prompt_version=version)
         if options['execute']:
             import openai
             provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
-            provider.provider.prompt = prompt
-            provider.provider.prompt_version = Path(options['prompt']).stem
             atomic_export(manifest, identity)
         # All phases share one exclusive, immutable accounting journal.
         runner = Runner(directory, config)

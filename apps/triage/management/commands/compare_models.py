@@ -6,7 +6,12 @@ from pathlib import Path
 from django.core.management.base import BaseCommand, CommandError
 
 from apps.triage.acceptance import Runner, accounted, atomic_export, digest, money
-from apps.triage.providers.openai_provider import ArtifactIdentity, BoundedOpenAIAdapter
+from apps.triage.providers.openai_provider import (
+    ArtifactIdentity,
+    BoundedOpenAIAdapter,
+    prompt_text,
+    selected_prompt_version,
+)
 from evals.export_adapter import adapt
 from evals.score import load, score
 
@@ -27,7 +32,8 @@ class Command(BaseCommand):
 
     def compare(self, root, execute, accept_harness_update=False):
         cases = load()
-        prompt = Path('prompts/triage_v3.txt').read_text()
+        version = selected_prompt_version()
+        prompt = prompt_text(version)
         identity = {'prompt': digest(prompt), 'schema': digest(Path('contracts/analysis.schema.json').read_text()),
                     'dataset': digest(cases), 'set_status': 'reused comparison set; not a fresh holdout',
                     'models': {'gpt-6-luna': 'high', 'gpt-6.1-terra': 'none'},
@@ -47,19 +53,17 @@ class Command(BaseCommand):
             directory.mkdir(exist_ok=True)
             config_path = directory / 'config.json'
             config = json.loads(Path('config/acceptance/benchmark.json').read_text())
-            config.update(model=model, reasoning_effort=effort, output_token_cap=25000, timeout=180)
+            config.update(model=model, prompt_version=version, reasoning_effort=effort, output_token_cap=25000, timeout=180)
             config['reconciled_history'].update(known_cost=str(money('1.1698115') + prior_total),
                 evidence='Prior original five plus 75-call benchmark: docs/evidence/benchmark-20261107/execution-summary.json; preceding comparison model journal accounted under shared lock. Both historical uncertain reservations retained.')
             if model == 'gpt-6-luna':
                 config.update(input_price_per_million='1.1', output_price_per_million='5.5')
             if config_path.exists() and json.loads(config_path.read_text()) != config:
                 raise CommandError('Immutable comparison accounting mismatch')
-            provider = ArtifactIdentity()
+            provider = ArtifactIdentity(prompt_version=version)
             if execute:
                 import openai
                 provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
-                provider.provider.prompt = prompt
-                provider.provider.prompt_version = 'triage_v3'
                 atomic_export(config_path, config)
             runner = Runner(directory, config, terminal_provider_failures=True)
             records = runner.run([{'sample_id': c['id'], 'source': c['source'], 'message': c['message']}

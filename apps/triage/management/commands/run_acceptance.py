@@ -19,7 +19,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         config = json.loads(Path(options['config']).read_text())
         runner = Runner(options['run_dir'], config)
-        provider = ArtifactIdentity()
+        provider = ArtifactIdentity(prompt_version=config.get('prompt_version'))
         if options['execute']:
             history = config.get('reconciled_history', {})
             if not history.get('evidence') or not history.get('provenance'):
@@ -38,9 +38,5 @@ class Command(BaseCommand):
             provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
             provider.preflight([case['message'] for case in samples()], config)
 
-            def persist(payload):
-                runner.append({'state': 'raw_response', 'payload': payload})
-
-            provider.provider.raw_sink = persist
         result = runner.run(samples(), provider, execute=options['execute'])
         self.stdout.write(json.dumps(result))

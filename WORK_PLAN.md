@@ -460,3 +460,21 @@ preceding existing model journals in both execution and dry-run modes. Regressio
 runs offline inspection after both model configurations exist, proves zero extra
 provider calls and byte-identical JSON/journals. Frozen live results unchanged;
 code identity guard still rejects mismatched execution snapshots as intended.
+
+## Prompt integration closure
+
+Confirmed acceptance/app prompt mismatch independently of the earlier accounting
+fix. Shared selector now uses V3 by default across provider, bounded adapter,
+ArtifactIdentity, acceptance, benchmark and comparison; explicit legacyV1 supported.
+Removed imperative command prompt mutation. SDK-request hash/resume/version-change
+regressions added. V3 text remains4193bytes/543words with original measured hash;
+no semantic revision or paid calls. Existing evidence retains actual executed prompt.
+Offline paired raw-to-prediction and arithmetic reconciliation recorded in
+comparison-v3/closure-reconciliation.json; historical/failed maxima retained,
+project accounted39.33219774, maximum replayed prefix51.27866524 below83. Reused
+reviewer scorer-equality/57-check evidence; no new inference. Summary review remains
+pending independent human adjudication; earlier assistant observations are narrative,
+not durable case-level completed manual review. Details: integration-closure.md.
+
+Final combined closure checks:177 tests passed; Ruff, Django check, migration drift
+and diff whitespace clean (six existing missing-staticfiles warnings). No paid calls.

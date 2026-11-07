@@ -13,9 +13,21 @@ from apps.triage.schemas import Analysis, validate_analysis
 
 ROOT = Path(__file__).resolve().parents[3]
 
-def artifact_identity(prompt=None, schema=None):
+def selected_prompt_version(version=None):
+    from django.conf import settings
+    selected = version if version is not None else settings.OPENAI_PROMPT_VERSION
+    if selected not in ('triage_v1', 'triage_v2', 'triage_v3'):
+        raise ProviderError('provider_config')
+    return selected
+
+
+def prompt_text(version=None):
+    return (ROOT / 'prompts' / f'{selected_prompt_version(version)}.txt').read_text()
+
+
+def artifact_identity(prompt=None, schema=None, *, prompt_version=None):
     if prompt is None:
-        prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+        prompt = prompt_text(prompt_version)
     if schema is None:
         schema = (ROOT / 'contracts/analysis.schema.json').read_text()
     return {'prompt': hashlib.sha256(prompt.encode()).hexdigest(),
@@ -23,8 +35,12 @@ def artifact_identity(prompt=None, schema=None):
 
 
 class ArtifactIdentity:
+    def __init__(self, *, prompt_version=None):
+        self.prompt_version = selected_prompt_version(prompt_version)
+        self.prompt = prompt_text(self.prompt_version)
+
     def inference_identity(self):
-        return artifact_identity()
+        return artifact_identity(self.prompt)
 
 
 MAX_MODEL_BYTES = 1048576
@@ -80,7 +96,7 @@ class ProviderResult:
     usage: dict | None
 
 class OpenAIProvider:
-    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096, reasoning_effort: str | None = None, prompt_version: str = 'triage_v1'):
+    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096, reasoning_effort: str | None = None, prompt_version: str | None = None):
         if not model.strip() or not math.isfinite(timeout) or timeout <= 0:
             raise ProviderError('provider_config')
         if type(max_output_tokens) is not int or max_output_tokens <= 0 or (model == 'gpt-6.1-terra' and max_output_tokens > 128000):
@@ -91,11 +107,9 @@ class OpenAIProvider:
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
         self.raw_sink = None
-        if prompt_version not in ('triage_v1', 'triage_v2', 'triage_v3'):
-            raise ProviderError('provider_config')
-        self.prompt_version = prompt_version
+        self.prompt_version = selected_prompt_version(prompt_version)
         self.model = model
-        self.prompt = (ROOT / 'prompts' / f'{prompt_version}.txt').read_text()
+        self.prompt = prompt_text(self.prompt_version)
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
 
     def analyze(self, message: str) -> ProviderResult:
@@ -168,7 +182,7 @@ class BoundedOpenAIAdapter:
         self.verify_input_bound = verify_input_bound or self.maximum_input_bound
         self.provider = OpenAIProvider(
             client=client, model=config['model'], timeout=config['timeout'],
-            max_output_tokens=config['output_token_cap'], reasoning_effort=config.get('reasoning_effort'))
+            max_output_tokens=config['output_token_cap'], reasoning_effort=config.get('reasoning_effort'), prompt_version=config.get('prompt_version'))
 
     def inference_identity(self):
         return artifact_identity(self.provider.prompt, self.provider.schema_text)

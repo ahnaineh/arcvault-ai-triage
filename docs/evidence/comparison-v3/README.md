@@ -105,3 +105,9 @@ See [failure stage and supplied-example mapping](failure-analysis-and-dataset.md
 for the audited source/field-level explanation of all15 Luna rejections and exact
 placement of the supplied five inside the50. `luna-evidence-failures.json` retains
 all28 offending excerpts (16 outer-quote-only excerpts and12 generated explanations).
+
+[Integration closure](integration-closure.md) documents the confirmed acceptance/app
+prompt mismatch and fix, actual SDK-request identity regressions, immutable old
+prompt evidence, raw-output/prediction reconciliation and ledger arithmetic.
+Summary faithfulness observations remain assistant narrative, not authenticated
+case-level adjudication or a completed independent human review.
