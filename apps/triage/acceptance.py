@@ -111,6 +111,13 @@ class Runner:
                              'model': cfg['model'], 'cap': cfg['output_token_cap'],
                              'input_fingerprint': digest(case['message']), 'reservation': str(reserve)})
             try:
+                # Associate raw evidence with the reservation before provider validation.
+                underlying = getattr(provider, 'provider', None)
+                if underlying is not None:
+                    underlying.raw_sink = lambda payload, request_id=request_id, identity=identity, case=case: self.append({
+                        'state': 'raw_response', 'request_id': request_id,
+                        'identity': identity, 'sample_id': case['sample_id'],
+                        'payload': payload})
                 result = provider(case['message'], cfg)
                 self.append({'state': 'provider_returned', 'request_id': request_id,
                              'usage': result.usage, 'model': result.model})

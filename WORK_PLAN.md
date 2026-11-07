@@ -344,3 +344,23 @@ section at head 420b7bf4c23e3cba073ccac9a188f3ee996b6de0 and supplied prior-agen
 handoff; this completion did not independently rerun that harness. Synthetic provider,
 existing images, resources cleaned; no live inference or image builds/pulls.
 Current GitHub comments/reviews/inline/threads inspected: sole finding r4501931951.
+
+## Benchmark continuation audit — 2026-11-07
+
+Fetched and fast-forwarded the clean implementation worktree to main af290b7.
+Original five records and raw journals remain unchanged. Runner now attaches raw
+response events to their request reservation and case before validation, improving
+reconciliation evidence without weakening unresolved-attempt blocking.
+
+Paid benchmark remains pending: current full-context adapter reserves 11.617584
+per call. Recorded five completed calls total 4738 input / 1026 output; conservative
+usage estimate 0.069047 is not actual billed cost. Historical 6.22326144 and
+uncertain connection attempt 11.617584 remain reserved. Existing maximum retained
+reservation total is 75.92876544. No paid calls performed in this continuation.
+Next execution requires verified bounded-input accounting and durable completed
+usage reconciliation across benchmark phases; simply lowering config bounds fails
+the existing adapter verifier. Final test labels were not opened for tuning.
+
+Secure credential request returned timed_out; no credential was read or copied.
+Offline focused acceptance suite: 24 passed with explicit SQLite and synthetic
+DJANGO_SECRET_KEY. Ruff and diff whitespace checked after binding sink identifiers.
