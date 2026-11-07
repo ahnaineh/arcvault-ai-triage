@@ -68,7 +68,8 @@ Assessment sample commands (configured isolated database and Redis worker requir
 
 ```sh
 python manage.py load_samples --principal assessment
-python manage.py export_samples --principal assessment > /tmp/assessment-outputs.json
+python manage.py export_samples --principal assessment > /tmp/assessment-outputs.json.tmp &&
+  mv /tmp/assessment-outputs.json.tmp /tmp/assessment-outputs.json
 ```
 
 Loading replays stable principal-scoped keys; it never republishes existing requests.

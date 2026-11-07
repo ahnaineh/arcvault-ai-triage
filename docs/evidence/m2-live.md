@@ -31,3 +31,9 @@ prompt/schema/policy/code, then remaining four within budget. Use test-owned
 Postgres/Redis and worker for queued acceptance. Export only persisted completed
 records; manually review invoice difference 260 and outage escalation against source.
 No confidence calibration or production accuracy is asserted.
+
+
+## PR7 integration checkpoint
+Reviewed head: df5fa91a28fbca43601cfca1712aceeda93846dc. Parent-supplied independent review: no blockers; original Downloads DOCX five strings matched; shared acceptance service/stable principal keys; SQLite five first dispatches, zero repeat dispatches, conflict without extra dispatch; ordered export completion/result/source/message guards; 74 locked tests and Ruff/Django/no migration drift passed. This proof is supplied review evidence, not independently repeated DOCX or historical spend verification.
+
+Fresh implementation verification: 78 locked tests pass, Ruff passes, Django check passes, no migration drift. Added actual task pipeline with mocked provider and full persisted record export equality in sample order; missing accepted result and mismatched source/message fail with zero JSON written, including after earlier valid samples. README exports to temporary file and renames only on success. No OpenAI calls. Live provider, real queue and PostgreSQL acceptance remain pending; historical spend is not independently verified.
