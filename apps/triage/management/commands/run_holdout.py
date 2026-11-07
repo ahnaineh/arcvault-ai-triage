@@ -1,6 +1,7 @@
 """Freeze and run assistant-authored holdout expectations; dry-run by default."""
 import json
 import os
+import re
 from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
@@ -14,7 +15,28 @@ from apps.triage.schemas import Entity, Signals
 def validate(cases):
     if len(cases) != 8 or len({c['id'] for c in cases}) != 8:
         raise ValueError('Eight distinct cases required')
+    from evals.score import load
+    normalized = lambda message: ' '.join(message.split()).casefold()
+    messages = set()
+    old = {normalized(c['message']) for c in load()}
     for c in cases:
+        message = c['message']
+        if not isinstance(message, str) or not message.strip():
+            raise ValueError('message')
+        key = normalized(message)
+        if key in messages or key in old:
+            raise ValueError('duplicate message')
+        messages.add(key)
+        if c['source'] not in ('Web Form', 'Email', 'Support Portal'):
+            raise ValueError('source')
+        status, amount = c['billing_status'], c['reported_overcharge']
+        if status not in ('not_applicable', 'unresolved', 'comparable_usd'):
+            raise ValueError('billing_status')
+        if status == 'comparable_usd':
+            if not isinstance(amount, str) or not re.fullmatch(r'-?[0-9]+(?:\.[0-9]+)?', amount):
+                raise ValueError('reported_overcharge')
+        elif amount is not None:
+            raise ValueError('inconsistent billing annotation')
         for key in ('source', 'scenario_family', 'summary_required_facts',
                     'summary_forbidden_facts', 'rationale', 'review_status'):
             if not c[key]:
@@ -30,15 +52,13 @@ def validate(cases):
             if category not in QUEUES:
                 raise ValueError('category')
             expected = decide_projection(category=category, confidence=1,
-                **c['expected_signals'], billing_status='unresolved' if 'CAD' in c['message'] else 'not_applicable',
-                reported_overcharge=None)
+                **c['expected_signals'], billing_status=c['billing_status'],
+                reported_overcharge=c['reported_overcharge'])
             if c['expected_policy'] != expected:
                 raise ValueError('policy mismatch')
         if not c['acceptable_categories'] or not c['acceptable_priorities'] or any(
                 p not in ('Low', 'Medium', 'High') for p in c['acceptable_priorities']):
             raise ValueError('labels')
-        if 'right now' in c['message'] and c['acceptable_categories'] != ['Incident/Outage']:
-            raise ValueError('active outage label')
 
 
 class Command(BaseCommand):
@@ -65,7 +85,10 @@ class Command(BaseCommand):
         config['benchmark'] = True
         provider = ArtifactIdentity(prompt_version=config.get('prompt_version'))
         identity = provider.inference_identity() | {'dataset': digest(cases), 'config': digest(config),
-            'policy': digest(Path('apps/triage/policy.py').read_text())}
+            'policy': digest(Path('apps/triage/policy.py').read_text()),
+            'execution': {p: digest(Path(p).read_text()) for p in (
+                'evals/export_adapter.py', 'evals/score.py', __file__,
+                'apps/triage/acceptance.py', 'apps/triage/providers/openai_provider.py')}}
         directory = Path(options['run_dir'])
         if execute and (directory.resolve() == Path('/tmp') or Path('/tmp') in directory.resolve().parents):
             raise CommandError('Execute requires persistent storage')
@@ -80,9 +103,16 @@ class Command(BaseCommand):
             import openai
             provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config, prompt_version=config.get('prompt_version'))
         # Ephemeral dry-run storage is explicitly allowed; spending remains persistent.
-        runner = Runner(directory, config, allow_ephemeral=not execute)
+        runner = Runner(directory, config, allow_ephemeral=not execute, terminal_provider_failures=True)
         result = runner.run([{'sample_id': c['id'], 'source': c['source'], 'message': c['message']}
                              for c in cases], provider, execute=execute)
+        if execute:
+            from evals.export_adapter import adapt
+            from evals.score import score
+            predictions = adapt(result, cases)
+            atomic_export(directory / 'holdout.exports.json', result)
+            atomic_export(directory / 'holdout.predictions.json', predictions)
+            atomic_export(directory / 'holdout.score.json', score(cases, predictions))
         reserve = (money(config['input_price_per_million']) * config['input_token_bound'] +
                    money(config['output_price_per_million']) * config['output_token_cap']) / 1000000
         self.stdout.write(json.dumps({'result': result, 'cases': len(cases),

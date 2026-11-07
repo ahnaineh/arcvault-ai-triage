@@ -33,7 +33,9 @@
       "final_destination": "Technical Support",
       "human_escalation": false,
       "escalation_reasons": []
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-02",
@@ -69,7 +71,9 @@
       "final_destination": "Product",
       "human_escalation": false,
       "escalation_reasons": []
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-03",
@@ -111,7 +115,9 @@
       "final_destination": "Engineering",
       "human_escalation": false,
       "escalation_reasons": []
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-04",
@@ -155,7 +161,9 @@
       "escalation_reasons": [
         "billing_comparison_unresolved"
       ]
-    }
+    },
+    "billing_status": "unresolved",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-05",
@@ -199,7 +207,9 @@
       "escalation_reasons": [
         "active_outage"
       ]
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-06",
@@ -237,7 +247,9 @@
       "escalation_reasons": [
         "insufficient_information"
       ]
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-07",
@@ -275,7 +287,9 @@
       "escalation_reasons": [
         "conflicting_intents"
       ]
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   },
   {
     "id": "fresh-holdout-08",
@@ -317,6 +331,8 @@
       "final_destination": "Technical Support",
       "human_escalation": false,
       "escalation_reasons": []
-    }
+    },
+    "billing_status": "not_applicable",
+    "reported_overcharge": null
   }
 ]
