@@ -6,11 +6,11 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-- Phase: planning and repository publication; no application implementation yet.
+- Phase: planning baseline published; M1 is next. No application implementation yet.
 - Working deadline: November 8, 2026, as stated by the candidate.
 - API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
 - Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 reviewed synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
-- Repository: publication pending. Private by default; record the verified URL after creation.
+- Repository: [ahnaineh/arcvault-ai-triage](https://github.com/ahnaineh/arcvault-ai-triage), private, default branch `main`.
 - Blockers: none known. Exact Python/package/model compatibility remains to be verified.
 
 ## Status and evidence rules
@@ -27,7 +27,7 @@ Distinguish specification checks, mocked tests, real container integration, live
 - [x] Define 25 controlled policy cases in `tests/fixtures/policy_cases.json`.
 - [x] Verify JSON parsing, unique case IDs, and strict object required/additional-property structure. These checks do not prove provider schema compatibility or policy correctness.
 - [x] Create this execution tracker and a reviewer-facing repository introduction.
-- [-] Initialize Git, commit the planning artifacts, create private GitHub repository, and verify the pushed commit.
+- [x] Initialize Git, commit the planning artifacts, create private GitHub repository, and verify the pushed commit. `gh repo view` confirmed private visibility and `main`; `git ls-remote` matched baseline commit `2eedbbec13fdac5eb43a59bcde5ced64e3b87ca8`.
 
 Gate: remote repository contains the intended planning artifacts and no credentials or assessment attachment.
 
@@ -109,4 +109,4 @@ After executable contracts stabilize, independent work can cover application/UI,
 | --- | --- | --- |
 | 2026-11-07 | Locked webhook-first delivery, latest stable Django preference, 50-case split and $83 API ceiling | User decisions recorded in assessment plan |
 | 2026-11-07 | Created contracts, strict schema and 25 policy cases | JSON/structure checks passed; implementation and live evaluation pending |
-| 2026-11-07 | Created execution tracker and repository introduction | Publication in progress |
+| 2026-11-07 | Created execution tracker and repository introduction; published private repository | Verified remote baseline `2eedbbe`, private visibility, and default branch `main`; staged whitespace check passed |

@@ -2,7 +2,7 @@
 
 An assessment project for classifying, enriching and routing synthetic B2B customer requests with an LLM and explicit application policies.
 
-**Status: planning and executable-contract preparation. The application is not implemented yet.** Follow [WORK_PLAN.md](WORK_PLAN.md) for verified progress, remaining tasks and completion gates.
+**Status: planning baseline published; runtime and executable contracts are next. The application is not implemented yet.** Follow [WORK_PLAN.md](WORK_PLAN.md) for verified progress, remaining tasks and completion gates.
 
 ## Planned workflow
 
