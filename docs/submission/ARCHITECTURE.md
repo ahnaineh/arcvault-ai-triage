@@ -1,35 +1,55 @@
-# ArcVault architecture
+# Architecture
 
-## How it works
+## Flow and state
 
-The webhook saves the request. Celery calls the model. Python routes the result. PostgreSQL stores the original message, each attempt and the final JSON record. Redis carries the queued work. The browser tester uses the same webhook and polls for completion.
+The webhook saves each message in PostgreSQL and queues a Celery task after the database commit. Redis carries the task. The worker calls the model once per attempt, validates the response, applies routing rules, and saves the result. The browser tester uses this same webhook.
 
-An idempotency key prevents duplicate submissions for the same caller. Work is published after the database commit. The worker claims an attempt before calling the model, without keeping a database transaction open during inference. It then saves the analysis, routing decision and completion together. Exports read that saved result.
+```mermaid
+flowchart LR
+    A[Customer message] --> B[Django webhook]
+    B --> C[(PostgreSQL request)]
+    B -->|After commit| D[Redis queue]
+    D --> E[Celery worker]
+    E --> F[LLM analysis]
+    F --> G[Validation and Python policy]
+    G --> H[(PostgreSQL result)]
+    H --> I[Inbox and JSON export]
+```
 
-## Model and policy
+PostgreSQL holds requests, processing attempts, and completed records. Redis only carries work. A caller's idempotency key prevents duplicate submissions. The worker claims an attempt before inference and saves the result and completion together. It does not hold a database transaction open while waiting for the model.
 
-One gpt-6.1-terra call uses the compact triage_v4 prompt. It returns category, priority, confidence, entities, urgency, signals and a short summary. The urgency field records expressed urgency only; content-based operational urgency is conveyed by priority and the active-outage signal. See [the five-message interpretation](REQUIREMENTS.md). A strict schema checks the structure. Python checks that supporting excerpts occur in the message. Neither check proves the interpretation is correct. Confidence is the model's own estimate.
+## Model and validation
 
-Python owns routing and money arithmetic. Bugs and incidents go to Engineering, features to Product, billing to Billing and technical questions to Technical Support. Keeping these rules outside the prompt makes them explicit and testable.
+One `gpt-6.1-terra` request uses [triage_v4](../../prompts/triage_v4.txt) to return category, priority, confidence, core issue, entities, urgency, signals, and a two- or three-sentence summary. One call keeps these related tasks together and limits latency and cost.
 
-Any escalation sends the result to Human Review while preserving its normal queue. Reasons include confidence below 0.70, active or unresolved outages, contradictory analysis, insufficient information, conflicting intents and billing amounts that cannot safely be compared. A comparable positive USD overcharge above $500 also triggers review. Python uses Decimal arithmetic. The invoice sample's $260 difference relies on disclosed dollar and monthly-charge assumptions. Priority alone does not trigger escalation.
+A strict JSON schema checks structure. Python checks source excerpts and monetary evidence. These checks catch malformed or unsupported fields; they cannot prove the model understood the message. Confidence is the model's own estimate, not a calibrated probability.
 
-## Failures and state
+Priority captures operational impact. The urgency field captures explicit urgency such as a deadline; Unknown means none was expressed. The outage signal identifies current broad or multi-user unavailability.
 
-The pipeline retries transient provider failures at most twice after the first attempt. SDK retries are disabled so only one layer controls retries. Refusals, invalid outputs and permanent errors remain visible failures. They do not become invented low-confidence results. Failed queue publication stays visible for operator recovery.
+## Routing and escalation
 
-Attempts retain usage and unknown costs. The benchmark runner reserves money before calls and carries uncertain reservations across phases. This conservative accounting is separate from actual provider billing.
+Python owns routing so the rules are visible and testable.
 
-Browser access requires a login and CSRF protection. External ingestion uses a bearer token. Secrets stay in environment configuration. This is a single-organization assessment app.
+| Category | Standard team | Reason |
+| --- | --- | --- |
+| Bug Report | Engineering | Investigate broken behavior |
+| Feature Request | Product | Assess a new capability |
+| Billing Issue | Billing | Investigate charges or payments |
+| Technical Question | Technical Support | Answer setup or usage questions |
+| Incident/Outage | Engineering | Restore service |
 
-## Evidence and limits
+Human Review overrides the team when confidence is below 0.70, an outage is active or unresolved, the analysis is contradictory, information is insufficient, or requests need conflicting destinations. The normal team remains in the record so a reviewer knows who should act next. Priority alone does not cause escalation.
 
-Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A fresh application image build and a [recorded real-model queued demo](demo/README.md) also passed. The earlier queued run includes one transient failure and successful retry. The final 2:15 edit shows one fresh login submission and four saved results; it does not show that retry occurring.
+Billing also goes to Human Review when amounts cannot safely be compared or a comparable USD overcharge exceeds $500. Python uses Decimal arithmetic. The invoice example's apparent $260 difference assumes one monthly charge and interprets `$` as USD; the output states both assumptions.
 
-On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [benchmark tables](BENCHMARKS.md) for results and limitations.
+## Failures and access
 
-## Production and another week
+Transient provider failures receive at most two retries after the initial attempt. SDK retries are disabled so one layer controls retries. Refusals, invalid responses, and permanent failures remain visible errors. Failed queue publication remains visible for operator recovery.
 
-For production, I would add reliable database-to-queue publication, worker crash recovery, queue-age alerts, tenant isolation and provider billing reconciliation. I would measure concurrency limits and review thresholds before adding model calls.
+Browser access requires login and CSRF protection. External callers use a bearer token. The application serves one organization; tenant isolation is not implemented. Human Review is a read-only queue.
 
-Another week would first go to summary review and worker crash recovery. Audited human corrections and queue filters would follow; they are optional for this submission.
+## Production and Phase 2
+
+For production, I would add reliable database-to-queue publication, worker-crash recovery, queue-age alerts, tenant isolation, and provider billing reconciliation. I would measure queue delay and model latency before increasing worker concurrency, and compare lower-cost models against the same quality checks.
+
+With another week, I would first review summary quality and test crash recovery. Next I would add audited human corrections and queue filters. The current [evaluation](BENCHMARKS.md) uses reused synthetic cases; it does not establish production accuracy.

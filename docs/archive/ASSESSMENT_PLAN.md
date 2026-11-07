@@ -1,5 +1,7 @@
 # ArcVault AI intake and triage assessment plan
 
+> Historical document. See the [current submission](../submission/README.md).
+
 This plan describes the proposed Aspire Software assessment submission: a Dockerized Django application that accepts customer requests, uses one OpenAI model call to classify and enrich each request, applies explicit routing and escalation policies, and presents the results for human review.
 
 The objective is a complete, reproducible submission that demonstrates engineering judgment, measurable AI quality, and clear communication. This is the internal implementation plan, not the one-to-two-page architecture document for the recruiter. Implementation, model evaluation, deployment, and submission have not yet been completed.
@@ -8,7 +10,7 @@ The objective is a complete, reproducible submission that demonstrates engineeri
 
 ## Decisions locked on November 7, 2026
 
-Implementation contracts are now specified in [docs/CONTRACTS.md](docs/CONTRACTS.md), with the model-owned schema in [contracts/analysis.schema.json](contracts/analysis.schema.json) and 25 controlled policy cases in [tests/fixtures/policy_cases.json](tests/fixtures/policy_cases.json). These define the v1 interfaces and acceptance expectations; they are not evidence of an implemented or validated application. The contracts resolve earlier optional-webhook wording and semantic-signal ambiguity.
+Implementation contracts are now specified in [docs/CONTRACTS.md](../../docs/CONTRACTS.md), with the model-owned schema in [contracts/analysis.schema.json](../../contracts/analysis.schema.json) and 25 controlled policy cases in [tests/fixtures/policy_cases.json](../../tests/fixtures/policy_cases.json). These define the v1 interfaces and acceptance expectations; they are not evidence of an implemented or validated application. The contracts resolve earlier optional-webhook wording and semantic-signal ambiguity.
 
 - Use the latest stable Django: the official download page currently lists 6.1.3. Verify compatible Python and package versions and pin them during setup.
 - Retain the remaining proposed stack and supporting packages below.

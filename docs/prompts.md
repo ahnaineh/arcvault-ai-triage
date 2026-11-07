@@ -1,11 +1,27 @@
-# Provider and prompt contract
+# Prompt and model
 
-`OpenAIProvider(client=client, model=identifier, timeout=30).analyze(message)` returns `ProviderResult`: context-validated Analysis, requested/returned model, prompt/schema versions and SHA256 hashes, monotonic latency in ms, and actual SDK usage dictionary (None means unknown, never zero). Inject an OpenAI SDK client; construction does not read credentials. The pipeline owns transactions, persistence, policy `decide(analysis)`, retry budget and pricing. Preserve usage from failed envelopes via ProviderError. No tools, browsing or repair call is used.
+ArcVault uses one LLM step for classification, extraction, and summary generation.
 
-ProviderError exposes sanitized code, retryable, latency_ms and usage. Codes: provider_transient (connection/timeout, rate limit, HTTP 408/5xx); provider_auth (401/403); provider_config (other HTTP errors or invalid model/timeout configuration); provider_refusal; provider_incomplete; provider_invalid (malformed JSON, absent/multiple text outputs, invalid structure or contextual evidence). Only transient is automatically retryable. SDK retries are disabled. Do not log exception causes or raw provider responses.
+| Setting | Value |
+| --- | --- |
+| Model | `gpt-6.1-terra` |
+| Instructions | [Exact triage_v4 prompt](../prompts/triage_v4.txt) |
+| Output format | [Strict JSON schema](../contracts/analysis.schema.json) |
+| Reasoning | `none` |
+| Output limit | 4,096 tokens |
 
-triage_v4 separates trusted instructions from the raw user message and extracts all model-owned fields in one strict-schema request. Rubrics distinguish broad current outages from individual bugs, impact from expressed urgency, and ambiguous routing from mere topic count. Evidence remains exact; monetary basis stays unknown unless explicit. Confidence is not calibrated. Summary faithfulness still requires evaluation: exact excerpts and valid JSON do not establish semantic truth.
+## Why this prompt
 
-Official specification consulted 2026-11-07: [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). It documents Responses text.format JSON schema and refusal handling. Live schema acceptance and results are recorded in [the final benchmark](evidence/final-v4/README.md) and [queued demo](submission/demo/README.md). Improvements require development-set evidence; locked tests must remain untouched.
+The prompt separates instructions from customer text and treats embedded commands as data. It defines categories and priority rules, requires source excerpts, and asks for all model-owned fields in one response. Python handles routing and money arithmetic because those rules should be deterministic. Exact excerpts make claims easier to check, but do not prove their meaning. The compact prompt uses fewer input tokens than V3, with lower category and routing scores on the same cases. With more time, I would focus on summary faithfulness and entity specificity. See [the evaluation](submission/BENCHMARKS.md) for the model choice and tradeoffs.
 
-The current compact V4 prompt is 277 whitespace-delimited words. It places the exact-substring rule globally over every evidence field. Priority defaults are application conventions, not prescribed sample labels in the assessment. V1–V3 remain immutable reproduction artifacts. New V4 metrics must be recorded separately; earlier exposed cases are comparison data, not a fresh holdout.
+## How the response is used
+
+The application validates the response before applying policy. Missing facts stay null or empty; provider failures do not become low-confidence classifications. Summaries attribute customer claims and must not invent causes, fixes, or promises.
+
+Priority measures impact. `urgency` measures explicitly expressed urgency. The outage signal captures current broad or multi-user disruption. Confidence reflects classification uncertainty; it is not calibrated certainty.
+
+## What I corrected during development
+
+Valid JSON alone was not enough: a model could add commentary to a field that required a verbatim excerpt. Context validation now checks excerpts against the message. Failed calls can also incur costs, so usage is retained when available and unknown usage is not counted as zero. These lessons shaped the validation and evaluation code.
+
+The [provider implementation](../apps/triage/providers/openai_provider.py) records model, prompt and schema identities with each result. Earlier prompt versions remain available to reproduce the recorded experiments.

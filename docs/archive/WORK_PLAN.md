@@ -1,14 +1,16 @@
 # ArcVault delivery work plan
 
+> Historical document. See the [current submission](../submission/README.md).
+
 This file is the source of truth for execution status. Update it in every implementation commit that changes task status, scope, acceptance evidence, or blockers. Do not mark a task complete from generated code alone.
 
-Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy specification: [docs/CONTRACTS.md](docs/CONTRACTS.md). If these documents conflict, record and resolve the decision here, then update the affected specification before dependent implementation.
+Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy specification: [docs/CONTRACTS.md](../../docs/CONTRACTS.md). If these documents conflict, record and resolve the decision here, then update the affected specification before dependent implementation.
 
 ## Current checkpoint
 
-Application checkpoint: final demo and reviewer login merged in PR20 at 05d57cf. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
+Application checkpoint: final demo and reviewer login merged in PR20 at 05d57cf. Prompt tuning is closed. Submission index: [docs/submission/README.md](../../docs/submission/README.md).
 
-- Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and a narrated recording without subtitles. See [demo evidence](docs/submission/demo/README.md).
+- Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and a narrated recording without subtitles. See [demo evidence](../../docs/submission/demo/README.md).
 - All five completed; one transient provider failure retried successfully. No duplicate request was submitted.
 - Remaining handoff: user makes repository public and verifies signed-out access, then sends submission. No email sent.
 - Benchmark limitations remain: reused cases and pending independent summary review. Optional human correction/filter polish is deferred.
