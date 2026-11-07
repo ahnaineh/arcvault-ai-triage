@@ -1,0 +1,11 @@
+{"state": "prior", "accounted": "39.99125174", "budget": "83"}
+{"state": "reserved", "sample": "assessment-01", "reservation": "34.852752", "maximum_attempts": 3}
+{"state": "settled", "sample": "assessment-01", "request_id": "031145f3-3ded-4e71-9980-fb6df39b7b69", "attempts": 1, "accounted": "0.016214", "actual_billed_cost": null, "usage": [{"input_tokens": 964, "total_tokens": 1304, "output_tokens": 340}]}
+{"state": "reserved", "sample": "assessment-02", "reservation": "34.852752", "maximum_attempts": 3}
+{"state": "settled", "sample": "assessment-02", "request_id": "355f4d92-84c4-4039-8891-c4a8edcfb493", "attempts": 2, "accounted": "11.630289", "actual_billed_cost": null, "usage": [null, {"input_tokens": 957, "total_tokens": 1089, "output_tokens": 132}]}
+{"state": "reserved", "sample": "assessment-03", "reservation": "0.27", "maximum_attempts": 3}
+{"state": "settled", "sample": "assessment-03", "request_id": "131a11f3-313a-483a-bb9e-bc1c996ca7a5", "attempts": 1, "accounted": "0.0144925", "actual_billed_cost": null, "usage": [{"input_tokens": 956, "total_tokens": 1197, "output_tokens": 241}]}
+{"state": "reserved", "sample": "assessment-04", "reservation": "0.27", "maximum_attempts": 3}
+{"state": "settled", "sample": "assessment-04", "request_id": "036209e5-530e-4b39-8539-2625f865fae9", "attempts": 1, "accounted": "0.013882", "actual_billed_cost": null, "usage": [{"input_tokens": 962, "total_tokens": 1162, "output_tokens": 200}]}
+{"state": "reserved", "sample": "assessment-05", "reservation": "0.27", "maximum_attempts": 3}
+{"state": "settled", "sample": "assessment-05", "request_id": "3daf9fc4-7c81-4e8c-9366-fbcf24545542", "attempts": 1, "accounted": "0.0136785", "actual_billed_cost": null, "usage": [{"input_tokens": 954, "total_tokens": 1147, "output_tokens": 193}]}

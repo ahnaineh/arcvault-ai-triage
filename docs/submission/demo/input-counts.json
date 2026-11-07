@@ -1,0 +1,17 @@
+[
+  {
+    "sample": "assessment-03",
+    "input_tokens": 956,
+    "request_sha256": "3e8fd1e48461336c9705614d1583c382880b199abd245cd198027dc6c43e334c"
+  },
+  {
+    "sample": "assessment-04",
+    "input_tokens": 962,
+    "request_sha256": "d9c9d057dceaeb0f71e2baa777a53b07782bd4e97283bf88fd77d252899a5ca9"
+  },
+  {
+    "sample": "assessment-05",
+    "input_tokens": 954,
+    "request_sha256": "59bf5c7df8239141765195c986fdaabe8b1aee2f75ff97ac4f07be2338556e0e"
+  }
+]

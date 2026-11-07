@@ -24,7 +24,7 @@ Browser access requires a login and CSRF protection. External ingestion uses a b
 
 ## Evidence and limits
 
-Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A combined real-model queued demo, recording and clean image build remain unverified. Root storage is nearly full.
+Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A fresh application image build and a [recorded real-model queued demo](demo/README.md) also passed. The demo includes one transient failure and successful retry.
 
 On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [final evidence](../evidence/final-v4/README.md) for provenance and costs.
 
@@ -32,4 +32,4 @@ On 50 reused cases, declared scorer matches were category 47, priority 40, exact
 
 For production, I would add reliable database-to-queue publication, worker crash recovery, queue-age alerts, tenant isolation and provider billing reconciliation. I would measure concurrency limits and review thresholds before adding model calls.
 
-Another week would first go to summary review and a verified operational demo. Audited human corrections and queue filters would follow; they are optional for this submission.
+Another week would first go to summary review and worker crash recovery. Audited human corrections and queue filters would follow; they are optional for this submission.
