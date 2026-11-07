@@ -18,3 +18,5 @@ Screenshots: [desktop invoice](ui-redesign/invoice.png), [mobile invoice](ui-red
 Real Chrome at 1440×1000 and 390×844: login, saved results, no document overflow, no page errors, and keyboard Enter opening/closing Technical details passed. No new inference was used for these checks. The existing persisted exports remain unchanged.
 
 Browser navigation exposed a single synchronous Gunicorn worker waiting on an idle connection. The Docker default now uses four threads; the demo runs the identical command. With one idle socket held open, the health request completed in 0.03 seconds. Login and navigation then passed. The final presentation files were copied into the owned demo container and static assets recollected after its successful image rebuild; this is not a claim of a second pristine image build.
+
+Review finding [4502767182](https://github.com/ahnaineh/arcvault-ai-triage/pull/18#discussion_r4502767182) is fixed: signal headings use the neutral `signal_label` filter, while escalation reasons use affirmative explanations. The presentation regression checks both neutral labels.
