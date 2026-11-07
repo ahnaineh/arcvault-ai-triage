@@ -302,3 +302,18 @@ replacement verified. Fixed early delivery dropping replacement publication; sou
 review required. Full offline suite 144 passed. Reproducible opt-in harness and precise
 limits: docs/evidence/infrastructure-acceptance.md. Clean image build, production
 startup and live provider acceptance remain pending; M1/M2 full gates stay open.
+
+## PR13 cleanup ownership completion (2026-11-07)
+Transferred the prior agent's uncommitted run.sh and test_cleanup.sh read-only from
+/home/ahnaineh/.t3/worktrees/Aspire/t3-bc33572a. Unique UUID names and tracked
+created IDs restrict cleanup to this invocation, including docker start failure.
+Current checks: bash -n tests/infrastructure/{run,test_cleanup}.sh; bash
+tests/infrastructure/test_cleanup.sh PASS; UV_CACHE_DIR=/tmp/arcvault-uv
+UV_PROJECT_ENVIRONMENT=/tmp/arcvault-infra-verify-venv DJANGO_SECRET_KEY=synthetic
+DATABASE_URL=sqlite:////tmp/pr13-unit.sqlite uv run pytest -q -k 'retry or early':
+2 passed, 142 deselected (one existing staticfiles warning); git diff --check PASS.
+Prior real HTTP/PostgreSQL/Redis/Celery proof is retained in PR13's Executed proof
+section at head 420b7bf4c23e3cba073ccac9a188f3ee996b6de0 and supplied prior-agent
+handoff; this completion did not independently rerun that harness. Synthetic provider,
+existing images, resources cleaned; no live inference or image builds/pulls.
+Current GitHub comments/reviews/inline/threads inspected: sole finding r4501931951.
