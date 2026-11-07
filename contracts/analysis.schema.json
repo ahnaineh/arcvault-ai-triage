@@ -1,0 +1,314 @@
+{
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "Bug Report",
+        "Feature Request",
+        "Billing Issue",
+        "Technical Question",
+        "Incident/Outage"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "core_issue": {
+      "type": "string"
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "account_id",
+              "invoice_number",
+              "error_code",
+              "url",
+              "product_or_integration",
+              "time_expression",
+              "other"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "urgency": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "Low",
+            "Medium",
+            "High",
+            "Unknown"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "level",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "active_service_outage": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "value",
+            "evidence"
+          ],
+          "additionalProperties": false
+        },
+        "insufficient_information": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "boolean"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "value",
+            "evidence"
+          ],
+          "additionalProperties": false
+        },
+        "conflicting_intents": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "boolean"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "value",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "active_service_outage",
+        "insufficient_information",
+        "conflicting_intents"
+      ],
+      "additionalProperties": false
+    },
+    "billing_comparison": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "billed": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "currency": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "period": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "components": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "amount",
+                "currency",
+                "period",
+                "components",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            "expected": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "currency": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "period": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "components": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "amount",
+                "currency",
+                "period",
+                "components",
+                "evidence"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "billed",
+            "expected"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "summary_sentences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "maxItems": 3
+    }
+  },
+  "required": [
+    "category",
+    "priority",
+    "confidence",
+    "core_issue",
+    "entities",
+    "urgency",
+    "signals",
+    "billing_comparison",
+    "summary_sentences"
+  ],
+  "additionalProperties": false
+}

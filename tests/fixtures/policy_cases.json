@@ -1,0 +1,489 @@
+{
+  "kind": "controlled_policy_inputs_not_live_model_results",
+  "version": "1.0",
+  "description": "Inputs are the policy projection after model validation and billing normalization. Monetary normalization and semantic extraction need separate tests. Expectations are explicit reference decisions, not observed implementation results.",
+  "cases": [
+    {
+      "id": "route-bug-report",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "route-feature-request",
+      "input": {
+        "category": "Feature Request",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Product",
+        "final_destination": "Product",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "route-billing-issue",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "route-technical-question",
+      "input": {
+        "category": "Technical Question",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Technical Support",
+        "final_destination": "Technical Support",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "outage-high-confidence",
+      "input": {
+        "category": "Incident/Outage",
+        "confidence": 0.95,
+        "active_service_outage": true,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage"
+        ]
+      }
+    },
+    {
+      "id": "confidence-0",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence"
+        ]
+      }
+    },
+    {
+      "id": "confidence-0.69",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.69,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence"
+        ]
+      }
+    },
+    {
+      "id": "confidence-0.699999",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.699999,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence"
+        ]
+      }
+    },
+    {
+      "id": "confidence-0.7",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.7,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "confidence-1",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 1,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "individual-failure-with-no-broad-impact-evidence",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Engineering",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "outage-category-false-signal",
+      "input": {
+        "category": "Incident/Outage",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage",
+          "inconsistent_analysis"
+        ]
+      }
+    },
+    {
+      "id": "outage-signal-bug-category",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": true,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage",
+          "inconsistent_analysis"
+        ]
+      }
+    },
+    {
+      "id": "outage-scope-unresolved",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": null,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "outage_scope_unresolved"
+        ]
+      }
+    },
+    {
+      "id": "outage-category-unknown-signal",
+      "input": {
+        "category": "Incident/Outage",
+        "confidence": 0.95,
+        "active_service_outage": null,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "active_outage",
+          "inconsistent_analysis",
+          "outage_scope_unresolved"
+        ]
+      }
+    },
+    {
+      "id": "overcharge-260.00",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "comparable_usd",
+        "reported_overcharge": "260.00"
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "overcharge-499.99",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "comparable_usd",
+        "reported_overcharge": "499.99"
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "overcharge-500.00",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "comparable_usd",
+        "reported_overcharge": "500.00"
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "overcharge-500.01",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "comparable_usd",
+        "reported_overcharge": "500.01"
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_overcharge"
+        ]
+      }
+    },
+    {
+      "id": "overcharge--600.00",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "comparable_usd",
+        "reported_overcharge": "-600.00"
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "unresolved-monetary-dispute",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "unresolved",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "billing_comparison_unresolved"
+        ]
+      }
+    },
+    {
+      "id": "ordinary-billing-question",
+      "input": {
+        "category": "Billing Issue",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Billing",
+        "final_destination": "Billing",
+        "human_escalation": false,
+        "escalation_reasons": []
+      }
+    },
+    {
+      "id": "insufficient-information",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": true,
+        "conflicting_intents": false,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "insufficient_information"
+        ]
+      }
+    },
+    {
+      "id": "conflicting-intents",
+      "input": {
+        "category": "Bug Report",
+        "confidence": 0.95,
+        "active_service_outage": false,
+        "insufficient_information": false,
+        "conflicting_intents": true,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "conflicting_intents"
+        ]
+      }
+    },
+    {
+      "id": "multiple-reasons",
+      "input": {
+        "category": "Incident/Outage",
+        "confidence": 0.6,
+        "active_service_outage": true,
+        "insufficient_information": false,
+        "conflicting_intents": true,
+        "billing_status": "not_applicable",
+        "reported_overcharge": null
+      },
+      "expected": {
+        "standard_destination": "Engineering",
+        "final_destination": "Human Review",
+        "human_escalation": true,
+        "escalation_reasons": [
+          "low_confidence",
+          "active_outage",
+          "conflicting_intents"
+        ]
+      }
+    }
+  ]
+}
