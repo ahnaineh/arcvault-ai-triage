@@ -36,9 +36,9 @@ Gate: remote repository contains the intended planning artifacts and no credenti
 - [ ] Verify latest stable Django and compatible Python/package versions; pin dependencies and container images, commit `uv.lock`.
 - [ ] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
 - [ ] Create Django project, settings, `.env.example`, Dockerfile and Compose web/worker/PostgreSQL/Redis/migration services.
-- [ ] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes.
-- [ ] Implement billing normalization/arithmetic and pure routing/escalation policy.
-- [ ] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases.
+- [x] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes. Evidence: `docs/evidence/policy.md` (49 focused tests).
+- [x] Implement billing normalization/arithmetic and pure routing/escalation policy. Evidence: `docs/evidence/policy.md` (49 focused tests).
+- [x] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases. Evidence: `docs/evidence/policy.md` (49 focused tests).
 - [ ] Smoke-test the exact schema against the selected real model; record usage and any schema adjustments.
 
 Gate: locked environment starts, policy/validation tests pass, exact model schema works on a real response. No unsupported claims of full application functionality.
