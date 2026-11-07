@@ -1,0 +1,96 @@
+{
+  "review": null,
+  "request": {
+    "id": "4b3bcb4b-4c45-4104-966b-a7be4a19ba38",
+    "source": "Email",
+    "message": "Hi, I tried logging in this morning and keep getting a 403 error. My account is arcvault.io/user/jsmith. This started after your update last Tuesday.",
+    "received_at": "2026-11-07T16:48:00.983091+00:00"
+  },
+  "summary": "The customer reports repeatedly receiving a 403 error when attempting to log in this morning. They identify their account as arcvault.io/user/jsmith and say the issue started after an update last Tuesday.",
+  "analysis": {
+    "signals": {
+      "conflicting_intents": {
+        "value": false,
+        "evidence": []
+      },
+      "active_service_outage": {
+        "value": false,
+        "evidence": []
+      },
+      "insufficient_information": {
+        "value": false,
+        "evidence": []
+      }
+    },
+    "urgency": {
+      "level": "Unknown",
+      "evidence": []
+    },
+    "category": "Bug Report",
+    "entities": [
+      {
+        "type": "error_code",
+        "value": "403",
+        "evidence": "403 error"
+      },
+      {
+        "type": "url",
+        "value": "arcvault.io/user/jsmith",
+        "evidence": "arcvault.io/user/jsmith"
+      },
+      {
+        "type": "time_expression",
+        "value": "this morning",
+        "evidence": "this morning"
+      },
+      {
+        "type": "time_expression",
+        "value": "last Tuesday",
+        "evidence": "last Tuesday"
+      }
+    ],
+    "priority": "High",
+    "confidence": 0.97,
+    "core_issue": "The customer cannot log in because they keep receiving a 403 error.",
+    "summary_sentences": [
+      "The customer reports repeatedly receiving a 403 error when attempting to log in this morning.",
+      "They identify their account as arcvault.io/user/jsmith and say the issue started after an update last Tuesday."
+    ],
+    "billing_comparison": null
+  },
+  "decision": {
+    "human_escalation": false,
+    "final_destination": "Engineering",
+    "escalation_reasons": [],
+    "reported_overcharge": null,
+    "standard_destination": "Engineering",
+    "comparison_assumptions": []
+  },
+  "processing": {
+    "attempts": [
+      {
+        "id": 7,
+        "error": null,
+        "usage": {
+          "input_tokens": 964,
+          "total_tokens": 1302,
+          "output_tokens": 338
+        },
+        "latency_ms": 7490.68872800126
+      }
+    ],
+    "unknown_cost": true,
+    "estimated_cost": null
+  },
+  "provenance": {
+    "model": "gpt-6.1-terra",
+    "completed_at": "2026-11-07T16:48:09.372579+00:00",
+    "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+    "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+    "policy_version": "1.1",
+    "prompt_version": "triage_v4",
+    "schema_version": "1.0",
+    "accepted_attempt_id": 7
+  },
+  "schema_version": "1.0"
+}

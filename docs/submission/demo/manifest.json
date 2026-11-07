@@ -10,7 +10,6 @@
   "output_tokens": 1106,
   "new_known_usage_estimate": "0.0709720",
   "new_uncertain_reservation": "11.617584",
-  "total_accounted": "51.67980774",
   "budget": "83",
   "actual_billing": null,
   "original_videos": [
@@ -23,5 +22,57 @@
       "sha256": "bd03a976ea291f88623dddb4c084fbdf0df7488d340209491063c8885ca3ae6e"
     }
   ],
-  "published_video_sha256": "b5ad4d5f60f66ce43f94adfbf66f2847a03ad36c9dca9144ddb17cf0b44e5586"
+  "original_published_video_sha256": "b5ad4d5f60f66ce43f94adfbf66f2847a03ad36c9dca9144ddb17cf0b44e5586",
+  "original_video_commit": "fec54753d0696eaa4b510ea3f7ee736983d2ddbd",
+  "original_total_accounted": "51.67980774",
+  "total_accounted": "52.69598874",
+  "published_video_sha256": "113f614f2696859e50f3dd17b1352b1cad2f8763c61922dbaa857a7e29706989",
+  "narrated_revision": {
+    "ui_commit": "44adeecd748bd6c5a6be1654b8026dd144aa00a9",
+    "fresh_live_requests": 1,
+    "saved_results_reviewed": 4,
+    "speech_model": "gpt-4o-mini-tts-2025-12-15",
+    "voice": "cedar",
+    "tts_calls": 9,
+    "transcription_checks": 1,
+    "speech_rate_adjustment": 0.9,
+    "new_inference_estimate_usd": "0.016181",
+    "retained_speech_and_verification_allowance_usd": "1.00",
+    "total_accounted_including_allowance_usd": "52.69598874",
+    "actual_billing": null,
+    "audio_sources": [
+      {
+        "file": "01-intro.wav",
+        "sha256": "54e19130bc29a0107cdd3ca3f555a8b55901f3dee56d78bd46b9c1e77bb35da1"
+      },
+      {
+        "file": "02-intake.wav",
+        "sha256": "e7019fb1a3bd235809d1394b4dca18e6411fb24b05156e383c0d4e6acb7fc30c"
+      },
+      {
+        "file": "03-login-v2.wav",
+        "sha256": "766810b5f2f68f7063a101c90747dd42e0589064f61d3065ee51b1b58640b3a0"
+      },
+      {
+        "file": "04-feature.wav",
+        "sha256": "22443aed6284b046a2a29326cef723ac4e8c3f54f48870bd7f5b050a659f2ff7"
+      },
+      {
+        "file": "05-invoice.wav",
+        "sha256": "6a951cc376a0f2e6d7e90eea2c6b0155fce138e91d794a1e97a923e242baf804"
+      },
+      {
+        "file": "06-okta.wav",
+        "sha256": "121c3e7c13c0e22041c3c629ad1fd670ccd8d0970317b1ae08cf2e835f6072aa"
+      },
+      {
+        "file": "07-outage.wav",
+        "sha256": "f294c4ea533592163bbd706fa659789a26153905f387fd4419a4fad7b168adb6"
+      },
+      {
+        "file": "08-close.wav",
+        "sha256": "f07e4420f81bb16cea78dc6e183c6847b2d999cc7fde4509e9b08b3e1af757f0"
+      }
+    ]
+  }
 }
