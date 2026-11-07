@@ -76,7 +76,7 @@ def test_execute_order_artifacts_resume(command):
         assert item['decision']['human_escalation'] is False
         assert item['decision']['escalation_reasons'] == []
         assert item['decision']['standard_destination'] == item['decision']['final_destination']
-        assert item['provenance']['policy_version'] == '1.0'
+        assert item['provenance']['policy_version'] == '1.1'
         assert item['provenance']['prompt_version'] == 'triage_v1'
         assert item['processing']['attempts'][0]['usage']['total_tokens'] == 30
     assert len([e for e in events() if e['state'] == 'completed']) == 5
@@ -224,7 +224,7 @@ def test_command_assessment_billing_and_outage_regression(command):
         assert record['provenance']['model'] == 'gpt-6.1-terra'
         assert record['provenance']['prompt_version'] == 'triage_v1'
         assert record['provenance']['schema_version'] == '1.0'
-        assert record['provenance']['policy_version'] == '1.0'
+        assert record['provenance']['policy_version'] == '1.1'
         assert record['provenance']['completed_at']
         assert record['provenance']['accepted_attempt_id']
     billing = records[2]['decision']

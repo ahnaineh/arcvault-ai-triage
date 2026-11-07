@@ -49,6 +49,7 @@ class Comparison(Strict):
     expected: Money
 class Analysis(Strict):
     _accepted: dict | None = PrivateAttr(default=None)
+    _source: str | None = PrivateAttr(default=None)
     category: Category
     priority: Literal['Low','Medium','High']
     confidence: float = Field(ge=0, le=1)
@@ -93,4 +94,5 @@ def validate_analysis(payload: dict, message: str) -> Analysis:
     """Validate structure and exact excerpts; does not establish semantic truth."""
     analysis = Analysis.model_validate(payload, context={'message': message})
     analysis._accepted = analysis.model_dump()
+    analysis._source = message
     return analysis

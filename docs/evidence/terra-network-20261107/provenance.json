@@ -1,0 +1,16 @@
+{
+  "code_sha": "7149968aadd0989b695897a44aced1433ab6ad3b",
+  "calls": 5,
+  "completed": 5,
+  "retries": 0,
+  "input_tokens": 4738,
+  "output_tokens": 1026,
+  "conservative_usage_estimate": "0.069047",
+  "actual_billed_cost": null,
+  "retained_external_reservation": "17.84084544",
+  "new_reservations": "58.087920",
+  "total_reservations": "75.92876544",
+  "network_permission": "require_escalated",
+  "read_only_probe": "DNS 12 addresses; verified HTTPS GET /v1/models returned 401; no proxy env present",
+  "command": "manage.py run_acceptance --execute --config .runtime/acceptance-network-20261107/config.json --run-dir .runtime/acceptance-network-20261107"
+}

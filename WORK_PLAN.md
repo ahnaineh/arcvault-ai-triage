@@ -292,6 +292,33 @@ PR1 final feedback (offline foundation, 2026-11-07)
 - Main a79bc2a48d24c6c29d73473db291637585a4d540 already included in PR head; no compatibility merge required. Existing tracker retained.
 - 15 focused evaluation/adapter tests passed; 50-case dataset validation passed; Ruff passed. No application/provider/runner edits, live calls or benchmark execution.
 
+## Network acceptance follow-up
+Five Terra calls completed with raw usage and durable file evidence in docs/evidence/terra-network-20261107. Escalated HTTPS 401 established network access. Historical uncertain reservations retained; total 75.92876544 < 83. Invoice $260 requirement remains unmet (missing billed period); outage Human Review verified. No queue/Postgres acceptance.
+
+## PR12 offline invoice acceptance correction
+Persisted evidence: docs/evidence/terra-network-20261107/offline-policy-review.md
+and assessment_outputs.policy-1.1.json; reproducible with
+python -m scripts.reprocess_invoice_evidence. Original raw responses and records
+retained unchanged. Five schema/source reviews complete; invoice apparent 260 /
+Billing under declared monthly/component assumptions, outage Human Review.
+Invoice priority remains model Low versus illustrative plan Medium, documented.
+This is offline canonical record acceptance, not queue DB or new inference.
+
+## PR12 narrow implementation follow-up (2026-11-07)
+Original finding https://github.com/ahnaineh/arcvault-ai-triage/pull/12#discussion_r4501937202
+-> shared exponent-aware _subtract_exact in both billing branches; regression
+ tests/test_invoice_saved.py::test_direct_invoice now includes unequal scales,
+ yielding 99999999999999999999.999999999999999999999 exactly.
+User-verified offline-review grading blocker -> corrected invoice and Okta Low
+versus evals/dataset.json Medium to ERROR: priority 3/5, derived routing 5/5.
+No full quality pass claimed. Raw outputs/priorities unchanged. Offline
+scripts/reprocess_invoice_evidence.py refreshed only derived policy code hashes.
+Current comments, reviews, inline comments and threads inspected: sole bot finding
+is the URL above, no additional findings. Focused pytest tests/test_policy.py
+ tests/test_invoice_saved.py: 77 passed. Ruff on policy, regression and reprocessor:
+PASS; git diff --check PASS. UV_CACHE_DIR=/tmp/arcvault-uv and
+UV_PROJECT_ENVIRONMENT=/tmp/arcvault-infra-verify-venv; synthetic key and explicit
+SQLite /tmp/pr12-unit.sqlite. No inference, credential or infrastructure operations.
 ## Real infrastructure acceptance (2026-11-07)
 
 Verified latest main 7149968 including PR10 using existing images, isolated PostgreSQL
