@@ -1,0 +1,42 @@
+[
+  {
+    "id": "01-intro",
+    "start": 0,
+    "duration": 17.84
+  },
+  {
+    "id": "02-intake",
+    "start": 17.84,
+    "duration": 18.48
+  },
+  {
+    "id": "03-login",
+    "start": 36.32,
+    "duration": 19.12
+  },
+  {
+    "id": "04-feature",
+    "start": 55.44,
+    "duration": 17.16
+  },
+  {
+    "id": "05-invoice",
+    "start": 72.6,
+    "duration": 20.96
+  },
+  {
+    "id": "06-okta",
+    "start": 93.56,
+    "duration": 16.84
+  },
+  {
+    "id": "07-outage",
+    "start": 110.4,
+    "duration": 20.76
+  },
+  {
+    "id": "08-close",
+    "start": 131.16,
+    "duration": 21.28
+  }
+]

@@ -6,11 +6,11 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-Application checkpoint: b4368bbc3ab933d45137fa4195350623a57d4f18. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
+Application checkpoint: PR18 merged at 7121eff; UI revision 44adeecd748bd6c5a6be1654b8026dd144aa00a9. Prompt tuning is closed. Submission index: [docs/submission/README.md](docs/submission/README.md).
 
-- Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and captioned recording. See [demo evidence](docs/submission/demo/README.md).
+- Verified: fresh application image build, startup, five real queued Terra/V4 submissions, persisted exports and a narrated recording without subtitles. See [demo evidence](docs/submission/demo/README.md).
 - All five completed; one transient provider failure retried successfully. No duplicate request was submitted.
-- Budget: $83; conservative accounted total $51.67980774 includes retained uncertainties. Actual billed cost unknown.
+- Budget: $83; conservative accounted total $52.69598874 includes retained uncertainties and a $1 provisional speech/verification allowance. Actual billed cost unknown.
 - Remaining handoff: user makes repository public and verifies signed-out access, then sends submission. No email sent.
 - Benchmark limitations remain: reused cases and pending independent summary review. Optional human correction/filter polish is deferred.
 - Earlier checkpoints below are historical; this checkpoint supersedes stale pending claims.
@@ -517,3 +517,9 @@ Recording and five serial real webhook submissions remain for parent operator.
 - UI review complete: routing-first detail, visible confidence percentage and all required output fields; readable billing, source evidence and expandable technical metadata.
 - Verified 178 tests, Ruff, three JS harnesses, real desktop/mobile and keyboard checks. Fixed single-worker idle-connection stalls with Gunicorn threads. Evidence: docs/evidence/ui-redesign.md.
 - Narration generated with OpenAI speech; new recording and final audio synchronization in progress. Earlier captioned video remains historical until replaced.
+
+## Final narrated recording
+
+- Replaced the captioned video with a first-person AI voice-over and the redesigned UI. One fresh live login submission plus four explicitly saved live results; no repeated five-case benchmark.
+- All required metrics are visible, including confidence percentage, core issue, urgency and explicit Human Review status. Narration is synchronized to real UI actions.
+- Full video/audio decode, speech transcription, frame inspection, runtime hashes and export checks passed. Source evidence and previous outputs are preserved. Current total accounting including speech allowance: $52.69598874/$83; actual billing unknown.

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "01-intro",
+    "text": "We built ArcVault to turn incoming support messages into clear next steps. This walkthrough uses an AI-generated voice. We\u2019ll send a request through our webhook, then review the five assessment scenarios using real model results."
+  },
+  {
+    "id": "02-intake",
+    "text": "We choose the source, paste the original message, and send it. We save the request first, then our worker asks Terra to classify it, extract useful details, and write a summary. We use Python rules to decide the final destination."
+  },
+  {
+    "id": "03-login",
+    "text": "Here, we use the model\u2019s bug classification and confidence score to route this request to Engineering. We show priority, urgency, and the human-review decision alongside it. We can open source excerpts to check the extracted account information."
+  },
+  {
+    "id": "04-feature",
+    "text": "Next, we open the saved audit export request. We classified this as a low-priority feature request and routed it to Product. We keep the processing history under Technical details, including a successful retry from our earlier live run."
+  },
+  {
+    "id": "05-invoice",
+    "text": "For the invoice, we extracted the billed amount and the expected contract rate. We use exact decimal arithmetic to calculate an apparent difference of two hundred and sixty dollars, and route it to Billing. We show the comparison assumptions here, because the message does not explicitly state every billing detail."
+  },
+  {
+    "id": "06-okta",
+    "text": "For the Okta question, we use the model\u2019s technical-question classification and medium priority to route it to Technical Support. We keep the summary brief, and we preserve the customer\u2019s exact wording as evidence for the extracted integration."
+  },
+  {
+    "id": "07-outage",
+    "text": "For the dashboard outage, we detect that multiple users are affected. Our policy sends it to Human Review, while retaining Engineering as the standard destination. We make the reason visible immediately. We can also inspect the supporting signals and export the complete saved result as JSON."
+  },
+  {
+    "id": "08-close",
+    "text": "Finally, we open the Human Review queue to see the flagged outage. We\u2019ve kept the everyday workflow simple, with evidence and technical details available when needed. Our submission includes the five live outputs, the exact prompt, and the benchmark results with their limitations."
+  }
+]

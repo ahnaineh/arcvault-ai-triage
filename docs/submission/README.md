@@ -3,7 +3,7 @@
 - [Architecture (short write-up)](ARCHITECTURE.md)
 - [Exact final prompt](../../prompts/triage_v4.txt) and [contract](../prompts.md)
 - [Recorded live demo](demo/README.md)
-- [Five recorded live JSON records](demo/live-assessment-outputs.json), in assessment order: login, bulk export, invoice, Okta, dashboard outage.
+- [Five JSON records shown in the demo](demo/narrated-five-outputs.json), in assessment order: login, bulk export, invoice, Okta, dashboard outage.
 - [Final metrics and provenance](../evidence/final-v4/README.md)
 - [Synthetic queue acceptance](../evidence/infrastructure-acceptance.md)
 - [Submission email draft](HANDOFF.md)
