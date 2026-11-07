@@ -51,21 +51,28 @@ def score(cases, predictions):
         a = a if isinstance(a, dict) else {}
         d = d if isinstance(d, dict) else {}
         valid=matches(a,schema)
+        expected_policy = dict(c['expected_policy'])
+        if valid and a['confidence'] < .70:
+            expected_policy.update(final_destination='Human Review', human_escalation=True,
+                escalation_reasons=['low_confidence', *expected_policy['escalation_reasons']])
+        c = c | {'expected_policy': expected_policy}
+        d = {k: d[k] for k in expected_policy if k in d}
         expected_entities={(e['type'],e['value'],e['evidence']) for e in c['required_entities']}
         actual_entities={(e.get('type'),e.get('value'),e.get('evidence')) for e in a.get('entities',[]) if isinstance(e,dict)} if isinstance(a.get('entities',[]),list) else set()
         review=p.get('summary_review', {})
         review = review if isinstance(review, dict) else {}
         reviewed=bool(review.get('reviewer')) and review.get('all_required_facts') is True and review.get('no_unsupported_claims') is True
-        row=dict(id=c['id'], category=a.get('category') in c['acceptable_categories'], priority=a.get('priority') in c['acceptable_priorities'], entities=valid and actual_entities==expected_entities, signals=valid and all(a.get('signals',{}).get(k,{}).get('value','missing')==v for k,v in c['expected_signals'].items()), schema=valid, summary_constraints=valid and reviewed, routing=valid and d==c['expected_policy'], manual_summary_review='accepted' if reviewed else 'review_needed', missing=not bool(p), invalid_analysis=bool(p) and not valid)
+        row={'id': c['id'], 'category': a.get('category') in c['acceptable_categories'], 'priority': a.get('priority') in c['acceptable_priorities'], 'entities': valid and actual_entities==expected_entities, 'signals': valid and all(a.get('signals',{}).get(k,{}).get('value','missing')==v for k,v in c['expected_signals'].items()), 'schema': valid, 'summary_constraints': valid and reviewed, 'routing': valid and d==c['expected_policy'], 'manual_summary_review': 'accepted' if reviewed else 'review_needed', 'missing': not bool(p), 'invalid_analysis': bool(p) and not valid}
 
         automatic=bool(p) and valid and d.get('human_escalation') is False
         expected=c['expected_policy']['human_escalation']
+        row['required_escalation'] = expected
         row.update(automatic=automatic, missed_escalations=automatic and expected, unnecessary_escalations=valid and d.get('human_escalation') is True and not expected, incorrect_automatic_routing=automatic and d.get('final_destination')!=c['expected_policy']['final_destination'])
         for k in totals: totals[k]+=int(row[k])
         rows.append(row)
     totals.update(missing=sum(r['missing'] for r in rows), invalid_analysis=sum(r['invalid_analysis'] for r in rows), operational_failures=sum(bool(p.get('error')) for p in predictions), completed=sum(r['schema'] for r in rows), end_to_end_success=sum(all(r[k] for k in ['schema','category','priority','entities','signals','summary_constraints','routing']) for r in rows))
-    conditional = dict(missed_escalations=dict(count=totals['missed_escalations'], denominator=sum(c['expected_policy']['human_escalation'] for c in cases)), unnecessary_escalations=dict(count=totals['unnecessary_escalations'],denominator=sum(r['schema'] and isinstance(by_id.get(c['id'],{}).get('decision'),dict) and by_id[c['id']]['decision'].get('human_escalation') is True for r,c in zip(rows,cases))), incorrect_automatic_routing=dict(count=totals['incorrect_automatic_routing'],denominator=totals['automatic']))
-    return dict(conditional_routing=conditional,cases=len(cases),predictions=len(predictions),metrics={k:dict(count=v,denominator=len(cases)) for k,v in totals.items()},coverage=dict(count=len(predictions),denominator=len(cases)),cost_inputs=[p.get('cost_usd') for p in predictions],latency_inputs_ms=[p.get('latency_ms') for p in predictions],rows=rows)
+    conditional = {'missed_escalations': {'count': totals['missed_escalations'], 'denominator': sum(r['required_escalation'] for r in rows)}, 'unnecessary_escalations': {'count': totals['unnecessary_escalations'],'denominator': sum(r['schema'] and isinstance(by_id.get(c['id'],{}).get('decision'),dict) and by_id[c['id']]['decision'].get('human_escalation') is True for r,c in zip(rows,cases))}, 'incorrect_automatic_routing': {'count': totals['incorrect_automatic_routing'],'denominator': totals['automatic']}}
+    return {'conditional_routing': conditional,'cases': len(cases),'predictions': len(predictions),'metrics': {k:{'count': v,'denominator': len(cases)} for k,v in totals.items()},'coverage': {'count': len(predictions),'denominator': len(cases)},'cost_inputs': [p.get('cost_usd') for p in predictions],'latency_inputs_ms': [p.get('latency_ms') for p in predictions],'rows': rows}
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

@@ -225,3 +225,10 @@ resume. Full SQLite offline suite 93 passed (six staticfiles warnings); Django c
 migration drift check, dry-run pending=5 and whitespace check clean. See
  docs/evidence/live-acceptance.md for commands, corrected premium reserve and precise
 historical evidence gap. No PostgreSQL or live acceptance claim; no inference calls.
+# PR1 offline completion
+
+Completed the 50-case label-quality audit (`evals/review.jsonl`), canonical PR9
+export adapter and current-main integration. Full offline suite: 105 passed;
+dataset validation and Ruff passed. Exact commands, review comments, semantic
+overlap and live-benchmark limitations: `docs/evidence/pr1-completion.md`.
+
