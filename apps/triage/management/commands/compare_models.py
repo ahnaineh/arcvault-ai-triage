@@ -73,6 +73,7 @@ class Command(BaseCommand):
                     ids = {c['id'] for c in cases if c['split'] == split}
                     atomic_export(directory / f'{split}.score.json', score([c for c in cases if c['id'] in ids],
                         [p for p in predictions if p['id'] in ids]))
+            if runner.path.exists():
                 events = [json.loads(line) for line in runner.path.read_text().splitlines()]
                 prior_total += accounted(events, config)[0]
             self.stdout.write(json.dumps({'model': model, 'effort': effort, 'cases': len(cases), 'execute': execute}))

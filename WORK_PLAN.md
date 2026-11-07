@@ -454,3 +454,9 @@ classification error and the independently fixed initial harness-stop behavior.
 Verified supplied five are byte-equal to dataset assessment-01..05, array rows1..5;
 50=assessment5+development25+validation10+test10. Mapping and reproduction audit
 are in docs/evidence/comparison-v3/failure-analysis-and-dataset.md.
+
+PR review follow-up: fixed compare_models dry-run history carry-forward by reading
+preceding existing model journals in both execution and dry-run modes. Regression
+runs offline inspection after both model configurations exist, proves zero extra
+provider calls and byte-identical JSON/journals. Frozen live results unchanged;
+code identity guard still rejects mismatched execution snapshots as intended.

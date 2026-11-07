@@ -58,6 +58,10 @@ def test_paired_command_freezes_and_resumes_without_duplicate_calls(tmp_path, mo
     for _ in range(2):
         call_command('compare_models', '--run-dir', directory, '--execute', stdout=StringIO())
     assert client.responses.create.call_count == 100
+    before = {str(p): p.read_bytes() for p in (tmp_path / 'comparison').rglob('*.json*')}
+    call_command('compare_models', '--run-dir', directory, stdout=StringIO())
+    assert client.responses.create.call_count == 100
+    assert before == {str(p): p.read_bytes() for p in (tmp_path / 'comparison').rglob('*.json*')}
     luna = json.loads((tmp_path / 'comparison/gpt-6-luna/config.json').read_text())
     terra = json.loads((tmp_path / 'comparison/gpt-6.1-terra/config.json').read_text())
     assert float(terra['reconciled_history']['known_cost']) > float(luna['reconciled_history']['known_cost'])
