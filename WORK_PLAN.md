@@ -496,3 +496,5 @@ PR14 comments: discussion_r4502097330 comparison dry-run accounting fixed previo
 - [!] Clean image build deferred: root 98% used, approximately 2 GB free; Docker /var/lib/docker has 2.314 GB images and 1.455 GB volumes with existing ArcVault/RPiDoor services. No deletion, prune or downloads.
 - [ ] Essential handoff: review/merge packaging PR, verify private reviewer access, choose and complete recording or declared live interview demonstration, final version/tag check. New model inference requires renewed authorization.
 - [ ] Optional: audited human correction and queue filters; not submission gates.
+
+Submission prose review: shortened AI lessons, removed internal agent instructions from reviewer setup, and distinguished model-call costs from authorization language. Architecture and links checked directly; clean build and combined live-model queue recording remain unverified.

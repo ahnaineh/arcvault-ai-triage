@@ -8,7 +8,7 @@
 
 3:20–4:20 Show JSON export and provenance. Describe synthetic queue acceptance separately from live provider evidence. Do not represent saved benchmark outputs as a live queued run.
 
-4:20–5:20 Explain compact prompt tradeoffs, reused-case metrics, unknown actual billing and one concrete AI-development correction. Close with clean-build/demo limitations. A live end-to-end recording requires separately authorized inference and working startup; otherwise explicitly choose the assessment's live interview option.
+4:20–5:20 Explain compact prompt tradeoffs, reused-case metrics, unknown actual billing and one concrete AI-development correction. Close with clean-build/demo limitations. Record the running workflow once setup is verified, or choose the assessment's live interview option.
 
 # Submission email — DRAFT ONLY
 
