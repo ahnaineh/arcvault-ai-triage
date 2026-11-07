@@ -68,8 +68,10 @@ class Runner:
             raise ValueError('Exactly five distinct samples required')
         config_hash = digest(self.config)
         events = [json.loads(line) for line in self.path.read_text().splitlines()] if self.path.exists() else []
+        if any(e.get('config_hash', config_hash) != config_hash for e in events):
+            raise ValueError('Immutable runner configuration mismatch')
         started = {e['request_id']: e for e in events if e['state'] == 'reserved'}
-        finished = {e['request_id']: e for e in events if e['state'] in ('completed', 'failed')}
+        finished = {e['request_id']: e for e in events if e['state'] == 'completed'}
         if started.keys() - finished.keys():
             raise ValueError('Unresolved attempt: reservation retained; reconcile before spending')
         complete = {e['identity']: e['result'] for e in finished.values() if e['state'] == 'completed'}
