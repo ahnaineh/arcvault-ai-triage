@@ -37,7 +37,18 @@ TEMPLATES = [{
     ]},
 }]
 WSGI_APPLICATION = "config.wsgi.application"
-DATABASES = {"default": dj_database_url.config(default="postgresql://arcvault:arcvault@db:5432/arcvault", conn_max_age=60)}
+DATABASES = {"default": (
+    dj_database_url.parse(os.environ["DATABASE_URL"], conn_max_age=60)
+    if os.getenv("DATABASE_URL") else {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB", "arcvault"),
+        "USER": os.getenv("POSTGRES_USER", "arcvault"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "arcvault"),
+        "HOST": os.getenv("POSTGRES_HOST", "db"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        "CONN_MAX_AGE": 60,
+    }
+)}
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {"default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},

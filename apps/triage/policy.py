@@ -29,7 +29,8 @@ def normalize_billing(comparison: Comparison | None):
     if a.components is None or a.components != b.components:
         return 'unresolved', None, assumptions
     with localcontext() as ctx:
-        ctx.prec = max(len(a.amount), len(b.amount)) + 4
+        operands = [Decimal(a.amount), Decimal(b.amount)]
+        ctx.prec = max(len(v.as_tuple().digits) + v.as_tuple().exponent for v in operands) + max(-v.as_tuple().exponent for v in operands) + 1
         difference = Decimal(a.amount) - Decimal(b.amount)
     return 'comparable_usd', difference, assumptions
 

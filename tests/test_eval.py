@@ -50,3 +50,18 @@ class EvaluationTests(unittest.TestCase):
    self.assertEqual(score(load()[:1],[p])['metrics']['invalid_analysis']['count'],1)
  def test_assessment_onset(self):
   self.assertIn({'type': 'time_expression','value': '2pm EST','evidence': '2pm EST'},load()[4]['required_entities'])
+
+ def test_unhashable_entities_continue_report(self):
+  import copy
+  for field in ['type','value']:
+   for value in [[], {}]:
+    bad=self.prediction(); bad['analysis']['entities'][0][field]=value
+    good=self.prediction(); good['id']='good'
+    cases=copy.deepcopy(load()[:1])*2
+    cases[1]=copy.deepcopy(cases[1]); cases[1]['id']='good'
+    report=score(cases,[bad,good])
+    self.assertEqual(len(report['rows']),2)
+    self.assertFalse(report['rows'][0]['schema'])
+    self.assertFalse(report['rows'][0]['entities'])
+    self.assertTrue(report['rows'][1]['schema'])
+    self.assertTrue(report['rows'][1]['entities'])

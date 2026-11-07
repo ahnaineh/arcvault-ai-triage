@@ -58,7 +58,7 @@ def score(cases, predictions):
         c = c | {'expected_policy': expected_policy}
         d = {k: d[k] for k in expected_policy if k in d}
         expected_entities={(e['type'],e['value'],e['evidence']) for e in c['required_entities']}
-        actual_entities={(e.get('type'),e.get('value'),e.get('evidence')) for e in a.get('entities',[]) if isinstance(e,dict)} if isinstance(a.get('entities',[]),list) else set()
+        actual_entities={(e['type'],e['value'],e['evidence']) for e in a['entities']} if valid else set()
         review=p.get('summary_review', {})
         review = review if isinstance(review, dict) else {}
         reviewed=bool(review.get('reviewer')) and review.get('all_required_facts') is True and review.get('no_unsupported_claims') is True

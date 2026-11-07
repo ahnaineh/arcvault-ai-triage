@@ -232,3 +232,55 @@ export adapter and current-main integration. Full offline suite: 105 passed;
 dataset validation and Ruff passed. Exact commands, review comments, semantic
 overlap and live-benchmark limitations: `docs/evidence/pr1-completion.md`.
 
+
+PR8 integration: independent review reported no blockers at exact head
+9b19a6a606cf67f77f82caa9efb30bc3ccabed14; reported offline proof: 93 tests,
+Ruff, Django checks and migration checks on SQLite. Merged main: 2b42ec3.
+Review limits: invalid raw responses were lost before validation; CLI lacked live execution.
+Follow-on command implementation in progress; command wiring tests remain required.
+No paid calls or credential reads performed. Historical account reconciliation,
+live schema acceptance and PostgreSQL/Redis/Celery gates remain outstanding.
+
+PR9 finish: command SDK tests, failure accounting and metadata limits implemented.
+Offline proof: docs/evidence/pr9-finish.md. Account/schema/queue acceptance pending.
+Historical planning reservation remains conditional, not actual cost.
+
+PR9 export repair: shared application record builder wired into durable acceptance
+journal. Offline suite: 107 passed. Live provider and DB acceptance remain pending.
+
+PR9 substantive regression coverage: `test_command_assessment_billing_and_outage_regression` and `test_command_full_export_matches_canonical_builder` exercise five source-shaped SDK responses and canonical full-record parity. Existing resume coverage retained. Offline validation: 109 tests passed; Ruff passed. No application bug exposed; no live calls.
+
+PR9 runner/provider missed-review remediation (offline):
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/8#discussion_r4501752720: hash actual loaded prompt/schema text into inference identity; compare reservation fingerprints before cached reuse or spending. New-run/reconciliation guidance on mismatch. `test_artifact_change_blocks_resume` covers partial and complete runs, both artifacts. Existing immutable accounting config and uncertain-reservation protections retained.
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/8#discussion_r4501784659: Terra conservative pricing enforced independently of verifier callback. `test_wrapped_bound_price_floor` rejects zero/underpriced wrapper and accepts valid pricing.
+- https://github.com/ahnaineh/arcvault-ai-triage/pull/9#discussion_r4501813739: HTTP evidence sink OSError carries sanitized captured usage; `test_http_write_failure_retains_usage` proves failed ledger usage, reservation retention and no secret persistence.
+Validation: locked SQLite suite 117 passed (six missing-staticfiles warnings); Ruff, Django check, migration drift and diff whitespace passed. Initial suite exposed mock fixture's fabricated inference_identity; fixture explicitly declares None, then full suite passed. Full-export billing/outage/canonical parity baseline retained. No live calls or credentials. Historical reservation remains 6.22326144, actual unknown. Pending application policy/config/UI and evaluation findings belong to parent/other work and remain pending.
+### GitHub missed-comment remediation
+
+Read `/tmp/pr-audit/audit.md`, fetched all five original review bodies, and compared
+current source at main 2b42ec3039df34b2a6d95abddac7fe1d33d4043a. This focused branch
+owns Celery startup, billing precision/evidence, DB credentials, and tester timeout.
+Acceptance/provider and eval findings remain assigned to other scopes; no changes
+or comment replies/resolutions are made here. See docs/evidence/pr-comment-remediation.md.
+
+PR9 final integration: PR10 merged cdcbf21580140d7f5d2244a0c20af15c5138a9c5.
+Original eight findings closure preserved across this merge in this tracker and
+ docs/evidence/pr-comment-remediation.md. New finding
+https://github.com/ahnaineh/arcvault-ai-triage/pull/9#discussion_r4501882363
+is covered by test_execute_then_dry_identity: shared artifact hashing, zero pending
+after mocked execution, changed prompt/schema each five pending, no extra SDK client/calls.
+Focused command tests 24 passed; combined SQLite suite 129 passed (six staticfiles
+warnings), Ruff/Django/migration checks and all three JS harnesses passed.
+No paid calls, credentials, PostgreSQL, queue or live acceptance verified. Plan states retained.
+
+PR1 integration: current main including PR10/PR9 merged semantically; prior plan
+states and reviewed evaluation changes retained. Malformed entity finding
+https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501441540
+fixed by constructing metric tuples only after schema validation. Regression covers
+list/dict type/value and a subsequent good prediction; invalid records fail and
+report continues. Focused eval/export adapter 13 passed; 50-case validation and Ruff
+passed. Initial test commands named nonexistent adapter files; corrected above.
+No repeated label audit or live calls. Parent-supplied independent 50-label/seven-thread
+review retained as supplied evidence. Latest comments add substantive findings
+r4501893516 (development-17 unresolved billing reason) and r4501893519 (processing
+measurements adapter); PR1 intentionally remains open pending their assessment.

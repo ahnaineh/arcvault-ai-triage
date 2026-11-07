@@ -2,7 +2,8 @@ x-app: &app
   build: .
   env_file: .env
   environment:
-    DATABASE_URL: postgresql://arcvault:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@db:5432/arcvault
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    POSTGRES_HOST: db
     REDIS_URL: redis://redis:6379/0
 services:
   db:

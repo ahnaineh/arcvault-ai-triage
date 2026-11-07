@@ -107,3 +107,13 @@ counts shared context/output twice. It is not a proven all-tier historical reser
 original service tier/config and independent model/count evidence are missing.
 Paid execution remains gated on that evidence or an explicitly authorized larger
 historical reservation. Five real persisted outputs/manual review remain unfulfilled.
+
+PR8 independently reviewed head: 9b19a6a606cf67f77f82caa9efb30bc3ccabed14;
+merged main 2b42ec3. Independent offline report: 93 tests/Ruff/Django/migrations
+passed on SQLite. Limits: raw invalid response loss and absent execution CLI.
+User subsequently reports dashboard six requests, 5.6K rounded input, displayed
+0 used. This corroborates one probe plus five samples; displayed zero is not
+actual zero cost. Output unknown. Model remains recorded-report mini assumption.
+Config reserves six full mini context/output maxima at recorded standard rates
+with 2.2x conservative premium margin; actual historical cost remains unknown.
+No account API fetched and no paid calls made. Follow-on command proof pending.
