@@ -1,0 +1,254 @@
+ Image arcvault-demo-20261107-migrate Building 
+ Image arcvault-demo-20261107-web Building 
+ Image arcvault-demo-20261107-worker Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.55kB done
+#1 DONE 0.0s
+
+#2 [web internal] load build definition from Dockerfile
+#2 transferring dockerfile: 536B done
+#2 DONE 0.1s
+
+#3 [web internal] load metadata for ghcr.io/astral-sh/uv:0.11.8
+#3 ...
+
+#4 [web internal] load metadata for docker.io/library/python:3.14.4-slim
+#4 DONE 1.7s
+
+#3 [web internal] load metadata for ghcr.io/astral-sh/uv:0.11.8
+#3 DONE 2.5s
+
+#5 [web internal] load .dockerignore
+#5 transferring context: 106B done
+#5 DONE 0.1s
+
+#6 [migrate internal] load build context
+#6 DONE 0.0s
+
+#7 [worker] FROM ghcr.io/astral-sh/uv:0.11.8@sha256:3b7b60a81d3c57ef471703e5c83fd4aaa33abcd403596fb22ab07db85ae91347
+#7 resolve ghcr.io/astral-sh/uv:0.11.8@sha256:3b7b60a81d3c57ef471703e5c83fd4aaa33abcd403596fb22ab07db85ae91347 0.1s done
+#7 resolve ghcr.io/astral-sh/uv:0.11.8@sha256:3b7b60a81d3c57ef471703e5c83fd4aaa33abcd403596fb22ab07db85ae91347 0.1s done
+#7 ...
+
+#8 [worker stage-0 1/7] FROM docker.io/library/python:3.14.4-slim@sha256:2ca02f32b4d9d893863367ce07ec1972819f476dd38d8612f2a9cb6a41cbb727
+#8 resolve docker.io/library/python:3.14.4-slim@sha256:2ca02f32b4d9d893863367ce07ec1972819f476dd38d8612f2a9cb6a41cbb727 0.1s done
+#8 DONE 0.3s
+
+#6 [worker internal] load build context
+#6 transferring context: 3.74MB 0.1s done
+#6 DONE 0.2s
+
+#7 [worker] FROM ghcr.io/astral-sh/uv:0.11.8@sha256:3b7b60a81d3c57ef471703e5c83fd4aaa33abcd403596fb22ab07db85ae91347
+#7 sha256:32302ec0940baa70a7c8fb31ec1ad030fc587d97d080ed9653ef9d3222130ed3 0B / 98B 0.2s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 0B / 25.22MB 0.2s
+#7 sha256:32302ec0940baa70a7c8fb31ec1ad030fc587d97d080ed9653ef9d3222130ed3 98B / 98B 0.3s done
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 2.10MB / 25.22MB 0.9s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 4.19MB / 25.22MB 1.7s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 6.29MB / 25.22MB 2.7s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 8.39MB / 25.22MB 3.6s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 10.49MB / 25.22MB 4.7s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 12.58MB / 25.22MB 5.7s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 14.68MB / 25.22MB 6.8s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 16.78MB / 25.22MB 7.5s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 18.87MB / 25.22MB 8.4s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 20.97MB / 25.22MB 9.5s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 23.07MB / 25.22MB 10.4s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 25.17MB / 25.22MB 11.3s
+#7 sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 25.22MB / 25.22MB 11.4s done
+#7 extracting sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623
+#7 extracting sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 0.5s done
+#7 extracting sha256:9dd02393cfd146be9694a2008bfa8120ac426bfdeb3d6be0af39819a5e12e623 0.5s done
+#7 extracting sha256:32302ec0940baa70a7c8fb31ec1ad030fc587d97d080ed9653ef9d3222130ed3 0.0s done
+#7 DONE 12.2s
+
+#9 [worker stage-0 2/7] COPY --from=ghcr.io/astral-sh/uv:0.11.8 /uv /usr/local/bin/uv
+#9 DONE 0.4s
+
+#10 [web stage-0 3/7] WORKDIR /app
+#10 DONE 0.1s
+
+#11 [worker stage-0 4/7] COPY pyproject.toml uv.lock ./
+#11 DONE 0.1s
+
+#12 [migrate stage-0 5/7] RUN uv sync --locked --no-dev
+#12 0.725 Using CPython 3.14.4 interpreter at: /usr/local/bin/python3
+#12 0.725 Creating virtual environment at: .venv
+#12 0.730 Resolved 49 packages in 1ms
+#12 1.165 Downloading openai (2.3MiB)
+#12 1.168 Downloading pydantic-core (2.2MiB)
+#12 1.168 Downloading django (8.0MiB)
+#12 1.171 Downloading psycopg-binary (5.0MiB)
+#12 7.123  Downloaded openai
+#12 7.128  Downloaded pydantic-core
+#12 9.805  Downloaded psycopg-binary
+#12 11.24  Downloaded django
+#12 11.24 Prepared 39 packages in 10.50s
+#12 13.13 Installed 39 packages in 1.89s
+#12 16.07 Bytecode compiled 4122 files in 2.94s
+#12 16.07  + amqp==5.4.2
+#12 16.07  + annotated-types==0.8.0
+#12 16.07  + anyio==4.16.0
+#12 16.07  + asgiref==3.13.0
+#12 16.07  + billiard==4.3.2
+#12 16.07  + celery==5.7.0
+#12 16.07  + click==8.5.1
+#12 16.07  + click-didyoumean==0.3.1
+#12 16.07  + click-plugins==1.1.1.2
+#12 16.07  + click-repl==0.4.1
+#12 16.07  + dj-database-url==3.1.2
+#12 16.07  + django==6.1.3
+#12 16.07  + django-htmx==1.29.0
+#12 16.07  + gunicorn==26.2.0
+#12 16.07  + h11==0.16.0
+#12 16.07  + httpcore2==2.16.0
+#12 16.07  + httpx2==2.16.0
+#12 16.07  + idna==3.20
+#12 16.07  + jiter==0.19.0
+#12 16.07  + kombu==5.7.0
+#12 16.07  + openai==3.46.0
+#12 16.07  + packaging==26.3
+#12 16.07  + prompt-toolkit==3.0.53
+#12 16.07  + psycopg==3.3.8
+#12 16.07  + psycopg-binary==3.3.8
+#12 16.07  + pydantic==2.14.3
+#12 16.07  + pydantic-core==2.50.4
+#12 16.07  + python-dateutil==2.9.0.post0
+#12 16.07  + redis==8.1.0
+#12 16.07  + six==1.17.0
+#12 16.07  + sniffio==1.3.1
+#12 16.07  + sqlparse==0.6.1
+#12 16.07  + truststore==0.10.5
+#12 16.07  + typing-extensions==4.16.0
+#12 16.07  + typing-inspection==0.4.5
+#12 16.07  + tzlocal==5.4.5
+#12 16.07  + vine==5.1.0
+#12 16.07  + wcwidth==0.9.4
+#12 16.07  + whitenoise==6.12.0
+#12 DONE 26.1s
+
+#13 [migrate stage-0 6/7] COPY . .
+#13 DONE 0.3s
+
+#14 [migrate stage-0 7/7] RUN DJANGO_SECRET_KEY=build-only-placeholder python manage.py collectstatic --noinput && useradd --uid 10001 --create-home app && chown -R app:app /app
+#14 1.844 
+#14 1.844 171 static files copied to '/app/staticfiles', 513 post-processed.
+#14 DONE 116.5s
+
+#15 [migrate] exporting to image
+#15 exporting layers
+#15 ...
+
+#16 [web] exporting to image
+#16 ...
+
+#17 [worker] exporting to image
+#17 exporting layers 15.2s done
+#17 exporting manifest sha256:2ea6192c15e4c306844e1dd9934f1fd23fa22f53c919494f1485e1f1640c92e7
+#17 ...
+
+#16 [web] exporting to image
+#16 exporting layers 15.2s done
+#16 exporting manifest sha256:6dc8451c104172962cd3076c5e7ef883cffdf0f1025269c60d1bdaed61969535 0.1s done
+#16 exporting config sha256:9e0c288c2c2d6cf7aa270507bf3e96769837f8f1978458d96d0e98067e60c4d3
+#16 exporting config sha256:9e0c288c2c2d6cf7aa270507bf3e96769837f8f1978458d96d0e98067e60c4d3 0.1s done
+#16 exporting attestation manifest sha256:5706b168bf1ee49921e07df8caad35c2f37ac4965fbfd574cd67397a62e455ba
+#16 exporting attestation manifest sha256:5706b168bf1ee49921e07df8caad35c2f37ac4965fbfd574cd67397a62e455ba 0.2s done
+#16 exporting manifest list sha256:dc0345f631d78cc6d527238eec1eef08b33fb8bf0948be7256d1aa9f5e497b6d
+#16 exporting manifest list sha256:dc0345f631d78cc6d527238eec1eef08b33fb8bf0948be7256d1aa9f5e497b6d 0.2s done
+#16 naming to docker.io/library/arcvault-demo-20261107-web:latest 0.0s done
+#16 unpacking to docker.io/library/arcvault-demo-20261107-web:latest
+#16 ...
+
+#15 [migrate] exporting to image
+#15 exporting layers 15.2s done
+#15 exporting manifest sha256:4d54a8b3bd22d20a24169708171431efb91f41956ddc3c1c3613d57ed5b16262 0.1s done
+#15 exporting config sha256:dd2f4b8d323e95920a1ca4735ad6a25c09f18b4d1bbce9d9d9198591d454f442 0.1s done
+#15 exporting attestation manifest sha256:3f115be764b046e9b7f543998f20228b527fc8857f13e0076eab88e5f3f0c8a7 0.2s done
+#15 exporting manifest list sha256:145fbeca39030d25a5b6a3ad803b3ecc5d817c12089a09f8548eb1021acc64be 0.2s done
+#15 naming to docker.io/library/arcvault-demo-20261107-migrate:latest 0.0s done
+#15 unpacking to docker.io/library/arcvault-demo-20261107-migrate:latest
+#15 ...
+
+#17 [worker] exporting to image
+#17 exporting manifest sha256:2ea6192c15e4c306844e1dd9934f1fd23fa22f53c919494f1485e1f1640c92e7 0.1s done
+#17 exporting config sha256:fb0185928a8f27779a80b50f9af217873e09ce14595b9fb50771961680be9ade 0.1s done
+#17 exporting attestation manifest sha256:09592634e6fea39ce2f500c1050482358203a8fa56049592fb69ca9e7c70efd5 0.2s done
+#17 exporting manifest list sha256:160e8d24ce7c6453da9080a1fdc6328eb42353d39307d1e02751d174763f1616 0.2s done
+#17 naming to docker.io/library/arcvault-demo-20261107-worker:latest 0.0s done
+#17 unpacking to docker.io/library/arcvault-demo-20261107-worker:latest
+#17 ...
+
+#15 [migrate] exporting to image
+#15 unpacking to docker.io/library/arcvault-demo-20261107-migrate:latest 22.8s done
+#15 DONE 39.2s
+
+#17 [worker] exporting to image
+#17 unpacking to docker.io/library/arcvault-demo-20261107-worker:latest 23.1s done
+#17 DONE 39.3s
+
+#16 [web] exporting to image
+#16 unpacking to docker.io/library/arcvault-demo-20261107-web:latest 24.7s done
+#16 DONE 41.3s
+
+#18 [worker] resolving provenance for metadata file
+#18 ...
+
+#19 [migrate] resolving provenance for metadata file
+#19 ...
+
+#18 [worker] resolving provenance for metadata file
+#18 DONE 8.5s
+
+#20 [web] resolving provenance for metadata file
+#20 ...
+
+#19 [migrate] resolving provenance for metadata file
+#19 DONE 4.4s
+
+#20 [web] resolving provenance for metadata file
+#20 DONE 1.6s
+ Image arcvault-demo-20261107-migrate Built 
+ Image arcvault-demo-20261107-web Built 
+ Image arcvault-demo-20261107-worker Built 
+ Volume arcvault-demo-20261107_postgres Creating 
+ Volume arcvault-demo-20261107_postgres Creating 
+ Volume arcvault-demo-20261107_redisdata Creating 
+ Volume arcvault-demo-20261107_redisdata Creating 
+ Network arcvault-demo-20261107_default Creating 
+ Network arcvault-demo-20261107_default Creating 
+ Volume arcvault-demo-20261107_postgres Created 
+ Volume arcvault-demo-20261107_postgres Created 
+ Volume arcvault-demo-20261107_redisdata Created 
+ Volume arcvault-demo-20261107_redisdata Created 
+ Network arcvault-demo-20261107_default Created 
+ Network arcvault-demo-20261107_default Created 
+ Container arcvault-demo-20261107-redis-1 Creating 
+ Container arcvault-demo-20261107-db-1 Creating 
+ Container arcvault-demo-20261107-redis-1 Created 
+ Container arcvault-demo-20261107-db-1 Created 
+ Container arcvault-demo-20261107-migrate-1 Creating 
+ Container arcvault-demo-20261107-migrate-1 Created 
+ Container arcvault-demo-20261107-worker-1 Creating 
+ Container arcvault-demo-20261107-web-1 Creating 
+ Container arcvault-demo-20261107-web-1 Created 
+ Container arcvault-demo-20261107-worker-1 Created 
+ Container arcvault-demo-20261107-db-1 Starting 
+ Container arcvault-demo-20261107-redis-1 Starting 
+ Container arcvault-demo-20261107-redis-1 Started 
+ Container arcvault-demo-20261107-db-1 Started 
+ Container arcvault-demo-20261107-db-1 Waiting 
+ Container arcvault-demo-20261107-db-1 Healthy 
+ Container arcvault-demo-20261107-migrate-1 Starting 
+ Container arcvault-demo-20261107-migrate-1 Started 
+ Container arcvault-demo-20261107-migrate-1 Waiting 
+ Container arcvault-demo-20261107-redis-1 Waiting 
+ Container arcvault-demo-20261107-redis-1 Waiting 
+ Container arcvault-demo-20261107-migrate-1 Waiting 
+ Container arcvault-demo-20261107-redis-1 Healthy 
+ Container arcvault-demo-20261107-redis-1 Healthy 
+ Container arcvault-demo-20261107-migrate-1 Exited 
+ Container arcvault-demo-20261107-migrate-1 Exited 
+ Container arcvault-demo-20261107-web-1 Starting 
+ Container arcvault-demo-20261107-worker-1 Starting 
+ Container arcvault-demo-20261107-worker-1 Started 
+ Container arcvault-demo-20261107-web-1 Started 
