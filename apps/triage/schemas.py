@@ -1,12 +1,12 @@
 """Strict analysis contract. Integration must call validate_analysis(payload, message)."""
 import re
 from typing import Annotated, Literal
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationInfo, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationInfo, PrivateAttr, model_validator
 
 Text = Annotated[str, StringConstraints(min_length=1, pattern=r'\S')]
 Category = Literal['Bug Report', 'Feature Request', 'Billing Issue', 'Technical Question', 'Incident/Outage']
 class Strict(BaseModel):
-    model_config = ConfigDict(extra='forbid', strict=True, allow_inf_nan=False)
+    model_config = ConfigDict(extra='forbid', strict=True, allow_inf_nan=False, revalidate_instances='always')
 class Entity(Strict):
     type: Literal['account_id','invoice_number','error_code','url','product_or_integration','time_expression','other']
     value: Text
@@ -39,6 +39,7 @@ class Comparison(Strict):
     billed: Money
     expected: Money
 class Analysis(Strict):
+    _accepted: dict | None = PrivateAttr(default=None)
     category: Category
     priority: Literal['Low','Medium','High']
     confidence: float = Field(ge=0, le=1)
@@ -65,6 +66,15 @@ class Analysis(Strict):
             elif isinstance(value, list):
                 for item in value: walk(item)
         walk(self.model_dump())
+        if self.billing_comparison:
+            from decimal import Decimal
+            for fact in (self.billing_comparison.billed, self.billing_comparison.expected):
+                if any(v is not None for v in (fact.amount, fact.currency, fact.period, fact.components)) and not fact.evidence:
+                    raise ValueError('populated money requires evidence')
+                if fact.amount is not None:
+                    tokens = re.findall(r'(?<![\w.])[0-9]+(?:,[0-9]{3})*(?:\.[0-9]+)?(?![\w.])', ' '.join(fact.evidence))
+                    if not any(Decimal(t.replace(',', '')) == Decimal(fact.amount) for t in tokens):
+                        raise ValueError('amount lacks numeric evidence')
         outage = self.signals.active_service_outage
         if outage.value is not False and not outage.evidence:
             raise ValueError('true/unknown outage requires evidence')
@@ -72,4 +82,6 @@ class Analysis(Strict):
 
 def validate_analysis(payload: dict, message: str) -> Analysis:
     """Validate structure and exact excerpts; does not establish semantic truth."""
-    return Analysis.model_validate(payload, context={'message': message})
+    analysis = Analysis.model_validate(payload, context={'message': message})
+    analysis._accepted = analysis.model_dump()
+    return analysis

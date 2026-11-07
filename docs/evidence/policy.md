@@ -1,16 +1,17 @@
-# M1 validation and policy evidence
+# Policy regression evidence
 
-Executed November 7, 2026:
+Command (November 7, 2026):
 
-```
+```sh
 UV_CACHE_DIR=/tmp/arcvault-uv uv run --no-project --with pydantic --with pytest python -m pytest -q tests/test_policy.py
-49 passed in 0.07s
 ```
 
-Initial download required network escalation. Initial execution: 48 passed, one test incorrectly required a USD assumption for EUR; corrected that expectation and reran successfully.
+58 passed. Includes 25 controlled fixtures and composed validation → billing → policy regressions for absent/unsupported monetary evidence, comma/currency numeric support, unknown/unrecognized/incompatible bases, nested mutation, copied NaN, and independent export dictionaries.
 
-API: `validate_analysis(payload, message)` returns strict Pydantic v2 `Analysis`; direct validation requires message context. `decide(analysis)` independently normalizes billing and returns export decision fields. `decide_projection` supports controlled fixtures, not unvalidated model output ingestion.
+Populated monetary facts require exact excerpts; normalized decimal occurrence is mechanically checked. Occurrence does not establish contextual semantics or correct billed/expected attribution. Those require later evaluation.
 
-Billing basis ambiguity resolved conservatively: exact matching known period/component tokens only; invoice/monthly exception requires known matching components and records an assumption. Missing components remain unresolved. USD/US$/$ accepted; no FX or inferred currency. Decimal precision accommodates all input digits; signed undercharges retained. No schema changes.
+Canonical periods: invoice, monthly, annual, one_time. Canonical components: subscription, total, usage, tax. Other wording is retained but unresolved. Matching components required; invoice/monthly uses the documented single-charge synthetic assumption.
 
-Coverage: all 25 frozen policy fixtures, eight invalid shapes/numbers, seven invalid monetary formats, exact contextual and mandatory outage evidence, eight billing/composition cases. Exact excerpts establish occurrence, not semantic correctness. Summary grounding and sentence semantics require later evaluation. No provider compatibility, live inference, runtime stack, or end-to-end claims. Dependencies executed in an isolated temporary uv environment; dependency files untouched.
+Accepted analyses are mutable working models, but any change invalidates policy acceptance. validate_analysis records an independent snapshot; decide rejects changed or bypass-constructed instances and revalidates structure. Export dictionaries and returned decisions are independent serialization values; editing them cannot edit accepted analysis or another decision. This is an application integrity contract, not protection against hostile Python code modifying private attributes.
+
+No live API calls, provider schema acceptance, runtime/container integration, or full application acceptance claimed. Single model call architecture unchanged.

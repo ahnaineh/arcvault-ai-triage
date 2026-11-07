@@ -6,7 +6,7 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-- Phase: planning baseline published; M1 is next. No application implementation yet.
+- Phase: M1 partially implemented: validation and policy verified locally; runtime integration and live provider acceptance pending.
 - Working deadline: November 8, 2026, as stated by the candidate.
 - API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
 - Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 reviewed synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
@@ -36,9 +36,9 @@ Gate: remote repository contains the intended planning artifacts and no credenti
 - [ ] Verify latest stable Django and compatible Python/package versions; pin dependencies and container images, commit `uv.lock`.
 - [ ] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
 - [ ] Create Django project, settings, `.env.example`, Dockerfile and Compose web/worker/PostgreSQL/Redis/migration services.
-- [x] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes. Evidence: `docs/evidence/policy.md` (49 focused tests).
-- [x] Implement billing normalization/arithmetic and pure routing/escalation policy. Evidence: `docs/evidence/policy.md` (49 focused tests).
-- [x] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases. Evidence: `docs/evidence/policy.md` (49 focused tests).
+- [x] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes. Evidence: `docs/evidence/policy.md` (58 focused tests).
+- [x] Implement billing normalization/arithmetic and pure routing/escalation policy. Evidence: `docs/evidence/policy.md` (58 focused tests).
+- [x] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases. Evidence: `docs/evidence/policy.md` (58 focused tests).
 - [ ] Smoke-test the exact schema against the selected real model; record usage and any schema adjustments.
 
 Gate: locked environment starts, policy/validation tests pass, exact model schema works on a real response. No unsupported claims of full application functionality.

@@ -17,6 +17,10 @@ def normalize_billing(comparison: Comparison | None):
         return 'unresolved', None, assumptions
     # Unknown bases are unsafe; extraction must preserve invoice/monthly wording.
     periods = (a.period, b.period)
+    if any(p not in {'invoice', 'monthly', 'annual', 'one_time'} for p in periods):
+        return 'unresolved', None, assumptions
+    if any(c not in {'subscription', 'total', 'usage', 'tax'} for c in (a.components, b.components)):
+        return 'unresolved', None, assumptions
     if set(periods) == {'invoice', 'monthly'} and a.components == b.components and a.components is not None:
         assumptions.append('Direct invoice/monthly contract comparison treated as one monthly charge')
     elif a.period is None or a.period != b.period:
@@ -43,6 +47,20 @@ def decide_projection(*, category, confidence, active_service_outage, insufficie
 
 def decide(analysis: Analysis):
     """Derive export-ready decision from context-validated analysis, without model calls."""
+    data = analysis.model_dump()
+    if analysis._accepted is None or data != analysis._accepted:
+        raise ValueError('analysis must be accepted by validate_analysis and unchanged')
+    def excerpts(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                if key == 'evidence':
+                    yield from ([item] if isinstance(item, str) else item)
+                else:
+                    yield from excerpts(item)
+        elif isinstance(value, list):
+            for item in value:
+                yield from excerpts(item)
+    analysis = Analysis.model_validate(data, context={'message': '\n'.join(excerpts(data))})
     status, difference, assumptions = normalize_billing(analysis.billing_comparison)
     signals = analysis.signals
     result = decide_projection(category=analysis.category, confidence=analysis.confidence,
