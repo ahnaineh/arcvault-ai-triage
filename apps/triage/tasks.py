@@ -1,4 +1,5 @@
 from datetime import timedelta
+from math import ceil
 
 from celery import shared_task
 from django.conf import settings
@@ -25,6 +26,9 @@ def process(request_id):
         if row.status not in ('pending', 'retrying'):
             return
         if row.next_attempt_at and row.next_attempt_at > timezone.now():
+            from apps.intake.service import dispatch
+            countdown = max(1, ceil((row.next_attempt_at - timezone.now()).total_seconds()))
+            transaction.on_commit(lambda: dispatch(row.pk, countdown=countdown))
             return
         row.status = 'processing'
         row.next_attempt_at = None
