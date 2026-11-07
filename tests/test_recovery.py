@@ -22,7 +22,7 @@ def test_gap_and_broker_failure(status):
         recover()
     row.refresh_from_db()
     assert row.dispatch_error == 'dispatch_failed'
-    Request.objects.filter(pk=row.pk).update(next_attempt_at=timezone.now()-timedelta(seconds=1))
+    Request.objects.filter(pk=row.pk).update(dispatch_reserved_until=timezone.now()-timedelta(seconds=1))
     with patch('apps.triage.tasks.process.apply_async') as publish:
         recover()
         assert publish.call_count == 1
@@ -74,6 +74,13 @@ def test_duplicate_and_stale_owner(stale_error):
         Request.objects.filter(pk=row.pk).update(lease_until=timezone.now()-timedelta(seconds=1))
         with patch('apps.triage.management.commands.recover_requests.dispatch'):
             recover()
+        from types import SimpleNamespace
+
+        from tests.test_backend import analysis
+        output = SimpleNamespace(analysis=analysis(), model='mock', prompt_version='v1', schema_version='v1', latency_ms=12, usage=None)
+        with patch('apps.triage.tasks.get_provider') as replacement:
+            replacement.return_value.analyze.return_value = output
+            process(str(row.pk))
         if stale_error:
             raise RuntimeError('old error')
         from types import SimpleNamespace
@@ -85,9 +92,9 @@ def test_duplicate_and_stale_owner(stale_error):
         provider.return_value.analyze.side_effect = analyze
         process(str(row.pk))
     row.refresh_from_db()
-    assert row.status == 'retrying'
+    assert row.status == 'completed'
     assert row.error is None
-    assert not hasattr(row, 'accepted_result')
+    assert row.accepted_result.attempt_id == row.attempts.latest('pk').pk
 
 
 @pytest.mark.django_db(transaction=True)
@@ -138,3 +145,22 @@ def test_commit_without_publication(django_capture_on_commit_callbacks):
     with patch('apps.triage.management.commands.recover_requests.dispatch') as publish:
         recover()
     publish.assert_called_once_with(row.pk, countdown=10)
+
+def test_scanner_before_due_worker():
+    from types import SimpleNamespace
+
+    from tests.test_backend import analysis
+    now = timezone.now()
+    rows = [request() for _ in range(105)]
+    with patch('django.utils.timezone.now', return_value=now), patch('apps.triage.management.commands.recover_requests.dispatch') as publish:
+        recover()
+        assert publish.call_count == 100
+        recover()
+        assert publish.call_count == 105
+    with patch('django.utils.timezone.now', return_value=now + timedelta(seconds=10)), patch('apps.triage.management.commands.recover_requests.dispatch'), patch('apps.triage.tasks.get_provider') as provider:
+        recover()
+        recover()
+        provider.return_value.analyze.return_value = SimpleNamespace(analysis=analysis(), model='mock', prompt_version='v1', schema_version='v1', latency_ms=12, usage=None)
+        for row in rows:
+            process(str(row.pk))
+    assert Request.objects.filter(status='completed').count() == 105

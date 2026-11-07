@@ -14,7 +14,7 @@ def recover():
     now = timezone.now()
     eligible = Q(status__in=['pending', 'retrying']) & (Q(next_attempt_at__isnull=True) | Q(next_attempt_at__lte=now))
     expired = Q(status='processing') & (Q(lease_until__isnull=True) | Q(lease_until__lte=now))
-    ids = list(Request.objects.filter(eligible | expired).order_by('received_at').values_list('pk', flat=True)[:100])
+    ids = list(Request.objects.filter((eligible & (Q(dispatch_reserved_until__isnull=True) | Q(dispatch_reserved_until__lte=now))) | expired).order_by('received_at').values_list('pk', flat=True)[:100])
     for pk in ids:
         with transaction.atomic():
             row = Request.objects.select_for_update().get(pk=pk)
@@ -29,12 +29,14 @@ def recover():
                 continue
             if row.next_attempt_at and row.next_attempt_at > now:
                 continue
+            if row.dispatch_reserved_until and row.dispatch_reserved_until > now:
+                continue
             if row.attempts.count() >= 3:
                 row.status = 'failed'
                 row.error = 'attempt_budget_exhausted'
                 row.save()
                 continue
-            row.next_attempt_at = now + timedelta(seconds=10)
+            row.dispatch_reserved_until = now + timedelta(seconds=10)
             row.save()
         # Publish outside the transaction. A crash here is retried after ten seconds.
         dispatch(pk, countdown=10)

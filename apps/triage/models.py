@@ -13,6 +13,7 @@ class Request(models.Model):
     received_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     next_attempt_at = models.DateTimeField(null=True)
+    dispatch_reserved_until = models.DateTimeField(null=True)
     dispatch_error = models.CharField(max_length=50, null=True)
     error = models.CharField(max_length=50, null=True)
 
