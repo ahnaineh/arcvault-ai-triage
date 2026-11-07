@@ -177,12 +177,12 @@ class BoundedOpenAIAdapter:
     """
     enforces_bounds = True
 
-    def __init__(self, *, client, config, verify_input_bound=None):
+    def __init__(self, *, client, config, verify_input_bound=None, prompt_version=None):
         self.config = json.loads(json.dumps(config))
         self.verify_input_bound = verify_input_bound or self.maximum_input_bound
         self.provider = OpenAIProvider(
             client=client, model=config['model'], timeout=config['timeout'],
-            max_output_tokens=config['output_token_cap'], reasoning_effort=config.get('reasoning_effort'), prompt_version=config.get('prompt_version'))
+            max_output_tokens=config['output_token_cap'], reasoning_effort=config.get('reasoning_effort'), prompt_version=prompt_version or config.get('prompt_version'))
 
     def inference_identity(self):
         return artifact_identity(self.provider.prompt, self.provider.schema_text)

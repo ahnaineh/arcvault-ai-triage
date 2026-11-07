@@ -49,7 +49,11 @@ class Command(BaseCommand):
             Path(options['prompt']).stem if options['prompt'] else config.get('prompt_version')))
         if options['prompt'] and Path(options['prompt']).read_text() != prompt_text(version):
             raise CommandError('Prompt path must contain the selected versioned artifact')
-        config['prompt_version'] = version
+        # Phase-specific inference identity must not reset shared accounting.
+        if phase == 'comparison':
+            config['prompt_version'] = version
+        else:
+            config.pop('prompt_version', None)
         prompt = prompt_text(version)
         identity = {'prompt': digest(prompt), 'schema': digest(Path('contracts/analysis.schema.json').read_text()),
                     'dataset': digest(load()), 'model': config['model'],
@@ -76,7 +80,7 @@ class Command(BaseCommand):
         provider = ArtifactIdentity(prompt_version=version)
         if options['execute']:
             import openai
-            provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config)
+            provider = BoundedOpenAIAdapter(client=openai.OpenAI(api_key=os.environ['OPENAI_API_KEY']), config=config, prompt_version=version)
             atomic_export(manifest, identity)
         # All phases share one exclusive, immutable accounting journal.
         runner = Runner(directory, config, terminal_provider_failures=phase == 'comparison')

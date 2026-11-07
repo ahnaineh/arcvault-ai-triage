@@ -6,15 +6,15 @@ Design rationale: [ASSESSMENT_PLAN.md](ASSESSMENT_PLAN.md). Interface and policy
 
 ## Current checkpoint
 
-Backend checkpoint: core persistence/API/tasks implemented; 64 SQLite/offline tests pass. See docs/evidence/m2-backend.md. M2 remains active pending frontend, samples and real queued/provider acceptance.
+Current integration: PR14 contains the final compact V4 prompt and one final Terra run; PR15 test consolidation merged into PR14's branch. Source-of-truth evidence: docs/evidence/final-v4/README.md. Prompt tuning is closed by user request.
 
-
-- Phase: M1 partially implemented: validation and policy verified locally; runtime integration and live provider acceptance pending.
-- Working deadline: November 8, 2026, as stated by the candidate.
-- API budget: cumulative ceiling of $83 before credits; no paid model calls performed by this planning work.
-- Scope: webhook-first intake, visual tester, inbox/detail and review queue, one structured model call, deterministic policy, persistent outputs, focused reliability, 50 reviewed synthetic cases, submission evidence. Human correction remains an optional enhancement after the first complete submission checkpoint.
-- Repository: [ahnaineh/arcvault-ai-triage](https://github.com/ahnaineh/arcvault-ai-triage), private, default branch `main`.
-- Blockers: none known. Exact Python/package/model compatibility remains to be verified.
+- Phase: M5 submission assembly; application/runtime/evaluation implemented, final end-to-end demonstration and clean-start verification remain.
+- Deadline: November 8, 2026.
+- Budget: $83; conservative accounted total $39.99125174 includes retained uncertain/failed reservations. Actual billed cost unknown.
+- Required five: final live JSON saved; category/priority/routing5/5, exact entity sets1/5; no perfect-quality claim.
+- Remaining: merge PR14 after current review, clean-image/startup and combined real-model queue demo, concise architecture/prompt/AI-use write-up, recording or declared live interview demo, final artifact/access/tag checks.
+- Optional human correction/filter polish deferred. Sending the recruiter email requires explicit authorization.
+- Earlier chronological checkpoints below are historical; this checkpoint supersedes stale pending claims.
 
 ## Status and evidence rules
 
@@ -37,12 +37,12 @@ Gate: remote repository contains the intended planning artifacts and no credenti
 ## M1 — Runtime and executable contracts
 
 - [x] Verify Django 6.1.3 and Python 3.14.4 installation; lock dependencies and version-tag container images. See docs/evidence/m1-runtime.md (images are not digest pinned).
-- [ ] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
+- [x] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
 - [-] Runtime scaffolding implemented; locked Ruff and 60 tests pass. Fresh build/start pending; see docs/evidence/m1-runtime.md.
 - [x] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes. Evidence: `docs/evidence/policy.md` (58 focused tests).
 - [x] Implement billing normalization/arithmetic and pure routing/escalation policy. Evidence: `docs/evidence/policy.md` (58 focused tests).
 - [x] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases. Evidence: `docs/evidence/policy.md` (58 focused tests).
-- [ ] Smoke-test the exact schema against the selected real model; record usage and any schema adjustments.
+- [x] Smoke-test the exact schema against the selected real model; record usage and any schema adjustments.
 
 Gate: locked environment starts, policy/validation tests pass, exact model schema works on a real response. No unsupported claims of full application functionality.
 
@@ -52,34 +52,34 @@ Gate: locked environment starts, policy/validation tests pass, exact model schem
 - [x] Implement canonical webhook, principal-scoped idempotency, session/CSRF and bearer-token authentication. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
 - [x] Publish after commit, atomically claim tasks, call the model outside transactions, and persist result/completion atomically. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
 - [x] Implement status and export endpoints and safe error envelopes. Offline verification: docs/evidence/m2-backend.md; real concurrency/queue acceptance pending.
-- [ ] Build visual tester that posts to the webhook and displays asynchronous progress/results.
-- [ ] Preserve the five assessment inputs verbatim; sample loader uses the same intake service.
+- [x] Build visual tester that posts to the webhook and displays asynchronous progress/results.
+- [x] Preserve the five assessment inputs verbatim; sample loader uses the same intake service.
 - [ ] Process all five inputs through the real container stack and model; save complete output records.
 
 Gate: form submission automatically reaches a persisted/exportable result through Redis/Celery; all five records are real and complete.
 
 ## M3 — Reliability and review experience
 
-- [ ] Add bounded retries, explicit timeouts, sanitized failures, cost tracking, and eligible manual retry.
-- [ ] Protect concurrent duplicate ingestion/task deliveries and accepted results with meaningful tests.
-- [ ] Verify publication-failure visibility and operator-assisted republication without resetting retry budgets.
-- [ ] Test transient/permanent provider errors, invalid output/refusal, retry exhaustion, permissions and CSRF.
-- [ ] Build inbox/detail and separate Human Review queue with original text, evidence and decision reasons.
-- [ ] Test browser interaction and capture screenshots for tester, completed request, escalation and failure states.
+- [-] Add bounded retries, explicit timeouts, sanitized failures, cost tracking, and eligible manual retry.
+- [x] Protect concurrent duplicate ingestion/task deliveries and accepted results with meaningful tests.
+- [x] Verify publication-failure visibility and operator-assisted republication without resetting retry budgets.
+- [x] Test transient/permanent provider errors, invalid output/refusal, retry exhaustion, permissions and CSRF.
+- [x] Build inbox/detail and separate Human Review queue with original text, evidence and decision reasons.
+- [x] Test browser interaction and capture screenshots for tester, completed request, escalation and failure states.
 
 Gate: core behavior and implemented recovery paths are verified in the real stack; simulated faults are labeled, and worker-crash recovery limits are documented.
 
 ## M4 — Evaluation and prompt optimization
 
-- [ ] Define benchmark record format and metrics before generation; keep policy fixtures outside the 50-message count.
-- [ ] Generate and review an initial small batch against the written rubric; resolve label ambiguities.
-- [ ] Complete 50 cases: 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
-- [ ] Validate scorer behavior with known good/bad predictions before live benchmarking.
-- [ ] Run a baseline; score category/priority, entities, semantic signals, summaries and output validity separately.
-- [ ] Record end-to-end destinations, missed/unnecessary escalations, incorrect automatic routing and automation coverage.
-- [ ] Iterate versioned prompts on development cases; select candidates using validation. Record experiments, usage, latency and observed regressions.
-- [ ] Freeze prompt/model/schema/policy; run locked final test once. Disclose any reuse after changes.
-- [ ] Save predictions, run metadata and an honest report with counts/denominators, unknown costs and limitations.
+- [x] Define benchmark record format and metrics before generation; keep policy fixtures outside the 50-message count.
+- [x] Generate and review an initial small batch against the written rubric; resolve label ambiguities.
+- [-] Complete 50 cases: 5 supplied acceptance, 25 development, 10 validation, 10 locked final test. Keep related scenario families within one split.
+- [x] Validate scorer behavior with known good/bad predictions before live benchmarking.
+- [-] Run a baseline; score category/priority, entities, semantic signals, summaries and output validity separately.
+- [x] Record end-to-end destinations, missed/unnecessary escalations, incorrect automatic routing and automation coverage.
+- [x] Iterate versioned prompts on development cases; select candidates using validation. Record experiments, usage, latency and observed regressions.
+- [x] Freeze prompt/model/schema/policy; run locked final test once. Disclose any reuse after changes.
+- [x] Save predictions, run metadata and an honest report with counts/denominators, unknown costs and limitations.
 
 Gate: reproducible results show measured behavior rather than asserted accuracy; required five outputs match the chosen final configuration.
 
@@ -478,3 +478,11 @@ not durable case-level completed manual review. Details: integration-closure.md.
 
 Final combined closure checks:177 tests passed; Ruff, Django check, migration drift
 and diff whitespace clean (six existing missing-staticfiles warnings). No paid calls.
+
+## Final V4 checkpoint and test consolidation
+
+User authorized compact V4 default and exactly one final50-case Terra comparison. Complete evidence and limits: docs/evidence/final-v4/README.md. 50calls, zero retries/invalid outputs; raw-to-export-to-prediction/scorer reconciliation passes. Result mixed versusV3; all original measurements preserved. No more prompt tuning planned. Accounting39.99125174/83 including retained reservations; actual billing unknown.
+
+PR15 merged into PR14 base after source review and no-finding bot review. Consolidated literal export/resume checks and parametrized HTTP/success disk failures; distinct safety seams preserved. See docs/evidence/test-suite-review.md. Combined final177tests and Ruff pass. Corrected prior stale top-level checkpoint; older numbered milestones retain limitations for human summary review, semantic split independence and combined full-stack/live-provider demonstration.
+
+PR14 comments: discussion_r4502097330 comparison dry-run accounting fixed previously; discussion_r4502138128 cross-phase prompt selection now lives outside immutable accounting config, with V1-to-V2 regression. No model calls for either harness fix.

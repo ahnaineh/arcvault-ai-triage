@@ -1,0 +1,20 @@
+{
+  "model": "gpt-6.1-terra",
+  "official_price_source": "https://developers.openai.com/api/docs/pricing",
+  "input_token_bound": 1050000,
+  "output_token_cap": 4096,
+  "input_price_per_million": "11",
+  "output_price_per_million": "16.5",
+  "timeout": 60,
+  "budget": "83",
+  "project_budget": "83",
+  "reconciled_history": {
+    "known_cost": "2.10385230",
+    "unknown_reservation": "37.22834544",
+    "evidence": "Prior reconciled project total 39.33219774: comparison-v3/closure-reconciliation.json; retains historical unknown17.84084544 and Luna failed maxima19.3875. Known figures are conservative estimates, not billed cost.",
+    "provenance": "docs/evidence/comparison-v3/closure-reconciliation.json"
+  },
+  "benchmark": true,
+  "prompt_version": "triage_v4",
+  "reasoning_effort": "none"
+}

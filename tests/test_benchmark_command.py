@@ -42,8 +42,11 @@ def test_all_phases_share_ledger_and_frozen_test_resumes(tmp_path, monkeypatch):
     def run(phase, *extra):
         call_command('run_benchmark', '--run-dir', directory, '--config',
             str(ROOT / 'config/acceptance/benchmark.json'), '--phase', phase, '--execute', *extra, stdout=StringIO())
-    for phase in ('baseline', 'development', 'validation'):
-        run(phase)
+    run('baseline', '--prompt-version', 'triage_v1')
+    run('development', '--prompt-version', 'triage_v2')
+    run('validation')
+    assert client.responses.create.call_args_list[0].kwargs['instructions'] == (ROOT / 'prompts/triage_v1.txt').read_text()
+    assert client.responses.create.call_args_list[25].kwargs['instructions'] == (ROOT / 'prompts/triage_v2.txt').read_text()
     run('validation', '--freeze')
     run('test')
     count = client.responses.create.call_count
