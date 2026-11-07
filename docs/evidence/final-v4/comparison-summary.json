@@ -1,0 +1,32 @@
+{
+  "category": {
+    "v3": 49,
+    "v4": 47,
+    "denominator": 50
+  },
+  "priority": {
+    "v3": 39,
+    "v4": 40,
+    "denominator": 50
+  },
+  "entities": {
+    "v3": 44,
+    "v4": 44,
+    "denominator": 50
+  },
+  "signals": {
+    "v3": 49,
+    "v4": 47,
+    "denominator": 50
+  },
+  "routing": {
+    "v3": 44,
+    "v4": 41,
+    "denominator": 50
+  },
+  "schema": {
+    "v3": 50,
+    "v4": 50,
+    "denominator": 50
+  }
+}

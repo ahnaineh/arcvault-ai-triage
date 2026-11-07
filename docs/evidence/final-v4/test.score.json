@@ -1,0 +1,294 @@
+{
+  "conditional_routing": {
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 7
+    },
+    "unnecessary_escalations": {
+      "count": 0,
+      "denominator": 7
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 3
+    }
+  },
+  "cases": 10,
+  "predictions": 10,
+  "metrics": {
+    "category": {
+      "count": 8,
+      "denominator": 10
+    },
+    "priority": {
+      "count": 6,
+      "denominator": 10
+    },
+    "entities": {
+      "count": 8,
+      "denominator": 10
+    },
+    "signals": {
+      "count": 9,
+      "denominator": 10
+    },
+    "schema": {
+      "count": 10,
+      "denominator": 10
+    },
+    "summary_constraints": {
+      "count": 0,
+      "denominator": 10
+    },
+    "routing": {
+      "count": 8,
+      "denominator": 10
+    },
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 10
+    },
+    "unnecessary_escalations": {
+      "count": 0,
+      "denominator": 10
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 10
+    },
+    "automatic": {
+      "count": 3,
+      "denominator": 10
+    },
+    "missing": {
+      "count": 0,
+      "denominator": 10
+    },
+    "invalid_analysis": {
+      "count": 0,
+      "denominator": 10
+    },
+    "operational_failures": {
+      "count": 0,
+      "denominator": 10
+    },
+    "completed": {
+      "count": 10,
+      "denominator": 10
+    },
+    "end_to_end_success": {
+      "count": 0,
+      "denominator": 10
+    }
+  },
+  "coverage": {
+    "count": 10,
+    "denominator": 10
+  },
+  "cost_inputs": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "latency_inputs_ms": [
+    2585.4116340015025,
+    3005.6015440004558,
+    3197.3769229989557,
+    2687.838493000527,
+    2460.504372998912,
+    3319.562388000122,
+    4682.287505000204,
+    3793.572728998697,
+    2676.801928000714,
+    2610.900767000203
+  ],
+  "rows": [
+    {
+      "id": "test-01",
+      "category": true,
+      "priority": true,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-02",
+      "category": false,
+      "priority": false,
+      "entities": true,
+      "signals": false,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": false,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-03",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-04",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-05",
+      "category": true,
+      "priority": false,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-06",
+      "category": true,
+      "priority": true,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-07",
+      "category": true,
+      "priority": true,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-08",
+      "category": true,
+      "priority": true,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-09",
+      "category": false,
+      "priority": false,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": false,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "test-10",
+      "category": true,
+      "priority": false,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    }
+  ]
+}

@@ -13,9 +13,21 @@ from apps.triage.schemas import Analysis, validate_analysis
 
 ROOT = Path(__file__).resolve().parents[3]
 
-def artifact_identity(prompt=None, schema=None):
+def selected_prompt_version(version=None):
+    from django.conf import settings
+    selected = version if version is not None else settings.OPENAI_PROMPT_VERSION
+    if selected not in ('triage_v1', 'triage_v2', 'triage_v3', 'triage_v4'):
+        raise ProviderError('provider_config')
+    return selected
+
+
+def prompt_text(version=None):
+    return (ROOT / 'prompts' / f'{selected_prompt_version(version)}.txt').read_text()
+
+
+def artifact_identity(prompt=None, schema=None, *, prompt_version=None):
     if prompt is None:
-        prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+        prompt = prompt_text(prompt_version)
     if schema is None:
         schema = (ROOT / 'contracts/analysis.schema.json').read_text()
     return {'prompt': hashlib.sha256(prompt.encode()).hexdigest(),
@@ -23,8 +35,12 @@ def artifact_identity(prompt=None, schema=None):
 
 
 class ArtifactIdentity:
+    def __init__(self, *, prompt_version=None):
+        self.prompt_version = selected_prompt_version(prompt_version)
+        self.prompt = prompt_text(self.prompt_version)
+
     def inference_identity(self):
-        return artifact_identity()
+        return artifact_identity(self.prompt)
 
 
 MAX_MODEL_BYTES = 1048576
@@ -36,8 +52,12 @@ def safe_usage(value):
         value = value.model_dump(mode='json')
     if not isinstance(value, dict):
         return None
-    return {key: value[key] for key in ('input_tokens', 'output_tokens', 'total_tokens')
+    result = {key: value[key] for key in ('input_tokens', 'output_tokens', 'total_tokens')
             if type(value.get(key)) is int and 0 <= value[key] <= 10**12}
+    reasoning = (value.get('output_tokens_details') or {}).get('reasoning_tokens')
+    if type(reasoning) is int and reasoning > 0:
+        result['reasoning_tokens'] = reasoning
+    return result
 
 
 def response_evidence(response):
@@ -76,16 +96,20 @@ class ProviderResult:
     usage: dict | None
 
 class OpenAIProvider:
-    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096):
+    def __init__(self, *, client, model: str, timeout: float = 30, max_output_tokens: int = 4096, reasoning_effort: str | None = None, prompt_version: str | None = None):
         if not model.strip() or not math.isfinite(timeout) or timeout <= 0:
             raise ProviderError('provider_config')
         if type(max_output_tokens) is not int or max_output_tokens <= 0 or (model == 'gpt-6.1-terra' and max_output_tokens > 128000):
             raise ProviderError('provider_config')
+        self.reasoning_effort = reasoning_effort or ('none' if model == 'gpt-6.1-terra' else None)
+        if self.reasoning_effort not in (None, 'none', 'low', 'medium', 'high', 'xhigh', 'max'):
+            raise ProviderError('provider_config')
         self.max_output_tokens = max_output_tokens
         self.client = client.with_options(max_retries=0, timeout=timeout)
         self.raw_sink = None
+        self.prompt_version = selected_prompt_version(prompt_version)
         self.model = model
-        self.prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+        self.prompt = prompt_text(self.prompt_version)
         self.schema_text = (ROOT / 'contracts/analysis.schema.json').read_text()
 
     def analyze(self, message: str) -> ProviderResult:
@@ -97,7 +121,7 @@ class OpenAIProvider:
             response = self.client.responses.create(
                 model=self.model, max_output_tokens=self.max_output_tokens, instructions=self.prompt,
                 input=[{'role': 'user', 'content': message}], store=False,
-                **({'reasoning': {'effort': 'none'}} if self.model == 'gpt-6.1-terra' else {}),
+                **({'reasoning': {'effort': self.reasoning_effort}} if self.reasoning_effort else {}),
                 text={'format': {'type': 'json_schema', 'name': 'arcvault_analysis',
                                  'strict': True, 'schema': json.loads(self.schema_text)}})
         except openai.APIConnectionError:
@@ -137,7 +161,7 @@ class OpenAIProvider:
             if len(parts) != 1:
                 raise fail('provider_invalid')
             analysis = validate_analysis(json.loads(parts[0]), message)
-            return ProviderResult(analysis, str(response.model)[:256], self.model, 'triage_v1', '1.0',
+            return ProviderResult(analysis, str(response.model)[:256], self.model, self.prompt_version, '1.0',
                 hashlib.sha256(self.prompt.encode()).hexdigest(),
                 hashlib.sha256(self.schema_text.encode()).hexdigest(),
                 (time.monotonic()-started)*1000, usage)
@@ -153,19 +177,19 @@ class BoundedOpenAIAdapter:
     """
     enforces_bounds = True
 
-    def __init__(self, *, client, config, verify_input_bound=None):
+    def __init__(self, *, client, config, verify_input_bound=None, prompt_version=None):
         self.config = json.loads(json.dumps(config))
         self.verify_input_bound = verify_input_bound or self.maximum_input_bound
         self.provider = OpenAIProvider(
             client=client, model=config['model'], timeout=config['timeout'],
-            max_output_tokens=config['output_token_cap'])
+            max_output_tokens=config['output_token_cap'], reasoning_effort=config.get('reasoning_effort'), prompt_version=prompt_version or config.get('prompt_version'))
 
     def inference_identity(self):
         return artifact_identity(self.provider.prompt, self.provider.schema_text)
 
     @staticmethod
     def maximum_input_bound(*, model, bound, **kwargs):
-        return model == 'gpt-6.1-terra' and bound >= 1050000
+        return model in ('gpt-6.1-terra', 'gpt-6-luna') and bound >= 1050000
 
     def preflight(self, messages, config):
         if config != self.config:
@@ -177,6 +201,13 @@ class BoundedOpenAIAdapter:
             if (money(config['input_price_per_million']) < Decimal(11) or
                     money(config['output_price_per_million']) < Decimal('16.5')):
                 raise ValueError('Maximum context requires conservative premium prices')
+        if self.provider.model == 'gpt-6-luna':
+            from decimal import Decimal
+
+            from apps.triage.acceptance import money
+            if (money(config['input_price_per_million']) < Decimal('1.1') or
+                    money(config['output_price_per_million']) < Decimal('5.5')):
+                raise ValueError('Conservative Luna full-context prices required')
         for message in messages:
             if self.verify_input_bound(
                 model=self.provider.model, instructions=self.provider.prompt,

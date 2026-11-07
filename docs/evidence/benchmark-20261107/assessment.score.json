@@ -1,0 +1,194 @@
+{
+  "conditional_routing": {
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 1
+    },
+    "unnecessary_escalations": {
+      "count": 0,
+      "denominator": 1
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 4
+    }
+  },
+  "cases": 5,
+  "predictions": 5,
+  "metrics": {
+    "category": {
+      "count": 5,
+      "denominator": 5
+    },
+    "priority": {
+      "count": 3,
+      "denominator": 5
+    },
+    "entities": {
+      "count": 2,
+      "denominator": 5
+    },
+    "signals": {
+      "count": 5,
+      "denominator": 5
+    },
+    "schema": {
+      "count": 5,
+      "denominator": 5
+    },
+    "summary_constraints": {
+      "count": 0,
+      "denominator": 5
+    },
+    "routing": {
+      "count": 5,
+      "denominator": 5
+    },
+    "missed_escalations": {
+      "count": 0,
+      "denominator": 5
+    },
+    "unnecessary_escalations": {
+      "count": 0,
+      "denominator": 5
+    },
+    "incorrect_automatic_routing": {
+      "count": 0,
+      "denominator": 5
+    },
+    "automatic": {
+      "count": 4,
+      "denominator": 5
+    },
+    "missing": {
+      "count": 0,
+      "denominator": 5
+    },
+    "invalid_analysis": {
+      "count": 0,
+      "denominator": 5
+    },
+    "operational_failures": {
+      "count": 0,
+      "denominator": 5
+    },
+    "completed": {
+      "count": 5,
+      "denominator": 5
+    },
+    "end_to_end_success": {
+      "count": 0,
+      "denominator": 5
+    }
+  },
+  "coverage": {
+    "count": 5,
+    "denominator": 5
+  },
+  "cost_inputs": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "latency_inputs_ms": [
+    3857.3439749998215,
+    2944.0013189996534,
+    4361.6574779989605,
+    2775.8170000015525,
+    3373.4693200003676
+  ],
+  "rows": [
+    {
+      "id": "assessment-01",
+      "category": true,
+      "priority": false,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-02",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-03",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-04",
+      "category": true,
+      "priority": false,
+      "entities": true,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": false,
+      "automatic": true,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    },
+    {
+      "id": "assessment-05",
+      "category": true,
+      "priority": true,
+      "entities": false,
+      "signals": true,
+      "schema": true,
+      "summary_constraints": false,
+      "routing": true,
+      "manual_summary_review": "review_needed",
+      "missing": false,
+      "invalid_analysis": false,
+      "required_escalation": true,
+      "automatic": false,
+      "missed_escalations": false,
+      "unnecessary_escalations": false,
+      "incorrect_automatic_routing": false
+    }
+  ]
+}

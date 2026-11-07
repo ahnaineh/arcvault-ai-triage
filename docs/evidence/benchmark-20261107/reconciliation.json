@@ -1,0 +1,80 @@
+{
+  "source": "docs/evidence/terra-network-20261107/events.jsonl",
+  "source_sha256": "1f34cf2b9b955b2bac1000aeb63d058c3b6c8f17c7f98c6d2b7e834e65dbad87",
+  "settlements": [
+    {
+      "state": "reconciled",
+      "request_id": "5ad82a97-79b3-4c2e-a3a0-10ae3ae72f9e",
+      "accounted_estimate": "0.013948",
+      "usage": {
+        "input_tokens": 953,
+        "output_tokens": 210,
+        "total_tokens": 1163
+      },
+      "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "actual_billed_cost": null
+    },
+    {
+      "state": "reconciled",
+      "request_id": "228fe752-bbac-4567-9f10-ed98bb1d57bc",
+      "accounted_estimate": "0.013211",
+      "usage": {
+        "input_tokens": 946,
+        "output_tokens": 170,
+        "total_tokens": 1116
+      },
+      "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "actual_billed_cost": null
+    },
+    {
+      "state": "reconciled",
+      "request_id": "bc7efa06-9a36-4fc9-91e7-593358173c5a",
+      "accounted_estimate": "0.0146025",
+      "usage": {
+        "input_tokens": 945,
+        "output_tokens": 255,
+        "total_tokens": 1200
+      },
+      "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "actual_billed_cost": null
+    },
+    {
+      "state": "reconciled",
+      "request_id": "642b68f4-485d-40ef-a468-e15d654eb49f",
+      "accounted_estimate": "0.0134145",
+      "usage": {
+        "input_tokens": 951,
+        "output_tokens": 179,
+        "total_tokens": 1130
+      },
+      "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "actual_billed_cost": null
+    },
+    {
+      "state": "reconciled",
+      "request_id": "b66acc73-db15-4ad7-a055-c63f1fd5443f",
+      "accounted_estimate": "0.013871",
+      "usage": {
+        "input_tokens": 943,
+        "output_tokens": 212,
+        "total_tokens": 1155
+      },
+      "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "actual_billed_cost": null
+    }
+  ],
+  "completed_usage_estimate": "0.0690470",
+  "retained_historical_reservation": "6.22326144",
+  "retained_uncertain_reservation": "11.617584",
+  "total_accounted_before_benchmark": "17.90989244",
+  "actual_billed_cost": null,
+  "pricing_verification": {
+    "checked": "2026-11-07",
+    "source": "https://developers.openai.com/api/docs/pricing",
+    "rates_per_million": {
+      "input": "11",
+      "output": "16.5"
+    },
+    "basis": "Retained conservative recorded rates exceed current published Terra Standard 1/5 and Fast 2/10, including 10 percent regional uplift. No cache discount applied. Full-context pre-call bound unchanged."
+  }
+}

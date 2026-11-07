@@ -1,0 +1,843 @@
+[
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "a35faa11-481f-4966-ad27-5800353402f7",
+      "source": "Email",
+      "message": "Every employee currently sees a maintenance screen and cannot access any workspace.",
+      "received_at": "2026-11-07T13:54:57.173925+00:00"
+    },
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that every employee currently sees a maintenance screen and cannot access any workspace.",
+      "entities": [],
+      "urgency": {
+        "level": "High",
+        "evidence": [
+          "Every employee currently sees a maintenance screen and cannot access any workspace."
+        ]
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "Every employee currently sees a maintenance screen and cannot access any workspace."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that every employee currently sees a maintenance screen.",
+        "No employee can access any workspace."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports that every employee currently sees a maintenance screen. No employee can access any workspace.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:00.589878+00:00",
+      "accepted_attempt_id": "a35faa11-481f-4966-ad27-5800353402f7"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "a35faa11-481f-4966-ad27-5800353402f7",
+          "error": null,
+          "latency_ms": 3406.5785959992354,
+          "usage": {
+            "input_tokens": 1152,
+            "output_tokens": 162,
+            "total_tokens": 1314
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "3db93637-d640-40f9-8de4-529853bce857",
+      "source": "Email",
+      "message": "Every employee saw a maintenance screen earlier, but access is now restored.",
+      "received_at": "2026-11-07T13:55:00.604503+00:00"
+    },
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.95,
+      "core_issue": "The customer reports that every employee saw a maintenance screen earlier, but access is now restored.",
+      "entities": [
+        {
+          "type": "time_expression",
+          "value": "earlier",
+          "evidence": "earlier"
+        },
+        {
+          "type": "time_expression",
+          "value": "now",
+          "evidence": "now"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "access is now restored"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that every employee previously saw a maintenance screen.",
+        "The customer says access is now restored."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports that every employee previously saw a maintenance screen. The customer says access is now restored.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:04.058698+00:00",
+      "accepted_attempt_id": "3db93637-d640-40f9-8de4-529853bce857"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "3db93637-d640-40f9-8de4-529853bce857",
+          "error": null,
+          "latency_ms": 3440.8476339995104,
+          "usage": {
+            "input_tokens": 1153,
+            "output_tokens": 171,
+            "total_tokens": 1324
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "0e3c9986-197c-4aed-8ca2-ce7320d196e5",
+      "source": "Email",
+      "message": "On my phone the upload spinner never completes for a single file.",
+      "received_at": "2026-11-07T13:55:04.074580+00:00"
+    },
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that an upload spinner never completes for a single file on their phone.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that a single-file upload does not complete on their phone.",
+        "No broader service outage is reported."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports that a single-file upload does not complete on their phone. No broader service outage is reported.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:06.643435+00:00",
+      "accepted_attempt_id": "0e3c9986-197c-4aed-8ca2-ce7320d196e5"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "0e3c9986-197c-4aed-8ca2-ce7320d196e5",
+          "error": null,
+          "latency_ms": 2558.6201019996224,
+          "usage": {
+            "input_tokens": 1152,
+            "output_tokens": 137,
+            "total_tokens": 1289
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "66f4410f-0799-4c05-838e-380827e507fb",
+      "source": "Email",
+      "message": "Please add biometric unlocking to the mobile app.",
+      "received_at": "2026-11-07T13:55:06.659572+00:00"
+    },
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests biometric unlocking for the mobile app.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests biometric unlocking in the mobile app.",
+        "No urgency is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer requests biometric unlocking in the mobile app. No urgency is stated.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:09.368836+00:00",
+      "accepted_attempt_id": "66f4410f-0799-4c05-838e-380827e507fb"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "66f4410f-0799-4c05-838e-380827e507fb",
+          "error": null,
+          "latency_ms": 2699.7471080012474,
+          "usage": {
+            "input_tokens": 1148,
+            "output_tokens": 123,
+            "total_tokens": 1271
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "1e5ca396-d47a-4068-be35-074619a99d22",
+      "source": "Email",
+      "message": "How can I remove an old phone from trusted devices?",
+      "received_at": "2026-11-07T13:55:09.385937+00:00"
+    },
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer asks how to remove an old phone from trusted devices.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer wants to remove an old phone from trusted devices.",
+        "They are asking for usage guidance."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer wants to remove an old phone from trusted devices. They are asking for usage guidance.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:12.146226+00:00",
+      "accepted_attempt_id": "1e5ca396-d47a-4068-be35-074619a99d22"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "1e5ca396-d47a-4068-be35-074619a99d22",
+          "error": null,
+          "latency_ms": 2751.834132001022,
+          "usage": {
+            "input_tokens": 1150,
+            "output_tokens": 130,
+            "total_tokens": 1280
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "94aaddf9-1bcd-4994-9b22-e29f38924517",
+      "source": "Email",
+      "message": "Our weekly USD charge is 750.01 against an agreed weekly USD 250. Please correct it.",
+      "received_at": "2026-11-07T13:55:12.161542+00:00"
+    },
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports a weekly charge of USD 750.01 against an agreed weekly charge of USD 250 and requests a correction.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "750.01",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "Our weekly USD charge is 750.01"
+          ]
+        },
+        "expected": {
+          "amount": "250",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "an agreed weekly USD 250"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a weekly USD 750.01 charge against an agreed weekly USD 250.",
+        "They request a correction."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports a weekly USD 750.01 charge against an agreed weekly USD 250. They request a correction.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:17.056027+00:00",
+      "accepted_attempt_id": "94aaddf9-1bcd-4994-9b22-e29f38924517"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "94aaddf9-1bcd-4994-9b22-e29f38924517",
+          "error": null,
+          "latency_ms": 4885.5311990009795,
+          "usage": {
+            "input_tokens": 1160,
+            "output_tokens": 211,
+            "total_tokens": 1371
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "c9537f2e-6190-4dce-9c87-2fb8194e1424",
+      "source": "Email",
+      "message": "Our weekly USD charge is 750 against an agreed weekly USD 250. Please correct it.",
+      "received_at": "2026-11-07T13:55:17.073839+00:00"
+    },
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports a weekly USD charge of 750 against an agreed weekly USD 250 and asks for correction.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "750",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "weekly USD charge is 750"
+          ]
+        },
+        "expected": {
+          "amount": "250",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "agreed weekly USD 250"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a weekly USD charge of 750 against an agreed weekly USD 250.",
+        "They request a correction."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports a weekly USD charge of 750 against an agreed weekly USD 250. They request a correction.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:20.748285+00:00",
+      "accepted_attempt_id": "c9537f2e-6190-4dce-9c87-2fb8194e1424"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "c9537f2e-6190-4dce-9c87-2fb8194e1424",
+          "error": null,
+          "latency_ms": 3655.197541000234,
+          "usage": {
+            "input_tokens": 1158,
+            "output_tokens": 201,
+            "total_tokens": 1359
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "d5e294a2-d497-4943-abf3-ea9e4f91b207",
+      "source": "Email",
+      "message": "My receipt has an unexpected fee, but the receipt does not show the amount.",
+      "received_at": "2026-11-07T13:55:20.764254+00:00"
+    },
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports an unexpected fee on a receipt that does not show the amount.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": "fee",
+          "evidence": [
+            "an unexpected fee",
+            "the receipt does not show the amount"
+          ]
+        },
+        "expected": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": []
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an unexpected fee on their receipt.",
+        "The receipt does not show the fee amount."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports an unexpected fee on their receipt. The receipt does not show the fee amount.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:24.016715+00:00",
+      "accepted_attempt_id": "d5e294a2-d497-4943-abf3-ea9e4f91b207"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "d5e294a2-d497-4943-abf3-ea9e4f91b207",
+          "error": null,
+          "latency_ms": 3243.6124160012696,
+          "usage": {
+            "input_tokens": 1155,
+            "output_tokens": 189,
+            "total_tokens": 1344
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "72cdd112-e749-477f-8958-957c575fcbba",
+      "source": "Email",
+      "message": "Something about my workspace is wrong, but I cannot describe what.",
+      "received_at": "2026-11-07T13:55:24.036293+00:00"
+    },
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.48,
+      "core_issue": "The customer reports an unspecified problem with their workspace.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": true,
+          "evidence": [
+            "Something about my workspace is wrong, but I cannot describe what."
+          ]
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that something is wrong with their workspace.",
+        "They cannot describe the problem, so there is insufficient context to route it safely."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "insufficient_information"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports that something is wrong with their workspace. They cannot describe the problem, so there is insufficient context to route it safely.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:27.069530+00:00",
+      "accepted_attempt_id": "72cdd112-e749-477f-8958-957c575fcbba"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "72cdd112-e749-477f-8958-957c575fcbba",
+          "error": null,
+          "latency_ms": 3012.889574998553,
+          "usage": {
+            "input_tokens": 1152,
+            "output_tokens": 148,
+            "total_tokens": 1300
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "3d6dfae4-293e-4e04-bbc4-0ce16195447c",
+      "source": "Email",
+      "message": "I need a refund and a new approval workflow; both requests matter equally.",
+      "received_at": "2026-11-07T13:55:27.125543+00:00"
+    },
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.55,
+      "core_issue": "The customer requests a refund and a new approval workflow, stating that both are equally important.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": true,
+          "evidence": [
+            "I need a refund and a new approval workflow; both requests matter equally."
+          ]
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests a refund.",
+        "They also request a new approval workflow and say both requests matter equally."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "conflicting_intents"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer requests a refund. They also request a new approval workflow and say both requests matter equally.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v2",
+      "prompt_sha256": "33f363f7c5653a523ff79ba92cd4439e52b3b1ecc7a500c741624dfcd2d9c32c",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:55:30.473499+00:00",
+      "accepted_attempt_id": "3d6dfae4-293e-4e04-bbc4-0ce16195447c"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "3d6dfae4-293e-4e04-bbc4-0ce16195447c",
+          "error": null,
+          "latency_ms": 3331.2343249999685,
+          "usage": {
+            "input_tokens": 1154,
+            "output_tokens": 152,
+            "total_tokens": 1306
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  }
+]

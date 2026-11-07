@@ -1,0 +1,1548 @@
+{
+  "set_status": "reused comparison set, not fresh holdout",
+  "models": {
+    "gpt-6-luna": {
+      "calls": 50,
+      "input_tokens": 61292,
+      "output_tokens_including_reasoning": 21601,
+      "reasoning_tokens": 11232,
+      "standard_price_estimate_usd": "0.0169297",
+      "conservative_accounted_usd": "19.5070458",
+      "latency_count": 49,
+      "latency_p50_ms": 4340.17977700023,
+      "latency_p95_ms": 8056.678974000533,
+      "failures": 15,
+      "incomplete_responses": 0,
+      "metrics": {
+        "category": {
+          "count": 35,
+          "denominator": 50
+        },
+        "priority": {
+          "count": 32,
+          "denominator": 50
+        },
+        "entities": {
+          "count": 29,
+          "denominator": 50
+        },
+        "signals": {
+          "count": 35,
+          "denominator": 50
+        },
+        "schema": {
+          "count": 35,
+          "denominator": 50
+        },
+        "summary_constraints": {
+          "count": 0,
+          "denominator": 50
+        },
+        "routing": {
+          "count": 30,
+          "denominator": 50
+        },
+        "missed_escalations": {
+          "count": 0,
+          "denominator": 50
+        },
+        "unnecessary_escalations": {
+          "count": 4,
+          "denominator": 50
+        },
+        "incorrect_automatic_routing": {
+          "count": 0,
+          "denominator": 50
+        },
+        "automatic": {
+          "count": 18,
+          "denominator": 50
+        },
+        "missing": {
+          "count": 0,
+          "denominator": 50
+        },
+        "invalid_analysis": {
+          "count": 15,
+          "denominator": 50
+        },
+        "operational_failures": {
+          "count": 15,
+          "denominator": 50
+        },
+        "completed": {
+          "count": 35,
+          "denominator": 50
+        },
+        "end_to_end_success": {
+          "count": 0,
+          "denominator": 50
+        }
+      },
+      "conditional_routing": {
+        "missed_escalations": {
+          "count": 0,
+          "denominator": 22
+        },
+        "unnecessary_escalations": {
+          "count": 4,
+          "denominator": 17
+        },
+        "incorrect_automatic_routing": {
+          "count": 0,
+          "denominator": 18
+        }
+      },
+      "per_case": [
+        {
+          "id": "assessment-01",
+          "usage": {
+            "input_tokens": 1245,
+            "output_tokens": 403,
+            "total_tokens": 1648,
+            "reasoning_tokens": 166
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 5127.477130999978
+        },
+        {
+          "id": "assessment-02",
+          "usage": {
+            "input_tokens": 1238,
+            "output_tokens": 229,
+            "total_tokens": 1467,
+            "reasoning_tokens": 83
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3307.385562999116
+        },
+        {
+          "id": "assessment-03",
+          "usage": {
+            "input_tokens": 1237,
+            "output_tokens": 526,
+            "total_tokens": 1763,
+            "reasoning_tokens": 165
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4727.095861000635
+        },
+        {
+          "id": "assessment-04",
+          "usage": {
+            "input_tokens": 1243,
+            "output_tokens": 290,
+            "total_tokens": 1533,
+            "reasoning_tokens": 124
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3758.8507890013716
+        },
+        {
+          "id": "assessment-05",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 442,
+            "total_tokens": 1677,
+            "reasoning_tokens": 255
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": null
+        },
+        {
+          "id": "development-01",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 222,
+            "total_tokens": 1443,
+            "reasoning_tokens": 66
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3183.2706189998135
+        },
+        {
+          "id": "development-02",
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 910,
+            "total_tokens": 2132,
+            "reasoning_tokens": 680
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 8804.245265000645
+        },
+        {
+          "id": "development-03",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 374,
+            "total_tokens": 1599,
+            "reasoning_tokens": 203
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 4372.222862000854
+        },
+        {
+          "id": "development-04",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 319,
+            "total_tokens": 1542,
+            "reasoning_tokens": 185
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3456.1202980003145
+        },
+        {
+          "id": "development-05",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 682,
+            "total_tokens": 1908,
+            "reasoning_tokens": 494
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 6654.893901999458
+        },
+        {
+          "id": "development-06",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 459,
+            "total_tokens": 1694,
+            "reasoning_tokens": 117
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4349.445162999473
+        },
+        {
+          "id": "development-07",
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 451,
+            "total_tokens": 1684,
+            "reasoning_tokens": 123
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4496.881590999692
+        },
+        {
+          "id": "development-08",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 500,
+            "total_tokens": 1735,
+            "reasoning_tokens": 165
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4576.33494699985
+        },
+        {
+          "id": "development-09",
+          "usage": {
+            "input_tokens": 1232,
+            "output_tokens": 438,
+            "total_tokens": 1670,
+            "reasoning_tokens": 218
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4276.227070999084
+        },
+        {
+          "id": "development-10",
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 644,
+            "total_tokens": 1877,
+            "reasoning_tokens": 285
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 6635.167739999815
+        },
+        {
+          "id": "development-11",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 360,
+            "total_tokens": 1588,
+            "reasoning_tokens": 207
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4365.8193459996255
+        },
+        {
+          "id": "development-12",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 234,
+            "total_tokens": 1458,
+            "reasoning_tokens": 108
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3327.2687480002787
+        },
+        {
+          "id": "development-13",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 410,
+            "total_tokens": 1633,
+            "reasoning_tokens": 270
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 5913.532401000339
+        },
+        {
+          "id": "development-14",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 364,
+            "total_tokens": 1592,
+            "reasoning_tokens": 171
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 6043.1416779993015
+        },
+        {
+          "id": "development-15",
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 471,
+            "total_tokens": 1693,
+            "reasoning_tokens": 302
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 6921.91794899918
+        },
+        {
+          "id": "development-16",
+          "usage": {
+            "input_tokens": 1212,
+            "output_tokens": 268,
+            "total_tokens": 1480,
+            "reasoning_tokens": 131
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3868.514111998593
+        },
+        {
+          "id": "development-17",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 1077,
+            "total_tokens": 2303,
+            "reasoning_tokens": 853
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 11654.046338000626
+        },
+        {
+          "id": "development-18",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 442,
+            "total_tokens": 1666,
+            "reasoning_tokens": 218
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 4244.479787999808
+        },
+        {
+          "id": "development-19",
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 257,
+            "total_tokens": 1477,
+            "reasoning_tokens": 63
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2584.2365250009607
+        },
+        {
+          "id": "development-20",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 250,
+            "total_tokens": 1468,
+            "reasoning_tokens": 110
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2718.6262070008524
+        },
+        {
+          "id": "development-21",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 185,
+            "total_tokens": 1403,
+            "reasoning_tokens": 57
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2546.076672999334
+        },
+        {
+          "id": "development-22",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 232,
+            "total_tokens": 1453,
+            "reasoning_tokens": 97
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2523.5164839996287
+        },
+        {
+          "id": "development-23",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 235,
+            "total_tokens": 1454,
+            "reasoning_tokens": 93
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2738.030884998807
+        },
+        {
+          "id": "development-24",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 413,
+            "total_tokens": 1639,
+            "reasoning_tokens": 218
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4389.845241999865
+        },
+        {
+          "id": "development-25",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 206,
+            "total_tokens": 1424,
+            "reasoning_tokens": 78
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2377.585373000329
+        },
+        {
+          "id": "validation-01",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 526,
+            "total_tokens": 1752,
+            "reasoning_tokens": 171
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4340.17977700023
+        },
+        {
+          "id": "validation-02",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 562,
+            "total_tokens": 1788,
+            "reasoning_tokens": 302
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 5098.690991000694
+        },
+        {
+          "id": "validation-03",
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 483,
+            "total_tokens": 1712,
+            "reasoning_tokens": 245
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4414.526927999759
+        },
+        {
+          "id": "validation-04",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 498,
+            "total_tokens": 1722,
+            "reasoning_tokens": 281
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4831.723986000725
+        },
+        {
+          "id": "validation-05",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 529,
+            "total_tokens": 1757,
+            "reasoning_tokens": 200
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4916.366838000613
+        },
+        {
+          "id": "validation-06",
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 374,
+            "total_tokens": 1594,
+            "reasoning_tokens": 148
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 3696.1806920007803
+        },
+        {
+          "id": "validation-07",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 181,
+            "total_tokens": 1400,
+            "reasoning_tokens": 53
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2416.314040998259
+        },
+        {
+          "id": "validation-08",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 247,
+            "total_tokens": 1465,
+            "reasoning_tokens": 100
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2639.6546670002863
+        },
+        {
+          "id": "validation-09",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 693,
+            "total_tokens": 1916,
+            "reasoning_tokens": 516
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 6434.341672000301
+        },
+        {
+          "id": "validation-10",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 649,
+            "total_tokens": 1874,
+            "reasoning_tokens": 484
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 6231.298809001601
+        },
+        {
+          "id": "test-01",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 351,
+            "total_tokens": 1574,
+            "reasoning_tokens": 92
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3656.9539249994705
+        },
+        {
+          "id": "test-02",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 849,
+            "total_tokens": 2073,
+            "reasoning_tokens": 673
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 8056.678974000533
+        },
+        {
+          "id": "test-03",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 634,
+            "total_tokens": 1857,
+            "reasoning_tokens": 418
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 5789.018487999783
+        },
+        {
+          "id": "test-04",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 203,
+            "total_tokens": 1422,
+            "reasoning_tokens": 75
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2584.0513149996696
+        },
+        {
+          "id": "test-05",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 275,
+            "total_tokens": 1496,
+            "reasoning_tokens": 80
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2970.064536000791
+        },
+        {
+          "id": "test-06",
+          "usage": {
+            "input_tokens": 1231,
+            "output_tokens": 442,
+            "total_tokens": 1673,
+            "reasoning_tokens": 116
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3306.2335750000784
+        },
+        {
+          "id": "test-07",
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 456,
+            "total_tokens": 1685,
+            "reasoning_tokens": 142
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4220.580096000049
+        },
+        {
+          "id": "test-08",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 436,
+            "total_tokens": 1662,
+            "reasoning_tokens": 230
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 4291.028142999494
+        },
+        {
+          "id": "test-09",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 349,
+            "total_tokens": 1572,
+            "reasoning_tokens": 193
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 3584.6870790010144
+        },
+        {
+          "id": "test-10",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 571,
+            "total_tokens": 1796,
+            "reasoning_tokens": 408
+          },
+          "status": "completed",
+          "error": "provider_or_validation_failure",
+          "latency_ms": 5616.724185998464
+        }
+      ],
+      "raw_structural_schema_pass": 50,
+      "rejection_details": [
+        {
+          "id": "assessment-05",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-02",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-03",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-05",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-10",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-15",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "development-18",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "validation-02",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "validation-06",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "validation-09",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "validation-10",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "test-02",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "test-08",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "test-09",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        },
+        {
+          "id": "test-10",
+          "reason": "1 validation error for Analysis\n  Value error, evidence must be an exact message excerpt"
+        }
+      ]
+    },
+    "gpt-6.1-terra": {
+      "calls": 50,
+      "input_tokens": 61292,
+      "output_tokens_including_reasoning": 8502,
+      "reasoning_tokens": 0,
+      "standard_price_estimate_usd": "0.103802",
+      "conservative_accounted_usd": "0.8144950",
+      "latency_count": 50,
+      "latency_p50_ms": 3092.204321999816,
+      "latency_p95_ms": 4079.4363069999235,
+      "failures": 0,
+      "incomplete_responses": 0,
+      "metrics": {
+        "category": {
+          "count": 49,
+          "denominator": 50
+        },
+        "priority": {
+          "count": 39,
+          "denominator": 50
+        },
+        "entities": {
+          "count": 44,
+          "denominator": 50
+        },
+        "signals": {
+          "count": 49,
+          "denominator": 50
+        },
+        "schema": {
+          "count": 50,
+          "denominator": 50
+        },
+        "summary_constraints": {
+          "count": 0,
+          "denominator": 50
+        },
+        "routing": {
+          "count": 44,
+          "denominator": 50
+        },
+        "missed_escalations": {
+          "count": 0,
+          "denominator": 50
+        },
+        "unnecessary_escalations": {
+          "count": 4,
+          "denominator": 50
+        },
+        "incorrect_automatic_routing": {
+          "count": 0,
+          "denominator": 50
+        },
+        "automatic": {
+          "count": 23,
+          "denominator": 50
+        },
+        "missing": {
+          "count": 0,
+          "denominator": 50
+        },
+        "invalid_analysis": {
+          "count": 0,
+          "denominator": 50
+        },
+        "operational_failures": {
+          "count": 0,
+          "denominator": 50
+        },
+        "completed": {
+          "count": 50,
+          "denominator": 50
+        },
+        "end_to_end_success": {
+          "count": 0,
+          "denominator": 50
+        }
+      },
+      "conditional_routing": {
+        "missed_escalations": {
+          "count": 0,
+          "denominator": 23
+        },
+        "unnecessary_escalations": {
+          "count": 4,
+          "denominator": 27
+        },
+        "incorrect_automatic_routing": {
+          "count": 0,
+          "denominator": 23
+        }
+      },
+      "per_case": [
+        {
+          "id": "assessment-01",
+          "usage": {
+            "input_tokens": 1245,
+            "output_tokens": 241,
+            "total_tokens": 1486
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4182.53145000017
+        },
+        {
+          "id": "assessment-02",
+          "usage": {
+            "input_tokens": 1238,
+            "output_tokens": 133,
+            "total_tokens": 1371
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2944.757055000082
+        },
+        {
+          "id": "assessment-03",
+          "usage": {
+            "input_tokens": 1237,
+            "output_tokens": 243,
+            "total_tokens": 1480
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3822.487651001211
+        },
+        {
+          "id": "assessment-04",
+          "usage": {
+            "input_tokens": 1243,
+            "output_tokens": 163,
+            "total_tokens": 1406
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3438.14348900014
+        },
+        {
+          "id": "assessment-05",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 187,
+            "total_tokens": 1422
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3153.988088000915
+        },
+        {
+          "id": "development-01",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 146,
+            "total_tokens": 1367
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3245.5357459984953
+        },
+        {
+          "id": "development-02",
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 137,
+            "total_tokens": 1359
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3025.4359419996035
+        },
+        {
+          "id": "development-03",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 164,
+            "total_tokens": 1389
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3211.4974150008493
+        },
+        {
+          "id": "development-04",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 143,
+            "total_tokens": 1366
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2845.067229000051
+        },
+        {
+          "id": "development-05",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 155,
+            "total_tokens": 1381
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3237.718854999912
+        },
+        {
+          "id": "development-06",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 227,
+            "total_tokens": 1462
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4079.4363069999235
+        },
+        {
+          "id": "development-07",
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 219,
+            "total_tokens": 1452
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3639.1789989993413
+        },
+        {
+          "id": "development-08",
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 226,
+            "total_tokens": 1461
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3579.9514400005137
+        },
+        {
+          "id": "development-09",
+          "usage": {
+            "input_tokens": 1232,
+            "output_tokens": 217,
+            "total_tokens": 1449
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3689.365246998932
+        },
+        {
+          "id": "development-10",
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 220,
+            "total_tokens": 1453
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3716.679851999288
+        },
+        {
+          "id": "development-11",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 147,
+            "total_tokens": 1375
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3092.204321999816
+        },
+        {
+          "id": "development-12",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 123,
+            "total_tokens": 1347
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2475.281916998938
+        },
+        {
+          "id": "development-13",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 120,
+            "total_tokens": 1343
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2516.488400000526
+        },
+        {
+          "id": "development-14",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 130,
+            "total_tokens": 1358
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2616.0319709997566
+        },
+        {
+          "id": "development-15",
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 148,
+            "total_tokens": 1370
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2887.7646939999977
+        },
+        {
+          "id": "development-16",
+          "usage": {
+            "input_tokens": 1212,
+            "output_tokens": 121,
+            "total_tokens": 1333
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2347.751645000244
+        },
+        {
+          "id": "development-17",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 212,
+            "total_tokens": 1438
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3529.4646580005065
+        },
+        {
+          "id": "development-18",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 130,
+            "total_tokens": 1354
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2495.355973000187
+        },
+        {
+          "id": "development-19",
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 126,
+            "total_tokens": 1346
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2455.640364998544
+        },
+        {
+          "id": "development-20",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 131,
+            "total_tokens": 1349
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2645.532844000627
+        },
+        {
+          "id": "development-21",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 125,
+            "total_tokens": 1343
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2846.8443189995014
+        },
+        {
+          "id": "development-22",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 140,
+            "total_tokens": 1361
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2834.205301000111
+        },
+        {
+          "id": "development-23",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 129,
+            "total_tokens": 1348
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2730.1579790000687
+        },
+        {
+          "id": "development-24",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 194,
+            "total_tokens": 1420
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3238.4679070000857
+        },
+        {
+          "id": "development-25",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 131,
+            "total_tokens": 1349
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2563.0600180011243
+        },
+        {
+          "id": "validation-01",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 219,
+            "total_tokens": 1445
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3570.125039999766
+        },
+        {
+          "id": "validation-02",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 223,
+            "total_tokens": 1449
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3446.776343000238
+        },
+        {
+          "id": "validation-03",
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 219,
+            "total_tokens": 1448
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3777.237618000072
+        },
+        {
+          "id": "validation-04",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 318,
+            "total_tokens": 1542
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4680.758009000783
+        },
+        {
+          "id": "validation-05",
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 226,
+            "total_tokens": 1454
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3601.533756000208
+        },
+        {
+          "id": "validation-06",
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 138,
+            "total_tokens": 1358
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2617.1235719994
+        },
+        {
+          "id": "validation-07",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 125,
+            "total_tokens": 1344
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2427.618674999394
+        },
+        {
+          "id": "validation-08",
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 146,
+            "total_tokens": 1364
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2829.381494999325
+        },
+        {
+          "id": "validation-09",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 147,
+            "total_tokens": 1370
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2776.002881999375
+        },
+        {
+          "id": "validation-10",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 157,
+            "total_tokens": 1382
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3188.578728999346
+        },
+        {
+          "id": "test-01",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 149,
+            "total_tokens": 1372
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2879.509888998655
+        },
+        {
+          "id": "test-02",
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 214,
+            "total_tokens": 1438
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3515.0315850005427
+        },
+        {
+          "id": "test-03",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 136,
+            "total_tokens": 1359
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2703.1940140004735
+        },
+        {
+          "id": "test-04",
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 125,
+            "total_tokens": 1344
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3010.3315230007865
+        },
+        {
+          "id": "test-05",
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 131,
+            "total_tokens": 1352
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2859.2657529989083
+        },
+        {
+          "id": "test-06",
+          "usage": {
+            "input_tokens": 1231,
+            "output_tokens": 213,
+            "total_tokens": 1444
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 4003.0194419996405
+        },
+        {
+          "id": "test-07",
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 201,
+            "total_tokens": 1430
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3814.18592099908
+        },
+        {
+          "id": "test-08",
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 188,
+            "total_tokens": 1414
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3897.827092998341
+        },
+        {
+          "id": "test-09",
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 144,
+            "total_tokens": 1367
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 3273.75389000008
+        },
+        {
+          "id": "test-10",
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 155,
+            "total_tokens": 1380
+          },
+          "status": "completed",
+          "error": null,
+          "latency_ms": 2981.899603999409
+        }
+      ],
+      "raw_structural_schema_pass": 50,
+      "rejection_details": []
+    }
+  },
+  "paired": {
+    "category": {
+      "luna_wins": [],
+      "terra_wins": [
+        "assessment-05",
+        "development-02",
+        "development-03",
+        "development-05",
+        "development-10",
+        "development-15",
+        "development-18",
+        "validation-02",
+        "validation-06",
+        "validation-09",
+        "validation-10",
+        "test-08",
+        "test-09",
+        "test-10"
+      ],
+      "both_pass": 35,
+      "both_fail": 1
+    },
+    "priority": {
+      "luna_wins": [
+        "development-14",
+        "development-20",
+        "validation-08",
+        "test-05"
+      ],
+      "terra_wins": [
+        "assessment-04",
+        "assessment-05",
+        "development-03",
+        "development-04",
+        "development-05",
+        "development-10",
+        "development-15",
+        "development-18",
+        "validation-02",
+        "validation-10",
+        "test-08"
+      ],
+      "both_pass": 28,
+      "both_fail": 7
+    },
+    "entities": {
+      "luna_wins": [
+        "validation-08"
+      ],
+      "terra_wins": [
+        "development-02",
+        "development-03",
+        "development-05",
+        "development-10",
+        "development-15",
+        "development-18",
+        "validation-01",
+        "validation-02",
+        "validation-03",
+        "validation-06",
+        "validation-09",
+        "validation-10",
+        "test-01",
+        "test-08",
+        "test-09",
+        "test-10"
+      ],
+      "both_pass": 28,
+      "both_fail": 5
+    },
+    "signals": {
+      "luna_wins": [],
+      "terra_wins": [
+        "assessment-05",
+        "development-02",
+        "development-03",
+        "development-05",
+        "development-10",
+        "development-15",
+        "development-18",
+        "validation-02",
+        "validation-06",
+        "validation-09",
+        "validation-10",
+        "test-08",
+        "test-09",
+        "test-10"
+      ],
+      "both_pass": 35,
+      "both_fail": 1
+    },
+    "schema": {
+      "luna_wins": [],
+      "terra_wins": [
+        "assessment-05",
+        "development-02",
+        "development-03",
+        "development-05",
+        "development-10",
+        "development-15",
+        "development-18",
+        "validation-02",
+        "validation-06",
+        "validation-09",
+        "validation-10",
+        "test-02",
+        "test-08",
+        "test-09",
+        "test-10"
+      ],
+      "both_pass": 35,
+      "both_fail": 0
+    },
+    "routing": {
+      "luna_wins": [],
+      "terra_wins": [
+        "assessment-03",
+        "assessment-05",
+        "development-02",
+        "development-03",
+        "development-05",
+        "development-15",
+        "development-18",
+        "validation-02",
+        "validation-06",
+        "validation-09",
+        "validation-10",
+        "test-08",
+        "test-09",
+        "test-10"
+      ],
+      "both_pass": 30,
+      "both_fail": 6
+    }
+  },
+  "total_project_accounted_usd": "39.33219774",
+  "project_ceiling_usd": "83",
+  "actual_billed_cost": null
+}

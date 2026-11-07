@@ -1,0 +1,449 @@
+[
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "92c2835b-c173-418b-a2db-fef62260531c",
+      "source": "Email",
+      "message": "Hi, I tried logging in this morning and keep getting a 403 error. My account is arcvault.io/user/jsmith. This started after your update last Tuesday.",
+      "received_at": "2026-11-07T14:41:15.048660+00:00"
+    },
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "High",
+      "confidence": 0.97,
+      "core_issue": "The customer cannot log in and repeatedly receives a 403 error, which they say started after last Tuesday's update.",
+      "entities": [
+        {
+          "type": "error_code",
+          "value": "403",
+          "evidence": "403 error"
+        },
+        {
+          "type": "url",
+          "value": "arcvault.io/user/jsmith",
+          "evidence": "arcvault.io/user/jsmith"
+        },
+        {
+          "type": "time_expression",
+          "value": "this morning",
+          "evidence": "this morning"
+        },
+        {
+          "type": "time_expression",
+          "value": "last Tuesday",
+          "evidence": "last Tuesday"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports repeated 403 errors when attempting to log in this morning.",
+        "They say the issue started after an update last Tuesday and provided their account URL."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports repeated 403 errors when attempting to log in this morning. They say the issue started after an update last Tuesday and provided their account URL.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v4",
+      "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:41:20.356613+00:00",
+      "accepted_attempt_id": "92c2835b-c173-418b-a2db-fef62260531c"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "92c2835b-c173-418b-a2db-fef62260531c",
+          "error": null,
+          "latency_ms": 5299.2834220003715,
+          "usage": {
+            "input_tokens": 964,
+            "output_tokens": 223,
+            "total_tokens": 1187
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "15cf634c-ce72-4de9-9c43-ffb287d3e495",
+      "source": "Web Form",
+      "message": "We'd love to see a bulk export feature for our audit logs. We're a compliance-heavy org and this would save us hours every month.",
+      "received_at": "2026-11-07T14:41:20.366046+00:00"
+    },
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests a bulk export feature for audit logs.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer would like to bulk export audit logs.",
+        "They say the feature would save their compliance-heavy organization hours each month."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer would like to bulk export audit logs. They say the feature would save their compliance-heavy organization hours each month.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v4",
+      "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:41:24.430739+00:00",
+      "accepted_attempt_id": "15cf634c-ce72-4de9-9c43-ffb287d3e495"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "15cf634c-ce72-4de9-9c43-ffb287d3e495",
+          "error": null,
+          "latency_ms": 4051.634933999594,
+          "usage": {
+            "input_tokens": 957,
+            "output_tokens": 133,
+            "total_tokens": 1090
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "092449ee-b0d9-4409-bdd3-d3b400303e1e",
+      "source": "Support Portal",
+      "message": "Invoice #8821 shows a charge of $1,240 but our contract rate is $980/month. Can someone look into this?",
+      "received_at": "2026-11-07T14:41:24.441193+00:00"
+    },
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer requests an investigation into a charge on invoice #8821 that exceeds their stated contract rate.",
+      "entities": [
+        {
+          "type": "invoice_number",
+          "value": "#8821",
+          "evidence": "Invoice #8821"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1240",
+          "currency": "$",
+          "period": null,
+          "components": null,
+          "evidence": [
+            "Invoice #8821 shows a charge of $1,240"
+          ]
+        },
+        "expected": {
+          "amount": "980",
+          "currency": "$",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "our contract rate is $980/month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer says invoice #8821 shows a charge of $1,240, while their contract rate is $980 per month.",
+        "They ask someone to investigate the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": "260",
+      "comparison_assumptions": [
+        "Unqualified $ interpreted as USD in synthetic domain",
+        "Unqualified $ interpreted as USD in synthetic domain",
+        "Apparent difference assumes one monthly charge and the same component for a direct invoice versus contract comparison"
+      ]
+    },
+    "summary": "The customer says invoice #8821 shows a charge of $1,240, while their contract rate is $980 per month. They ask someone to investigate the discrepancy.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v4",
+      "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:41:28.655126+00:00",
+      "accepted_attempt_id": "092449ee-b0d9-4409-bdd3-d3b400303e1e"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "092449ee-b0d9-4409-bdd3-d3b400303e1e",
+          "error": null,
+          "latency_ms": 4200.930213000902,
+          "usage": {
+            "input_tokens": 956,
+            "output_tokens": 238,
+            "total_tokens": 1194
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "1ee0879d-9763-43fe-9a5d-20aa8bb974d0",
+      "source": "Email",
+      "message": "I'm not sure if this is the right place to ask, but is there a way to set up SSO with Okta? We're evaluating switching our auth provider.",
+      "received_at": "2026-11-07T14:41:28.679674+00:00"
+    },
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer asks how to set up SSO with Okta while evaluating an authentication provider switch.",
+      "entities": [
+        {
+          "type": "product_or_integration",
+          "value": "SSO",
+          "evidence": "is there a way to set up SSO with Okta?"
+        },
+        {
+          "type": "product_or_integration",
+          "value": "Okta",
+          "evidence": "is there a way to set up SSO with Okta?"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks whether SSO can be set up with Okta.",
+        "They are evaluating a switch of authentication providers."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": [],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer asks whether SSO can be set up with Okta. They are evaluating a switch of authentication providers.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v4",
+      "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:41:32.045471+00:00",
+      "accepted_attempt_id": "1ee0879d-9763-43fe-9a5d-20aa8bb974d0"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "1ee0879d-9763-43fe-9a5d-20aa8bb974d0",
+          "error": null,
+          "latency_ms": 3351.2000539994915,
+          "usage": {
+            "input_tokens": 962,
+            "output_tokens": 199,
+            "total_tokens": 1161
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  },
+  {
+    "schema_version": "1.0",
+    "request": {
+      "id": "0340091f-772a-4862-aceb-4c680aba793f",
+      "source": "Web Form",
+      "message": "Your dashboard stopped loading for us around 2pm EST. Checked our end \u2014 it's definitely on yours. Multiple users affected.",
+      "received_at": "2026-11-07T14:41:32.055169+00:00"
+    },
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.98,
+      "core_issue": "The customer reports that the dashboard stopped loading for multiple users around 2pm EST.",
+      "entities": [
+        {
+          "type": "time_expression",
+          "value": "around 2pm EST",
+          "evidence": "around 2pm EST"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "Your dashboard stopped loading for us around 2pm EST.",
+            "Multiple users affected."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that the dashboard stopped loading around 2pm EST and that multiple users are affected.",
+        "They say they checked their end and believe the issue is on the provider's side."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ],
+      "reported_overcharge": null,
+      "comparison_assumptions": []
+    },
+    "summary": "The customer reports that the dashboard stopped loading around 2pm EST and that multiple users are affected. They say they checked their end and believe the issue is on the provider's side.",
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v4",
+      "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:41:35.331419+00:00",
+      "accepted_attempt_id": "0340091f-772a-4862-aceb-4c680aba793f"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "0340091f-772a-4862-aceb-4c680aba793f",
+          "error": null,
+          "latency_ms": 3266.9419100002415,
+          "usage": {
+            "input_tokens": 954,
+            "output_tokens": 193,
+            "total_tokens": 1147
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "review": null
+  }
+]

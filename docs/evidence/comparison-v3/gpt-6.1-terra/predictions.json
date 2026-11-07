@@ -1,0 +1,3876 @@
+[
+  {
+    "id": "assessment-01",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer cannot log in to their account because they repeatedly receive a 403 error, which they report began after last Tuesday's update.",
+      "entities": [
+        {
+          "type": "error_code",
+          "value": "403",
+          "evidence": "403 error"
+        },
+        {
+          "type": "url",
+          "value": "arcvault.io/user/jsmith",
+          "evidence": "My account is arcvault.io/user/jsmith"
+        },
+        {
+          "type": "time_expression",
+          "value": "this morning",
+          "evidence": "logging in this morning"
+        },
+        {
+          "type": "time_expression",
+          "value": "last Tuesday",
+          "evidence": "after your update last Tuesday"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports repeatedly receiving a 403 error when attempting to log in to arcvault.io/user/jsmith this morning.",
+        "They say the problem started after an update last Tuesday."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:01.316372+00:00",
+      "accepted_attempt_id": "47457be4-b30c-4dec-91de-73c7ef022784"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "47457be4-b30c-4dec-91de-73c7ef022784",
+          "error": null,
+          "latency_ms": 4182.53145000017,
+          "usage": {
+            "input_tokens": 1245,
+            "output_tokens": 241,
+            "total_tokens": 1486
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 4182.53145000017,
+    "cost_usd": null
+  },
+  {
+    "id": "assessment-02",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests a bulk export feature for audit logs.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer would like bulk export for audit logs.",
+        "They report that it would save their compliance-heavy organization hours every month."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:04.288293+00:00",
+      "accepted_attempt_id": "2b2af720-bf9d-4a47-83e1-57c3341f755a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "2b2af720-bf9d-4a47-83e1-57c3341f755a",
+          "error": null,
+          "latency_ms": 2944.757055000082,
+          "usage": {
+            "input_tokens": 1238,
+            "output_tokens": 133,
+            "total_tokens": 1371
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2944.757055000082,
+    "cost_usd": null
+  },
+  {
+    "id": "assessment-03",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that invoice #8821 shows a $1,240 charge despite a contract rate of $980 per month.",
+      "entities": [
+        {
+          "type": "invoice_number",
+          "value": "#8821",
+          "evidence": "Invoice #8821"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1240",
+          "currency": "$",
+          "period": null,
+          "components": null,
+          "evidence": [
+            "Invoice #8821 shows a charge of $1,240"
+          ]
+        },
+        "expected": {
+          "amount": "980",
+          "currency": "$",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "our contract rate is $980/month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a $1,240 charge on invoice #8821, compared with a contract rate of $980 per month.",
+        "They request an investigation into the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Billing",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:08.133634+00:00",
+      "accepted_attempt_id": "ea903b44-6018-4e74-9bbe-71ea30916a00"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "ea903b44-6018-4e74-9bbe-71ea30916a00",
+          "error": null,
+          "latency_ms": 3822.487651001211,
+          "usage": {
+            "input_tokens": 1237,
+            "output_tokens": 243,
+            "total_tokens": 1480
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3822.487651001211,
+    "cost_usd": null
+  },
+  {
+    "id": "assessment-04",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer asks how to set up SSO with Okta while evaluating a switch in authentication provider.",
+      "entities": [
+        {
+          "type": "product_or_integration",
+          "value": "Okta",
+          "evidence": "SSO with Okta"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks whether SSO can be set up with Okta.",
+        "They are evaluating a switch in authentication provider."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:11.598672+00:00",
+      "accepted_attempt_id": "41addb7c-aee0-471f-aa32-b202d591ce64"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "41addb7c-aee0-471f-aa32-b202d591ce64",
+          "error": null,
+          "latency_ms": 3438.14348900014,
+          "usage": {
+            "input_tokens": 1243,
+            "output_tokens": 163,
+            "total_tokens": 1406
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3438.14348900014,
+    "cost_usd": null
+  },
+  {
+    "id": "assessment-05",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.97,
+      "core_issue": "The customer reports that the dashboard stopped loading for multiple users around 2pm EST.",
+      "entities": [
+        {
+          "type": "time_expression",
+          "value": "around 2pm EST",
+          "evidence": "around 2pm EST"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "Your dashboard stopped loading for us",
+            "Multiple users affected."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that the dashboard stopped loading around 2pm EST and multiple users are affected.",
+        "The customer says they checked their end and believes the issue is on the service side."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:14.779460+00:00",
+      "accepted_attempt_id": "cf251983-2ae1-4059-8dce-70f2fdc64184"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "cf251983-2ae1-4059-8dce-70f2fdc64184",
+          "error": null,
+          "latency_ms": 3153.988088000915,
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 187,
+            "total_tokens": 1422
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3153.988088000915,
+    "cost_usd": null
+  },
+  {
+    "id": "development-01",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that all employees cannot open the dashboard and that the service is down.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "All employees cannot open the dashboard; service is down."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that all employees cannot open the dashboard.",
+        "They say the service is down."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:18.072927+00:00",
+      "accepted_attempt_id": "972c39d7-08c1-4f03-9056-e08f9fc6689a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "972c39d7-08c1-4f03-9056-e08f9fc6689a",
+          "error": null,
+          "latency_ms": 3245.5357459984953,
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 146,
+            "total_tokens": 1367
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3245.5357459984953,
+    "cost_usd": null
+  },
+  {
+    "id": "development-02",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "confidence": 0.73,
+      "core_issue": "The customer reports that all employees previously could not open the dashboard, but service is now restored.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "service is restored"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that all employees could not open the dashboard.",
+        "Service is now restored."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:21.122916+00:00",
+      "accepted_attempt_id": "3100280d-5656-4feb-81fc-3c4e1a3cf6d6"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "3100280d-5656-4feb-81fc-3c4e1a3cf6d6",
+          "error": null,
+          "latency_ms": 3025.4359419996035,
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 137,
+            "total_tokens": 1359
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3025.4359419996035,
+    "cost_usd": null
+  },
+  {
+    "id": "development-03",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.98,
+      "core_issue": "The customer asks how to download the incident report for a dashboard failure last year.",
+      "entities": [
+        {
+          "type": "time_expression",
+          "value": "Last year",
+          "evidence": "Last year"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "Last year our dashboard stopped working"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that their dashboard stopped working last year.",
+        "They ask how to download the incident report; current dashboard status is not stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:24.354590+00:00",
+      "accepted_attempt_id": "e0273449-2ef5-40db-b117-96bd4d919f8e"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "e0273449-2ef5-40db-b117-96bd4d919f8e",
+          "error": null,
+          "latency_ms": 3211.4974150008493,
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 164,
+            "total_tokens": 1389
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3211.4974150008493,
+    "cost_usd": null
+  },
+  {
+    "id": "development-04",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer asks how to change the dashboard's timezone and states that the dashboard is not down.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "The dashboard is not down."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks how to change the dashboard's timezone.",
+        "They state that the dashboard is not down."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:27.231863+00:00",
+      "accepted_attempt_id": "64ad5e20-069b-4bd8-9947-47dae3f0be3e"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "64ad5e20-069b-4bd8-9947-47dae3f0be3e",
+          "error": null,
+          "latency_ms": 2845.067229000051,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 143,
+            "total_tokens": 1366
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2845.067229000051,
+    "cost_usd": null
+  },
+  {
+    "id": "development-05",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "High",
+      "confidence": 0.76,
+      "core_issue": "The customer reports that the dashboard may be down but cannot determine whether anyone else is affected.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": null,
+          "evidence": [
+            "The dashboard may be down",
+            "I cannot tell whether this affects anyone else"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that the dashboard may be down.",
+        "The scope is unresolved, and the customer cannot tell whether others are affected."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "outage_scope_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:30.492528+00:00",
+      "accepted_attempt_id": "89a5370c-94d2-4d46-addc-ee623f1e3528"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "89a5370c-94d2-4d46-addc-ee623f1e3528",
+          "error": null,
+          "latency_ms": 3237.718854999912,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 155,
+            "total_tokens": 1381
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3237.718854999912,
+    "cost_usd": null
+  },
+  {
+    "id": "development-06",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the monthly USD invoice of 1499.99 differs from the monthly USD contract amount of 1000 and requests an investigation.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1499.99",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "The monthly USD invoice is 1499.99"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "the monthly USD contract is 1000"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a monthly USD invoice of 1499.99 against a monthly USD contract of 1000.",
+        "They request an investigation of the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:34.593565+00:00",
+      "accepted_attempt_id": "ddc3ba4d-2cd8-41fb-a12a-d4ae454b511a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "ddc3ba4d-2cd8-41fb-a12a-d4ae454b511a",
+          "error": null,
+          "latency_ms": 4079.4363069999235,
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 227,
+            "total_tokens": 1462
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 4079.4363069999235,
+    "cost_usd": null
+  },
+  {
+    "id": "development-07",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the monthly USD invoice is 1500, while the monthly USD contract is 1000, and requests an investigation.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1500",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "The monthly USD invoice is 1500"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "the monthly USD contract is 1000"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a monthly USD invoice of 1500 against a monthly USD contract of 1000.",
+        "They request an investigation of the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:38.263569+00:00",
+      "accepted_attempt_id": "7c532ca4-e761-4a4b-975f-3974a1cab6e9"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "7c532ca4-e761-4a4b-975f-3974a1cab6e9",
+          "error": null,
+          "latency_ms": 3639.1789989993413,
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 219,
+            "total_tokens": 1452
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3639.1789989993413,
+    "cost_usd": null
+  },
+  {
+    "id": "development-08",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the monthly invoice is USD 1500.01 while the monthly contract is USD 1000, and requests investigation of the discrepancy.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1500.01",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "monthly USD invoice is 1500.01"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "monthly USD contract is 1000"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a monthly USD invoice of 1500.01 against a monthly USD contract of 1000.",
+        "They request an investigation of the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:41.865135+00:00",
+      "accepted_attempt_id": "062f5770-cce9-4b73-a6c3-d0c68a68c22a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "062f5770-cce9-4b73-a6c3-d0c68a68c22a",
+          "error": null,
+          "latency_ms": 3579.9514400005137,
+          "usage": {
+            "input_tokens": 1235,
+            "output_tokens": 226,
+            "total_tokens": 1461
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3579.9514400005137,
+    "cost_usd": null
+  },
+  {
+    "id": "development-09",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer asks for an investigation into a discrepancy between a monthly USD invoice of 900 and a monthly USD contract amount of 1000.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "900",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "The monthly USD invoice is 900"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "the monthly USD contract is 1000"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a monthly USD invoice of 900 and a monthly USD contract amount of 1000.",
+        "They request an investigation into the discrepancy."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:45.586099+00:00",
+      "accepted_attempt_id": "bbb87b7c-9850-4c8e-9f36-feb16d8d50fe"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "bbb87b7c-9850-4c8e-9f36-feb16d8d50fe",
+          "error": null,
+          "latency_ms": 3689.365246998932,
+          "usage": {
+            "input_tokens": 1232,
+            "output_tokens": 217,
+            "total_tokens": 1449
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3689.365246998932,
+    "cost_usd": null
+  },
+  {
+    "id": "development-10",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer requests investigation of a billing discrepancy, although the reported monthly USD invoice and contract amounts are both 1000.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "monthly USD invoice is 1000"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "monthly USD contract is 1000"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a monthly USD invoice of 1000 and a monthly USD contract amount of 1000.",
+        "The customer requests investigation of a discrepancy but does not specify its nature."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:49.347353+00:00",
+      "accepted_attempt_id": "bd879423-a157-4b4e-89cd-faa46974cc6d"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "bd879423-a157-4b4e-89cd-faa46974cc6d",
+          "error": null,
+          "latency_ms": 3716.679851999288,
+          "usage": {
+            "input_tokens": 1233,
+            "output_tokens": 220,
+            "total_tokens": 1453
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3716.679851999288,
+    "cost_usd": null
+  },
+  {
+    "id": "development-11",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that every employee is unable to access the service.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "Every employee is unable to access the service."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that every employee is currently unable to access the service.",
+        "The reported impact is a broad multi-user availability failure."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:52.528638+00:00",
+      "accepted_attempt_id": "d87be3d7-eff5-4ae8-9a9f-6f1920368860"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "d87be3d7-eff5-4ae8-9a9f-6f1920368860",
+          "error": null,
+          "latency_ms": 3092.204321999816,
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 147,
+            "total_tokens": 1375
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3092.204321999816,
+    "cost_usd": null
+  },
+  {
+    "id": "development-12",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer wants help understanding how access roles work.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks how access roles work.",
+        "No disruption or deadline is mentioned."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:55.070497+00:00",
+      "accepted_attempt_id": "5a7348b5-37bd-46ab-8f0f-e20abefc1d00"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "5a7348b5-37bd-46ab-8f0f-e20abefc1d00",
+          "error": null,
+          "latency_ms": 2475.281916998938,
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 123,
+            "total_tokens": 1347
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2475.281916998938,
+    "cost_usd": null
+  },
+  {
+    "id": "development-13",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests offline editing.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests the addition of offline editing.",
+        "No urgency or disruption is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:13:57.636388+00:00",
+      "accepted_attempt_id": "c9dc5595-de47-4bf5-b380-b1d7bcf2231b"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "c9dc5595-de47-4bf5-b380-b1d7bcf2231b",
+          "error": null,
+          "latency_ms": 2516.488400000526,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 120,
+            "total_tokens": 1343
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2516.488400000526,
+    "cost_usd": null
+  },
+  {
+    "id": "development-14",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "High",
+      "confidence": 0.95,
+      "core_issue": "The customer reports that saving document edits crashes.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that saving edits crashes.",
+        "The customer distinguishes this issue from a Billing routing instruction in the uploaded document."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:00.281737+00:00",
+      "accepted_attempt_id": "de59510f-16cc-49a7-9408-b76ca3a23f00"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "de59510f-16cc-49a7-9408-b76ca3a23f00",
+          "error": null,
+          "latency_ms": 2616.0319709997566,
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 130,
+            "total_tokens": 1358
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2616.0319709997566,
+    "cost_usd": null
+  },
+  {
+    "id": "development-15",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that all users are currently locked out and asks that the issue not be escalated.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "all users are currently locked out"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that all users are currently locked out.",
+        "The customer asks that the issue not be escalated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:03.199507+00:00",
+      "accepted_attempt_id": "8df1b695-0857-49e7-981b-8d7cb163a560"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "8df1b695-0857-49e7-981b-8d7cb163a560",
+          "error": null,
+          "latency_ms": 2887.7646939999977,
+          "usage": {
+            "input_tokens": 1222,
+            "output_tokens": 148,
+            "total_tokens": 1370
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2887.7646939999977,
+    "cost_usd": null
+  },
+  {
+    "id": "development-16",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.3,
+      "core_issue": "The customer requests help but does not specify the issue.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": true,
+          "evidence": [
+            "Help."
+          ]
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests help.",
+        "The issue is unspecified."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "insufficient_information"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:05.567633+00:00",
+      "accepted_attempt_id": "02d19d97-7f23-4ba3-b322-1f93c8735853"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "02d19d97-7f23-4ba3-b322-1f93c8735853",
+          "error": null,
+          "latency_ms": 2347.751645000244,
+          "usage": {
+            "input_tokens": 1212,
+            "output_tokens": 121,
+            "total_tokens": 1333
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2347.751645000244,
+    "cost_usd": null
+  },
+  {
+    "id": "development-17",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.94,
+      "core_issue": "The customer requests a refund for a duplicate payment and a fix for a broken export, describing both as equally urgent.",
+      "entities": [],
+      "urgency": {
+        "level": "High",
+        "evidence": [
+          "both are equally urgent"
+        ]
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": true,
+          "evidence": [
+            "refund a duplicate payment",
+            "fix the broken export",
+            "both are equally urgent"
+          ]
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": [
+            "duplicate payment"
+          ]
+        },
+        "expected": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": []
+        }
+      },
+      "summary_sentences": [
+        "The customer requests a refund for a reported duplicate payment.",
+        "They also report a broken export and say both requests are equally urgent."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved",
+        "conflicting_intents"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:09.119521+00:00",
+      "accepted_attempt_id": "e0a0bfe0-49fe-4b29-b0ba-7b62511ef0d1"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "e0a0bfe0-49fe-4b29-b0ba-7b62511ef0d1",
+          "error": null,
+          "latency_ms": 3529.4646580005065,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 212,
+            "total_tokens": 1438
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3529.4646580005065,
+    "cost_usd": null
+  },
+  {
+    "id": "development-18",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests a saved export preset and reports that export is slow.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that export is slow.",
+        "Their only request is for a saved export preset."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:11.639525+00:00",
+      "accepted_attempt_id": "57695b42-3ac0-4ed8-9660-a85c31de59d5"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "57695b42-3ac0-4ed8-9660-a85c31de59d5",
+          "error": null,
+          "latency_ms": 2495.355973000187,
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 130,
+            "total_tokens": 1354
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2495.355973000187,
+    "cost_usd": null
+  },
+  {
+    "id": "development-19",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer asks how to revoke a shared link.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests instructions for revoking a shared link.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:14.115784+00:00",
+      "accepted_attempt_id": "f7adfe6c-7a18-4ba1-8a79-a4e1a2df0e38"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "f7adfe6c-7a18-4ba1-8a79-a4e1a2df0e38",
+          "error": null,
+          "latency_ms": 2455.640364998544,
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 126,
+            "total_tokens": 1346
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2455.640364998544,
+    "cost_usd": null
+  },
+  {
+    "id": "development-20",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.97,
+      "core_issue": "The customer reports that the delete button removes the wrong folder.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that the delete button removes the wrong folder.",
+        "The extent of any data loss is unspecified."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:16.780888+00:00",
+      "accepted_attempt_id": "024cb147-e74b-412d-813d-f1f6cba30dbd"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "024cb147-e74b-412d-813d-f1f6cba30dbd",
+          "error": null,
+          "latency_ms": 2645.532844000627,
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 131,
+            "total_tokens": 1349
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2645.532844000627,
+    "cost_usd": null
+  },
+  {
+    "id": "development-21",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests nested folders for organizing archives.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests support for nested folders to organize archives.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:19.649743+00:00",
+      "accepted_attempt_id": "962cd6a2-0c8c-4282-a026-9dd1efcb7844"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "962cd6a2-0c8c-4282-a026-9dd1efcb7844",
+          "error": null,
+          "latency_ms": 2846.8443189995014,
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 125,
+            "total_tokens": 1343
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2846.8443189995014,
+    "cost_usd": null
+  },
+  {
+    "id": "development-22",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.96,
+      "core_issue": "The customer reports that search results omit newly created documents after indexing completes.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that newly created documents are missing from search results even after indexing completes.",
+        "The scope and duration of the issue are not specified."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:22.510935+00:00",
+      "accepted_attempt_id": "a093eb46-6325-42cb-9a42-d9e4c4dd4d73"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "a093eb46-6325-42cb-9a42-d9e4c4dd4d73",
+          "error": null,
+          "latency_ms": 2834.205301000111,
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 140,
+            "total_tokens": 1361
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2834.205301000111,
+    "cost_usd": null
+  },
+  {
+    "id": "development-23",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.98,
+      "core_issue": "The customer asks whether the retention setting applies to archived documents.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks whether the retention setting applies to archived documents.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:25.274021+00:00",
+      "accepted_attempt_id": "9fa89f9c-d3c8-42f8-8436-17a5668f5b44"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "9fa89f9c-d3c8-42f8-8436-17a5668f5b44",
+          "error": null,
+          "latency_ms": 2730.1579790000687,
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 129,
+            "total_tokens": 1348
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2730.1579790000687,
+    "cost_usd": null
+  },
+  {
+    "id": "development-24",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports an apparent duplicate card payment and does not know the expected amount.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": [
+            "A duplicate payment appears on my card"
+          ]
+        },
+        "expected": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": [
+            "I do not know the expected amount"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an apparent duplicate payment on their card.",
+        "The customer does not know the expected amount."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:28.533857+00:00",
+      "accepted_attempt_id": "d0e7d27b-b566-4e13-a84d-a6b3ecd6ed60"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "d0e7d27b-b566-4e13-a84d-a6b3ecd6ed60",
+          "error": null,
+          "latency_ms": 3238.4679070000857,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 194,
+            "total_tokens": 1420
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3238.4679070000857,
+    "cost_usd": null
+  },
+  {
+    "id": "development-25",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer reports receiving duplicate notifications for each share event.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that notifications arrive twice for each share event.",
+        "No broader service outage or explicit urgency is reported."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:31.119721+00:00",
+      "accepted_attempt_id": "7d5ee589-33bd-462d-8886-158e64639efa"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "7d5ee589-33bd-462d-8886-158e64639efa",
+          "error": null,
+          "latency_ms": 2563.0600180011243,
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 131,
+            "total_tokens": 1349
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2563.0600180011243,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-01",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the invoice is EUR 1800 while the contract specifies EUR 1000 for the same month.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice EUR 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract EUR 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of EUR 1800 versus a contract amount of EUR 1000 for the same month.",
+        "No urgency was stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:34.711123+00:00",
+      "accepted_attempt_id": "2d9cbad5-a87b-4267-87d4-dc40eb07428a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "2d9cbad5-a87b-4267-87d4-dc40eb07428a",
+          "error": null,
+          "latency_ms": 3570.125039999766,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 219,
+            "total_tokens": 1445
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3570.125039999766,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-02",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that an invoice for USD 1800 differs from a contract amount of EUR 1000 for the same month.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice USD 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract EUR 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of USD 1800 versus a contract amount of EUR 1000 for the same month.",
+        "The amounts are in different currencies."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:38.184404+00:00",
+      "accepted_attempt_id": "f7bfe26c-7540-405d-982d-81aff617851f"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "f7bfe26c-7540-405d-982d-81aff617851f",
+          "error": null,
+          "latency_ms": 3446.776343000238,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 223,
+            "total_tokens": 1449
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3446.776343000238,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-03",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that an invoice of 1800 exceeds the contract amount of 1000 for the same month, with no currency specified.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": null,
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": null,
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of 1800 versus a contract amount of 1000 for the same month.",
+        "No currency is shown."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:41.984383+00:00",
+      "accepted_attempt_id": "84bfde37-1657-440b-bfd0-84ecca7b966b"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "84bfde37-1657-440b-bfd0-84ecca7b966b",
+          "error": null,
+          "latency_ms": 3777.237618000072,
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 219,
+            "total_tokens": 1448
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3777.237618000072,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-04",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.97,
+      "core_issue": "The customer reports an invoice of USD 12000 annually versus a contract amount of USD 1000 monthly.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "12000",
+          "currency": "USD",
+          "period": "annual",
+          "components": null,
+          "evidence": [
+            "Invoice USD 12000 annually"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract USD 1000 monthly"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer compares an invoice of USD 12000 annually with a contract amount of USD 1000 monthly.",
+        "No urgency or service disruption is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:46.688163+00:00",
+      "accepted_attempt_id": "c23c5e39-24b0-4c3a-a71c-62405d86d5da"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "c23c5e39-24b0-4c3a-a71c-62405d86d5da",
+          "error": null,
+          "latency_ms": 4680.758009000783,
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 318,
+            "total_tokens": 1542
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 4680.758009000783,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-05",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.92,
+      "core_issue": "The customer reports an invoice of USD 1800 that includes storage, compared with a contract amount of USD 1000 covering seats only.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "USD",
+          "period": "invoice",
+          "components": "storage",
+          "evidence": [
+            "Invoice USD 1800 includes storage"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": null,
+          "components": "seats only",
+          "evidence": [
+            "contract USD 1000 covers seats only"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of USD 1800 that includes storage.",
+        "The contract amount is USD 1000 and covers seats only, so the amounts have different stated scopes."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:50.314018+00:00",
+      "accepted_attempt_id": "df2d1b2e-07b2-43b2-80a5-043427a9c5c6"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "df2d1b2e-07b2-43b2-80a5-043427a9c5c6",
+          "error": null,
+          "latency_ms": 3601.533756000208,
+          "usage": {
+            "input_tokens": 1228,
+            "output_tokens": 226,
+            "total_tokens": 1454
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3601.533756000208,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-06",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "High",
+      "confidence": 0.94,
+      "core_issue": "The customer reports that shared links return a blank page for their account.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "for my account"
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that shared links return a blank page for their account.",
+        "No broader outage or specific urgency is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:52.957430+00:00",
+      "accepted_attempt_id": "458dac7c-0b74-43de-abc5-cd5397c04b3e"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "458dac7c-0b74-43de-abc5-cd5397c04b3e",
+          "error": null,
+          "latency_ms": 2617.1235719994,
+          "usage": {
+            "input_tokens": 1220,
+            "output_tokens": 138,
+            "total_tokens": 1358
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2617.1235719994,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-07",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests configurable expiry for public links.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks for public link expiry to be configurable.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:55.406696+00:00",
+      "accepted_attempt_id": "abe9489f-3983-4421-b88a-97f7c14651cc"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "abe9489f-3983-4421-b88a-97f7c14651cc",
+          "error": null,
+          "latency_ms": 2427.618674999394,
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 125,
+            "total_tokens": 1344
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2427.618674999394,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-08",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer wants guidance on configuring Okta provisioning.",
+      "entities": [
+        {
+          "type": "product_or_integration",
+          "value": "Okta",
+          "evidence": "Okta provisioning"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks how to configure Okta provisioning.",
+        "No urgency or service disruption is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:14:58.265320+00:00",
+      "accepted_attempt_id": "9db4b05b-1232-4e8c-b544-f037084e2152"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "9db4b05b-1232-4e8c-b544-f037084e2152",
+          "error": null,
+          "latency_ms": 2829.381494999325,
+          "usage": {
+            "input_tokens": 1218,
+            "output_tokens": 146,
+            "total_tokens": 1364
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2829.381494999325,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-09",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.68,
+      "core_issue": "The customer asks whether public links are broken for everyone but cannot determine the scope.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": null,
+          "evidence": [
+            "Are public links broken for everyone?",
+            "I cannot determine the scope."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports a possible problem with public links.",
+        "They cannot determine whether the problem affects everyone."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "outage_scope_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:01.133361+00:00",
+      "accepted_attempt_id": "0543f26b-70a8-41f1-8fa0-ea7ad3b15168"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "0543f26b-70a8-41f1-8fa0-ea7ad3b15168",
+          "error": null,
+          "latency_ms": 2776.002881999375,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 147,
+            "total_tokens": 1370
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2776.002881999375,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-10",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.94,
+      "core_issue": "The customer reports broken public links and also requests a subscription refund, with neither request taking precedence.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": true,
+          "evidence": [
+            "fix broken public links",
+            "refund my subscription",
+            "neither request takes precedence"
+          ]
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks for broken public links to be fixed.",
+        "They also request a subscription refund and state that neither request takes precedence."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "conflicting_intents"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:04.359360+00:00",
+      "accepted_attempt_id": "206dfb8d-f601-4a93-8f58-3826b80633e4"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "206dfb8d-f601-4a93-8f58-3826b80633e4",
+          "error": null,
+          "latency_ms": 3188.578728999346,
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 157,
+            "total_tokens": 1382
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3188.578728999346,
+    "cost_usd": null
+  },
+  {
+    "id": "test-01",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that all employees currently see a maintenance screen and cannot access any workspace.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": true,
+          "evidence": [
+            "Every employee currently sees a maintenance screen and cannot access any workspace."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that every employee currently sees a maintenance screen.",
+        "No employee can access any workspace."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:07.273223+00:00",
+      "accepted_attempt_id": "98a39cfa-ff23-4361-88c7-e40c920bfb03"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "98a39cfa-ff23-4361-88c7-e40c920bfb03",
+          "error": null,
+          "latency_ms": 2879.509888998655,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 149,
+            "total_tokens": 1372
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2879.509888998655,
+    "cost_usd": null
+  },
+  {
+    "id": "test-02",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.48,
+      "core_issue": "Employees previously saw a maintenance screen, but access is now restored; no current issue or requested action is specified.",
+      "entities": [
+        {
+          "type": "time_expression",
+          "value": "earlier",
+          "evidence": "Every employee saw a maintenance screen earlier"
+        },
+        {
+          "type": "time_expression",
+          "value": "now",
+          "evidence": "access is now restored"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": [
+            "Every employee saw a maintenance screen earlier, but access is now restored."
+          ]
+        },
+        "insufficient_information": {
+          "value": true,
+          "evidence": [
+            "Every employee saw a maintenance screen earlier, but access is now restored."
+          ]
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that every employee saw a maintenance screen earlier, but access is now restored.",
+        "No current issue or requested action is specified."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "insufficient_information"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:10.818512+00:00",
+      "accepted_attempt_id": "4aab18e8-8a03-43df-9883-9f04241bd4cc"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "4aab18e8-8a03-43df-9883-9f04241bd4cc",
+          "error": null,
+          "latency_ms": 3515.0315850005427,
+          "usage": {
+            "input_tokens": 1224,
+            "output_tokens": 214,
+            "total_tokens": 1438
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3515.0315850005427,
+    "cost_usd": null
+  },
+  {
+    "id": "test-03",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.94,
+      "core_issue": "The customer reports that an upload spinner never completes for a single file on their phone.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that an upload spinner never completes on their phone.",
+        "The reported issue affects a single file."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:13.547415+00:00",
+      "accepted_attempt_id": "33a04cd0-e6d8-4c4a-8477-613ef4b89fc6"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "33a04cd0-e6d8-4c4a-8477-613ef4b89fc6",
+          "error": null,
+          "latency_ms": 2703.1940140004735,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 136,
+            "total_tokens": 1359
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2703.1940140004735,
+    "cost_usd": null
+  },
+  {
+    "id": "test-04",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests biometric unlocking for the mobile app.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests biometric unlocking in the mobile app.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:16.584820+00:00",
+      "accepted_attempt_id": "1ef3c06b-efa5-4ee1-ba77-166a754b0689"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "1ef3c06b-efa5-4ee1-ba77-166a754b0689",
+          "error": null,
+          "latency_ms": 3010.3315230007865,
+          "usage": {
+            "input_tokens": 1219,
+            "output_tokens": 125,
+            "total_tokens": 1344
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3010.3315230007865,
+    "cost_usd": null
+  },
+  {
+    "id": "test-05",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer asks how to remove an old phone from trusted devices.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer wants guidance on removing an old phone from trusted devices.",
+        "No disruption or deadline is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:19.471143+00:00",
+      "accepted_attempt_id": "b5218970-b04c-4ff5-ad09-4efd8bce2751"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "b5218970-b04c-4ff5-ad09-4efd8bce2751",
+          "error": null,
+          "latency_ms": 2859.2657529989083,
+          "usage": {
+            "input_tokens": 1221,
+            "output_tokens": 131,
+            "total_tokens": 1352
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2859.2657529989083,
+    "cost_usd": null
+  },
+  {
+    "id": "test-06",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports a weekly USD charge of 750.01 instead of the agreed weekly USD 250 and requests a correction.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "750.01",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "weekly USD charge is 750.01"
+          ]
+        },
+        "expected": {
+          "amount": "250",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "agreed weekly USD 250"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a weekly charge of USD 750.01 against an agreed weekly USD 250.",
+        "They request that the charge be corrected."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:23.509545+00:00",
+      "accepted_attempt_id": "ff063ec5-1dab-4a5c-98b3-45f1b166687b"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "ff063ec5-1dab-4a5c-98b3-45f1b166687b",
+          "error": null,
+          "latency_ms": 4003.0194419996405,
+          "usage": {
+            "input_tokens": 1231,
+            "output_tokens": 213,
+            "total_tokens": 1444
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 4003.0194419996405,
+    "cost_usd": null
+  },
+  {
+    "id": "test-07",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports a weekly USD 750 charge against an agreed weekly USD 250 and requests correction.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "750",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "weekly USD charge is 750"
+          ]
+        },
+        "expected": {
+          "amount": "250",
+          "currency": "USD",
+          "period": "weekly",
+          "components": null,
+          "evidence": [
+            "agreed weekly USD 250"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports a weekly USD 750 charge against an agreed weekly USD 250.",
+        "They request that the charge be corrected."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:27.375521+00:00",
+      "accepted_attempt_id": "2610535f-ba09-4cc5-b955-0ab00b8ea92a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "2610535f-ba09-4cc5-b955-0ab00b8ea92a",
+          "error": null,
+          "latency_ms": 3814.18592099908,
+          "usage": {
+            "input_tokens": 1229,
+            "output_tokens": 201,
+            "total_tokens": 1430
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3814.18592099908,
+    "cost_usd": null
+  },
+  {
+    "id": "test-08",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer reports an unexpected fee on a receipt that does not show the fee amount.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": "fee",
+          "evidence": [
+            "unexpected fee",
+            "receipt does not show the amount"
+          ]
+        },
+        "expected": {
+          "amount": null,
+          "currency": null,
+          "period": null,
+          "components": null,
+          "evidence": []
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an unexpected fee on a receipt.",
+        "The receipt does not show the fee amount."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:31.336014+00:00",
+      "accepted_attempt_id": "3e13b587-3504-4bc9-a2d4-a2afc69e7b96"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "3e13b587-3504-4bc9-a2d4-a2afc69e7b96",
+          "error": null,
+          "latency_ms": 3897.827092998341,
+          "usage": {
+            "input_tokens": 1226,
+            "output_tokens": 188,
+            "total_tokens": 1414
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3897.827092998341,
+    "cost_usd": null
+  },
+  {
+    "id": "test-09",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.35,
+      "core_issue": "The customer reports an unspecified problem with their workspace but cannot describe it.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": true,
+          "evidence": [
+            "Something about my workspace is wrong, but I cannot describe what."
+          ]
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that something is wrong with their workspace.",
+        "The issue and its impact are unspecified."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "insufficient_information"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:34.635882+00:00",
+      "accepted_attempt_id": "4ca667c9-a1f1-4333-aa68-775eb80af5a0"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "4ca667c9-a1f1-4333-aa68-775eb80af5a0",
+          "error": null,
+          "latency_ms": 3273.75389000008,
+          "usage": {
+            "input_tokens": 1223,
+            "output_tokens": 144,
+            "total_tokens": 1367
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3273.75389000008,
+    "cost_usd": null
+  },
+  {
+    "id": "test-10",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Low",
+      "confidence": 0.7,
+      "core_issue": "The customer requests a refund and a new approval workflow, giving both requests equal importance.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": true,
+          "evidence": [
+            "a refund and a new approval workflow",
+            "both requests matter equally"
+          ]
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests a refund but does not describe an incorrect charge.",
+        "They also request a new approval workflow and say both requests matter equally."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "conflicting_intents"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v3",
+      "prompt_sha256": "063c69ace6138f60d71d5385253bfd65313cd8f788e4735619af5f02934d8392",
+      "schema_sha256": "e76bdf8c9baf1c07a4a1265277bb078ba39d033af6db307afa6d43f91418654e",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T14:15:37.641870+00:00",
+      "accepted_attempt_id": "b57793f1-b005-407b-996e-225ec00b553c"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "b57793f1-b005-407b-996e-225ec00b553c",
+          "error": null,
+          "latency_ms": 2981.899603999409,
+          "usage": {
+            "input_tokens": 1225,
+            "output_tokens": 155,
+            "total_tokens": 1380
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2981.899603999409,
+    "cost_usd": null
+  }
+]

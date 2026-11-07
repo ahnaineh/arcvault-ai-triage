@@ -1,0 +1,26 @@
+{
+  "prompt": "be808742fa5a15b456dc882cf3eba4e7da7e7f041620a4441bb32d41dcb7bbd3",
+  "schema": "084b2247020b5bb5a87f100556beca1215f140a657323ed3122a51c58e99e466",
+  "dataset": "23d9d32c8fbb58638cee2bb2ef0418b28cb0119c64ab66352a5189dd18157086",
+  "model": "gpt-6.1-terra",
+  "code_files": {
+    "apps/triage/__init__.py": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+    "apps/triage/acceptance.py": "8f9d25b8d681e438dea7730ecee6335aaa125608cc6ca32725587dced9868b15",
+    "apps/triage/export.py": "cce36394e9a71c4f1c2537896c8052a2dbc16a0703cb3acf963f38206101f254",
+    "apps/triage/management/commands/export_samples.py": "a689f97888bcba92ecbc2eca1aed05e0c3a7709c3300dd15eb73895118f46cff",
+    "apps/triage/management/commands/load_samples.py": "b663e202c06a449ca30d61418d496d44fed386a9f394ae4e8212a74bd1cd11d7",
+    "apps/triage/management/commands/run_acceptance.py": "8b701e562d1f83325a1f464576aca945e2fc7db9d63d488331490b4c7e94cf7d",
+    "apps/triage/management/commands/run_benchmark.py": "372c175a60fb7eec55ec5652a7fc994267a4306101f14decfa21a4462d2528dc",
+    "apps/triage/migrations/0001_initial.py": "ea3b6016deaad0440435729c334c59ebab2002cb10fe7fecea6f50c9ac64d00d",
+    "apps/triage/migrations/__init__.py": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+    "apps/triage/models.py": "218f46eb8c76e8f36a305a6fc6277db069a0a455a91d3b7b54d174415307595c",
+    "apps/triage/policy.py": "63ff9f5a923175259f71b445fdf77923a4f470aaf23948894c254ae75300f565",
+    "apps/triage/providers/openai_provider.py": "df73bf93c464d8377b2b897c34c227b25956b24f5fe734ed9600d26f1fa5c317",
+    "apps/triage/schemas.py": "11a9d4ca545caa5a5a6f85169981cd3e1fe70d2cfaf558d3d118230a7423af8b",
+    "apps/triage/tasks.py": "c15d592a80184fdc9cca090aa1b5d362db284324c7c03aba547c1cabb0021e50",
+    "evals/__init__.py": "295122a71906915ffd4fe30be272951a6e7161c1e33e20adfb405bc149d259a3",
+    "evals/export_adapter.py": "6d808bb4e9f12b054397339df636f11751eb77e3d6d40d9f6989ff10624a8b15",
+    "evals/score.py": "f0a674ae30f648890a8d724578797da9e250dddb5b7050eb2c31ce16730476b6"
+  },
+  "code": "f25c59dbb6e5e9590b4a7cfce1c2a9acd6314f93"
+}

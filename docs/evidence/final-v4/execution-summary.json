@@ -1,0 +1,25 @@
+{
+  "model": "gpt-6.1-terra",
+  "prompt": "triage_v4",
+  "prompt_sha256": "57a3d9d3b7611f8b95aa7914a72d3c08ec2a10ddf3b007b215d66239f914bba0",
+  "set_status": "reused 50-case comparison; not a fresh holdout",
+  "calls": 50,
+  "retries": 0,
+  "validation_failures": 0,
+  "usage": {
+    "input_tokens": 47242,
+    "output_tokens": 8448
+  },
+  "conservative_usage_estimate": "0.6590540",
+  "prior_accounted": "39.33219774",
+  "total_accounted": "39.99125174",
+  "peak_accounted": "51.59604274",
+  "ceiling": "83",
+  "actual_billed_cost": null,
+  "latency_ms": {
+    "p50": 2919.0297819995976,
+    "p95": 4673.083701998621
+  },
+  "raw_to_export_to_prediction_to_score": "exact equality verified",
+  "manual_summary_review": "assistant review of five supplied examples only; independent human review pending"
+}

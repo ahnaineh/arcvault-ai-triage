@@ -111,3 +111,15 @@ Compose passes raw `POSTGRES_PASSWORD` separately to PostgreSQL and Django, so
 URL delimiters in passwords are preserved. Django also accepts `POSTGRES_USER`,
 `POSTGRES_DB`, `POSTGRES_HOST`, and `POSTGRES_PORT`. A nonempty `DATABASE_URL`
 overrides these settings for local development/tests; URL passwords must be encoded.
+
+### Application model comparison
+
+The application retains `gpt-6.1-terra` and now defaults to versioned prompt
+`triage_v4` (`OPENAI_PROMPT_VERSION` can select `triage_v1`, `triage_v2`, or
+`triage_v3`, or `triage_v4` for reproduction). The [Luna high comparison](docs/evidence/comparison-v3/README.md)
+records100 real paired application calls, exact identities, failures, reasoning
+usage, latency and cost estimates. This is a reused comparison set, not a new
+holdout; earlier frozen results remain in [the original benchmark](docs/evidence/benchmark-20261107/README.md).
+`manage.py compare_models` uses the existing durable runner and requires explicit
+`--execute`; read its protocol before any paid run to carry current reservations
+forward. API billing totals remain unknown.
