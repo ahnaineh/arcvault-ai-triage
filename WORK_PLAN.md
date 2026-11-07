@@ -404,3 +404,17 @@ prompt labels and exported hashes before final freeze; originals remain unchange
   review is disclosed separately; no synthetic human-review scores were supplied.
 
 This checkpoint completes benchmark execution, not production/submission acceptance.
+
+## User-authorized Luna comparison
+
+V3 consolidates the written priority rubric (review is independent), active outage
+precedence, error-code extraction, general current-action intent, first-mentioned
+mixed-intent tie-break and nonnumeric discrepancy boundaries from Astra/development
+review. V1/V2 and original frozen metrics remain unchanged. Dataset/scorer labels
+are unchanged despite known rubric conflicts. No final-test errors used to tune v3.
+Official API docs verify gpt-6-luna, high reasoning, 1.05M context, Responses and
+structured outputs; model page and pricing page read 2026-11-07. Comparing Luna
+high vs Terra none on identical v3/schema/all50, explicitly reused comparison set.
+Output cap25000 for both (includes reasoning tokens); no SDK retries. Existing
+Runner and accounting journal reused, with root lock and immutable model histories.
+Application default unchanged pending measured tradeoffs.

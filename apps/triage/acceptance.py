@@ -65,11 +65,12 @@ def accounted(events, config):
 
 
 class Runner:
-    def __init__(self, directory, config):
+    def __init__(self, directory, config, *, terminal_provider_failures=False):
         self.directory = Path(directory).resolve()
         if self.directory == Path('/tmp') or Path('/tmp') in self.directory.parents:
             raise ValueError('Select persistent project runtime storage')
         self.directory.mkdir(parents=True, exist_ok=True)
+        self.terminal_provider_failures = terminal_provider_failures
         self.config = config
         self.path = self.directory / 'events.jsonl'
 
@@ -103,6 +104,19 @@ class Runner:
             raise ValueError('Prompt/schema mismatch; use a new run directory after reconciliation')
         started = {e['request_id']: e for e in events if e['state'] == 'reserved'}
         finished = {e['request_id']: e for e in events if e['state'] == 'completed'}
+        if execute and self.terminal_provider_failures:
+            failed = {e['request_id']: e for e in events if e['state'] == 'failed'}
+            raw = {e.get('request_id') for e in events if e['state'] == 'raw_response'}
+            for rid in started.keys() - finished.keys():
+                if rid in failed and rid in raw:
+                    reservation = started[rid]
+                    matches = [c for c in cases if c['sample_id'] == reservation['sample_id']]
+                    if len(matches) != 1:
+                        continue
+                    case = matches[0]
+                    event = self.failure_record(rid, reservation['identity'], case, failed[rid])
+                    self.append(event)
+                    finished[rid] = event
         if started.keys() - finished.keys():
             raise ValueError('Unresolved attempt: reservation retained; reconcile before spending')
         complete = {e['identity']: e['result'] for e in finished.values() if e['state'] == 'completed'}
@@ -175,10 +189,27 @@ class Runner:
             except Exception as exc:
                 self.append({'state': 'failed', 'request_id': request_id, 'identity': identity, 'error': 'provider_or_validation_failure',
                              'usage': getattr(exc, 'usage', None)})
-                raise
+                from apps.triage.providers.openai_provider import ProviderError
+                if not self.terminal_provider_failures or not isinstance(exc, ProviderError):
+                    raise
+                event = self.failure_record(request_id, identity, case, {
+                    'usage': getattr(exc, 'usage', None), 'latency_ms': getattr(exc, 'latency_ms', None)})
+                self.append(event)
+                complete[identity] = event['result']
+                spent += reserve
         records = [complete[i] for i in identities]
         atomic_export(self.directory / 'assessment_outputs.json', records)
         return records
+
+
+    @staticmethod
+    def failure_record(request_id, identity, case, failure):
+        return {'state': 'completed', 'request_id': request_id, 'identity': identity,
+            'result': {'request': {'id': request_id, 'source': case['source'], 'message': case['message']},
+                'analysis': None, 'decision': None, 'error': 'provider_or_validation_failure',
+                'processing': {'unknown_cost': True, 'estimated_cost': None,
+                    'attempts': [{'id': request_id, 'usage': failure.get('usage'),
+                                  'latency_ms': failure.get('latency_ms')}]}}}
 
 
 def main():
