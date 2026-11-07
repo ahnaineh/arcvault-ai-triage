@@ -93,16 +93,27 @@ class BoundedOpenAIAdapter:
     """
     enforces_bounds = True
 
-    def __init__(self, *, client, config, verify_input_bound):
+    def __init__(self, *, client, config, verify_input_bound=None):
         self.config = json.loads(json.dumps(config))
-        self.verify_input_bound = verify_input_bound
+        self.verify_input_bound = verify_input_bound or self.maximum_input_bound
         self.provider = OpenAIProvider(
             client=client, model=config['model'], timeout=config['timeout'],
             max_output_tokens=config['output_token_cap'])
 
+    @staticmethod
+    def maximum_input_bound(*, model, bound, **kwargs):
+        return model == 'gpt-6.1-terra' and bound >= 1050000
+
     def preflight(self, messages, config):
         if config != self.config:
             raise ValueError('Adapter configuration mismatch')
+        if self.verify_input_bound == self.maximum_input_bound:
+            from decimal import Decimal
+ 
+            from apps.triage.acceptance import money
+            if (money(config['input_price_per_million']) < 2 or
+                    money(config['output_price_per_million']) < Decimal('7.5')):
+                raise ValueError('Maximum context requires long-context prices')
         for message in messages:
             if self.verify_input_bound(
                 model=self.provider.model, instructions=self.provider.prompt,
