@@ -34,6 +34,13 @@ services:
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
+  recovery:
+    <<: *app
+    restart: unless-stopped
+    command: python manage.py recover_requests --loop
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
   worker:
     <<: *app
     command: celery -A config.celery:app worker --loglevel=INFO

@@ -1,5 +1,5 @@
+import uuid
 from datetime import timedelta
-from math import ceil
 
 from celery import shared_task
 from django.conf import settings
@@ -27,10 +27,15 @@ def process(request_id):
         if row.status not in ('pending', 'retrying'):
             return
         if row.next_attempt_at and row.next_attempt_at > timezone.now():
-            from apps.intake.service import dispatch
-            countdown = max(1, ceil((row.next_attempt_at - timezone.now()).total_seconds()))
-            transaction.on_commit(lambda: dispatch(row.pk, countdown=countdown))
             return
+        if row.attempts.count() >= 3:
+            row.status = 'failed'
+            row.error = 'attempt_budget_exhausted'
+            row.save()
+            return
+        token = uuid.uuid4()
+        row.owner = token
+        row.lease_until = timezone.now() + timedelta(seconds=120)
         row.status = 'processing'
         row.next_attempt_at = None
         row.dispatch_error = None
@@ -45,6 +50,10 @@ def process(request_id):
         safe = code if code in {'provider_transient', 'provider_auth', 'provider_config', 'provider_refusal', 'provider_incomplete', 'provider_invalid'} else 'processing_failed'
         with transaction.atomic():
             row = Request.objects.select_for_update().get(pk=request_id)
+            if row.owner != token or row.lease_until <= timezone.now():
+                return
+            row.owner = None
+            row.lease_until = None
             attempt.latency_ms = getattr(exc, 'latency_ms', None)
             attempt.usage = getattr(exc, 'usage', None)
             attempt.error = safe
@@ -61,6 +70,10 @@ def process(request_id):
         return
     with transaction.atomic():
         row = Request.objects.select_for_update().get(pk=request_id)
+        if row.owner != token or row.lease_until <= timezone.now():
+            return
+        row.owner = None
+        row.lease_until = None
         attempt.completed_at = timezone.now()
         attempt.latency_ms = output.latency_ms
         attempt.usage = output.usage
