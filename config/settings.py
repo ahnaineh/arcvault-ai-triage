@@ -62,3 +62,8 @@ CSRF_FAILURE_VIEW = 'apps.intake.views.csrf_failure'
 DATA_UPLOAD_MAX_MEMORY_SIZE = 131072
 CELERY_BROKER_CONNECTION_TIMEOUT = 3
 CELERY_BROKER_TRANSPORT_OPTIONS = {'socket_connect_timeout': 3, 'socket_timeout': 3}
+
+STATICFILES_DIRS = [BASE_DIR / 'static']
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
