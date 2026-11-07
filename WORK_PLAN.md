@@ -248,3 +248,20 @@ PR9 runner/provider missed-review remediation (offline):
 - https://github.com/ahnaineh/arcvault-ai-triage/pull/8#discussion_r4501784659: Terra conservative pricing enforced independently of verifier callback. `test_wrapped_bound_price_floor` rejects zero/underpriced wrapper and accepts valid pricing.
 - https://github.com/ahnaineh/arcvault-ai-triage/pull/9#discussion_r4501813739: HTTP evidence sink OSError carries sanitized captured usage; `test_http_write_failure_retains_usage` proves failed ledger usage, reservation retention and no secret persistence.
 Validation: locked SQLite suite 117 passed (six missing-staticfiles warnings); Ruff, Django check, migration drift and diff whitespace passed. Initial suite exposed mock fixture's fabricated inference_identity; fixture explicitly declares None, then full suite passed. Full-export billing/outage/canonical parity baseline retained. No live calls or credentials. Historical reservation remains 6.22326144, actual unknown. Pending application policy/config/UI and evaluation findings belong to parent/other work and remain pending.
+### GitHub missed-comment remediation
+
+Read `/tmp/pr-audit/audit.md`, fetched all five original review bodies, and compared
+current source at main 2b42ec3039df34b2a6d95abddac7fe1d33d4043a. This focused branch
+owns Celery startup, billing precision/evidence, DB credentials, and tester timeout.
+Acceptance/provider and eval findings remain assigned to other scopes; no changes
+or comment replies/resolutions are made here. See docs/evidence/pr-comment-remediation.md.
+
+PR9 final integration: PR10 merged cdcbf21580140d7f5d2244a0c20af15c5138a9c5.
+Original eight findings closure preserved across this merge in this tracker and
+ docs/evidence/pr-comment-remediation.md. New finding
+https://github.com/ahnaineh/arcvault-ai-triage/pull/9#discussion_r4501882363
+is covered by test_execute_then_dry_identity: shared artifact hashing, zero pending
+after mocked execution, changed prompt/schema each five pending, no extra SDK client/calls.
+Focused command tests 24 passed; combined SQLite suite 129 passed (six staticfiles
+warnings), Ruff/Django/migration checks and all three JS harnesses passed.
+No paid calls, credentials, PostgreSQL, queue or live acceptance verified. Plan states retained.

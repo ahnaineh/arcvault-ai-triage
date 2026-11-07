@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from apps.intake.sample_data import samples
 from apps.triage.acceptance import Runner, money
-from apps.triage.providers.openai_provider import BoundedOpenAIAdapter
+from apps.triage.providers.openai_provider import ArtifactIdentity, BoundedOpenAIAdapter
 
 
 class Command(BaseCommand):
@@ -19,7 +19,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         config = json.loads(Path(options['config']).read_text())
         runner = Runner(options['run_dir'], config)
-        provider = None
+        provider = ArtifactIdentity()
         if options['execute']:
             history = config.get('reconciled_history', {})
             if not history.get('evidence') or not history.get('provenance'):

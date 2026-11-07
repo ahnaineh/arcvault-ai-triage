@@ -13,6 +13,20 @@ from apps.triage.schemas import Analysis, validate_analysis
 
 ROOT = Path(__file__).resolve().parents[3]
 
+def artifact_identity(prompt=None, schema=None):
+    if prompt is None:
+        prompt = (ROOT / 'prompts/triage_v1.txt').read_text()
+    if schema is None:
+        schema = (ROOT / 'contracts/analysis.schema.json').read_text()
+    return {'prompt': hashlib.sha256(prompt.encode()).hexdigest(),
+            'schema': hashlib.sha256(schema.encode()).hexdigest()}
+
+
+class ArtifactIdentity:
+    def inference_identity(self):
+        return artifact_identity()
+
+
 MAX_MODEL_BYTES = 1048576
 
 
@@ -147,8 +161,7 @@ class BoundedOpenAIAdapter:
             max_output_tokens=config['output_token_cap'])
 
     def inference_identity(self):
-        return {'prompt': hashlib.sha256(self.provider.prompt.encode()).hexdigest(),
-                'schema': hashlib.sha256(self.provider.schema_text.encode()).hexdigest()}
+        return artifact_identity(self.provider.prompt, self.provider.schema_text)
 
     @staticmethod
     def maximum_input_bound(*, model, bound, **kwargs):

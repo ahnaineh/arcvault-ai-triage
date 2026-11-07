@@ -31,7 +31,9 @@ def command(tmp_path, monkeypatch):
         args = ['--run-dir', 'runtime', '--config', str(path)]
         if execute:
             args.append('--execute')
-        return call_command('run_acceptance', *args, stdout=StringIO())
+        output = StringIO()
+        call_command('run_acceptance', *args, stdout=output)
+        return json.loads(output.getvalue())
     def events():
         return [json.loads(line) for line in (tmp_path / 'runtime/events.jsonl').read_text().splitlines()]
     return run, client, factory, path, events
@@ -310,3 +312,22 @@ def test_http_write_failure_retains_usage(command, monkeypatch):
     assert records[-1]['usage'] == {'input_tokens': 12}
     assert records[0]['reservation']
     assert 'secret' not in json.dumps(records)
+
+
+@pytest.mark.parametrize('changed', [None, 'prompt', 'schema'])
+def test_execute_then_dry_identity(command, monkeypatch, changed):
+    run, client, factory, _, _ = command
+    client.responses.create.side_effect = [valid_response(i) for i in range(5)]
+    run()
+    if changed:
+        from apps.triage.providers import openai_provider
+        original = openai_provider.artifact_identity
+        def modified(*args, **kwargs):
+            identity = original(*args, **kwargs)
+            identity[changed] = 'changed'
+            return identity
+        monkeypatch.setattr(openai_provider, 'artifact_identity', modified)
+    result = run(False)
+    assert result == {'dry_run': True, 'pending': 5 if changed else 0}
+    factory.assert_called_once()
+    assert client.responses.create.call_count == 5

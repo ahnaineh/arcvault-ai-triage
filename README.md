@@ -107,3 +107,7 @@ explicitly; byte count, usage and reservation remain. Refusal text, SDK extras,
 headers and exception dumps are excluded. Missing usage means unknown cost.
 Disk failure may prevent evidence writes; the durable original reservation blocks
 further spending. Atomic export failure preserves completed journal records.
+Compose passes raw `POSTGRES_PASSWORD` separately to PostgreSQL and Django, so
+URL delimiters in passwords are preserved. Django also accepts `POSTGRES_USER`,
+`POSTGRES_DB`, `POSTGRES_HOST`, and `POSTGRES_PORT`. A nonempty `DATABASE_URL`
+overrides these settings for local development/tests; URL passwords must be encoded.
