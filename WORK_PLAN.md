@@ -33,9 +33,9 @@ Gate: remote repository contains the intended planning artifacts and no credenti
 
 ## M1 — Runtime and executable contracts
 
-- [ ] Verify latest stable Django and compatible Python/package versions; pin dependencies and container images, commit `uv.lock`.
+- [x] Verify Django 6.1.3 and Python 3.14.4 installation; lock dependencies and version-tag container images. See docs/evidence/m1-runtime.md (images are not digest pinned).
 - [ ] Select an initial OpenAI model using current documented availability and pricing; record dated sources and confirm access without exposing credentials.
-- [ ] Create Django project, settings, `.env.example`, Dockerfile and Compose web/worker/PostgreSQL/Redis/migration services.
+- [-] Runtime scaffolding implemented; local checks and two tests pass. Compose configuration validates; real container smoke pending. See docs/evidence/m1-runtime.md.
 - [ ] Implement Pydantic analysis validation aligned with the checked-in schema; reject nonfinite values, invalid evidence and unsupported output shapes.
 - [ ] Implement billing normalization/arithmetic and pure routing/escalation policy.
 - [ ] Turn the controlled cases into executable tests; add monetary normalization and schema-validation cases.
