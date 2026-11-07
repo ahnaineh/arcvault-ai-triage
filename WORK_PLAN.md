@@ -291,3 +291,6 @@ PR1 final feedback (offline foundation, 2026-11-07)
 - https://github.com/ahnaineh/arcvault-ai-triage/pull/1#discussion_r4501893519: valid; adapter maps estimated_cost only when unknown_cost is false, sums all recorded attempt latencies, and preserves null for missing latency or unknown cost. test_processing_measurements covers retries, known cost, unknown cost and incomplete/empty attempts.
 - Main a79bc2a48d24c6c29d73473db291637585a4d540 already included in PR head; no compatibility merge required. Existing tracker retained.
 - 15 focused evaluation/adapter tests passed; 50-case dataset validation passed; Ruff passed. No application/provider/runner edits, live calls or benchmark execution.
+
+## Network acceptance follow-up
+Five Terra calls completed with raw usage and durable file evidence in docs/evidence/terra-network-20261107. Escalated HTTPS 401 established network access. Historical uncertain reservations retained; total 75.92876544 < 83. Invoice $260 requirement remains unmet (missing billed period); outage Human Review verified. No queue/Postgres acceptance.

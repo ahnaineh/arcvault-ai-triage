@@ -1,0 +1,17 @@
+{
+  "model": "gpt-6.1-terra",
+  "official_price_source": "https://developers.openai.com/api/docs/pricing",
+  "input_token_bound": 1050000,
+  "output_token_cap": 4096,
+  "input_price_per_million": "11",
+  "output_price_per_million": "16.5",
+  "timeout": 60,
+  "budget": "83",
+  "project_budget": "83",
+  "reconciled_history": {
+    "known_cost": "0",
+    "unknown_reservation": "17.84084544",
+    "evidence": "Explicit user authorization: historical 6.22326144 plus PR11 uncertain call 11.617584 retained; actual cost unknown.",
+    "provenance": "PR11 head 468527f0d9fdc0b54f0d5c527532e9b0e4668b58 events and provenance; user approved combined reservation."
+  }
+}
