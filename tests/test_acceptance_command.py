@@ -9,7 +9,7 @@ from django.core.management import call_command
 from django.core.management.base import CommandError
 
 from apps.triage.acceptance import Runner
-from apps.triage.providers.openai_provider import ProviderError
+from apps.triage.providers.openai_provider import ProviderError, artifact_identity
 from tests.test_openai_provider import envelope
 
 
@@ -264,7 +264,9 @@ def test_command_full_export_matches_canonical_builder(command):
                      'source': case['source'], 'message': case['message']},
             analysis=validate_analysis(payload, case['message']),
             output=SimpleNamespace(model='gpt-6.1-terra', prompt_version='triage_v1',
-                                   schema_version='1.0'),
+                                   schema_version='1.0',
+                                   prompt_sha256=artifact_identity()['prompt'],
+                                   schema_sha256=artifact_identity()['schema']),
             completed_at='completed', attempt_id='attempt',
             attempts=[{'id': 'attempt', 'error': None, 'latency_ms': 0,
                        'usage': {'input_tokens': 10, 'output_tokens': 20,
