@@ -382,3 +382,25 @@ Validation category/routing 9/10; priority/entities/signals/schema 10/10. Final 
 still unopened at this checkpoint. Earlier v2 exports carry legacy v1 display labels;
 reservation inference hashes and manifests identify actual prompt. Corrected selected
 prompt labels and exported hashes before final freeze; originals remain unchanged.
+
+## PR14 final benchmark checkpoint — 2026-11-07
+
+- [x] Existing runner extended with completed-usage reconciliation, serial pre-call
+  reservations, durable raw evidence and one shared ledger across all phases.
+- [x] 75 paid calls completed: baseline25, revised development25, validation10,
+  frozen final test10 once, final assessment5. No SDK retries or extra prompt revision.
+- [x] Final artifacts and detailed limitations: docs/evidence/benchmark-20261107/README.md.
+  Final test category/routing9/10; final assessment routing5/5, priority3/5 and exact
+  entities2/5. Original outputs preserved. Prior narrative original-five priority3/5
+  is inconsistent with current login-High label; exact current-rubric rescore2/5.
+- [x] New usage81054 input/12677 output, conservative estimate1.1007645; original-five
+  estimate.069047 plus uncertain reservations17.84084544 yields accounted19.01065694.
+  Actual billed cost remains unknown; ceiling83 respected at every reservation.
+- [x] Offline suite169 passed; Ruff and diff whitespace clean. Phase/freeze/resume,
+  missing usage, repeated reconciliation and exhaustion regressions included.
+- [x] User-requested Astra prompt review received after freeze; valid rubric conflicts
+  and coverage/tie-break gaps documented as follow-up. Frozen prompt unchanged.
+- [ ] Independent human summary-faithfulness audit remains pending. Assistant manual
+  review is disclosed separately; no synthetic human-review scores were supplied.
+
+This checkpoint completes benchmark execution, not production/submission acceptance.

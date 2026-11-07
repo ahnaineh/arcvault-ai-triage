@@ -1,0 +1,793 @@
+[
+  {
+    "id": "validation-01",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the invoice is EUR 1800 versus the contract amount of EUR 1000 for the same month.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice EUR 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract EUR 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of EUR 1800 for the month.",
+        "The customer states that the contract amount for the same month is EUR 1000."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:52:52.347310+00:00",
+      "accepted_attempt_id": "99e58709-1d34-4fa3-8f6c-1a89f0c1bb25"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "99e58709-1d34-4fa3-8f6c-1a89f0c1bb25",
+          "error": null,
+          "latency_ms": 4073.3562360001088,
+          "usage": {
+            "input_tokens": 1155,
+            "output_tokens": 222,
+            "total_tokens": 1377
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 4073.3562360001088,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-02",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that the invoice amount differs from the contract amount for the same month.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice USD 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "EUR",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract EUR 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of USD 1800 versus a contract amount of EUR 1000 for the same month.",
+        "The amounts are stated in different currencies."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:52:56.022291+00:00",
+      "accepted_attempt_id": "4d4ea098-2857-4730-932b-ce23ccd50d34"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "4d4ea098-2857-4730-932b-ce23ccd50d34",
+          "error": null,
+          "latency_ms": 3651.9862820005073,
+          "usage": {
+            "input_tokens": 1155,
+            "output_tokens": 215,
+            "total_tokens": 1370
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3651.9862820005073,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-03",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer reports that an invoice for 1800 exceeds the contract amount of 1000 for the same month, with no currency shown.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": null,
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "Invoice 1800",
+            "for the same month"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": null,
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract 1000",
+            "for the same month"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of 1800 versus a contract amount of 1000 for the same month.",
+        "No currency is shown."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:52:59.833363+00:00",
+      "accepted_attempt_id": "14b5d154-aac7-4ae8-87d3-3983a6bb407e"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "14b5d154-aac7-4ae8-87d3-3983a6bb407e",
+          "error": null,
+          "latency_ms": 3785.3561649990297,
+          "usage": {
+            "input_tokens": 1158,
+            "output_tokens": 219,
+            "total_tokens": 1377
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3785.3561649990297,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-04",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.99,
+      "core_issue": "The customer compares an annual invoice of USD 12,000 with a contract amount of USD 1,000 monthly.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "12000",
+          "currency": "USD",
+          "period": "annual",
+          "components": null,
+          "evidence": [
+            "Invoice USD 12000 annually"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": "monthly",
+          "components": null,
+          "evidence": [
+            "contract USD 1000 monthly"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an annual invoice of USD 12,000.",
+        "The contract amount is stated as USD 1,000 monthly."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:03.349285+00:00",
+      "accepted_attempt_id": "891aa217-17e3-48b5-a6f9-991d61bbbe0a"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "891aa217-17e3-48b5-a6f9-991d61bbbe0a",
+          "error": null,
+          "latency_ms": 3492.7283199995145,
+          "usage": {
+            "input_tokens": 1153,
+            "output_tokens": 208,
+            "total_tokens": 1361
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3492.7283199995145,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-05",
+    "analysis": {
+      "category": "Billing Issue",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer reports that an invoice of USD 1800 includes storage, while the contract amount of USD 1000 covers seats only.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": {
+        "billed": {
+          "amount": "1800",
+          "currency": "USD",
+          "period": "invoice",
+          "components": "storage",
+          "evidence": [
+            "Invoice USD 1800 includes storage"
+          ]
+        },
+        "expected": {
+          "amount": "1000",
+          "currency": "USD",
+          "period": null,
+          "components": "seats only",
+          "evidence": [
+            "contract USD 1000 covers seats only"
+          ]
+        }
+      },
+      "summary_sentences": [
+        "The customer reports an invoice of USD 1800 that includes storage.",
+        "The customer states that the contract amount of USD 1000 covers seats only."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Billing",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "billing_comparison_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:06.902878+00:00",
+      "accepted_attempt_id": "0ced8cc6-a0f2-40aa-bbb2-a021c672a2a8"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "0ced8cc6-a0f2-40aa-bbb2-a021c672a2a8",
+          "error": null,
+          "latency_ms": 3527.180306000446,
+          "usage": {
+            "input_tokens": 1157,
+            "output_tokens": 220,
+            "total_tokens": 1377
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3527.180306000446,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-06",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.98,
+      "core_issue": "The customer reports that shared links return a blank page for their account.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer reports that shared links return a blank page for their account.",
+        "They did not specify when the issue began or whether other accounts are affected."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Engineering",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:09.770557+00:00",
+      "accepted_attempt_id": "0e99a138-185a-44dd-a683-7f7620ff9fe1"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "0e99a138-185a-44dd-a683-7f7620ff9fe1",
+          "error": null,
+          "latency_ms": 2839.776496999548,
+          "usage": {
+            "input_tokens": 1149,
+            "output_tokens": 141,
+            "total_tokens": 1290
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2839.776496999548,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-07",
+    "analysis": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "confidence": 0.99,
+      "core_issue": "The customer requests a configurable expiry for public links.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer wants public links to have a configurable expiry.",
+        "No urgency is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Product",
+      "final_destination": "Product",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:12.374545+00:00",
+      "accepted_attempt_id": "a1e6f339-df3c-44ec-95dc-40e8dd648afe"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "a1e6f339-df3c-44ec-95dc-40e8dd648afe",
+          "error": null,
+          "latency_ms": 2573.1800140001724,
+          "usage": {
+            "input_tokens": 1148,
+            "output_tokens": 124,
+            "total_tokens": 1272
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2573.1800140001724,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-08",
+    "analysis": {
+      "category": "Technical Question",
+      "priority": "Low",
+      "confidence": 0.98,
+      "core_issue": "The customer asks how to configure Okta provisioning.",
+      "entities": [
+        {
+          "type": "product_or_integration",
+          "value": "Okta",
+          "evidence": "Okta"
+        }
+      ],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer requests guidance on configuring Okta provisioning.",
+        "No urgency is stated."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Technical Support",
+      "final_destination": "Technical Support",
+      "human_escalation": false,
+      "escalation_reasons": []
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:15.629065+00:00",
+      "accepted_attempt_id": "fa1ec888-7c8f-413f-88de-9b37990b9b23"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "fa1ec888-7c8f-413f-88de-9b37990b9b23",
+          "error": null,
+          "latency_ms": 3228.5152899985405,
+          "usage": {
+            "input_tokens": 1147,
+            "output_tokens": 142,
+            "total_tokens": 1289
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3228.5152899985405,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-09",
+    "analysis": {
+      "category": "Incident/Outage",
+      "priority": "High",
+      "confidence": 0.76,
+      "core_issue": "The customer asks whether public links are broken for everyone and cannot determine the scope.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": null,
+          "evidence": [
+            "Are public links broken for everyone?",
+            "I cannot determine the scope."
+          ]
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": false,
+          "evidence": []
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks whether public links are broken for everyone.",
+        "They cannot determine the scope of the possible issue."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "active_outage",
+        "inconsistent_analysis",
+        "outage_scope_unresolved"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:18.679540+00:00",
+      "accepted_attempt_id": "a243b368-7556-405c-a606-40f5a1ab7023"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "a243b368-7556-405c-a606-40f5a1ab7023",
+          "error": null,
+          "latency_ms": 3026.8391059998976,
+          "usage": {
+            "input_tokens": 1152,
+            "output_tokens": 151,
+            "total_tokens": 1303
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 3026.8391059998976,
+    "cost_usd": null
+  },
+  {
+    "id": "validation-10",
+    "analysis": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "confidence": 0.55,
+      "core_issue": "The customer reports broken public links and requests a subscription refund, with neither request taking precedence.",
+      "entities": [],
+      "urgency": {
+        "level": "Unknown",
+        "evidence": []
+      },
+      "signals": {
+        "active_service_outage": {
+          "value": false,
+          "evidence": []
+        },
+        "insufficient_information": {
+          "value": false,
+          "evidence": []
+        },
+        "conflicting_intents": {
+          "value": true,
+          "evidence": [
+            "fix broken public links",
+            "refund my subscription",
+            "neither request takes precedence"
+          ]
+        }
+      },
+      "billing_comparison": null,
+      "summary_sentences": [
+        "The customer asks for broken public links to be fixed.",
+        "They also request a subscription refund and state that neither request takes precedence."
+      ]
+    },
+    "decision": {
+      "standard_destination": "Engineering",
+      "final_destination": "Human Review",
+      "human_escalation": true,
+      "escalation_reasons": [
+        "low_confidence",
+        "conflicting_intents"
+      ]
+    },
+    "provenance": {
+      "model": "gpt-6.1-terra",
+      "prompt_version": "triage_v1",
+      "schema_version": "1.0",
+      "policy_version": "1.1",
+      "completed_at": "2026-11-07T13:53:21.541621+00:00",
+      "accepted_attempt_id": "8b6e046b-607c-4f24-bb44-397f883d36ab"
+    },
+    "processing": {
+      "attempts": [
+        {
+          "id": "8b6e046b-607c-4f24-bb44-397f883d36ab",
+          "error": null,
+          "latency_ms": 2830.057240000315,
+          "usage": {
+            "input_tokens": 1154,
+            "output_tokens": 156,
+            "total_tokens": 1310
+          }
+        }
+      ],
+      "estimated_cost": null,
+      "unknown_cost": true
+    },
+    "application_review": null,
+    "latency_ms": 2830.057240000315,
+    "cost_usd": null
+  }
+]

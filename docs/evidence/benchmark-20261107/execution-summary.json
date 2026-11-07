@@ -1,0 +1,1145 @@
+{
+  "baseline": {
+    "cases": 25,
+    "input_tokens": 23312,
+    "output_tokens": 4428,
+    "accounted_estimate_usd": "0.3294940",
+    "latency_ms_mean": 3203.3914862400707,
+    "latency_ms_max": 4679.292790000545,
+    "per_case": [
+      {
+        "sample_id": "baseline:development-01",
+        "request_id": "db9efb5b-222b-40b9-973d-47e19427e574",
+        "usage": {
+          "input_tokens": 929,
+          "output_tokens": 172,
+          "total_tokens": 1101
+        },
+        "accounted_estimate_usd": "0.013057",
+        "latency_ms": 4422.040235000168
+      },
+      {
+        "sample_id": "baseline:development-02",
+        "request_id": "76d263c8-47b4-420d-a34a-215035844d17",
+        "usage": {
+          "input_tokens": 930,
+          "output_tokens": 154,
+          "total_tokens": 1084
+        },
+        "accounted_estimate_usd": "0.012771",
+        "latency_ms": 3136.073731999204
+      },
+      {
+        "sample_id": "baseline:development-03",
+        "request_id": "81c5bae2-9132-45b1-ae9d-ee176269e11e",
+        "usage": {
+          "input_tokens": 933,
+          "output_tokens": 176,
+          "total_tokens": 1109
+        },
+        "accounted_estimate_usd": "0.013167",
+        "latency_ms": 2866.933921999589
+      },
+      {
+        "sample_id": "baseline:development-04",
+        "request_id": "f5e66ff2-06f1-4e5d-89e6-2435b6e58c7e",
+        "usage": {
+          "input_tokens": 931,
+          "output_tokens": 152,
+          "total_tokens": 1083
+        },
+        "accounted_estimate_usd": "0.012749",
+        "latency_ms": 2948.999090000143
+      },
+      {
+        "sample_id": "baseline:development-05",
+        "request_id": "e43a97f5-6f87-466e-969b-ad97931577ed",
+        "usage": {
+          "input_tokens": 934,
+          "output_tokens": 170,
+          "total_tokens": 1104
+        },
+        "accounted_estimate_usd": "0.013079",
+        "latency_ms": 3135.56411799982
+      },
+      {
+        "sample_id": "baseline:development-06",
+        "request_id": "092e0050-6c07-4f29-9f35-6cf04418f573",
+        "usage": {
+          "input_tokens": 943,
+          "output_tokens": 261,
+          "total_tokens": 1204
+        },
+        "accounted_estimate_usd": "0.0146795",
+        "latency_ms": 3838.458805999835
+      },
+      {
+        "sample_id": "baseline:development-07",
+        "request_id": "0ce77087-b82b-4431-8b35-9940145500ea",
+        "usage": {
+          "input_tokens": 941,
+          "output_tokens": 243,
+          "total_tokens": 1184
+        },
+        "accounted_estimate_usd": "0.0143605",
+        "latency_ms": 4313.691655999719
+      },
+      {
+        "sample_id": "baseline:development-08",
+        "request_id": "28bc00f2-94b1-4fe3-9635-11cf4352b8c3",
+        "usage": {
+          "input_tokens": 943,
+          "output_tokens": 251,
+          "total_tokens": 1194
+        },
+        "accounted_estimate_usd": "0.0145145",
+        "latency_ms": 4679.292790000545
+      },
+      {
+        "sample_id": "baseline:development-09",
+        "request_id": "f9cc5c83-85ab-47a3-a30b-d857a6cbe5b7",
+        "usage": {
+          "input_tokens": 940,
+          "output_tokens": 285,
+          "total_tokens": 1225
+        },
+        "accounted_estimate_usd": "0.0150425",
+        "latency_ms": 4176.001650999751
+      },
+      {
+        "sample_id": "baseline:development-10",
+        "request_id": "bb9ce6d3-f0e0-4d1d-b303-8db464bb6363",
+        "usage": {
+          "input_tokens": 941,
+          "output_tokens": 250,
+          "total_tokens": 1191
+        },
+        "accounted_estimate_usd": "0.014476",
+        "latency_ms": 4067.887017999965
+      },
+      {
+        "sample_id": "baseline:development-11",
+        "request_id": "201b9652-5d84-4cd8-bb8d-db5289128e31",
+        "usage": {
+          "input_tokens": 936,
+          "output_tokens": 144,
+          "total_tokens": 1080
+        },
+        "accounted_estimate_usd": "0.012672",
+        "latency_ms": 2492.3788670002978
+      },
+      {
+        "sample_id": "baseline:development-12",
+        "request_id": "7b3d74c6-962c-476e-8731-5123631b02f5",
+        "usage": {
+          "input_tokens": 932,
+          "output_tokens": 125,
+          "total_tokens": 1057
+        },
+        "accounted_estimate_usd": "0.0123145",
+        "latency_ms": 3160.392088999288
+      },
+      {
+        "sample_id": "baseline:development-13",
+        "request_id": "65191f59-357f-49f8-ab2b-e06118b4042b",
+        "usage": {
+          "input_tokens": 931,
+          "output_tokens": 119,
+          "total_tokens": 1050
+        },
+        "accounted_estimate_usd": "0.0122045",
+        "latency_ms": 2692.7648470009444
+      },
+      {
+        "sample_id": "baseline:development-14",
+        "request_id": "5312a32d-a397-4eaa-a7c7-1b237ef14897",
+        "usage": {
+          "input_tokens": 936,
+          "output_tokens": 135,
+          "total_tokens": 1071
+        },
+        "accounted_estimate_usd": "0.0125235",
+        "latency_ms": 2350.807260001602
+      },
+      {
+        "sample_id": "baseline:development-15",
+        "request_id": "bf461ad7-6aae-4fc5-bf14-d6fc37c8a006",
+        "usage": {
+          "input_tokens": 930,
+          "output_tokens": 217,
+          "total_tokens": 1147
+        },
+        "accounted_estimate_usd": "0.0138105",
+        "latency_ms": 3407.898203999139
+      },
+      {
+        "sample_id": "baseline:development-16",
+        "request_id": "f036e132-fbc2-42ff-91f0-682dca50318d",
+        "usage": {
+          "input_tokens": 920,
+          "output_tokens": 121,
+          "total_tokens": 1041
+        },
+        "accounted_estimate_usd": "0.0121165",
+        "latency_ms": 2622.2226600002614
+      },
+      {
+        "sample_id": "baseline:development-17",
+        "request_id": "4d5401c2-6dd3-4da3-aea8-39c4e9becaff",
+        "usage": {
+          "input_tokens": 934,
+          "output_tokens": 262,
+          "total_tokens": 1196
+        },
+        "accounted_estimate_usd": "0.014597",
+        "latency_ms": 3927.9086900005495
+      },
+      {
+        "sample_id": "baseline:development-18",
+        "request_id": "d76cc73c-e7d0-4f7b-b02a-50815135f96e",
+        "usage": {
+          "input_tokens": 932,
+          "output_tokens": 161,
+          "total_tokens": 1093
+        },
+        "accounted_estimate_usd": "0.0129085",
+        "latency_ms": 2815.945381000347
+      },
+      {
+        "sample_id": "baseline:development-19",
+        "request_id": "818ca2ac-c43a-485b-8e62-9671fc745b6c",
+        "usage": {
+          "input_tokens": 928,
+          "output_tokens": 127,
+          "total_tokens": 1055
+        },
+        "accounted_estimate_usd": "0.0123035",
+        "latency_ms": 2620.701449999615
+      },
+      {
+        "sample_id": "baseline:development-20",
+        "request_id": "13b38d91-d9fc-491a-bf3e-7fec10920476",
+        "usage": {
+          "input_tokens": 926,
+          "output_tokens": 130,
+          "total_tokens": 1056
+        },
+        "accounted_estimate_usd": "0.012331",
+        "latency_ms": 2338.768608000464
+      },
+      {
+        "sample_id": "baseline:development-21",
+        "request_id": "caa6f34c-6110-4b54-bd63-a3c63e392847",
+        "usage": {
+          "input_tokens": 926,
+          "output_tokens": 186,
+          "total_tokens": 1112
+        },
+        "accounted_estimate_usd": "0.013255",
+        "latency_ms": 3096.400698001162
+      },
+      {
+        "sample_id": "baseline:development-22",
+        "request_id": "498b0cd6-6c31-4665-807e-91807d093438",
+        "usage": {
+          "input_tokens": 929,
+          "output_tokens": 140,
+          "total_tokens": 1069
+        },
+        "accounted_estimate_usd": "0.012529",
+        "latency_ms": 2839.2684230002487
+      },
+      {
+        "sample_id": "baseline:development-23",
+        "request_id": "4f9074dc-afc3-47c8-8823-1d2eb1240ac1",
+        "usage": {
+          "input_tokens": 927,
+          "output_tokens": 127,
+          "total_tokens": 1054
+        },
+        "accounted_estimate_usd": "0.0122925",
+        "latency_ms": 2539.707077999992
+      },
+      {
+        "sample_id": "baseline:development-24",
+        "request_id": "0e041df0-4899-4115-a719-037f54130120",
+        "usage": {
+          "input_tokens": 934,
+          "output_tokens": 191,
+          "total_tokens": 1125
+        },
+        "accounted_estimate_usd": "0.0134255",
+        "latency_ms": 3095.6572069990216
+      },
+      {
+        "sample_id": "baseline:development-25",
+        "request_id": "898e33c4-2128-4164-9d00-99d8948b9ce1",
+        "usage": {
+          "input_tokens": 926,
+          "output_tokens": 129,
+          "total_tokens": 1055
+        },
+        "accounted_estimate_usd": "0.0123145",
+        "latency_ms": 2499.022676000095
+      }
+    ],
+    "failures": [
+      {
+        "id": "development-01",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-02",
+        "category": false,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-03",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-04",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-05",
+        "category": true,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-06",
+        "category": true,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-07",
+        "category": true,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-08",
+        "category": true,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-09",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-10",
+        "category": true,
+        "priority": false,
+        "entities": false,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-16",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-17",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": false,
+        "routing": false
+      },
+      {
+        "id": "development-18",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-20",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-24",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "development-25",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      }
+    ]
+  },
+  "development": {
+    "cases": 25,
+    "input_tokens": 28837,
+    "output_tokens": 3848,
+    "accounted_estimate_usd": "0.3806990",
+    "latency_ms_mean": 3024.968163880185,
+    "latency_ms_max": 3860.409504999552,
+    "per_case": [
+      {
+        "sample_id": "development:development-01",
+        "request_id": "f62515aa-abe8-4b2e-ad0a-8ed2c8aa14a9",
+        "usage": {
+          "input_tokens": 1150,
+          "output_tokens": 157,
+          "total_tokens": 1307
+        },
+        "accounted_estimate_usd": "0.0152405",
+        "latency_ms": 3104.896393000672
+      },
+      {
+        "sample_id": "development:development-02",
+        "request_id": "f9ac0cd9-01aa-4059-a659-898c062be333",
+        "usage": {
+          "input_tokens": 1151,
+          "output_tokens": 136,
+          "total_tokens": 1287
+        },
+        "accounted_estimate_usd": "0.014905",
+        "latency_ms": 2908.535660999405
+      },
+      {
+        "sample_id": "development:development-03",
+        "request_id": "3e9ea3c3-393c-422a-a912-d950f3ced035",
+        "usage": {
+          "input_tokens": 1154,
+          "output_tokens": 157,
+          "total_tokens": 1311
+        },
+        "accounted_estimate_usd": "0.0152845",
+        "latency_ms": 3017.08066700121
+      },
+      {
+        "sample_id": "development:development-04",
+        "request_id": "38906de9-55f3-43a7-80d7-3f66c9901169",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 135,
+          "total_tokens": 1287
+        },
+        "accounted_estimate_usd": "0.0148995",
+        "latency_ms": 2889.801137998802
+      },
+      {
+        "sample_id": "development:development-05",
+        "request_id": "d55d77b4-5884-4326-96a7-ba972ad3e9df",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 149,
+          "total_tokens": 1304
+        },
+        "accounted_estimate_usd": "0.0151635",
+        "latency_ms": 2942.027037999651
+      },
+      {
+        "sample_id": "development:development-06",
+        "request_id": "3b74f68d-4c78-4fc7-89f7-b4f7bf4de400",
+        "usage": {
+          "input_tokens": 1164,
+          "output_tokens": 215,
+          "total_tokens": 1379
+        },
+        "accounted_estimate_usd": "0.0163515",
+        "latency_ms": 3565.0359520004713
+      },
+      {
+        "sample_id": "development:development-07",
+        "request_id": "d05b75c2-08ef-4686-bbe3-5aec898135aa",
+        "usage": {
+          "input_tokens": 1162,
+          "output_tokens": 209,
+          "total_tokens": 1371
+        },
+        "accounted_estimate_usd": "0.0162305",
+        "latency_ms": 3830.2704529996845
+      },
+      {
+        "sample_id": "development:development-08",
+        "request_id": "b64d47dd-0508-477a-921e-2bcf85f0ac9f",
+        "usage": {
+          "input_tokens": 1164,
+          "output_tokens": 217,
+          "total_tokens": 1381
+        },
+        "accounted_estimate_usd": "0.0163845",
+        "latency_ms": 3495.9007360012038
+      },
+      {
+        "sample_id": "development:development-09",
+        "request_id": "df1f5eca-fa43-435d-bb3b-0104424e4d7e",
+        "usage": {
+          "input_tokens": 1161,
+          "output_tokens": 214,
+          "total_tokens": 1375
+        },
+        "accounted_estimate_usd": "0.016302",
+        "latency_ms": 3860.409504999552
+      },
+      {
+        "sample_id": "development:development-10",
+        "request_id": "61a6a6aa-e1ec-452e-94a7-36ec2d9d67c2",
+        "usage": {
+          "input_tokens": 1162,
+          "output_tokens": 221,
+          "total_tokens": 1383
+        },
+        "accounted_estimate_usd": "0.0164285",
+        "latency_ms": 3807.9860390007525
+      },
+      {
+        "sample_id": "development:development-11",
+        "request_id": "4c047ad7-4191-4762-bbc3-38ce8138124d",
+        "usage": {
+          "input_tokens": 1157,
+          "output_tokens": 143,
+          "total_tokens": 1300
+        },
+        "accounted_estimate_usd": "0.0150865",
+        "latency_ms": 2994.712077999793
+      },
+      {
+        "sample_id": "development:development-12",
+        "request_id": "eef9710f-d4fe-4443-a8eb-7b77385fd795",
+        "usage": {
+          "input_tokens": 1153,
+          "output_tokens": 121,
+          "total_tokens": 1274
+        },
+        "accounted_estimate_usd": "0.0146795",
+        "latency_ms": 2450.929709000775
+      },
+      {
+        "sample_id": "development:development-13",
+        "request_id": "c46c059f-0df2-4a7f-a866-af30b799c28a",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 116,
+          "total_tokens": 1268
+        },
+        "accounted_estimate_usd": "0.014586",
+        "latency_ms": 2512.705700000879
+      },
+      {
+        "sample_id": "development:development-14",
+        "request_id": "1cc2493b-5fe1-452a-9f5b-b8f35e703f3f",
+        "usage": {
+          "input_tokens": 1157,
+          "output_tokens": 133,
+          "total_tokens": 1290
+        },
+        "accounted_estimate_usd": "0.0149215",
+        "latency_ms": 3358.558878000622
+      },
+      {
+        "sample_id": "development:development-15",
+        "request_id": "82ca44c1-ad40-4ae2-ae6c-4bec1ba1f1f4",
+        "usage": {
+          "input_tokens": 1151,
+          "output_tokens": 145,
+          "total_tokens": 1296
+        },
+        "accounted_estimate_usd": "0.0150535",
+        "latency_ms": 2724.9568740007817
+      },
+      {
+        "sample_id": "development:development-16",
+        "request_id": "60919ccb-1621-4dc8-85c3-7e918f3872e9",
+        "usage": {
+          "input_tokens": 1141,
+          "output_tokens": 128,
+          "total_tokens": 1269
+        },
+        "accounted_estimate_usd": "0.014663",
+        "latency_ms": 2537.197607000053
+      },
+      {
+        "sample_id": "development:development-17",
+        "request_id": "6dfa8dbb-436f-484b-ad29-d13b2d7583bc",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 164,
+          "total_tokens": 1319
+        },
+        "accounted_estimate_usd": "0.015411",
+        "latency_ms": 3553.6793320006836
+      },
+      {
+        "sample_id": "development:development-18",
+        "request_id": "9495f6aa-28ca-4c64-b7cd-10651227e541",
+        "usage": {
+          "input_tokens": 1153,
+          "output_tokens": 129,
+          "total_tokens": 1282
+        },
+        "accounted_estimate_usd": "0.0148115",
+        "latency_ms": 2602.2946080011025
+      },
+      {
+        "sample_id": "development:development-19",
+        "request_id": "d30ac1db-e40b-4cdb-b573-d9148d267f58",
+        "usage": {
+          "input_tokens": 1149,
+          "output_tokens": 124,
+          "total_tokens": 1273
+        },
+        "accounted_estimate_usd": "0.014685",
+        "latency_ms": 2494.6326489989588
+      },
+      {
+        "sample_id": "development:development-20",
+        "request_id": "4d53ceac-a700-489c-b7e4-58a2fd15dc24",
+        "usage": {
+          "input_tokens": 1147,
+          "output_tokens": 130,
+          "total_tokens": 1277
+        },
+        "accounted_estimate_usd": "0.014762",
+        "latency_ms": 2867.785073998675
+      },
+      {
+        "sample_id": "development:development-21",
+        "request_id": "2cd32cf6-3f2d-485c-abee-38d54a8551d1",
+        "usage": {
+          "input_tokens": 1147,
+          "output_tokens": 122,
+          "total_tokens": 1269
+        },
+        "accounted_estimate_usd": "0.01463",
+        "latency_ms": 2795.703208001214
+      },
+      {
+        "sample_id": "development:development-22",
+        "request_id": "d6d952de-784c-4670-a067-0819dab14aeb",
+        "usage": {
+          "input_tokens": 1150,
+          "output_tokens": 134,
+          "total_tokens": 1284
+        },
+        "accounted_estimate_usd": "0.014861",
+        "latency_ms": 2619.2957409984956
+      },
+      {
+        "sample_id": "development:development-23",
+        "request_id": "a25df4c7-fd67-4573-a828-f9da735ca933",
+        "usage": {
+          "input_tokens": 1148,
+          "output_tokens": 126,
+          "total_tokens": 1274
+        },
+        "accounted_estimate_usd": "0.014707",
+        "latency_ms": 2665.492644000551
+      },
+      {
+        "sample_id": "development:development-24",
+        "request_id": "3fb5d90e-02a0-4493-acbc-09d9118b8d49",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 194,
+          "total_tokens": 1349
+        },
+        "accounted_estimate_usd": "0.015906",
+        "latency_ms": 3411.322343001302
+      },
+      {
+        "sample_id": "development:development-25",
+        "request_id": "67be7605-86ec-41e0-a278-b195e4e1a127",
+        "usage": {
+          "input_tokens": 1147,
+          "output_tokens": 129,
+          "total_tokens": 1276
+        },
+        "accounted_estimate_usd": "0.0147455",
+        "latency_ms": 2612.9940699993313
+      }
+    ],
+    "failures": [
+      {
+        "id": "development-05",
+        "category": false,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-06",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-07",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-08",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-09",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-10",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      },
+      {
+        "id": "development-17",
+        "category": true,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      }
+    ]
+  },
+  "validation": {
+    "cases": 10,
+    "input_tokens": 11528,
+    "output_tokens": 1798,
+    "accounted_estimate_usd": "0.1564750",
+    "latency_ms_mean": 3302.897545599808,
+    "latency_ms_max": 4073.3562360001088,
+    "per_case": [
+      {
+        "sample_id": "validation:validation-01",
+        "request_id": "99e58709-1d34-4fa3-8f6c-1a89f0c1bb25",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 222,
+          "total_tokens": 1377
+        },
+        "accounted_estimate_usd": "0.016368",
+        "latency_ms": 4073.3562360001088
+      },
+      {
+        "sample_id": "validation:validation-02",
+        "request_id": "4d4ea098-2857-4730-932b-ce23ccd50d34",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 215,
+          "total_tokens": 1370
+        },
+        "accounted_estimate_usd": "0.0162525",
+        "latency_ms": 3651.9862820005073
+      },
+      {
+        "sample_id": "validation:validation-03",
+        "request_id": "14b5d154-aac7-4ae8-87d3-3983a6bb407e",
+        "usage": {
+          "input_tokens": 1158,
+          "output_tokens": 219,
+          "total_tokens": 1377
+        },
+        "accounted_estimate_usd": "0.0163515",
+        "latency_ms": 3785.3561649990297
+      },
+      {
+        "sample_id": "validation:validation-04",
+        "request_id": "891aa217-17e3-48b5-a6f9-991d61bbbe0a",
+        "usage": {
+          "input_tokens": 1153,
+          "output_tokens": 208,
+          "total_tokens": 1361
+        },
+        "accounted_estimate_usd": "0.016115",
+        "latency_ms": 3492.7283199995145
+      },
+      {
+        "sample_id": "validation:validation-05",
+        "request_id": "0ced8cc6-a0f2-40aa-bbb2-a021c672a2a8",
+        "usage": {
+          "input_tokens": 1157,
+          "output_tokens": 220,
+          "total_tokens": 1377
+        },
+        "accounted_estimate_usd": "0.016357",
+        "latency_ms": 3527.180306000446
+      },
+      {
+        "sample_id": "validation:validation-06",
+        "request_id": "0e99a138-185a-44dd-a683-7f7620ff9fe1",
+        "usage": {
+          "input_tokens": 1149,
+          "output_tokens": 141,
+          "total_tokens": 1290
+        },
+        "accounted_estimate_usd": "0.0149655",
+        "latency_ms": 2839.776496999548
+      },
+      {
+        "sample_id": "validation:validation-07",
+        "request_id": "a1e6f339-df3c-44ec-95dc-40e8dd648afe",
+        "usage": {
+          "input_tokens": 1148,
+          "output_tokens": 124,
+          "total_tokens": 1272
+        },
+        "accounted_estimate_usd": "0.014674",
+        "latency_ms": 2573.1800140001724
+      },
+      {
+        "sample_id": "validation:validation-08",
+        "request_id": "fa1ec888-7c8f-413f-88de-9b37990b9b23",
+        "usage": {
+          "input_tokens": 1147,
+          "output_tokens": 142,
+          "total_tokens": 1289
+        },
+        "accounted_estimate_usd": "0.01496",
+        "latency_ms": 3228.5152899985405
+      },
+      {
+        "sample_id": "validation:validation-09",
+        "request_id": "a243b368-7556-405c-a606-40f5a1ab7023",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 151,
+          "total_tokens": 1303
+        },
+        "accounted_estimate_usd": "0.0151635",
+        "latency_ms": 3026.8391059998976
+      },
+      {
+        "sample_id": "validation:validation-10",
+        "request_id": "8b6e046b-607c-4f24-bb44-397f883d36ab",
+        "usage": {
+          "input_tokens": 1154,
+          "output_tokens": 156,
+          "total_tokens": 1310
+        },
+        "accounted_estimate_usd": "0.015268",
+        "latency_ms": 2830.057240000315
+      }
+    ],
+    "failures": [
+      {
+        "id": "validation-09",
+        "category": false,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      }
+    ]
+  },
+  "test": {
+    "cases": 10,
+    "input_tokens": 11534,
+    "output_tokens": 1624,
+    "accounted_estimate_usd": "0.1536700",
+    "latency_ms_mean": 3298.6092628001643,
+    "latency_ms_max": 4885.5311990009795,
+    "per_case": [
+      {
+        "sample_id": "test:test-01",
+        "request_id": "a35faa11-481f-4966-ad27-5800353402f7",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 162,
+          "total_tokens": 1314
+        },
+        "accounted_estimate_usd": "0.015345",
+        "latency_ms": 3406.5785959992354
+      },
+      {
+        "sample_id": "test:test-02",
+        "request_id": "3db93637-d640-40f9-8de4-529853bce857",
+        "usage": {
+          "input_tokens": 1153,
+          "output_tokens": 171,
+          "total_tokens": 1324
+        },
+        "accounted_estimate_usd": "0.0155045",
+        "latency_ms": 3440.8476339995104
+      },
+      {
+        "sample_id": "test:test-03",
+        "request_id": "0e3c9986-197c-4aed-8ca2-ce7320d196e5",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 137,
+          "total_tokens": 1289
+        },
+        "accounted_estimate_usd": "0.0149325",
+        "latency_ms": 2558.6201019996224
+      },
+      {
+        "sample_id": "test:test-04",
+        "request_id": "66f4410f-0799-4c05-838e-380827e507fb",
+        "usage": {
+          "input_tokens": 1148,
+          "output_tokens": 123,
+          "total_tokens": 1271
+        },
+        "accounted_estimate_usd": "0.0146575",
+        "latency_ms": 2699.7471080012474
+      },
+      {
+        "sample_id": "test:test-05",
+        "request_id": "1e5ca396-d47a-4068-be35-074619a99d22",
+        "usage": {
+          "input_tokens": 1150,
+          "output_tokens": 130,
+          "total_tokens": 1280
+        },
+        "accounted_estimate_usd": "0.014795",
+        "latency_ms": 2751.834132001022
+      },
+      {
+        "sample_id": "test:test-06",
+        "request_id": "94aaddf9-1bcd-4994-9b22-e29f38924517",
+        "usage": {
+          "input_tokens": 1160,
+          "output_tokens": 211,
+          "total_tokens": 1371
+        },
+        "accounted_estimate_usd": "0.0162415",
+        "latency_ms": 4885.5311990009795
+      },
+      {
+        "sample_id": "test:test-07",
+        "request_id": "c9537f2e-6190-4dce-9c87-2fb8194e1424",
+        "usage": {
+          "input_tokens": 1158,
+          "output_tokens": 201,
+          "total_tokens": 1359
+        },
+        "accounted_estimate_usd": "0.0160545",
+        "latency_ms": 3655.197541000234
+      },
+      {
+        "sample_id": "test:test-08",
+        "request_id": "d5e294a2-d497-4943-abf3-ea9e4f91b207",
+        "usage": {
+          "input_tokens": 1155,
+          "output_tokens": 189,
+          "total_tokens": 1344
+        },
+        "accounted_estimate_usd": "0.0158235",
+        "latency_ms": 3243.6124160012696
+      },
+      {
+        "sample_id": "test:test-09",
+        "request_id": "72cdd112-e749-477f-8958-957c575fcbba",
+        "usage": {
+          "input_tokens": 1152,
+          "output_tokens": 148,
+          "total_tokens": 1300
+        },
+        "accounted_estimate_usd": "0.015114",
+        "latency_ms": 3012.889574998553
+      },
+      {
+        "sample_id": "test:test-10",
+        "request_id": "3d6dfae4-293e-4e04-bbc4-0ce16195447c",
+        "usage": {
+          "input_tokens": 1154,
+          "output_tokens": 152,
+          "total_tokens": 1306
+        },
+        "accounted_estimate_usd": "0.015202",
+        "latency_ms": 3331.2343249999685
+      }
+    ],
+    "failures": [
+      {
+        "id": "test-02",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "test-09",
+        "category": false,
+        "priority": true,
+        "entities": true,
+        "signals": true,
+        "routing": false
+      }
+    ]
+  },
+  "assessment": {
+    "cases": 5,
+    "input_tokens": 5843,
+    "output_tokens": 979,
+    "accounted_estimate_usd": "0.0804265",
+    "latency_ms_mean": 3462.457818400071,
+    "latency_ms_max": 4361.6574779989605,
+    "per_case": [
+      {
+        "sample_id": "assessment:assessment-01",
+        "request_id": "b5443119-2375-4260-a269-bd2c9d344e80",
+        "usage": {
+          "input_tokens": 1174,
+          "output_tokens": 219,
+          "total_tokens": 1393
+        },
+        "accounted_estimate_usd": "0.0165275",
+        "latency_ms": 3857.3439749998215
+      },
+      {
+        "sample_id": "assessment:assessment-02",
+        "request_id": "f717c648-cd77-4b4a-b4fc-9b96f5b54730",
+        "usage": {
+          "input_tokens": 1167,
+          "output_tokens": 156,
+          "total_tokens": 1323
+        },
+        "accounted_estimate_usd": "0.015411",
+        "latency_ms": 2944.0013189996534
+      },
+      {
+        "sample_id": "assessment:assessment-03",
+        "request_id": "31f5f2f8-3fe9-474c-a027-e5e182ee247e",
+        "usage": {
+          "input_tokens": 1166,
+          "output_tokens": 236,
+          "total_tokens": 1402
+        },
+        "accounted_estimate_usd": "0.01672",
+        "latency_ms": 4361.6574779989605
+      },
+      {
+        "sample_id": "assessment:assessment-04",
+        "request_id": "a7c3a1a8-a542-44a5-8451-ff0d81bbeebf",
+        "usage": {
+          "input_tokens": 1172,
+          "output_tokens": 159,
+          "total_tokens": 1331
+        },
+        "accounted_estimate_usd": "0.0155155",
+        "latency_ms": 2775.8170000015525
+      },
+      {
+        "sample_id": "assessment:assessment-05",
+        "request_id": "5e310307-0d2f-4a04-8875-2f250a6822a4",
+        "usage": {
+          "input_tokens": 1164,
+          "output_tokens": 209,
+          "total_tokens": 1373
+        },
+        "accounted_estimate_usd": "0.0162525",
+        "latency_ms": 3373.4693200003676
+      }
+    ],
+    "failures": [
+      {
+        "id": "assessment-01",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "assessment-02",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "assessment-03",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "assessment-04",
+        "category": true,
+        "priority": false,
+        "entities": true,
+        "signals": true,
+        "routing": true
+      },
+      {
+        "id": "assessment-05",
+        "category": true,
+        "priority": true,
+        "entities": false,
+        "signals": true,
+        "routing": true
+      }
+    ]
+  },
+  "accounting": {
+    "new_calls": 75,
+    "benchmark_estimate_usd": "1.1007645",
+    "original_five_estimate_usd": ".069047",
+    "uncertain_reservations_usd": "17.84084544",
+    "total_accounted_usd": "19.01065694",
+    "budget_usd": "83",
+    "actual_billed_cost": null,
+    "retries": 0
+  }
+}
