@@ -26,7 +26,7 @@ Browser access requires a login and CSRF protection. External ingestion uses a b
 
 Real HTTP, PostgreSQL, Redis and Celery acceptance passed with synthetic inference. The final provider benchmark separately contains real model outputs. A fresh application image build and a [recorded real-model queued demo](demo/README.md) also passed. The demo includes one transient failure and successful retry.
 
-On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [final evidence](../evidence/final-v4/README.md) for provenance and costs.
+On 50 reused cases, declared scorer matches were category 47, priority 40, exact entities 44 and full routing 41. For the five required inputs, category, priority and routing matched 5/5; exact entity sets matched 1/5. These are comparisons with declared labels, not absolute accuracy. Independent review of all summaries remains pending. See the [benchmark tables](BENCHMARKS.md) for results and limitations.
 
 ## Production and another week
 

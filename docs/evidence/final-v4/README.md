@@ -12,9 +12,9 @@ Zero missed escalations among 23 expected-review cases; four unnecessary escalat
 
 Assistant source review of these five summaries: login accurately attributes403/update chronology; export describes requested capability and claimed savings; invoice preserves1240/980monthly and investigation request; Okta preserves setup/evaluation intent; dashboard attributes multiple-user failure and customer claim about provider fault. No invented diagnosis or promise observed. This is assistant review, not independent human adjudication. Okta extraction includes genericSSO as a product/integration, a specificity limitation. Full50 independent summary review remains pending.
 
-## Accounting and provenance
+## Provenance
 
-`execution-summary.json` records 47,242 input and 8,448 output tokens. Conservative cost estimate0.659054 at11/16.5 per million; actual billed amount unknown. Prior accounted39.33219774 includes retained historical/failed reservations. New total39.99125174; maximum replayed prefix51.59604274 below83. No reservations for uncertain prior calls were released.
+The run used 47,242 input and 8,448 output tokens. See the [benchmark overview](../../submission/BENCHMARKS.md) for the comparison tables.
 
 The original manifest identifies execution commitb1ec558 and hashes of actual prompt/schema/code. Test-only integration happened during execution; production benchmark code was fixed afterward for a separate multi-phase accounting issue. Original manifest and raw journal are preserved, not rewritten to imply execution of later code. Exact raw-to-analysis/export/prediction/scorer equality was verified offline. Configuration and journals include no API key.
 

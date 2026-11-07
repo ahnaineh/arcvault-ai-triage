@@ -1,2 +1,0 @@
-{"state": "reserved", "amount_usd": "0.27", "maximum_attempts": 3, "input_bound": 2000, "output_bound": 4096, "basis": "Identical original login message and unchanged prompt/schema/model; prior actual input count 964.", "prior_accounted_including_speech_allowance": "52.67980774"}
-{"state": "completed", "request_id": "4b3bcb4b-4c45-4104-966b-a7be4a19ba38", "accounted": "0.016181", "usage": [{"input_tokens": 964, "total_tokens": 1302, "output_tokens": 338}], "actual_cost": null}
