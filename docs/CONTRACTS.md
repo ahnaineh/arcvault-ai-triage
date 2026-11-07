@@ -105,7 +105,19 @@ The evaluation uses 50 synthetic messages: 5 assessment, 25 development, 10 vali
 
 Each case records the message, split, expected labels and entities, summary facts, signals, and policy decision. The scorer measures each output dimension separately. Summary acceptance requires a recorded review; schema validity alone does not establish faithfulness.
 
-Policy fixtures test confidence and billing boundaries, multiple escalation reasons, and unknown comparisons. Application tests cover authentication, CSRF, duplicate submissions, invalid provider output, bounded retries, and persisted exports. [Infrastructure evidence](evidence/infrastructure-acceptance.md) identifies which paths ran through real services and which failures were simulated. Worker-crash recovery is not implemented.
+Policy fixtures test confidence and billing boundaries, multiple escalation reasons, and unknown comparisons. Application tests cover authentication, CSRF, duplicate submissions, invalid provider output, bounded retries, and persisted exports. [Infrastructure evidence](evidence/infrastructure-acceptance.md) identifies which paths ran through real services and which failures were simulated. [Recovery evidence](evidence/recovery/README.md) covers interrupted attempts and PostgreSQL claim contention; real process-kill acceptance remains unverified.
+
+## Recovery semantics
+Publication uses a separate nullable dispatch_reserved_until reservation, locked
+per row and expiring after ten seconds. Scanner publication never advances
+next_attempt_at provider eligibility. Due workers claim immediately. Each scan
+selects at most 100 rows; publication occurs outside the transaction with a
+ten-second countdown. Reservation expiry recovers crashes before publication.
+Owner and lease fencing protects completed replacements from stale workers.
+Three attempts include interrupted calls. Migration 0003 preserves existing rows.
+Recovery requires a running scanner, database and broker. At-least-once provider
+execution may incur unsaved costs. Real process-kill, broker-outage and production
+acceptance remain unverified.
 
 ## Export consumer conventions
 
