@@ -27,3 +27,7 @@ urlpatterns += [
     path('api/v1/requests/<uuid:request_id>/', endpoint),
     path('api/v1/requests/<uuid:request_id>/export/', endpoint, {'export': True}),
 ]
+
+from django.urls import include
+
+urlpatterns += [path('', include('apps.intake.ui_urls'))]

@@ -129,3 +129,16 @@ Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Ind
 Runtime/policy/provider/backend checkpoint implemented; M2 remains incomplete. Sample commands, UI, and five live outputs remain pending. Independent review of PR4 366dfab and PR5 c14c69f reported 69 passing tests, Django check, and two offline SDK-validated adapter/process probes. Preserved the parameterized probe in tests/test_provider_pipeline.py.
 
 Before reliability claims: verify live strict schema/model/pricing, successful session-CSRF flow, PostgreSQL concurrent duplicates/task deliveries, actual Redis publication/retries. Early retry delivery returns without republishing (tasks.py lines 27-28), relying on broker countdown; test that behavior in Redis. No retry design changes in this integration.
+
+## UI checkpoint — 2026-11-07
+
+- [x] Implement authenticated tester, inbox, persisted Human Review filter, detail/evidence/attempts and completed export navigation; see docs/evidence/m2-ui.md.
+- [x] Verify successful session+CSRF webhook ingestion with mocked provider, missing-CSRF rejection, auth redirects, POST logout, incomplete export and escaped content. Full locked suite: 72 passed; Ruff/Django/migration checks passed.
+- [ ] Browser interaction/screenshots: local Chrome blocked by crashpad socket sandbox; no visual acceptance claimed.
+- [ ] Actual queued/live/clean-build/benchmark gates remain pending. Manual retry API is absent; no UI retry workflow invented. Human review remains read-only.
+
+PR #6 correction: actual c61e539 PR branch checked out before tests; lifecycle suspend/restore and single-flight protection added. Dependency-free executable JS regression passes; locked suite 72 passed and Ruff/Django/migration checks clean. See docs/evidence/m2-ui.md. Escalated Chrome startup works, but interactive browser fixture acceptance/screenshots remain pending; do not merge this checkpoint yet. All prior live/provider/queue/benchmark gates retained.
+
+PR6 browser checkpoint: real Chrome login/tester POST/pending-to-completed/detail/Back/mobile/network-failure Resume executed with mocked provider. Screenshots and exact remaining acceptance gaps: docs/evidence/pr6-browser/execution.md. Keep PR open pending full lifecycle/fault acceptance.
+
+PR6 bounded UI checkpoint follow-up: fake-timer lifecycle/60-poll expiry/Resume and response-loss idempotency regressions pass; actual Chrome accepted-then-aborted response retry yields two identical POSTs and one DB row. Actual Back reload works; persisted pageshow is simulated (no actual bfcache observed). Python 73 passed; Ruff passes. Live provider and real queue/runtime gates remain separate later milestones. See docs/evidence/pr6-browser/execution.md.
