@@ -114,3 +114,10 @@ After executable contracts stabilize, independent work can cover application/UI,
 ## PR #2 independent integration review
 
 Remote functional head verified: `7a7ac6db7c4f3cdf3887bee8b2c86210eba64ef8`. Independent reviewer reported no blockers and 58 passing tests using the command in docs/evidence/policy.md. Probes verified $1240 versus $980/month yields $260 Billing; exact 500 automatic/500.01 review; signed undercharge; confidence .699999 review/.70 automatic; monetary evidence normalization; rejection of unsupported evidence, Unknown basis, mutated and bypass models. Integration rerun: 58 passed in 0.08s. Documentation-only integration. Semantic attribution, live provider and runtime integration remain pending.
+
+## Provider implementation checkpoint — 2026-11-07
+
+- [x] Implement single-request Responses adapter and triage_v1 prompt; contextual validation and pipeline-facing contract documented in docs/prompts.md.
+- [x] Offline SDK-envelope/provider and policy verification: 63 tests passed; see docs/evidence/provider.md.
+- [ ] Live exact-schema gate and initial model/pricing selection remain pending, not replaced by mocks.
+- Explicit user approval now permits disclosed synthetic assessment/benchmark payloads within cumulative $83; provider task capped at $3 and five supplied messages. No live calls made in this checkpoint.
