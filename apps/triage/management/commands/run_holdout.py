@@ -82,13 +82,31 @@ class Command(BaseCommand):
         execute = options['execute']
         if execute and config.get('illustrative', False):
             raise CommandError('Illustrative configuration cannot execute')
+        if execute:
+            try:
+                for field in ('budget', 'project_budget', 'input_price_per_million',
+                              'output_price_per_million'):
+                    money(config[field])
+                if money(config['budget']) <= 0 or money(config['budget']) > money(config['project_budget']):
+                    raise ValueError('Task budget exceeds project budget or is not positive')
+                for field in ('input_token_bound', 'output_token_cap'):
+                    if type(config.get(field)) is not int or config[field] <= 0:
+                        raise ValueError('Positive integer token bounds required')
+                if config['output_token_cap'] > 128000:
+                    raise ValueError('Output cap exceeds limit')
+                history = config['reconciled_history']
+                if not history.get('evidence'):
+                    raise ValueError('History evidence required')
+                for field in ('known_cost', 'unknown_reservation'):
+                    money(history[field])
+            except (KeyError, TypeError, ValueError, ArithmeticError) as exc:
+                raise CommandError(f'Invalid execution configuration: {exc}') from exc
         config['benchmark'] = True
         provider = ArtifactIdentity(prompt_version=config.get('prompt_version'))
         identity = provider.inference_identity() | {'dataset': digest(cases), 'config': digest(config),
-            'policy': digest(Path('apps/triage/policy.py').read_text()),
-            'execution': {p: digest(Path(p).read_text()) for p in (
-                'evals/export_adapter.py', 'evals/score.py', __file__,
-                'apps/triage/acceptance.py', 'apps/triage/providers/openai_provider.py')}}
+            'execution': {str(p): digest(p.read_text())
+                          for root in ('apps/triage', 'evals')
+                          for p in sorted(Path(root).rglob('*.py'))}}
         directory = Path(options['run_dir'])
         if execute and (directory.resolve() == Path('/tmp') or Path('/tmp') in directory.resolve().parents):
             raise CommandError('Execute requires persistent storage')

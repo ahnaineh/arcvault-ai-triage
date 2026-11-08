@@ -125,3 +125,45 @@ def test_execute_exports_failed_case_in_denominator(tmp_path, monkeypatch):
     assert calls == [c['message'] for c in cases]
     assert (directory / 'holdout.exports.json').exists()
     assert (directory / 'holdout.predictions.json').exists()
+
+
+@pytest.mark.parametrize('field,value', [
+    ('budget', '84'), ('budget', 'NaN'), ('budget', '-1'),
+    ('project_budget', None), ('project_budget', 'Infinity'),
+    ('input_price_per_million', '-1'), ('input_token_bound', 1.5),
+    ('output_token_cap', 0), ('output_token_cap', 128001),
+ ('reconciled_history', {}),
+])
+def test_execute_invalid_config_before_client(tmp_path, monkeypatch, field, value):
+    from unittest.mock import Mock
+    client = Mock(side_effect=AssertionError('client forbidden'))
+    monkeypatch.setattr('openai.OpenAI', client)
+    config = json.loads(Path(CONFIG).read_text())
+    config.update(illustrative=False, reconciled_history={
+        'evidence': 'offline', 'known_cost': '0', 'unknown_reservation': '0'})
+    if value is None:
+        config.pop(field)
+    else:
+        config[field] = value
+    path = tmp_path / 'config.json'
+    path.write_text(json.dumps(config))
+    with pytest.raises(CommandError, match='Invalid execution'):
+        call_command('run_holdout', dataset=str(DATA), config=str(path),
+                     run_dir=str(tmp_path), execute=True)
+    client.assert_not_called()
+
+
+@pytest.mark.parametrize('changed', [
+    'apps/triage/schemas.py', 'apps/triage/providers/openai_provider.py'])
+def test_code_change_rejects_resume_before_client(tmp_path, monkeypatch, changed):
+    from unittest.mock import Mock
+    call_command('run_holdout', dataset=str(DATA), config=CONFIG, run_dir=str(tmp_path))
+    original = Path.read_text
+    monkeypatch.setattr(Path, 'read_text', lambda self, *a, **kw:
+                        original(self, *a, **kw) + '\n# changed'
+                        if str(self) == changed else original(self, *a, **kw))
+    client = Mock(side_effect=AssertionError('client forbidden'))
+    monkeypatch.setattr('openai.OpenAI', client)
+    with pytest.raises(CommandError, match='identity'):
+        call_command('run_holdout', dataset=str(DATA), config=CONFIG, run_dir=str(tmp_path))
+    client.assert_not_called()
